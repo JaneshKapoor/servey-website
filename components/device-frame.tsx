@@ -37,14 +37,18 @@ function PlaceholderFill({ hint }: { hint: string }) {
   );
 }
 
-function SlotContent({ slot }: { slot: ScreenshotSlot }) {
+function SlotContent({ slot, sizes }: { slot: ScreenshotSlot; sizes: string }) {
   if (slot.ready && slot.src) {
     return (
       <Image
         src={slot.src}
         alt={slot.alt}
         fill
-        sizes="(max-width: 768px) 100vw, 700px"
+        // `sizes` must reflect the real rendered width or the browser fetches a
+        // too-small source and upscales it (the "worn out" look). quality is
+        // bumped so fine UI text in screenshots stays sharp.
+        sizes={sizes}
+        quality={90}
         className="object-cover"
       />
     );
@@ -76,7 +80,7 @@ export function MacWindow({
         <span className="ml-3 font-mono text-[11px] text-muted">Servey — host</span>
       </div>
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} />
+        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" />
       </div>
     </div>
   );
@@ -100,7 +104,7 @@ export function IpadFrame({
         className="relative w-full overflow-hidden rounded-[1.1rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
-        <SlotContent slot={slot} />
+        <SlotContent slot={slot} sizes="(max-width: 1024px) 100vw, 1040px" />
       </div>
     </div>
   );
@@ -126,7 +130,7 @@ export function IphoneFrame({
         className="relative w-full overflow-hidden rounded-[1.9rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
-        <SlotContent slot={slot} />
+        <SlotContent slot={slot} sizes="(max-width: 768px) 55vw, 340px" />
       </div>
     </div>
   );
@@ -147,7 +151,7 @@ export function CropFrame({
       )}
     >
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} />
+        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" />
       </div>
     </div>
   );
