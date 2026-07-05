@@ -199,14 +199,17 @@ body {
     opacity: 0;
   }
 }
+/* Only scale + a tiny rise. Horizontal/vertical centering is handled by the
+ * element's `translate` utilities (Tailwind v4 uses the CSS `translate`
+ * property), so the keyframe must NOT touch translate-x or it double-shifts. */
 @keyframes dialog-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
+    transform: translateY(8px) scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 

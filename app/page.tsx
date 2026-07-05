@@ -5,7 +5,6 @@ import { Features } from "@/components/sections/features";
 import { Statement } from "@/components/sections/statement";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Comparison } from "@/components/sections/comparison";
-import { OnePager } from "@/components/sections/one-pager";
 import { Pricing } from "@/components/sections/pricing";
 import { WaitlistCta } from "@/components/sections/waitlist-cta";
 import { Faq } from "@/components/sections/faq";
@@ -22,7 +21,6 @@ export default function Home() {
         <Statement />
         <HowItWorks />
         <Comparison />
-        <OnePager />
         <Pricing />
         <WaitlistCta />
         <Faq />

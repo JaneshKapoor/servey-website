@@ -43,13 +43,6 @@ export function Footer() {
               <Link href="/terms" className="text-sm text-muted transition-colors hover:text-fg">
                 Terms
               </Link>
-              <a
-                href="/servey-about.pdf"
-                download
-                className="text-sm text-muted transition-colors hover:text-fg"
-              >
-                About PDF
-              </a>
             </nav>
 
             <nav aria-label="Contact" className="flex flex-col gap-3">

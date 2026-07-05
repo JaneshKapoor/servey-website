@@ -62,14 +62,14 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.18 }}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <WaitlistDialog source="hero">
-              <Magnetic>
-                <Button size="lg" className="w-full sm:w-auto">
+            <Magnetic className="w-full sm:w-auto">
+              <WaitlistDialog source="hero">
+                <Button size="lg" className="w-full">
                   Join the waitlist
                   <ArrowRight className="size-4" />
                 </Button>
-              </Magnetic>
-            </WaitlistDialog>
+              </WaitlistDialog>
+            </Magnetic>
             <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
               <Link href="#how-it-works">
                 <PlayCircle className="size-4" />
