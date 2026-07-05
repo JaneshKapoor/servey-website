@@ -11,7 +11,7 @@ export function Pricing() {
         <SectionHeading
           label="Pricing"
           title="Pricing is coming soon."
-          intro="We're putting the finishing touches on plans. Join the waitlist and you'll be the first to know — with pricing details before launch."
+          intro="We're putting the finishing touches on plans. Join the waitlist and you'll be the first to know - with pricing details before launch."
         />
 
         <Reveal className="mx-auto mt-12 max-w-xl">
@@ -28,7 +28,7 @@ export function Pricing() {
                 </Badge>
               </div>
               <p className="mx-auto mt-5 max-w-sm text-lg font-medium text-fg">
-                Be first to know — join the waitlist.
+                Be first to know - join the waitlist.
               </p>
               <div className="mx-auto mt-6 max-w-md">
                 <WaitlistForm source="pricing" />

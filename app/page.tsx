@@ -6,7 +6,6 @@ import { Statement } from "@/components/sections/statement";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Comparison } from "@/components/sections/comparison";
 import { Pricing } from "@/components/sections/pricing";
-import { WaitlistCta } from "@/components/sections/waitlist-cta";
 import { Faq } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
 
@@ -22,7 +21,6 @@ export default function Home() {
         <HowItWorks />
         <Comparison />
         <Pricing />
-        <WaitlistCta />
         <Faq />
       </main>
       <Footer />

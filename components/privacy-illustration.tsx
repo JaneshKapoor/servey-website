@@ -5,7 +5,7 @@ export function PrivacyIllustration() {
   const points = [
     { icon: KeyRound, label: "Google sign-in on both devices" },
     { icon: ShieldCheck, label: "Only your Mac pairs with your devices" },
-    { icon: ServerOff, label: "Remote video never touches a server" },
+    { icon: ServerOff, label: "Remote video hardly touches our servers" },
   ];
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border-strong bg-surface p-7 shadow-xl shadow-black/30">

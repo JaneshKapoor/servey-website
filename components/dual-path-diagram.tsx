@@ -50,7 +50,7 @@ export function DualPathDiagram() {
         <div className="mb-4 flex items-center gap-2">
           <Wifi className="size-4 text-accent-strong" />
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-strong">
-            Same Wi-Fi — hardware HEVC
+            Same Wi-Fi - hardware HEVC
           </span>
         </div>
         <div className="flex items-center justify-between gap-3">
@@ -71,7 +71,7 @@ export function DualPathDiagram() {
         <div className="mb-4 flex items-center gap-2">
           <Globe className="size-4 text-fg" />
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-            Anywhere — private P2P WebRTC
+            Anywhere - private P2P WebRTC
           </span>
         </div>
         <div className="flex items-center justify-between gap-2">
@@ -93,7 +93,7 @@ export function DualPathDiagram() {
           <Node icon={Smartphone} label="iPhone / iPad" />
         </div>
         <p className="mt-3 text-center text-[11px] text-muted">
-          End-to-end encrypted · your screen video never touches a server
+          End-to-end encrypted · your screen video hardly touches our servers
         </p>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 
-/** Shared shell for /privacy and /terms — on-brand, readable prose. */
+/** Shared shell for /privacy and /terms - on-brand, readable prose. */
 export function LegalPage({
   title,
   updated,

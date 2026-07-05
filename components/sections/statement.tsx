@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Aurora } from "@/components/aurora";
 
-const line = "Control your Mac from anywhere — crystal clear.";
+const line = "Control your Mac from anywhere - crystal clear.";
 const words = line.split(" ");
 
 const container: Variants = {
@@ -21,7 +21,7 @@ const word: Variants = {
   },
 };
 
-/** Second headline — the animated mid-scroll statement interstitial (§4). */
+/** Second headline - the animated mid-scroll statement interstitial (§4). */
 export function Statement() {
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden py-24">
@@ -56,7 +56,7 @@ export function Statement() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mx-auto mt-6 max-w-md text-pretty text-base text-muted sm:text-lg"
         >
-          The couch, the café, the train — your whole desktop and terminal, wherever
+          The couch, the café, the train - your whole desktop and terminal, wherever
           you are.
         </motion.p>
       </div>

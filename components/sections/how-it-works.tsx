@@ -40,7 +40,7 @@ export function HowItWorks() {
               <Screenshot name="mac-host-ui" />
             </Tilt>
             <p className="mt-4 text-center text-xs text-muted">
-              The Servey host on your Mac — online and discoverable, ready for your devices.
+              The Servey host on your Mac - online and discoverable, ready for your devices.
             </p>
           </Reveal>
         </div>

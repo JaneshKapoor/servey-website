@@ -84,7 +84,7 @@ export function WaitlistForm({
         aria-live="polite"
       >
         <Check className="size-4" />
-        You&rsquo;re on the list — we&rsquo;ll be in touch.
+        You&rsquo;re on the list - we&rsquo;ll be in touch.
       </div>
     );
   }
@@ -114,7 +114,7 @@ export function WaitlistForm({
           />
         </div>
 
-        {/* Honeypot — hidden from users, tempting to bots. */}
+        {/* Honeypot - hidden from users, tempting to bots. */}
         <div aria-hidden className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden">
           <label htmlFor={`website-${source}`}>Leave this field empty</label>
           <input

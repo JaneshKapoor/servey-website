@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { Heart, Mail } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { nav, site } from "@/lib/site";
 
@@ -12,7 +12,7 @@ export function Footer() {
           <div className="max-w-xs">
             <Wordmark />
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Your Mac. In your pocket. Native remote access — crystal-clear on your
+              Your Mac. In your pocket. Native remote access - crystal-clear on your
               network, private peer-to-peer anywhere else.
             </p>
           </div>
@@ -60,10 +60,34 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted sm:flex-row">
+        <div className="mt-12 flex flex-col items-center gap-4 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:justify-between">
           <span>
             © {year} {site.name}. All rights reserved.
           </span>
+
+          <span className="inline-flex items-center gap-1.5">
+            Made with
+            <Heart className="size-3.5 fill-accent text-accent" aria-label="love" />
+            by{" "}
+            <a
+              href="https://x.com/KapoorJanesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-fg transition-colors hover:text-accent-strong"
+            >
+              Janesh
+            </a>
+            and{" "}
+            <a
+              href="https://x.com/dwivediishivam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-fg transition-colors hover:text-accent-strong"
+            >
+              Shivam
+            </a>
+          </span>
+
           <span className="font-mono">{site.domain}</span>
         </div>
       </div>

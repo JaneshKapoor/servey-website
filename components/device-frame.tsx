@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { screenshots, type ScreenshotKey, type ScreenshotSlot } from "@/lib/screenshots";
 
 /* ---------------------------------------------------------------- *
- * Placeholder fill — styled, never a fake product screenshot.       *
+ * Placeholder fill - styled, never a fake product screenshot.       *
  * ---------------------------------------------------------------- */
 function PlaceholderFill({ hint }: { hint: string }) {
   return (
@@ -77,7 +77,7 @@ export function MacWindow({
         <span className="size-3 rounded-full bg-[#ff5f57]" />
         <span className="size-3 rounded-full bg-[#febc2e]" />
         <span className="size-3 rounded-full bg-[#28c840]" />
-        <span className="ml-3 font-mono text-[11px] text-muted">Servey — host</span>
+        <span className="ml-3 font-mono text-[11px] text-muted">Servey - host</span>
       </div>
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
         <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" />

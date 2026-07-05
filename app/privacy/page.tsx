@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Servey handles your data — account-scoped, private by design.",
+  description: "How Servey handles your data - account-scoped, private by design.",
   alternates: { canonical: `${site.url}/privacy` },
 };
 
@@ -31,7 +31,7 @@ export default function PrivacyPage() {
         Servey is <strong>private by design</strong>. You sign in with Google on both
         your Mac and your iPhone or iPad, and Servey only ever pairs your own devices,
         scoped to your account. On the remote path, your screen video travels{" "}
-        <strong>peer-to-peer and end-to-end encrypted</strong> — it never touches our
+        <strong>peer-to-peer and end-to-end encrypted</strong> - it hardly touches our
         servers. Our cloud is used only to broker the initial connection handshake.
       </p>
 

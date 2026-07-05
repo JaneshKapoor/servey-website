@@ -1,7 +1,7 @@
 /**
  * Typed registry of every product image slot.
  *
- * We ship styled placeholders — no faked UI. To drop in a real capture:
+ * We ship styled placeholders - no faked UI. To drop in a real capture:
  *   1. Save the file to /public/screenshots/<key>.png  (filename == the key)
  *   2. Flip that slot's `ready` from false to true.
  * The `src` paths are already wired below. If you save as .jpg/.webp instead of
@@ -26,22 +26,22 @@ export const screenshots = {
     frame: "ipad",
     ratio: 16 / 10,
     hint: "iPad + iPhone",
-    alt: "Servey on iPad and iPhone — a Mac desktop mirrored to the iPad with the control dock on the iPhone",
+    alt: "Servey on iPad and iPhone - a Mac desktop mirrored to the iPad with the control dock on the iPhone",
     src: "/screenshots/hero-devices.png",
     ready: true,
   },
   "device-picker": {
     frame: "iphone",
     ratio: 9 / 19.5,
-    hint: "iPhone — your Macs",
-    alt: "Servey on iPhone listing the user's Macs — one on the local network and one remote on the same account, each tappable to connect",
+    hint: "iPhone - your Macs",
+    alt: "Servey on iPhone listing the user's Macs - one on the local network and one remote on the same account, each tappable to connect",
     src: "/screenshots/ipad-macs-showcase.png",
     ready: true,
   },
   "mirroring-ipad": {
     frame: "ipad",
     ratio: 16 / 10,
-    hint: "iPad — screen mirroring",
+    hint: "iPad - screen mirroring",
     alt: "A Mac desktop mirrored full-screen on an iPad through Servey, with crisp, aspect-correct text",
     src: "/screenshots/mirroring-ipad.png",
     ready: false,
@@ -49,7 +49,7 @@ export const screenshots = {
   "iphone-controls": {
     frame: "iphone",
     ratio: 9 / 19.5,
-    hint: "iPhone — controls",
+    hint: "iPhone - controls",
     alt: "Servey's on-screen trackpad, click buttons, and control dock on an iPhone",
     src: "/screenshots/iphone-controls.png",
     ready: false,
@@ -57,7 +57,7 @@ export const screenshots = {
   terminal: {
     frame: "iphone",
     ratio: 9 / 19.5,
-    hint: "iPhone — terminal",
+    hint: "iPhone - terminal",
     alt: "A live macOS terminal session running inside Servey on iPhone",
     src: "/screenshots/terminal.png",
     ready: false,
@@ -82,7 +82,7 @@ export const screenshots = {
     frame: "crop",
     ratio: 881 / 625,
     hint: "Mac host app",
-    alt: "Servey's Mac host app on macOS — a dark, neon-green connect screen showing the Mac online and discoverable on the local network",
+    alt: "Servey's Mac host app on macOS - a dark, neon-green connect screen showing the Mac online and discoverable on the local network",
     src: "/screenshots/servey-landing-page.png",
     ready: true,
   },

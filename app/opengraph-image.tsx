@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Servey — control your Mac from your iPhone and iPad";
+export const alt = "Servey - control your Mac from your iPhone and iPad";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -60,7 +60,7 @@ export default function OgImage() {
             <span style={{ color: "#22dc6e" }}>In your pocket.</span>
           </div>
           <div style={{ display: "flex", fontSize: 34, color: "#9ba1a8", maxWidth: 900, lineHeight: 1.3 }}>
-            Mirror your Mac to iPhone &amp; iPad — full mouse, keyboard, and a real
+            Mirror your Mac to iPhone &amp; iPad - full mouse, keyboard, and a real
             terminal. Crystal-clear on your network, private P2P anywhere.
           </div>
         </div>

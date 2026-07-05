@@ -52,7 +52,7 @@ export function Hero() {
             className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
             Servey mirrors your Mac to your iPhone and iPad with full mouse, keyboard,
-            and a real terminal — hardware-accelerated on your network, private
+            and a real terminal - hardware-accelerated on your network, private
             peer-to-peer anywhere else.
           </motion.p>
 
