@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Servey — marketing website
 
-## Getting Started
+The premium marketing/landing site for **Servey** — a native app that puts your
+Mac in your pocket: full screen mirroring, mouse, keyboard, and a real terminal
+on your iPhone and iPad, hardware-accelerated on your network and private
+peer-to-peer anywhere else.
 
-First, run the development server:
+Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
+
+## Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** (design tokens in `app/globals.css`)
+- **Framer Motion** for scroll reveals and micro-interactions
+- **Radix UI** primitives (Accordion, Dialog) + custom shadcn-style components
+- **lucide-react** icons, **sonner** toasts
+- Fonts via `next/font` (Inter + JetBrains Mono, self-hosted)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # optional — the form works without it (console provider)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build   # production build
+npm run start   # serve the production build
+npm run lint    # eslint
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx            # fonts, metadata, JSON-LD, theme bootstrap, Toaster
+  page.tsx              # the landing page (composes the sections)
+  globals.css           # brand tokens (dark + light), utilities, keyframes
+  api/waitlist/route.ts # POST handler (honeypot + rate limit + provider)
+  privacy/ terms/       # on-brand legal pages
+  about-pdf/            # printable "About Servey" one-pager (in-app)
+  opengraph-image.tsx   # generated 1200x630 OG image
+  sitemap.ts robots.ts icon.svg
+components/
+  sections/             # header, hero, features, statement, comparison, ...
+  ui/                   # button, input, badge, accordion, dialog
+  motion/               # reveal, tilt, magnetic wrappers
+  device-frame.tsx      # iPad / iPhone / Mac frames + screenshot placeholders
+lib/
+  content.ts            # all section copy/data
+  screenshots.ts        # typed registry of image slots
+  site.ts               # site constants
+  waitlist-providers.ts # swappable Firebase / Formspree / Resend / console
+  rate-limit.ts
+public/
+  servey-about.pdf      # generated one-pager (see below)
+source-material/        # the original brief + WebRTC explainer + one-pager HTML
+```
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+No fake product UI is shipped — every image is a styled **placeholder** inside the
+correct device frame with a real, descriptive `alt`. To drop in real captures:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Save the file to `public/screenshots/<key>.png`
+2. In `lib/screenshots.ts`, set that slot's `src` and flip `ready: true`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Keys: `hero-devices`, `mirroring-ipad`, `iphone-controls`, `terminal`,
+`dual-path`, `quality-closeup`, `mac-host-ui`.
 
-## Deploy on Vercel
+## Waitlist backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The form posts to `POST /api/waitlist`, which persists through **one swappable
+provider** (see `lib/waitlist-providers.ts`). Selection is automatic from env, or
+force it with `WAITLIST_PROVIDER`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Provider | Env vars | Notes |
+|---|---|---|
+| **Firebase** (recommended) | `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY` | Writes `{ email, createdAt, source, userAgent }` to a `waitlist` collection; de-dupes by email (doc id = email). |
+| **Formspree** | `FORMSPREE_ENDPOINT` | Zero-backend fallback. |
+| **Resend** | `RESEND_API_KEY`, `RESEND_AUDIENCE_ID` | Adds the email to a Resend audience; handles duplicates. |
+| **console** (default) | — | Logs and succeeds so the form works with no setup. |
+
+Protections: hidden **honeypot** field + a simple per-IP **rate limit** (5/min).
+Secrets are read from `.env.local` only and never hardcoded.
+
+## Regenerating the "About Servey" PDF
+
+`public/servey-about.pdf` is generated from
+`source-material/servey-about-onepager.html` with headless Chrome:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless=new --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="public/servey-about.pdf" \
+  "file://$(pwd)/source-material/servey-about-onepager.html"
+```
+
+Users can also open `/about-pdf` in the app and use **Print / Save as PDF**.
+
+## Deploy to Vercel (servey.in)
+
+1. Push this repo to GitHub (wired to `github.com/janeshKapoor/servey-website`).
+2. In Vercel, **New Project → Import** the repo. Framework auto-detects as
+   Next.js; no build config needed.
+3. Add your chosen waitlist env vars under **Settings → Environment Variables**
+   (Production + Preview). Redeploy.
+4. **Domain:** Settings → Domains → add `servey.in` (and `www.servey.in`).
+   - Apex `servey.in`: at your DNS/registrar add an **A** record to
+     `76.76.21.21`, **or** an `ALIAS`/`ANAME` to `cname.vercel-dns.com`.
+   - `www`: add a **CNAME** to `cname.vercel-dns.com`.
+   - Set `servey.in` as the primary and redirect `www` → apex.
+5. Update `site.url` in `lib/site.ts` if the canonical domain ever changes.
+
+## Accessibility & performance
+
+Semantic landmarks, keyboard-navigable, brand-green focus rings, labeled form,
+`alt` on every image, and `prefers-reduced-motion` honored throughout. Images use
+`next/image`, fonts use `next/font`, and heavy motion is client-only — no CLS.

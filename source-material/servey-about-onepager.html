@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>About Servey — Your Mac. In your pocket.</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0b0d; --surface: #111317; --border: rgba(255,255,255,0.10);
+    --fg: #f4f6f8; --muted: #9ba1a8; --accent: #22dc6e; --deep: #12321f;
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg); color: var(--fg); line-height: 1.5; font-size: 11px;
+  }
+  .page { padding: 4px 2px; }
+  .brand { display: flex; align-items: center; gap: 9px; margin-bottom: 4px; }
+  .dot-wrap { width: 26px; height: 26px; border-radius: 8px; background: rgba(34,220,110,0.15);
+              display: flex; align-items: center; justify-content: center; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+  .brand b { font-size: 18px; letter-spacing: -0.3px; }
+  h1 { font-size: 27px; letter-spacing: -0.6px; margin: 12px 0 6px; line-height: 1.08; }
+  h1 .g { color: var(--accent); }
+  .lede { color: var(--muted); font-size: 12.5px; max-width: 560px; margin-bottom: 4px; }
+  h2 { font-size: 13px; margin: 16px 0 7px; letter-spacing: 0.3px;
+       color: var(--fg); display: flex; align-items: center; gap: 7px; }
+  h2::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+               box-shadow: 0 0 6px var(--accent); display: inline-block; }
+  p { margin: 4px 0; color: var(--muted); }
+  strong { color: var(--fg); font-weight: 600; }
+  .paths { display: flex; gap: 10px; margin-top: 6px; }
+  .path { flex: 1; border: 1px solid var(--border); border-radius: 10px; padding: 11px 12px; background: var(--surface); }
+  .path.lan { border-color: rgba(34,220,110,0.35); background: rgba(18,50,31,0.4); }
+  .path .tag { font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--accent); font-weight: 700; }
+  .path.remote .tag { color: var(--muted); }
+  .path h3 { font-size: 12px; margin: 4px 0 5px; color: var(--fg); }
+  .flow { display: flex; align-items: center; gap: 6px; margin: 8px 0 4px; font-size: 9.5px; color: var(--muted); }
+  .chip { border: 1px solid var(--border); border-radius: 6px; padding: 4px 7px; color: var(--fg); background: rgba(255,255,255,0.02); white-space: nowrap; }
+  .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); min-width: 14px; }
+  .line.d { background: none; border-top: 1px dashed var(--border); height: 0; }
+  ul.feat { list-style: none; margin-top: 6px; columns: 2; column-gap: 18px; }
+  ul.feat li { position: relative; padding-left: 15px; margin: 4px 0; color: var(--muted); break-inside: avoid; }
+  ul.feat li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  ul.feat li b { color: var(--fg); }
+  table { border-collapse: collapse; width: 100%; margin-top: 7px; font-size: 10px; }
+  th, td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: var(--surface); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+  th.s, td.s { background: rgba(18,50,31,0.35); }
+  th.s { color: var(--accent); }
+  td.theme { color: var(--fg); font-weight: 600; width: 20%; }
+  td.s { color: var(--fg); }
+  .foot { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 7px;
+          display: flex; justify-content: space-between; color: var(--muted); font-size: 9.5px; }
+  .foot .accent { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand"><span class="dot-wrap"><span class="dot"></span></span><b>Servey</b></div>
+  <h1>Your Mac. <span class="g">In your pocket.</span></h1>
+  <p class="lede">Servey turns your iPhone or iPad into a crystal-clear, low-latency window into your Mac —
+    full screen mirroring, mouse, keyboard, and a real terminal — over your local network or from anywhere in the world.</p>
+
+  <h2>What Servey is</h2>
+  <p>Native remote desktop for the Apple ecosystem, built in <strong>Swift/SwiftUI</strong> — not an Electron or Java port.
+     It&rsquo;s Apple-first and designed for touch: developers, power users, and creators get their Mac&rsquo;s full
+     desktop and terminal in their pocket — to fix a build from the couch, run a script from a café, grab a file on the
+     train, or drive a headless Mac Mini.</p>
+
+  <h2>Two intelligent streaming paths</h2>
+  <p>Servey automatically picks the best path based on where your devices are — you never choose.</p>
+  <div class="paths">
+    <div class="path lan">
+      <span class="tag">Same Wi-Fi · LAN</span>
+      <h3>Hardware HEVC, direct</h3>
+      <div class="flow"><span class="chip">Your Mac</span><span class="line"></span><span class="chip">iPhone / iPad</span></div>
+      <p>A custom hardware <strong>HEVC</strong> stream (VideoToolbox + ScreenCaptureKit), decoded natively on iOS.
+         Razor-sharp text, high frame rate, minimal latency. No cloud in the middle.</p>
+    </div>
+    <div class="path remote">
+      <span class="tag">Anywhere · Remote</span>
+      <h3>Private peer-to-peer WebRTC</h3>
+      <div class="flow"><span class="chip">Mac</span><span class="line d"></span><span class="chip">Handshake</span><span class="line d"></span><span class="chip">iPhone / iPad</span></div>
+      <p>A P2P <strong>WebRTC</strong> connection (hardware H.264); only the initial handshake is brokered by the cloud.
+         <strong>Your screen video never touches a server.</strong> STUN/TURN traversal works even on strict mobile/CGNAT networks.</p>
+    </div>
+  </div>
+
+  <h2>Everything it does</h2>
+  <ul class="feat">
+    <li><b>Screen mirroring</b> — Full-HD+, aspect-correct, pinch-to-zoom.</li>
+    <li><b>Mouse control</b> — move, left/right click, drag, scroll.</li>
+    <li><b>Virtual trackpad</b> — reaches every edge, L/R buttons + scroll.</li>
+    <li><b>Full keyboard</b> — typing plus ⌘C / ⌘V / Esc / Tab / Return.</li>
+    <li><b>Native terminal</b> — a real shell, over either path.</li>
+    <li><b>Control dock</b> — draggable & collapsible; never blocks the screen.</li>
+    <li><b>Adaptive quality</b> — tunes to the network, no cropping.</li>
+    <li><b>Account-scoped</b> — Google sign-in; pairs only your devices.</li>
+    <li><b>Works across networks</b> — no VPN, no port forwarding.</li>
+    <li><b>Keep-Mac-awake</b> — the host stays reachable.</li>
+  </ul>
+
+  <h2>How it&rsquo;s different from traditional tools</h2>
+  <table>
+    <tr><th>Theme</th><th>Traditional (VNC/RDP, TeamViewer)</th><th class="s">Servey</th></tr>
+    <tr><td class="theme">Build</td><td>Cross-platform Electron/Java ports, generic UI</td><td class="s">Native Swift/SwiftUI, Apple-first, built for touch</td></tr>
+    <tr><td class="theme">Local quality</td><td>Software-encoded, soft text, laggy</td><td class="s">Hardware HEVC on LAN — crystal-clear, native decode</td></tr>
+    <tr><td class="theme">Networking</td><td>Manual VPN / port forwarding / vendor accounts</td><td class="s">Auto LAN-or-remote; same-account pairing; zero setup</td></tr>
+    <tr><td class="theme">Privacy</td><td>Video often relayed through a vendor cloud</td><td class="s">P2P — video never touches a server; cloud only brokers the handshake</td></tr>
+    <tr><td class="theme">Terminal</td><td>Add-on or absent</td><td class="s">Real terminal built in, over both paths</td></tr>
+    <tr><td class="theme">Touch UX</td><td>Desktop cursor bolted onto a phone</td><td class="s">Purpose-built virtual trackpad, dock, pinch-zoom</td></tr>
+    <tr><td class="theme">Adaptivity</td><td>Fixed or clumsy quality</td><td class="s">Path-aware adaptive quality, no cropping</td></tr>
+  </table>
+
+  <div class="foot">
+    <span>Servey — native remote access for Mac, iPhone &amp; iPad. Pricing coming soon.</span>
+    <span class="accent">servey.in</span>
+  </div>
+</div>
+</body>
+</html>
