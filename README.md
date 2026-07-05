@@ -39,7 +39,7 @@ app/
   globals.css           # brand tokens (dark + light), utilities, keyframes
   api/waitlist/route.ts # POST handler (honeypot + rate limit + provider)
   privacy/ terms/       # on-brand legal pages
-  about-pdf/            # printable "About Servey" one-pager (in-app)
+  api/contact/route.ts  # POST handler -> Firestore `contacts` collection
   opengraph-image.tsx   # generated 1200x630 OG image
   sitemap.ts robots.ts icon.svg
 components/
@@ -54,7 +54,7 @@ lib/
   waitlist-providers.ts # swappable Firebase / Formspree / Resend / console
   rate-limit.ts
 public/
-  servey-about.pdf      # generated one-pager (see below)
+  brand/                # Servey app-icon logos (used in nav/footer + favicon)
 source-material/        # the original brief + WebRTC explainer + one-pager HTML
 ```
 
@@ -85,19 +85,14 @@ force it with `WAITLIST_PROVIDER`:
 Protections: hidden **honeypot** field + a simple per-IP **rate limit** (5/min).
 Secrets are read from `.env.local` only and never hardcoded.
 
-## Regenerating the "About Servey" PDF
+## Contact form
 
-`public/servey-about.pdf` is generated from
-`source-material/servey-about-onepager.html` with headless Chrome:
-
-```bash
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless=new --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf="public/servey-about.pdf" \
-  "file://$(pwd)/source-material/servey-about-onepager.html"
-```
-
-Users can also open `/about-pdf` in the app and use **Print / Save as PDF**.
+The footer "Contact us" button (and the legal pages) open a modal that posts to
+`POST /api/contact`, which stores `{ name, email, message, createdAt, userAgent,
+source, handled }` to a Firestore **`contacts`** collection via the same Firebase
+Admin credentials as the waitlist (see `lib/firebase-admin.ts`). Same protections
+(honeypot + per-IP rate limit). If Firebase isn't configured it logs and returns
+success so the form still works in dev.
 
 ## Deploy to Vercel (servey.in)
 

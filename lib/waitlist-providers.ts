@@ -49,21 +49,10 @@ export async function saveSignup(signup: Signup): Promise<SaveResult> {
 /* ----------------------------- Firebase ------------------------------ */
 async function saveToFirebase(signup: Signup): Promise<SaveResult> {
   try {
-    const { getApps, initializeApp, cert } = await import("firebase-admin/app");
-    const { getFirestore } = await import("firebase-admin/firestore");
+    const { getFirestoreDb } = await import("@/lib/firebase-admin");
+    const db = await getFirestoreDb();
+    if (!db) return { ok: false, error: "storage_error" };
 
-    if (!getApps().length) {
-      initializeApp({
-        credential: cert({
-          projectId: process.env.FIREBASE_PROJECT_ID,
-          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-          // Handle escaped newlines in the env var.
-          privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-        }),
-      });
-    }
-
-    const db = getFirestore();
     const docId = encodeURIComponent(signup.email); // normalized email = doc id → dedupe
     const ref = db.collection("waitlist").doc(docId);
     const existing = await ref.get();

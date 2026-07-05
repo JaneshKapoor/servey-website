@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Heart, Mail } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
+import { ContactDialog } from "@/components/contact-dialog";
 import { nav, site } from "@/lib/site";
 
 export function Footer() {
@@ -49,13 +50,15 @@ export function Footer() {
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 Contact
               </span>
-              <a
-                href={`mailto:${site.email}`}
-                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
-              >
-                <Mail className="size-4" />
-                {site.email}
-              </a>
+              <ContactDialog>
+                <button
+                  type="button"
+                  className="inline-flex w-fit items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
+                >
+                  <Mail className="size-4" />
+                  Contact us
+                </button>
+              </ContactDialog>
             </nav>
           </div>
         </div>

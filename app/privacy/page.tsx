@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
+import { ContactDialog } from "@/components/contact-dialog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -44,8 +45,13 @@ export default function PrivacyPage() {
 
       <h2>Contact</h2>
       <p>
-        Questions about privacy? Email us at{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a>.
+        Questions about privacy? Reach us through the{" "}
+        <ContactDialog>
+          <button type="button" className="text-accent-strong underline underline-offset-2">
+            contact form
+          </button>
+        </ContactDialog>{" "}
+        on our website.
       </p>
     </LegalPage>
   );
