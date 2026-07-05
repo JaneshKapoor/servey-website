@@ -93,7 +93,7 @@ export function Hero() {
           <Tilt className="relative">
             <IpadFrame slot={screenshots["hero-devices"]} className="w-full" />
             <div className="absolute -bottom-8 right-2 w-[26%] max-w-[180px] sm:-bottom-10 sm:right-6">
-              <IphoneFrame slot={screenshots["iphone-controls"]} />
+              <IphoneFrame slot={screenshots["device-picker"]} />
             </div>
           </Tilt>
         </motion.div>

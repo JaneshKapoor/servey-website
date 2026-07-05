@@ -28,7 +28,15 @@ export const screenshots = {
     hint: "iPad + iPhone",
     alt: "Servey on iPad and iPhone — a Mac desktop mirrored to the iPad with the control dock on the iPhone",
     src: "/screenshots/hero-devices.png",
-    ready: false,
+    ready: true,
+  },
+  "device-picker": {
+    frame: "iphone",
+    ratio: 9 / 19.5,
+    hint: "iPhone — your Macs",
+    alt: "Servey on iPhone listing the user's Macs — one on the local network and one remote on the same account, each tappable to connect",
+    src: "/screenshots/ipad-macs-showcase.png",
+    ready: true,
   },
   "mirroring-ipad": {
     frame: "ipad",
@@ -69,12 +77,14 @@ export const screenshots = {
     ready: false,
   },
   "mac-host-ui": {
-    frame: "mac",
-    ratio: 16 / 10,
+    // The capture already includes the macOS window chrome, so it renders in a
+    // plain crop frame (not the synthetic MacWindow) to avoid double title bars.
+    frame: "crop",
+    ratio: 881 / 625,
     hint: "Mac host app",
-    alt: "Servey's Mac host app with its dark, neon-green connect screen",
-    src: "/screenshots/mac-host-ui.png",
-    ready: false,
+    alt: "Servey's Mac host app on macOS — a dark, neon-green connect screen showing the Mac online and discoverable on the local network",
+    src: "/screenshots/servey-landing-page.png",
+    ready: true,
   },
 } as const satisfies Record<string, ScreenshotSlot>;
 

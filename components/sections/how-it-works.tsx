@@ -1,5 +1,7 @@
 import { SectionHeading } from "@/components/section";
-import { RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { Tilt } from "@/components/motion/tilt";
+import { Screenshot } from "@/components/device-frame";
 import { steps } from "@/lib/content";
 
 export function HowItWorks() {
@@ -12,29 +14,36 @@ export function HowItWorks() {
           intro="No VPN. No port forwarding. No vendor accounts to manage. Just sign in and go."
         />
 
-        <RevealGroup className="mt-14 grid gap-5 md:grid-cols-3">
-          {steps.map((step) => (
-            <RevealItem key={step.n}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-border bg-surface p-7 transition-colors hover:border-border-strong">
-                <div
-                  aria-hidden
-                  className="absolute -right-6 -top-8 select-none font-mono text-8xl font-bold text-fg/[0.04] transition-colors group-hover:text-accent/10"
-                >
-                  {step.n}
+        <div className="mt-14 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <RevealGroup className="space-y-4">
+            {steps.map((step) => (
+              <RevealItem key={step.n}>
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-border-strong">
+                  <div className="flex items-start gap-4">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent-deep font-mono text-sm font-semibold text-accent-strong">
+                      {step.n}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-semibold tracking-tight text-fg">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.body}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="relative">
-                  <span className="flex size-10 items-center justify-center rounded-xl border border-accent/30 bg-accent-deep font-mono text-sm font-semibold text-accent-strong">
-                    {step.n}
-                  </span>
-                  <h3 className="mt-5 text-lg font-semibold tracking-tight text-fg">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
-                </div>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+
+          <Reveal delay={0.1}>
+            <Tilt max={4} className="[perspective:1400px]">
+              <Screenshot name="mac-host-ui" />
+            </Tilt>
+            <p className="mt-4 text-center text-xs text-muted">
+              The Servey host on your Mac — online and discoverable, ready for your devices.
+            </p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

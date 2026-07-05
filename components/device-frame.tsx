@@ -170,8 +170,6 @@ export function Screenshot({
       return <IpadFrame slot={slot} className={className} />;
     case "iphone":
       return <IphoneFrame slot={slot} className={className} />;
-    case "mac":
-      return <MacWindow slot={slot} className={className} />;
     case "crop":
     case "diagram":
     default:
