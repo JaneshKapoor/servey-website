@@ -120,14 +120,14 @@ export function IphoneFrame({
   return (
     <div
       className={cn(
-        "relative rounded-[2.4rem] border border-border-strong bg-[#0c0c0c] p-2 shadow-2xl shadow-black/60 ring-1 ring-black/50",
+        "relative rounded-[1.5rem] border border-border-strong bg-[#0c0c0c] p-2 shadow-2xl shadow-black/60 ring-1 ring-black/50",
         className,
       )}
     >
       {/* No synthetic notch/island: the real captures already include the
           device status bar, so drawing one on top would cover content. */}
       <div
-        className="relative w-full overflow-hidden rounded-[1.9rem] bg-black"
+        className="relative w-full overflow-hidden rounded-[1rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
         <SlotContent slot={slot} sizes="(max-width: 768px) 55vw, 340px" />
