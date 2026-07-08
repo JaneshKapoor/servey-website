@@ -138,19 +138,19 @@ export const comparison = {
 export const faqs = [
   {
     q: "Do I need to be on the same network?",
-    a: "No. On the same Wi-Fi, Servey uses a direct hardware-HEVC stream for the sharpest possible picture. On different networks it automatically switches to a private peer-to-peer WebRTC connection. Either way it just works.",
+    a: "No. On the same Wi-Fi, Servey uses a direct, high-performance stream for the sharpest possible picture. On different networks it automatically switches to a private connection between your own devices. Either way it just works.",
   },
   {
     q: "Is it secure and private?",
-    a: "Yes. Servey pairs only your Mac with your own iPhone or iPad, scoped to your account. On the remote path your screen video is peer-to-peer and end-to-end encrypted - it hardly touches our servers. The cloud is only used to broker the initial handshake.",
+    a: "Yes. Servey pairs only your Mac with your own iPhone or iPad, scoped to your account. On the remote path your screen stays private and end-to-end encrypted between your devices - it hardly touches our servers.",
   },
   {
     q: "Does it work over cellular?",
-    a: "Yes. Servey uses NAT traversal (STUN/TURN) so it connects even on strict mobile or CGNAT networks. Quality adapts automatically to whether the connection is direct or relayed.",
+    a: "Yes. Servey is built to connect reliably even on strict mobile and carrier networks where most tools give up, and it tunes quality to your connection automatically so the picture stays smooth.",
   },
   {
     q: "Which devices are supported?",
-    a: "A Mac as the host, controlled from an iPhone or iPad. Servey is built natively in Swift/SwiftUI for the Apple ecosystem - not an Electron or Java port.",
+    a: "A Mac as the host, controlled from an iPhone or iPad. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.",
   },
   {
     q: "Do I need a VPN or port forwarding?",
