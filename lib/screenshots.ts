@@ -70,11 +70,11 @@ export const screenshots = {
   },
   "quality-closeup": {
     frame: "crop",
-    ratio: 4 / 3,
-    hint: "Adaptive quality",
-    alt: "Close-up showing razor-sharp remote text with no cropping at adaptive quality",
+    ratio: 1280 / 692,
+    hint: "Razor-sharp text",
+    alt: "A Mac screen mirrored through Servey - a live Claude Code terminal session with razor-sharp, fully legible text and no cropping",
     src: "/screenshots/quality-closeup.png",
-    ready: false,
+    ready: true,
   },
   "mac-host-ui": {
     // The capture already includes the macOS window chrome, so it renders in a
