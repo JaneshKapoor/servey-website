@@ -124,8 +124,8 @@ export function IphoneFrame({
         className,
       )}
     >
-      {/* dynamic island */}
-      <div className="absolute left-1/2 top-4 z-20 h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
+      {/* No synthetic notch/island: the real captures already include the
+          device status bar, so drawing one on top would cover content. */}
       <div
         className="relative w-full overflow-hidden rounded-[1.9rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
