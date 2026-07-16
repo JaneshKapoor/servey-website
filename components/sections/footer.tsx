@@ -32,6 +32,9 @@ export function Footer() {
                   {item.label}
                 </Link>
               ))}
+              <Link href="/blog" className="text-sm text-muted transition-colors hover:text-fg">
+                Blog
+              </Link>
             </nav>
 
             <nav aria-label="Legal" className="flex flex-col gap-3">

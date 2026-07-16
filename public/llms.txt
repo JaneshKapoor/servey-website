@@ -31,9 +31,16 @@ Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) 
 
 Servey is a modern, native alternative to traditional remote-desktop tools (such as TeamViewer, Screens, Jump Desktop, and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal, sharp mirroring, and no manual network setup.
 
+## Guides
+
+- How to control your Mac from your iPhone or iPad: https://servey.in/blog/control-your-mac-from-iphone-ipad
+- Choosing a Screens or Jump Desktop alternative for Mac remote control: https://servey.in/blog/screens-jump-desktop-alternative-mac
+- Run a real terminal on your Mac from your iPhone: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
+
 ## Links
 
 - Home and waitlist: https://servey.in
+- Blog: https://servey.in/blog
 - Privacy: https://servey.in/privacy
 - Terms: https://servey.in/terms
 - Makers: https://x.com/KapoorJanesh and https://x.com/dwivediishivam
