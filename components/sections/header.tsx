@@ -51,6 +51,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/blog"
+            className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-fg"
+          >
+            Blog
+          </Link>
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
@@ -105,6 +111,13 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/blog"
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-2 py-3 text-base text-fg transition-colors hover:bg-surface-2"
+              >
+                Blog
+              </Link>
             </nav>
             <div className="mt-4">
               <WaitlistDialog source="nav-mobile">

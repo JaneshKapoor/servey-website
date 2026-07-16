@@ -153,6 +153,103 @@ export const posts: Post[] = [
     ],
   },
   {
+    slug: "access-your-mac-remotely-over-cellular",
+    title: "How to access your Mac remotely over cellular",
+    description:
+      "Reach your Mac from your iPhone on 4G or 5G - no VPN or port forwarding - even behind strict carrier networks and CGNAT. Here is how it works.",
+    date: "2026-07-09",
+    keywords: [
+      "access Mac remotely over cellular",
+      "control Mac over 4G 5G",
+      "remote Mac without VPN",
+      "connect to Mac behind CGNAT",
+      "Mac remote access on mobile data",
+    ],
+    readingMinutes: 4,
+    lede:
+      "Getting to your Mac over Wi-Fi is easy. Getting to it from your phone on mobile data, behind your carrier's network, is where most remote tools fall apart. Here is why - and how to do it without any router setup.",
+    body: [
+      {
+        type: "p",
+        text: "You are out with just your phone on 5G, and you need something from your Mac at home. In theory this is simple; in practice, carrier networks make it hard. Understanding why helps you pick a tool that actually connects.",
+      },
+      { type: "h2", text: "Why cellular is the hard case" },
+      {
+        type: "p",
+        text: "Most mobile carriers put you behind carrier-grade NAT (CGNAT), which means your phone does not have a public address that your Mac can call back to. The same is true for most home networks behind a router. Two devices that both sit behind NAT cannot simply open a direct connection - which is why traditional remote access asks you to set up a VPN, forward ports, or use a jump server.",
+      },
+      { type: "h2", text: "The modern approach: no router setup at all" },
+      {
+        type: "p",
+        text: "Rather than making you configure the network, a well-built app coordinates the connection for you. A lightweight signaling step helps your two devices discover each other, then they establish a private, direct link. When a fully direct path is not possible, traffic is securely relayed so the session still works - all without you touching a router.",
+      },
+      {
+        type: "ul",
+        items: [
+          "No VPN to install or maintain.",
+          "No port forwarding or firewall rules on your home router.",
+          "No public IP address or dynamic-DNS setup.",
+          "Works from mobile data, cafe Wi-Fi, or a hotel network.",
+        ],
+      },
+      { type: "h2", text: "How Servey connects over cellular" },
+      {
+        type: "p",
+        text: "Servey is designed for exactly this situation. When you are away, it establishes a private, end-to-end encrypted connection between your own devices, using NAT traversal so it connects even on strict mobile and CGNAT networks. If a direct path is not available, it securely relays instead of failing. You never configure any of it - you sign in with Google on both devices and connect.",
+      },
+      {
+        type: "p",
+        text: "It also adapts quality to your connection automatically, so the picture stays smooth on a weaker mobile signal instead of freezing. Servey is launching soon - join the waitlist to try it.",
+      },
+    ],
+  },
+  {
+    slug: "control-a-headless-mac-mini-remotely",
+    title: "Control a headless Mac Mini remotely from your iPhone or iPad",
+    description:
+      "Run a Mac Mini with no monitor and drive it entirely from your iPhone or iPad - screen, keyboard, and a real terminal - from your network or anywhere.",
+    date: "2026-07-09",
+    keywords: [
+      "headless Mac Mini remote control",
+      "Mac Mini no monitor",
+      "control Mac Mini from iPad",
+      "remote access Mac Mini server",
+      "Mac Mini home server",
+    ],
+    readingMinutes: 4,
+    lede:
+      "A Mac Mini tucked on a shelf with no monitor makes a fantastic little always-on machine - a build box, a media server, an automation host. The catch is driving it. Here is how to run a headless Mac Mini from your iPhone or iPad.",
+    body: [
+      {
+        type: "p",
+        text: "The Mac Mini is popular as a headless machine: small, quiet, efficient, and powerful enough to be a home server, CI runner, or automation host. But 'headless' means no keyboard, mouse, or monitor attached - so you need a reliable way to reach it, both for the occasional GUI task and for everyday command-line work.",
+      },
+      { type: "h2", text: "You need two things: a screen and a shell" },
+      {
+        type: "p",
+        text: "Most headless work is command-line: check a service, pull code, run a job, read a log. For that you want a real terminal. But now and then you need the actual desktop - to click through a GUI installer, approve a permission dialog, or use an app that has no command-line equivalent. A good remote tool gives you both from the same place.",
+      },
+      {
+        type: "ul",
+        items: [
+          "A genuine shell on the Mac Mini for day-to-day commands and maintenance.",
+          "Full screen mirroring with mouse and keyboard for the occasional GUI task.",
+          "Access from your local network at home and remotely when you are out.",
+          "Setup that does not require plugging in a monitor just to get started.",
+        ],
+      },
+      { type: "h2", text: "Driving a Mac Mini with Servey" },
+      {
+        type: "p",
+        text: "Servey turns your iPhone or iPad into the head for your headless Mac Mini. You get crystal-clear screen mirroring with real mouse and keyboard when you need the desktop, plus a real terminal for everything else - both available on your local network and remotely. Because setup is just signing in with Google on each device, you do not need to attach a display to configure it.",
+      },
+      {
+        type: "p",
+        text: "Whether the Mini is a build box, a home server, or an automation host, you can check on it and control it from your pocket. Servey is launching soon - join the waitlist to be notified before release.",
+      },
+    ],
+  },
+  {
     slug: "real-terminal-on-your-mac-from-iphone",
     title: "Run a real terminal on your Mac from your iPhone",
     description:

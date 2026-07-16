@@ -10,9 +10,11 @@ export const site = {
   accent: "#22dc6e",
 } as const;
 
+// Leading "/" so these also resolve from /blog and /privacy etc., not just the
+// homepage where the header also appears.
 export const nav = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Compare", href: "#compare" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Compare", href: "/#compare" },
+  { label: "FAQ", href: "/#faq" },
 ] as const;
