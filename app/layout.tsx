@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { site } from "@/lib/site";
+import { faqs, features } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({
@@ -69,20 +70,56 @@ export const viewport: Viewport = {
   colorScheme: "dark light",
 };
 
+// A single @graph so search + AI engines get the organization, the site, the
+// product (with its real feature list), and the FAQ as machine-readable Q&A.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: site.name,
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "macOS, iOS, iPadOS",
-  description: site.description,
-  url: site.url,
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-    availability: "https://schema.org/PreOrder",
-  },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      logo: `${site.url}/icon.png`,
+      description: site.description,
+      sameAs: ["https://x.com/KapoorJanesh", "https://x.com/dwivediishivam"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      description: site.description,
+      publisher: { "@id": `${site.url}/#organization` },
+      inLanguage: "en",
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${site.url}/#app`,
+      name: site.name,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "macOS, iOS, iPadOS",
+      description: site.description,
+      url: site.url,
+      publisher: { "@id": `${site.url}/#organization` },
+      featureList: features.map((f) => f.title.replace(/\.$/, "")),
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/PreOrder",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
 };
 
 export default function RootLayout({

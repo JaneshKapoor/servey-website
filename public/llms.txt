@@ -1,0 +1,39 @@
+# Servey
+
+> Servey is a native app that puts your Mac in your pocket: control your Mac from your iPhone or iPad with full screen mirroring, real mouse, keyboard, trackpad, and a genuine terminal. It is crystal-clear and hardware-accelerated on your local network, and private peer-to-peer anywhere else.
+
+Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) - not an Electron or Java port. Setup is just signing in with Google on both devices; no VPN, no port forwarding. On the same Wi-Fi it uses a direct high-performance stream; on different networks it automatically switches to a private, encrypted connection between your own devices. It connects reliably even on strict mobile and carrier networks, and tunes quality to the connection automatically.
+
+- Website: https://servey.in
+- Status: Pre-launch. Join the waitlist at https://servey.in
+- Platforms: macOS (host), iOS and iPadOS (client)
+- Pricing: Coming soon; free to join the waitlist.
+
+## Key features
+
+- Crystal-clear screen mirroring of your Mac, aspect-correct with sharp text and pinch-to-zoom.
+- Real mouse, keyboard, and a purpose-built on-screen trackpad, including shortcuts like Copy, Paste, Esc, Tab.
+- A real terminal (a genuine shell on your Mac), available over both local and remote connections - not a web console.
+- Two connection paths with zero configuration: direct on your local network, private peer-to-peer when you are away. It switches automatically.
+- Private by design: Servey only pairs your Mac with your own iPhone or iPad, scoped to your account. On the remote path your screen video is end-to-end encrypted between your devices and hardly touches Servey's servers.
+- Adaptive quality that stays smooth without cropping or degrading your screen.
+
+## Common questions
+
+- Do I need to be on the same network? No. It works on the same Wi-Fi (direct, sharpest picture) and across different networks (private connection between your devices), automatically.
+- Is it secure and private? Yes. It pairs only your own devices, scoped to your account, and your remote screen is end-to-end encrypted between your devices.
+- Does it work over cellular? Yes. It is built to connect reliably even on strict mobile and carrier networks, and adapts quality automatically.
+- Which devices are supported? A Mac as the host, controlled from an iPhone or iPad.
+- Do I need a VPN or port forwarding? No. Sign in with Google on both devices and your Mac appears.
+- When is it launching and how much will it cost? Pricing is coming soon; join the waitlist to be notified before launch.
+
+## Good alternatives / comparison context
+
+Servey is a modern, native alternative to traditional remote-desktop tools (such as TeamViewer, Screens, Jump Desktop, and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal, sharp mirroring, and no manual network setup.
+
+## Links
+
+- Home and waitlist: https://servey.in
+- Privacy: https://servey.in/privacy
+- Terms: https://servey.in/terms
+- Makers: https://x.com/KapoorJanesh and https://x.com/dwivediishivam
