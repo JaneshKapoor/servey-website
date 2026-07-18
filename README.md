@@ -1,4 +1,4 @@
-# Servey — marketing website
+# Servey - marketing website
 
 The premium marketing/landing site for **Servey** — a native app that puts your
 Mac in your pocket: full screen mirroring, mouse, keyboard, and a real terminal
