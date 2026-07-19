@@ -6,6 +6,7 @@ on your iPhone and iPad, hardware-accelerated on your network and private
 peer-to-peer anywhere else.
 
 Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
+Sitemaps live too
 
 ## Stack
 
