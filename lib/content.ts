@@ -158,6 +158,46 @@ export const faqs = [
   },
   {
     q: "When is it launching and how much will it cost?",
-    a: "Pricing is coming soon. Join the waitlist and we'll email you the moment Servey is ready, with pricing details before launch.",
+    a: "Servey is a simple monthly subscription. The Terminal plan is ₹99/month in India and $1.99/month internationally; Full access - screen mirroring plus terminal - is ₹299/month in India and $4.49/month internationally. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
   },
 ] as const;
+
+/**
+ * Two plans, priced per region. INR for India, USD everywhere else.
+ * Pre-launch: cards drive to the waitlist, not checkout.
+ */
+export const pricing = {
+  note: "Simple monthly pricing. Cancel anytime. You won't be charged until Servey launches.",
+  regions: [
+    { id: "in", label: "India", symbol: "₹", key: "inr" },
+    { id: "intl", label: "International", symbol: "$", key: "usd" },
+  ],
+  plans: [
+    {
+      id: "terminal",
+      name: "Terminal",
+      tagline: "A genuine shell on your Mac, in your pocket.",
+      price: { inr: "99", usd: "1.99" },
+      featured: false,
+      features: [
+        "A real terminal - a genuine shell on your Mac, not a web console",
+        "Works on your local network and remotely, automatically",
+        "Handy shortcuts: Copy, Paste, Esc, Tab, and more",
+        "Private by design, scoped to your own devices",
+      ],
+    },
+    {
+      id: "full",
+      name: "Full access",
+      tagline: "Screen mirroring and terminal - everything Servey does.",
+      price: { inr: "299", usd: "4.49" },
+      featured: true,
+      features: [
+        "Everything in Terminal, plus:",
+        "Crystal-clear full screen mirroring of your Mac",
+        "Real mouse, keyboard, and an on-screen trackpad",
+        "Adaptive quality with pinch-to-zoom, never cropped",
+      ],
+    },
+  ],
+} as const;

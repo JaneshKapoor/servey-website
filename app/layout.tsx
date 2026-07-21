@@ -103,12 +103,22 @@ const jsonLd = {
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       featureList: features.map((f) => f.title.replace(/\.$/, "")),
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-        availability: "https://schema.org/PreOrder",
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Terminal",
+          price: "1.99",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+        },
+        {
+          "@type": "Offer",
+          name: "Full access",
+          price: "4.49",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+        },
+      ],
     },
     {
       "@type": "FAQPage",

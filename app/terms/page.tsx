@@ -28,8 +28,8 @@ export default function TermsPage() {
       <h2>The waitlist</h2>
       <p>
         Joining the waitlist does not create any obligation to purchase, and does not
-        guarantee access, pricing, or availability. Pricing is{" "}
-        <strong>coming soon</strong> and will be communicated before launch.
+        guarantee access, pricing, or availability. Prices shown are introductory,
+        subject to change before launch, and you are not charged until then.
       </p>
 
       <h2>No warranty</h2>

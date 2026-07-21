@@ -7,7 +7,7 @@ Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) 
 - Website: https://servey.in
 - Status: Pre-launch. Join the waitlist at https://servey.in
 - Platforms: macOS (host), iOS and iPadOS (client)
-- Pricing: Coming soon; free to join the waitlist.
+- Pricing: Monthly subscription. Terminal plan ₹99/month in India, $1.99/month internationally. Full access (screen mirroring + terminal) ₹299/month in India, $4.49/month internationally. Free to join the waitlist; not charged until launch.
 
 ## Key features
 
@@ -25,7 +25,7 @@ Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) 
 - Does it work over cellular? Yes. It is built to connect reliably even on strict mobile and carrier networks, and adapts quality automatically.
 - Which devices are supported? A Mac as the host, controlled from an iPhone or iPad.
 - Do I need a VPN or port forwarding? No. Sign in with Google on both devices and your Mac appears.
-- When is it launching and how much will it cost? Pricing is coming soon; join the waitlist to be notified before launch.
+- When is it launching and how much will it cost? It's a monthly subscription: Terminal is ₹99/month in India ($1.99 internationally), and Full access (screen mirroring + terminal) is ₹299/month in India ($4.49 internationally). Join the waitlist to be notified before launch; you're not charged until then.
 
 ## Good alternatives / comparison context
 
