@@ -10,6 +10,7 @@
  * Force a provider with WAITLIST_PROVIDER=firebase|formspree|resend|console.
  */
 export interface Signup {
+  name: string;
   email: string;
   country: string; // ISO 3166-1 alpha-2
   source: string;
@@ -42,7 +43,7 @@ export async function saveSignup(signup: Signup): Promise<SaveResult> {
       return saveToResend(signup);
     default:
       // Dev fallback — never persist secrets or invent a backend.
-      console.info(`[waitlist] (console provider) new signup: ${signup.email} (${signup.country}) from ${signup.source}`);
+      console.info(`[waitlist] (console provider) new signup: ${signup.name} <${signup.email}> (${signup.country}) from ${signup.source}`);
       return { ok: true, duplicate: false };
   }
 }
@@ -74,6 +75,7 @@ async function saveToFormspree(signup: Signup): Promise<SaveResult> {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
+        name: signup.name,
         email: signup.email,
         country: signup.country,
         source: signup.source,
@@ -99,7 +101,11 @@ async function saveToResend(signup: Signup): Promise<SaveResult> {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: signup.email, unsubscribed: false }),
+        body: JSON.stringify({
+          email: signup.email,
+          firstName: signup.name,
+          unsubscribed: false,
+        }),
       },
     );
     if (res.status === 409) return { ok: true, duplicate: true };

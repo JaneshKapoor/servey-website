@@ -24,6 +24,7 @@ export function WaitlistForm({
   autoFocus?: boolean;
   onSuccess?: () => void;
 }) {
+  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [country, setCountry] = React.useState("");
   const [website, setWebsite] = React.useState(""); // honeypot
@@ -34,6 +35,11 @@ export function WaitlistForm({
     e.preventDefault();
     setError(null);
 
+    const fullName = name.trim();
+    if (fullName.length < 2) {
+      setError("Please enter your name.");
+      return;
+    }
     const value = email.trim().toLowerCase();
     if (!EMAIL_RE.test(value)) {
       setError("Please enter a valid email address.");
@@ -49,7 +55,7 @@ export function WaitlistForm({
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value, country, source, website }),
+        body: JSON.stringify({ name: fullName, email: value, country, source, website }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -98,35 +104,28 @@ export function WaitlistForm({
 
   return (
     <form onSubmit={onSubmit} className={cn("w-full", className)} noValidate>
-      <div className="mb-2.5">
-        <label htmlFor={`waitlist-country-${source}`} className="sr-only">
-          Country
-        </label>
-        <Select
-          id={`waitlist-country-${source}`}
-          autoComplete="country"
-          value={country}
-          data-placeholder={country === "" ? "true" : undefined}
-          aria-invalid={!!error && !country}
-          onChange={(e) => {
-            setCountry(e.target.value);
-            if (error) setError(null);
-          }}
-          disabled={status === "submitting"}
-        >
-          <option value="" disabled>
-            Where are you based?
-          </option>
-          {countries.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name}
-            </option>
-          ))}
-        </Select>
-      </div>
+      <div className="flex flex-col gap-3">
+        <div>
+          <label htmlFor={`waitlist-name-${source}`} className="sr-only">
+            Full name
+          </label>
+          <Input
+            id={`waitlist-name-${source}`}
+            type="text"
+            autoComplete="name"
+            autoFocus={autoFocus}
+            placeholder="Your name"
+            value={name}
+            aria-invalid={!!error && name.trim().length < 2}
+            onChange={(e) => {
+              setName(e.target.value);
+              if (error) setError(null);
+            }}
+            disabled={status === "submitting"}
+          />
+        </div>
 
-      <div className="flex flex-col gap-2.5 sm:flex-row">
-        <div className="flex-1">
+        <div>
           <label htmlFor={`waitlist-email-${source}`} className="sr-only">
             Email address
           </label>
@@ -135,10 +134,9 @@ export function WaitlistForm({
             type="email"
             inputMode="email"
             autoComplete="email"
-            autoFocus={autoFocus}
             placeholder="you@example.com"
             value={email}
-            aria-invalid={!!error}
+            aria-invalid={!!error && !EMAIL_RE.test(email.trim().toLowerCase())}
             aria-describedby={error ? `waitlist-error-${source}` : undefined}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -146,6 +144,33 @@ export function WaitlistForm({
             }}
             disabled={status === "submitting"}
           />
+        </div>
+
+        <div>
+          <label htmlFor={`waitlist-country-${source}`} className="sr-only">
+            Country
+          </label>
+          <Select
+            id={`waitlist-country-${source}`}
+            autoComplete="country"
+            value={country}
+            data-placeholder={country === "" ? "true" : undefined}
+            aria-invalid={!!error && !country}
+            onChange={(e) => {
+              setCountry(e.target.value);
+              if (error) setError(null);
+            }}
+            disabled={status === "submitting"}
+          >
+            <option value="" disabled>
+              Where are you based?
+            </option>
+            {countries.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </Select>
         </div>
 
         {/* Honeypot - hidden from users, tempting to bots. */}
@@ -161,7 +186,7 @@ export function WaitlistForm({
           />
         </div>
 
-        <Button type="submit" disabled={status === "submitting"} className="shrink-0">
+        <Button type="submit" disabled={status === "submitting"} className="mt-1 w-full">
           {status === "submitting" ? (
             <>
               <Loader2 className="size-4 animate-spin" />

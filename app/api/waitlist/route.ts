@@ -24,7 +24,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { email?: unknown; country?: unknown; source?: unknown; website?: unknown };
+  let body: {
+    name?: unknown;
+    email?: unknown;
+    country?: unknown;
+    source?: unknown;
+    website?: unknown;
+  };
   try {
     body = await req.json();
   } catch {
@@ -44,6 +50,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const name = String(body.name ?? "").trim().slice(0, 100);
+  if (name.length < 2) {
+    return NextResponse.json(
+      { ok: false, error: "Please enter your name." },
+      { status: 422 },
+    );
+  }
+
   const country = String(body.country ?? "").trim().toUpperCase();
   if (!countryCodes.has(country)) {
     return NextResponse.json(
@@ -55,6 +69,7 @@ export async function POST(req: NextRequest) {
   const source = typeof body.source === "string" ? body.source.slice(0, 60) : "website";
 
   const result = await saveSignup({
+    name,
     email,
     country,
     source,
