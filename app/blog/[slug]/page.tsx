@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -117,6 +118,28 @@ export default async function BlogPostPage({
                       <li key={j}>{item}</li>
                     ))}
                   </ul>
+                );
+              if (block.type === "img")
+                return (
+                  <figure
+                    key={i}
+                    className="overflow-hidden rounded-2xl border border-border bg-surface"
+                  >
+                    <Image
+                      src={block.src}
+                      alt={block.alt}
+                      width={block.width}
+                      height={block.height}
+                      className="h-auto w-full"
+                      sizes="(max-width: 768px) 100vw, 42rem"
+                      quality={90}
+                    />
+                    {block.caption && (
+                      <figcaption className="border-t border-border px-4 py-3 text-center text-xs text-muted">
+                        {block.caption}
+                      </figcaption>
+                    )}
+                  </figure>
                 );
               return <p key={i}>{block.text}</p>;
             })}

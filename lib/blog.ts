@@ -8,7 +8,8 @@
 export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
-  | { type: "ul"; items: string[] };
+  | { type: "ul"; items: string[] }
+  | { type: "img"; src: string; alt: string; width: number; height: number; caption?: string };
 
 export interface Post {
   slug: string;
@@ -393,6 +394,126 @@ export const posts: Post[] = [
       {
         type: "p",
         text: "Every one of these people wants their real Mac - not a stripped-down mobile stand-in - without paying a networking tax to reach it. That is what Servey is built for: native to the Apple ecosystem, zero-config setup, sharp mirroring, a genuine terminal, and private by design. It is launching soon; join the waitlist to try it.",
+      },
+    ],
+  },
+  {
+    slug: "run-ai-agents-locally-on-your-mac",
+    title: "Run AI agents locally on your Mac - and reach them from anywhere",
+    description:
+      "Why running AI coding agents locally on your Mac beats the cloud - privacy, your real environment, no metered bills - and how to supervise them from your iPhone or iPad.",
+    date: "2026-07-21",
+    keywords: [
+      "run AI agents locally",
+      "local AI agent on Mac",
+      "run coding agent on your own machine",
+      "self-hosted AI agent Mac",
+      "private local AI agent",
+    ],
+    readingMinutes: 5,
+    lede:
+      "You do not need a cloud VM to run a capable AI agent. Your Mac already is one - with your code, your tools, and real horsepower. Here is why local is the better default, and how to stay connected to your agent when you step away.",
+    body: [
+      {
+        type: "p",
+        text: "The default assumption is that AI agents live in the cloud. But for a lot of real work, the most capable place to run an agent is the machine you already own. Your Mac has your actual project checkout, your configured toolchain, your credentials, and enough power to do serious work - and running the agent there keeps your code and data on your own hardware.",
+      },
+      { type: "h2", text: "Why local beats the cloud for a lot of agent work" },
+      {
+        type: "ul",
+        items: [
+          "Privacy: your source code, files, and secrets never leave your machine to sit on someone else's server.",
+          "Your real environment: the agent works against your actual repo, dependencies, and config - not a blank sandbox you rebuild every time.",
+          "No metered surprises: no per-hour VM you forgot to shut down, no cloud egress bills for shuffling your own data around.",
+          "Speed: the agent reads and writes on a local SSD and uses your Mac's CPU and GPU directly.",
+        ],
+      },
+      {
+        type: "img",
+        src: "/screenshots/quality-closeup.png",
+        alt: "An AI coding agent running in a terminal on a Mac, with razor-sharp, fully legible text.",
+        width: 1280,
+        height: 692,
+        caption: "An AI coding agent, running right in the terminal on your Mac.",
+      },
+      { type: "h2", text: "The one catch: you have to stay near the Mac" },
+      {
+        type: "p",
+        text: "The trade-off of local is physical. A cloud agent you can poke from a browser anywhere; a local one lives on a machine at your desk. The moment you walk away - to lunch, to bed, out the door - you lose your window into it, which is right when a long run is most likely to stop and ask you something.",
+      },
+      { type: "h2", text: "Keep your window open from your phone" },
+      {
+        type: "p",
+        text: "The fix is not to move the agent to the cloud; it is to carry a remote control for your Mac. With a real terminal on your Mac available from your iPhone or iPad, you can read the agent's live output, answer the prompts it pauses on, and stop or redirect it - all while it keeps running locally. When it does something visual, screen mirroring covers the rest.",
+      },
+      { type: "h2", text: "How Servey fits" },
+      {
+        type: "p",
+        text: "Servey keeps a local-first agent practical. Run the agent on your Mac for all the reasons above, then use Servey to reach that Mac from your pocket: a genuine terminal plus crystal-clear screen mirroring, on your local network and remotely. Sign in with Google on both devices - no VPN, no port forwarding - and your remote session stays private and end-to-end encrypted between your own devices.",
+      },
+      {
+        type: "p",
+        text: "If running agents on your own machine appeals to you, Servey is launching soon. Join the waitlist to be first to run them locally and steer them from anywhere.",
+      },
+    ],
+  },
+  {
+    slug: "stay-in-control-of-ai-agents-from-anywhere",
+    title: "AI agents can use your computer now - here's how to stay in control from anywhere",
+    description:
+      "As AI agents increasingly drive your computer, watching, pausing, and steering them remotely matters. Here's how to keep a human in the loop from your iPhone or iPad.",
+    date: "2026-07-21",
+    keywords: [
+      "stay in control of AI agents",
+      "supervise AI agent remotely",
+      "human in the loop AI agent",
+      "monitor computer use agent",
+      "keep AI agent in check",
+    ],
+    readingMinutes: 4,
+    lede:
+      "AI agents are getting good at operating a real computer - editing files, running commands, clicking through apps. The more they can do on their own, the more it matters that you can watch and step in. Here is how to keep that oversight from anywhere.",
+    body: [
+      {
+        type: "p",
+        text: "A new class of AI agent does not just answer questions - it acts. It runs commands in your terminal, edits your files, opens apps, and clicks through interfaces on a real machine. That is powerful, and it is exactly why oversight matters: an agent working unattended for an hour can do a lot of good, or wander somewhere you did not intend.",
+      },
+      { type: "h2", text: "Autonomy is great - until it isn't" },
+      {
+        type: "p",
+        text: "The point of an agent is that you can leave it alone. But 'leave it alone' and 'have no idea what it is doing' are different things. The healthy middle is supervised autonomy: the agent works on its own, and you can glance in at any time to see progress, approve a risky step, or pull the brakes. The catch is that the agent runs on your computer, and you are not always sitting at it.",
+      },
+      { type: "h2", text: "What staying in control actually requires" },
+      {
+        type: "ul",
+        items: [
+          "Visibility: see the agent's live output and what it is touching, in real time, from wherever you are.",
+          "A pause button: answer a confirmation or send an interrupt the instant the agent stops to ask.",
+          "The full picture: not just the terminal, but the actual screen, for when the work moves into a browser or an app.",
+          "No friction to check in: reaching your machine should not need a VPN, a jump host, or setup you will not bother with at 11pm.",
+        ],
+      },
+      {
+        type: "img",
+        src: "/screenshots/terminal.png",
+        alt: "A real Mac terminal open on an iPad, reaching a Mac Mini's shell to supervise what is running.",
+        width: 2360,
+        height: 1640,
+        caption: "Check in on - and take over - what's running on your Mac, from an iPad anywhere.",
+      },
+      { type: "h2", text: "Keep a human in the loop from your pocket" },
+      {
+        type: "p",
+        text: "You do not need to sit at your desk to stay in control. With a real terminal and full screen mirroring of your Mac on your iPhone or iPad, you can supervise an agent from anywhere: watch what it is doing, respond when it pauses for permission, take over the desktop if it needs a human decision, or stop it outright. The agent keeps its autonomy; you keep the final say.",
+      },
+      { type: "h2", text: "How Servey fits" },
+      {
+        type: "p",
+        text: "Servey is built for exactly this kind of oversight. It puts a genuine shell and crystal-clear screen mirroring of your Mac in your pocket, on your network and remotely, so an agent running on your machine is never more than a glance away. Setup is signing in with Google on both devices - no VPN or ports - and the remote path is private and end-to-end encrypted between your own devices.",
+      },
+      {
+        type: "p",
+        text: "If you want to hand more work to agents without handing over control, Servey is launching soon. Join the waitlist to keep a human in the loop from anywhere.",
       },
     ],
   },
