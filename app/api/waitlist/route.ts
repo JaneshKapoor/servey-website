@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
 import { saveSignup } from "@/lib/waitlist-providers";
+import { countryCodes } from "@/lib/countries";
 
 export const runtime = "nodejs";
 
@@ -23,7 +24,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { email?: unknown; source?: unknown; website?: unknown };
+  let body: { email?: unknown; country?: unknown; source?: unknown; website?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -43,10 +44,19 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const country = String(body.country ?? "").trim().toUpperCase();
+  if (!countryCodes.has(country)) {
+    return NextResponse.json(
+      { ok: false, error: "Please select your country." },
+      { status: 422 },
+    );
+  }
+
   const source = typeof body.source === "string" ? body.source.slice(0, 60) : "website";
 
   const result = await saveSignup({
     email,
+    country,
     source,
     userAgent: req.headers.get("user-agent")?.slice(0, 300) ?? "unknown",
     createdAt: new Date().toISOString(),

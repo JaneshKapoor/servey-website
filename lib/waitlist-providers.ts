@@ -11,6 +11,7 @@
  */
 export interface Signup {
   email: string;
+  country: string; // ISO 3166-1 alpha-2
   source: string;
   userAgent: string;
   createdAt: string;
@@ -41,7 +42,7 @@ export async function saveSignup(signup: Signup): Promise<SaveResult> {
       return saveToResend(signup);
     default:
       // Dev fallback — never persist secrets or invent a backend.
-      console.info(`[waitlist] (console provider) new signup: ${signup.email} from ${signup.source}`);
+      console.info(`[waitlist] (console provider) new signup: ${signup.email} (${signup.country}) from ${signup.source}`);
       return { ok: true, duplicate: false };
   }
 }
@@ -74,6 +75,7 @@ async function saveToFormspree(signup: Signup): Promise<SaveResult> {
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
         email: signup.email,
+        country: signup.country,
         source: signup.source,
         createdAt: signup.createdAt,
       }),

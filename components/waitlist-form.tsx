@@ -5,6 +5,8 @@ import { toast } from "sonner";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { countries } from "@/lib/countries";
 import { cn } from "@/lib/utils";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -23,6 +25,7 @@ export function WaitlistForm({
   onSuccess?: () => void;
 }) {
   const [email, setEmail] = React.useState("");
+  const [country, setCountry] = React.useState("");
   const [website, setWebsite] = React.useState(""); // honeypot
   const [status, setStatus] = React.useState<Status>("idle");
   const [error, setError] = React.useState<string | null>(null);
@@ -36,13 +39,17 @@ export function WaitlistForm({
       setError("Please enter a valid email address.");
       return;
     }
+    if (!country) {
+      setError("Please select your country.");
+      return;
+    }
 
     setStatus("submitting");
     try {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value, source, website }),
+        body: JSON.stringify({ email: value, country, source, website }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -91,6 +98,33 @@ export function WaitlistForm({
 
   return (
     <form onSubmit={onSubmit} className={cn("w-full", className)} noValidate>
+      <div className="mb-2.5">
+        <label htmlFor={`waitlist-country-${source}`} className="sr-only">
+          Country
+        </label>
+        <Select
+          id={`waitlist-country-${source}`}
+          autoComplete="country"
+          value={country}
+          data-placeholder={country === "" ? "true" : undefined}
+          aria-invalid={!!error && !country}
+          onChange={(e) => {
+            setCountry(e.target.value);
+            if (error) setError(null);
+          }}
+          disabled={status === "submitting"}
+        >
+          <option value="" disabled>
+            Where are you based?
+          </option>
+          {countries.map((c) => (
+            <option key={c.code} value={c.code}>
+              {c.name}
+            </option>
+          ))}
+        </Select>
+      </div>
+
       <div className="flex flex-col gap-2.5 sm:flex-row">
         <div className="flex-1">
           <label htmlFor={`waitlist-email-${source}`} className="sr-only">
