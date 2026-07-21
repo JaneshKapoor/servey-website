@@ -296,6 +296,106 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "run-ai-agents-on-your-mac-remotely",
+    title: "How to run and monitor AI agents on your Mac from anywhere",
+    description:
+      "Start long-running AI coding agents on your Mac, then watch, approve, and steer them from your iPhone or iPad - with a real terminal and screen mirroring, from anywhere.",
+    date: "2026-07-21",
+    keywords: [
+      "run AI agents remotely",
+      "monitor coding agent from iPhone",
+      "check on AI agent while away from computer",
+      "remote terminal for AI agents",
+      "control AI agent on Mac remotely",
+    ],
+    readingMinutes: 5,
+    lede:
+      "AI coding agents love to run for a long time - refactoring, testing, building - while you would rather not be chained to your desk. Here is how to start an agent on your Mac and keep an eye on it from your phone, wherever you are.",
+    body: [
+      {
+        type: "p",
+        text: "AI agents have changed how a lot of people work: you hand one a task, it churns for minutes or hours, and it stops now and then to ask a question or show you what it did. That is fantastic - right up until you need to leave your desk while it is still running. The agent lives on your Mac, with your code, your tools, and your compute. The trick is staying connected to that Mac from whatever device is actually in your hand.",
+      },
+      { type: "h2", text: "Why the agent should run on your Mac" },
+      {
+        type: "p",
+        text: "An agent is only as capable as the machine it runs on. Your Mac has your real project checkout, your installed toolchain, your credentials, and the horsepower to actually do the work. Running the agent there - rather than on a phone-sized substitute - keeps everything local, fast, and private. The only thing missing when you walk away is a window back to it, and that is exactly the gap a good remote tool fills.",
+      },
+      { type: "h2", text: "What you need to babysit an agent remotely" },
+      {
+        type: "ul",
+        items: [
+          "A real terminal on your Mac - to launch the agent, read its live output, and answer the prompts it pauses on.",
+          "Screen mirroring for the moments an agent's work spills into a browser, an app, or a GUI approval dialog.",
+          "A connection that survives you leaving the house, switching from Wi-Fi to cellular, with no VPN or port forwarding.",
+          "Low enough latency that a quick 'yes, continue', a Ctrl-C, or a one-line correction feels immediate.",
+        ],
+      },
+      { type: "h2", text: "A simple remote-agent workflow" },
+      {
+        type: "p",
+        text: "Start the agent in a terminal on your Mac before you head out. Once you are away, open the same terminal from your phone to watch it work in real time. When it stops to ask whether it should proceed, type your answer right there. If it kicks off something visual - opening a browser, running an app, or surfacing a permission dialog - switch to full screen mirroring, handle it, and switch back. Your Mac never stops being the one doing the work; your phone is simply the remote control.",
+      },
+      { type: "h2", text: "How Servey fits" },
+      {
+        type: "p",
+        text: "Servey gives you a genuine shell on your Mac plus crystal-clear screen mirroring, both on your local network and remotely. Kick off a coding agent or a long build at your desk, walk away, and check in from your iPhone or iPad - read the log, approve the next step, nudge it in a new direction, or stop it. Because Servey also mirrors the full desktop with real mouse and keyboard, you are covered for the moments an agent needs a browser tab or a GUI click, not just the command line.",
+      },
+      {
+        type: "p",
+        text: "Setup is just signing in with Google on both devices - no VPN, no port forwarding. On the remote path your session is private and end-to-end encrypted between your own devices, and quality adapts automatically so it stays smooth even on cellular. Servey is launching soon; join the waitlist to be first to run your agents from anywhere.",
+      },
+    ],
+  },
+  {
+    slug: "who-is-servey-for-developers-home-labs",
+    title: "Who Servey is for: developers, home labs, and the endlessly curious",
+    description:
+      "Servey turns your iPhone or iPad into a window onto your Mac. Here is who gets the most from it - developers, home-lab and Mac Mini owners, AI tinkerers, and the simply curious.",
+    date: "2026-07-21",
+    keywords: [
+      "remote Mac access for developers",
+      "home lab remote control",
+      "control Mac mini from phone",
+      "remote desktop for developers",
+      "who is remote Mac access for",
+    ],
+    readingMinutes: 4,
+    lede:
+      "Servey does one thing: it puts your Mac in your pocket. That is broadly useful, but a few kinds of people feel the difference immediately. Here is who Servey is really for.",
+    body: [
+      {
+        type: "p",
+        text: "Plenty of tools claim to be for everyone, which usually means they are sharply useful to no one. Servey is deliberately focused: it lets you control your Mac from your iPhone or iPad, with sharp screen mirroring and a real terminal, on your network or anywhere. A handful of people run into that need constantly - and for them, it is the difference between being stuck and getting on with it.",
+      },
+      { type: "h2", text: "Developers who don't want to be chained to a desk" },
+      {
+        type: "p",
+        text: "Builds break, deploys need babysitting, and incidents never wait until you are back at your keyboard. With a real terminal on your Mac in your pocket, you can restart a service, tail a log, re-run a failed build, or pull the latest changes from the couch or a train - and when a task needs the actual desktop, screen mirroring is right there. Your development machine stays your development machine; you just reach it from wherever you are.",
+      },
+      { type: "h2", text: "Home-lab and Mac Mini owners" },
+      {
+        type: "p",
+        text: "A Mac Mini on a shelf with no monitor makes a superb little always-on machine: a build box, a media or home server, an automation host. The catch is driving something headless. Servey becomes the head for it - a real shell for everyday maintenance, full screen mirroring with mouse and keyboard for the occasional GUI task, and no need to plug in a display just to get started.",
+      },
+      { type: "h2", text: "People running AI agents and long jobs" },
+      {
+        type: "p",
+        text: "If you set an AI coding agent, a render, or a long training or build job running and then step away, you want to keep an eye on it. Servey lets you check progress from your phone, answer the prompts an agent stops on, and stop or redirect it if it goes sideways - without racing home to your desk.",
+      },
+      { type: "h2", text: "The simply curious" },
+      {
+        type: "p",
+        text: "You do not need a job title to want your Mac in your hand. A file sitting on your desktop while you are out, an app that only runs on the Mac, or just checking on something at home - anyone who wants their Mac's full power available from the device they already carry gets it from Servey.",
+      },
+      { type: "h2", text: "What ties them together" },
+      {
+        type: "p",
+        text: "Every one of these people wants their real Mac - not a stripped-down mobile stand-in - without paying a networking tax to reach it. That is what Servey is built for: native to the Apple ecosystem, zero-config setup, sharp mirroring, a genuine terminal, and private by design. It is launching soon; join the waitlist to try it.",
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {

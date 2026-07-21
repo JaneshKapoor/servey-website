@@ -38,6 +38,8 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 - Run a real terminal on your Mac from your iPhone: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
 - How to access your Mac remotely over cellular: https://servey.in/blog/access-your-mac-remotely-over-cellular
 - Control a headless Mac Mini remotely from your iPhone or iPad: https://servey.in/blog/control-a-headless-mac-mini-remotely
+- How to run and monitor AI agents on your Mac from anywhere: https://servey.in/blog/run-ai-agents-on-your-mac-remotely
+- Who Servey is for (developers, home labs, and the curious): https://servey.in/blog/who-is-servey-for-developers-home-labs
 
 ## Links
 
