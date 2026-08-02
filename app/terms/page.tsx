@@ -4,9 +4,19 @@ import { ContactDialog } from "@/components/contact-dialog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "The terms for using the Servey website and joining the waitlist.",
+  title: "Terms of Service and waitlist rules",
+  description:
+    "The terms for using the Servey website and joining the waitlist, including how pre-launch pricing works before Servey is generally available.",
   alternates: { canonical: `${site.url}/terms` },
+  // Without an explicit og:url these inherit the homepage URL from the root
+  // layout, which leaves Open Graph disagreeing with the canonical tag.
+  openGraph: {
+    type: "website",
+    url: `${site.url}/terms`,
+    title: `Terms of Service - ${site.name}`,
+    description: "The terms for using the Servey website and joining the waitlist.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function TermsPage() {

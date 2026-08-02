@@ -4,9 +4,19 @@ import { ContactDialog } from "@/components/contact-dialog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "How Servey handles your data - account-scoped, private by design.",
+  title: "Privacy Policy and data handling",
+  description:
+    "How Servey handles your data: sessions are scoped to your own account, your remote screen is end-to-end encrypted, and we collect as little as possible.",
   alternates: { canonical: `${site.url}/privacy` },
+  // Without an explicit og:url these inherit the homepage URL from the root
+  // layout, which leaves Open Graph disagreeing with the canonical tag.
+  openGraph: {
+    type: "website",
+    url: `${site.url}/privacy`,
+    title: `Privacy Policy - ${site.name}`,
+    description: "How Servey handles your data - account-scoped and private by design.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function PrivacyPage() {

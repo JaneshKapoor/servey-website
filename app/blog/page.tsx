@@ -7,7 +7,8 @@ import { posts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  // "Blog - Servey" alone is too short to say anything useful in a result.
+  title: "Mac remote access guides",
   description:
     "Guides on controlling your Mac from your iPhone and iPad - remote desktop, screen mirroring, a real terminal, and how Servey does it.",
   alternates: { canonical: `${site.url}/blog` },

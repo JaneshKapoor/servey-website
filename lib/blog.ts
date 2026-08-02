@@ -13,8 +13,15 @@ export type Block =
 
 export interface Post {
   slug: string;
+  /** On-page H1. Can be longer and more descriptive than the meta title. */
   title: string;
-  /** Meta description + card summary. Keep ~150-160 chars. */
+  /**
+   * Optional shorter <title> for search results. Google truncates around 60
+   * characters including our " - Servey" template, so headlines that read well
+   * as an H1 often need a tighter version here. Falls back to `title`.
+   */
+  metaTitle?: string;
+  /** Meta description + card summary. Keep ~110-160 chars. */
   description: string;
   /** ISO date (published). */
   date: string;
@@ -98,6 +105,7 @@ export const posts: Post[] = [
   },
   {
     slug: "screens-jump-desktop-alternative-mac",
+    metaTitle: "A Screens and Jump Desktop alternative for Mac",
     title: "Choosing a Screens or Jump Desktop alternative for Mac remote control",
     description:
       "What to look for in a modern alternative to Screens, Jump Desktop, TeamViewer, and VNC for controlling a Mac from an iPhone or iPad.",
@@ -155,6 +163,7 @@ export const posts: Post[] = [
   },
   {
     slug: "screens-vs-jump-desktop",
+    metaTitle: "Screens vs Jump Desktop: which should you pick?",
     title: "Screens vs Jump Desktop: which Mac remote control app is right for you?",
     description:
       "An honest head-to-head of Screens 5 and Jump Desktop for controlling a Mac - how they differ, who each one suits, and what to consider before picking.",
@@ -296,6 +305,7 @@ export const posts: Post[] = [
   },
   {
     slug: "control-a-headless-mac-mini-remotely",
+    metaTitle: "Control a headless Mac Mini from your iPhone",
     title: "Control a headless Mac Mini remotely from your iPhone or iPad",
     description:
       "Run a Mac Mini with no monitor and drive it entirely from your iPhone or iPad - screen, keyboard, and a real terminal - from your network or anywhere.",
@@ -389,9 +399,10 @@ export const posts: Post[] = [
   },
   {
     slug: "run-ai-agents-on-your-mac-remotely",
+    metaTitle: "Monitor AI agents on your Mac from anywhere",
     title: "How to run and monitor AI agents on your Mac from anywhere",
     description:
-      "Start long-running AI coding agents on your Mac, then watch, approve, and steer them from your iPhone or iPad - with a real terminal and screen mirroring, from anywhere.",
+      "Start long-running AI coding agents on your Mac, then watch, approve, and steer them from your iPhone or iPad - with a real terminal, from anywhere.",
     date: "2026-07-21",
     keywords: [
       "run AI agents remotely",
@@ -441,9 +452,10 @@ export const posts: Post[] = [
   },
   {
     slug: "who-is-servey-for-developers-home-labs",
+    metaTitle: "Who Servey is for: developers and home labs",
     title: "Who Servey is for: developers, home labs, and the endlessly curious",
     description:
-      "Servey turns your iPhone or iPad into a window onto your Mac. Here is who gets the most from it - developers, home-lab and Mac Mini owners, AI tinkerers, and the simply curious.",
+      "Who gets the most from Servey: developers, home-lab and Mac Mini owners, AI tinkerers, and anyone curious about reaching their Mac from a phone.",
     date: "2026-07-21",
     keywords: [
       "remote Mac access for developers",
@@ -489,9 +501,10 @@ export const posts: Post[] = [
   },
   {
     slug: "run-ai-agents-locally-on-your-mac",
+    metaTitle: "Run AI agents locally on your Mac",
     title: "Run AI agents locally on your Mac - and reach them from anywhere",
     description:
-      "Why running AI coding agents locally on your Mac beats the cloud - privacy, your real environment, no metered bills - and how to supervise them from your iPhone or iPad.",
+      "Why running AI coding agents locally on your Mac beats the cloud - privacy, your real environment, no metered bills - and how to supervise them remotely.",
     date: "2026-07-21",
     keywords: [
       "run AI agents locally",
@@ -549,9 +562,10 @@ export const posts: Post[] = [
   },
   {
     slug: "stay-in-control-of-ai-agents-from-anywhere",
+    metaTitle: "Stay in control of AI agents from anywhere",
     title: "AI agents can use your computer now - here's how to stay in control from anywhere",
     description:
-      "As AI agents increasingly drive your computer, watching, pausing, and steering them remotely matters. Here's how to keep a human in the loop from your iPhone or iPad.",
+      "As AI agents increasingly drive your computer, watching, pausing, and steering them remotely matters. How to keep a human in the loop from anywhere.",
     date: "2026-07-21",
     keywords: [
       "stay in control of AI agents",
