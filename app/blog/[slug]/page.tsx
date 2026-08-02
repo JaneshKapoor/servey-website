@@ -7,7 +7,14 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { WaitlistDialog } from "@/components/waitlist-dialog";
-import { author, contentUpdated, faqsBySlug, getPost, posts } from "@/lib/blog";
+import {
+  author,
+  contentUpdated,
+  faqsBySlug,
+  getPost,
+  posts,
+  relatedPosts,
+} from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -98,7 +105,7 @@ export default async function BlogPostPage({
         }
       : null;
 
-  const others = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const others = relatedPosts(post.slug, 3);
 
   return (
     <>

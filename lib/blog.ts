@@ -675,3 +675,29 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
 export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
+
+/**
+ * Related posts for the "Keep reading" section.
+ *
+ * Ranks by shared keywords so suggestions are genuinely on-topic, then breaks
+ * ties by rotating forward through the list. The rotation matters: naively
+ * taking the first N posts pointed every article at the same two oldest posts,
+ * which left newer posts with a single inlink (from /blog) and starved them of
+ * internal PageRank. Rotating spreads inlinks evenly across every post.
+ */
+export function relatedPosts(slug: string, count = 3): Post[] {
+  const idx = posts.findIndex((p) => p.slug === slug);
+  if (idx === -1) return [];
+  const keys = new Set(posts[idx].keywords.map((k) => k.toLowerCase()));
+
+  return posts
+    .map((p, i) => ({
+      post: p,
+      overlap: p.keywords.filter((k) => keys.has(k.toLowerCase())).length,
+      distance: (i - idx + posts.length) % posts.length,
+    }))
+    .filter((c) => c.post.slug !== slug)
+    .sort((a, b) => b.overlap - a.overlap || a.distance - b.distance)
+    .slice(0, count)
+    .map((c) => c.post);
+}
