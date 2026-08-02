@@ -91,7 +91,8 @@ export function Hero() {
             className="absolute -inset-x-8 -top-10 bottom-0 -z-10 rounded-[3rem] bg-accent/10 blur-3xl"
           />
           <Tilt className="relative">
-            <IpadFrame slot={screenshots["hero-devices"]} className="w-full" />
+            {/* LCP element - preload it rather than letting it lazy-load. */}
+            <IpadFrame slot={screenshots["hero-devices"]} className="w-full" priority />
             <div className="absolute -bottom-8 right-2 w-[26%] max-w-[180px] sm:-bottom-10 sm:right-6">
               <IphoneFrame slot={screenshots["device-picker"]} />
             </div>

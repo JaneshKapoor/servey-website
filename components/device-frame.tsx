@@ -37,7 +37,16 @@ function PlaceholderFill({ hint }: { hint: string }) {
   );
 }
 
-function SlotContent({ slot, sizes }: { slot: ScreenshotSlot; sizes: string }) {
+function SlotContent({
+  slot,
+  sizes,
+  priority,
+}: {
+  slot: ScreenshotSlot;
+  sizes: string;
+  /** Set on the above-the-fold hero image so it is preloaded, not lazy-loaded. */
+  priority?: boolean;
+}) {
   if (slot.ready && slot.src) {
     return (
       <Image
@@ -49,6 +58,7 @@ function SlotContent({ slot, sizes }: { slot: ScreenshotSlot; sizes: string }) {
         // bumped so fine UI text in screenshots stays sharp.
         sizes={sizes}
         quality={90}
+        priority={priority}
         className="object-cover"
       />
     );
@@ -62,9 +72,11 @@ function SlotContent({ slot, sizes }: { slot: ScreenshotSlot; sizes: string }) {
 export function MacWindow({
   slot,
   className,
+  priority,
 }: {
   slot: ScreenshotSlot;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <div
@@ -80,7 +92,7 @@ export function MacWindow({
         <span className="ml-3 font-mono text-[11px] text-muted">Servey - host</span>
       </div>
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" />
+        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" priority={priority} />
       </div>
     </div>
   );
@@ -89,9 +101,11 @@ export function MacWindow({
 export function IpadFrame({
   slot,
   className,
+  priority,
 }: {
   slot: ScreenshotSlot;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <div
@@ -104,7 +118,7 @@ export function IpadFrame({
         className="relative w-full overflow-hidden rounded-[1.1rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
-        <SlotContent slot={slot} sizes="(max-width: 1024px) 100vw, 1040px" />
+        <SlotContent slot={slot} sizes="(max-width: 1024px) 100vw, 1040px" priority={priority} />
       </div>
     </div>
   );
@@ -139,9 +153,11 @@ export function IphoneFrame({
 export function CropFrame({
   slot,
   className,
+  priority,
 }: {
   slot: ScreenshotSlot;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <div
@@ -151,7 +167,7 @@ export function CropFrame({
       )}
     >
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" />
+        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" priority={priority} />
       </div>
     </div>
   );
