@@ -621,6 +621,141 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "best-remote-desktop-for-mac",
+    metaTitle: "Best remote desktop apps for Mac (2026)",
+    title: "The best remote desktop apps for Mac in 2026",
+    description:
+      "An honest roundup of the ways to control a Mac remotely - Jump Desktop, Screens, Splashtop, RustDesk, Chrome Remote Desktop, Screen Sharing, and Servey.",
+    date: "2026-08-02",
+    keywords: [
+      "best remote desktop for Mac",
+      "remote desktop Mac",
+      "Mac remote access app",
+      "control Mac remotely",
+      "remote control Mac from iPhone",
+    ],
+    readingMinutes: 9,
+    lede:
+      "There is no single best remote desktop app for the Mac, because people are solving different problems with the word remote. Here is an honest map of the options, what each is genuinely good at, and how to pick.",
+    body: [
+      { type: "h2", text: "Quick picks" },
+      {
+        type: "ul",
+        items: [
+          "Best all-rounder, especially if you also use Windows: Jump Desktop.",
+          "Best Apple-native polish for straightforward Mac-to-iPad control: Screens.",
+          "Best free and open source: RustDesk.",
+          "Easiest free setup that works from anywhere: Chrome Remote Desktop.",
+          "Free and already installed, if you only need it on your own Wi-Fi: macOS Screen Sharing.",
+          "If you want zero network setup plus a genuine terminal on iPhone or iPad: Servey (pre-launch).",
+        ],
+      },
+      {
+        type: "p",
+        text: "Details and pricing change, so check each product's own site before buying. What follows is about approach and fit rather than a feature-by-feature scorecard that would be out of date in a month.",
+      },
+      { type: "h2", text: "First, decide which problem you actually have" },
+      {
+        type: "p",
+        text: "A lot of confusion in this category comes from three genuinely different needs getting the same label. Sorting yours first eliminates most of the list:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Remote control: you want to see and drive a Mac that is somewhere else. This is what remote desktop means, and it is what most of this list does.",
+          "Second screen: you want your iPad to become an extra display for a Mac sitting right next to you. That is Duet Display, Astropad, and Apple's own Sidecar - a different product category, not a weaker remote desktop.",
+          "Command line only: you just need a shell to restart a service or check a build. SSH or a tool with a real terminal solves this without any video at all.",
+        ],
+      },
+      { type: "h2", text: "macOS Screen Sharing (built in, free)" },
+      {
+        type: "p",
+        text: "Every Mac already includes Screen Sharing, which is VNC under the hood. Turn it on in System Settings, Sharing, and connect from a VNC client. On your own network it is free, low latency, and completely adequate for occasional use.",
+      },
+      {
+        type: "p",
+        text: "The limits show up when you leave the house. Reaching it from outside your network means a VPN, port forwarding, or some other tunnel, and VNC is not the sharpest protocol for text-heavy screens. Good starting point, rarely the final answer.",
+      },
+      { type: "h2", text: "Jump Desktop" },
+      {
+        type: "p",
+        text: "The most common recommendation in this category, and deservedly so. It supports RDP and VNC alongside its own higher-performance protocol, runs across more platforms than the Apple-only tools, and has a long reputation for responsive input on iPad.",
+      },
+      {
+        type: "p",
+        text: "Pick it if you need to reach more than just Macs, or if you want the safest well-tested choice. It is paid, and its breadth is the reason to choose it.",
+      },
+      { type: "h2", text: "Screens" },
+      {
+        type: "p",
+        text: "Apple-first and unapologetic about it. Screens is the most polished option if your devices are all Apple and you mainly want to see your Mac's desktop from an iPad or iPhone. It is VNC-based with its own companion service for reaching your Mac when you are away.",
+      },
+      {
+        type: "p",
+        text: "Pick it for the native feel. Skip it if you also need Windows or Linux machines.",
+      },
+      { type: "h2", text: "Splashtop" },
+      {
+        type: "p",
+        text: "Widely used, cross-platform, and strong on streaming performance, which is why it comes up for graphics-heavy work. It leans more commercial and IT-oriented than the Apple-focused apps, and its plans are worth reading carefully to find the one that matches personal versus business use.",
+      },
+      { type: "h2", text: "RustDesk" },
+      {
+        type: "p",
+        text: "Open source, free, cross-platform, and self-hostable. If you are comfortable running your own relay server, RustDesk gives you remote access without trusting anyone else's infrastructure, which is a genuinely strong privacy story.",
+      },
+      {
+        type: "p",
+        text: "The trade-off is effort. Self-hosting is work, and the polish on iOS is not at the level of the paid Apple-focused apps. Excellent if you want control and do not mind the setup.",
+      },
+      { type: "h2", text: "Chrome Remote Desktop" },
+      {
+        type: "p",
+        text: "Free, from Google, and by far the easiest thing to get working from anywhere: install it, sign in, done. No router configuration. For basic access to your desktop from another machine it is hard to argue with the price or the setup time.",
+      },
+      {
+        type: "p",
+        text: "It is basic by design, though. Input on a touchscreen is not built around iPad the way the native apps are, there is no real terminal, and the picture is not tuned for reading fine text.",
+      },
+      { type: "h2", text: "Servey" },
+      {
+        type: "p",
+        text: "Servey is what we build, so treat this section with the appropriate scepticism and go look for yourself. It is aimed at a narrow version of the problem: controlling a Mac from an iPhone or iPad with no network setup at all, and with a genuine shell alongside the screen.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Setup is signing in with Google on both devices. No VPN, no port forwarding, no IP addresses.",
+          "It chooses its own path: a direct stream when both devices are on the same Wi-Fi, and a private end-to-end encrypted connection between your own devices when you are away, including on strict carrier networks.",
+          "A real terminal on your Mac, not a web console, over both connection paths.",
+          "Built natively for Apple platforms rather than wrapped from a generic app.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The honest caveats: it is Apple-only, and it is pre-launch, so it has none of the track record the established names have earned. If you need something proven today, buy one of those instead.",
+      },
+      { type: "h2", text: "How to choose in one minute" },
+      {
+        type: "ul",
+        items: [
+          "Only ever on your own Wi-Fi, and cost matters most? Start with built-in Screen Sharing.",
+          "Need Windows or Linux too? Jump Desktop.",
+          "All Apple, want the most polished established app? Screens.",
+          "Want free and open source, and happy to self-host? RustDesk.",
+          "Want the fastest possible setup for free? Chrome Remote Desktop.",
+          "Want your iPad as an extra monitor rather than remote control? Sidecar, Duet, or Astropad - different category.",
+          "Want zero configuration plus a real terminal from your phone? Servey, once it launches.",
+        ],
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Most people asking for the best remote desktop for Mac will be well served by Jump Desktop or Screens, and by built-in Screen Sharing if they never leave their own network. The gap we kept running into - and the reason we are building Servey - is that almost none of these treat the command line as a first-class thing, and most still make you think about networking. If that is your gap too, join the waitlist.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -674,6 +809,28 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "How much does Servey cost?",
       a: "Terminal is Rs 99/month in India ($1.99 internationally); Full access (screen mirroring plus terminal) is Rs 299/month in India ($4.49 internationally).",
+    },
+  ],
+  "best-remote-desktop-for-mac": [
+    {
+      q: "What is the best remote desktop app for Mac?",
+      a: "For most people it is Jump Desktop if you also use Windows, or Screens if you are all-Apple. macOS Screen Sharing is free and fine if you never leave your own network.",
+    },
+    {
+      q: "Is there a free way to control my Mac remotely?",
+      a: "Yes. macOS Screen Sharing is built in and free on your local network, Chrome Remote Desktop is free and works from anywhere, and RustDesk is free and open source.",
+    },
+    {
+      q: "How do I control my Mac from an iPhone or iPad without a VPN?",
+      a: "Chrome Remote Desktop and Servey both avoid router setup entirely. Servey pairs your own devices after a Google sign-in and adds a real terminal alongside screen mirroring.",
+    },
+    {
+      q: "Can I use my iPad as a second monitor instead?",
+      a: "That is a different category. Apple Sidecar, Duet Display, and Astropad extend your desktop onto an iPad next to you; remote desktop apps control a Mac that is somewhere else.",
+    },
+    {
+      q: "Which remote desktop app has a real terminal?",
+      a: "Most are screen-only, so you drive a GUI to reach a shell. Servey ships a genuine shell on your Mac alongside mirroring, over both local and remote connections.",
     },
   ],
   "screens-vs-jump-desktop": [
