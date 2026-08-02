@@ -154,6 +154,96 @@ export const posts: Post[] = [
     ],
   },
   {
+    slug: "screens-vs-jump-desktop",
+    title: "Screens vs Jump Desktop: which Mac remote control app is right for you?",
+    description:
+      "An honest head-to-head of Screens 5 and Jump Desktop for controlling a Mac - how they differ, who each one suits, and what to consider before picking.",
+    date: "2026-08-02",
+    keywords: [
+      "Screens vs Jump Desktop",
+      "Jump Desktop vs Screens 5",
+      "Screens 5 alternative",
+      "Jump Desktop alternative Mac",
+      "best Mac remote desktop app",
+    ],
+    readingMinutes: 6,
+    lede:
+      "Screens and Jump Desktop are the two names that come up most when people want to control a Mac from an iPhone or iPad. They are both genuinely good, and they are good at different things. Here is how to tell which one fits you.",
+    body: [
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Pick Screens if you live entirely in the Apple ecosystem and want the most polished, native-feeling Mac-to-iPhone experience. Pick Jump Desktop if you also need to reach Windows machines, or if you want the widest protocol support in one app. If your priority is a real terminal and setup with no network configuration at all, neither is built primarily around that - and that is the gap newer tools like Servey are aimed at.",
+      },
+      { type: "h2", text: "What Screens is good at" },
+      {
+        type: "p",
+        text: "Screens is made by Edovia and is unapologetically Apple-first. Its strength is polish: it looks and feels like a Mac and iOS app should, and the interface stays out of your way. For someone whose devices are all Apple and who mainly wants to see and drive their Mac's desktop from an iPad or iPhone, it is a very comfortable choice.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Native, well-designed Mac and iOS apps that feel at home on the platform.",
+          "Straightforward for the common case: reach my own Mac, see my desktop, click things.",
+          "A companion tool to help reach your Mac when you are away from your home network.",
+        ],
+      },
+      { type: "h2", text: "What Jump Desktop is good at" },
+      {
+        type: "p",
+        text: "Jump Desktop's strength is reach. It supports multiple remote-desktop protocols, including RDP and VNC, alongside its own higher-performance protocol, and it runs across more platforms. If your life is not purely Apple - a Windows desktop at work, a Linux box somewhere - Jump Desktop handles that variety in one app better than an Apple-only tool can.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Broad protocol support, so it connects to more kinds of machines.",
+          "Cross-platform: useful if you are not exclusively on Apple hardware.",
+          "A strong reputation for responsiveness on its own optimised protocol.",
+        ],
+      },
+      { type: "h2", text: "How to actually choose between them" },
+      {
+        type: "p",
+        text: "The honest framing is that this is not a question of which app is better, but which problem you have. Ask yourself three things:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Do I only ever need to reach Macs? If yes, an Apple-focused tool like Screens will feel more natural. If no, Jump Desktop's protocol range is the deciding factor.",
+          "How much network setup am I willing to do? Reaching a machine from outside your home network is where remote-desktop tools differ most, and where people most often give up.",
+          "Do I need a command line, or just a screen? If a lot of your work is restarting services, tailing logs, or kicking off builds, a screen-only tool makes you drive a GUI to reach a shell.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Because both apps are actively developed, check each one's current feature list and pricing directly before you buy - details change, and you should not take a blog post's word for what a product does today.",
+      },
+      { type: "h2", text: "Where a newer option like Servey fits" },
+      {
+        type: "p",
+        text: "Servey is not trying to be a broader Jump Desktop or a more polished Screens. It is built around a narrower question: what if controlling your Mac from your iPhone required no network setup at all, and came with a real terminal?",
+      },
+      {
+        type: "ul",
+        items: [
+          "Setup is signing in with Google on both devices. No VPN, no port forwarding, no IP addresses, nothing to configure on your router.",
+          "It picks its own path: a direct high-quality stream when both devices are on the same Wi-Fi, and a private end-to-end encrypted connection between your own devices when you are away - including on strict mobile and carrier networks.",
+          "A genuine shell on your Mac sits alongside the screen, so command-line work does not mean driving a GUI with a trackpad overlay.",
+          "It is native to the Apple ecosystem rather than a cross-platform port.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The honest trade-off: Servey is Apple-only and it is still pre-launch, so it has none of the track record that Screens and Jump Desktop have earned over years. If you need something battle-tested today, buy one of those. If the zero-setup plus real-terminal combination is what you have been missing, Servey is worth a look.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Screens wins on Apple-native polish. Jump Desktop wins on breadth and protocol support. Both are solid, established products and you will not regret either. The thing neither is built around is zero-configuration networking paired with a genuine terminal - which is exactly what Servey is being built for. It launches soon; join the waitlist to be notified.",
+      },
+    ],
+  },
+  {
     slug: "access-your-mac-remotely-over-cellular",
     title: "How to access your Mac remotely over cellular",
     description:
@@ -570,6 +660,24 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "How much does Servey cost?",
       a: "Terminal is Rs 99/month in India ($1.99 internationally); Full access (screen mirroring plus terminal) is Rs 299/month in India ($4.49 internationally).",
+    },
+  ],
+  "screens-vs-jump-desktop": [
+    {
+      q: "Which is better, Screens or Jump Desktop?",
+      a: "Neither is universally better. Screens is the more polished Apple-only choice; Jump Desktop supports more protocols and platforms, so it wins if you also need to reach Windows or Linux machines.",
+    },
+    {
+      q: "What is a good Screens 5 alternative for Mac?",
+      a: "Jump Desktop is the closest established alternative. If you want zero network setup plus a real terminal on your Mac, Servey is a newer Apple-native option built around that.",
+    },
+    {
+      q: "Is there a Jump Desktop alternative that includes a terminal?",
+      a: "Servey pairs screen mirroring with a genuine shell on your Mac, available both locally and remotely, with no VPN or port forwarding to configure.",
+    },
+    {
+      q: "Do Screens or Jump Desktop need port forwarding?",
+      a: "Reaching a Mac from outside your home network is where remote tools differ most; check each product's current documentation. Servey avoids the question entirely by pairing your own devices after a Google sign-in.",
     },
   ],
   "access-your-mac-remotely-over-cellular": [
