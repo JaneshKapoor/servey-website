@@ -519,6 +519,159 @@ export const posts: Post[] = [
   },
 ];
 
+/**
+ * A real, named author for every post. AI answer engines and Google both weight
+ * human authorship (E-E-A-T) more than a faceless brand byline, so we surface a
+ * name, role, and bio and emit them as Person schema.
+ */
+export const author = {
+  name: "Janesh Kapoor",
+  role: "Co-creator of Servey",
+  url: "https://x.com/KapoorJanesh",
+  bio: "Janesh is building Servey, a native app that puts your Mac in your pocket. He writes about remote Mac access, terminals, and running things while away from your desk.",
+};
+
+/**
+ * Date the posts were last reviewed/updated. A visible, machine-readable
+ * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
+ * Bump this whenever you meaningfully revise the posts.
+ */
+export const contentUpdated = "2026-08-02";
+
+/**
+ * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
+ * engines can lift a direct, citable Q&A for each topic. Keep answers self-
+ * contained (BLUF): the first sentence should stand on its own as the answer.
+ */
+export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
+  "control-your-mac-from-iphone-ipad": [
+    {
+      q: "Can I control my Mac from my iPhone?",
+      a: "Yes. With an app like Servey you get your Mac's full screen, a real trackpad and keyboard, and a genuine terminal on your iPhone - on your home Wi-Fi or anywhere else.",
+    },
+    {
+      q: "Do I need a VPN to control my Mac remotely?",
+      a: "No. Servey pairs your own devices when you sign in with Google on each, so there is no VPN, port forwarding, or IP addresses to manage.",
+    },
+    {
+      q: "Is controlling my Mac from my phone secure?",
+      a: "Yes. Servey only pairs your own devices under your account, and away from home your screen is end-to-end encrypted between your devices.",
+    },
+  ],
+  "screens-jump-desktop-alternative-mac": [
+    {
+      q: "What is a good alternative to Screens or Jump Desktop?",
+      a: "Servey is a native, Apple-focused alternative that adds a real terminal, automatic networking with no VPN, and end-to-end-encrypted remote connections between your own devices.",
+    },
+    {
+      q: "Is Servey better than VNC or TeamViewer for a Mac?",
+      a: "For controlling a Mac from an iPhone or iPad, yes - it is sharper than VNC and lighter than TeamViewer, with no manual network setup.",
+    },
+    {
+      q: "How much does Servey cost?",
+      a: "Terminal is Rs 99/month in India ($1.99 internationally); Full access (screen mirroring plus terminal) is Rs 299/month in India ($4.49 internationally).",
+    },
+  ],
+  "access-your-mac-remotely-over-cellular": [
+    {
+      q: "Can I access my Mac over cellular (4G or 5G)?",
+      a: "Yes. Servey connects your Mac and iPhone even on mobile networks, switching to a private encrypted path automatically when you are off your home Wi-Fi.",
+    },
+    {
+      q: "Do I need to forward ports to reach my Mac on mobile data?",
+      a: "No. Servey needs no port forwarding or static IP - sign in on both devices and it links them for you.",
+    },
+    {
+      q: "Does it work on strict carrier networks?",
+      a: "Yes. Servey is built to connect reliably even on strict mobile and carrier networks where many remote tools fail.",
+    },
+  ],
+  "control-a-headless-mac-mini-remotely": [
+    {
+      q: "Can I control a headless Mac Mini with no monitor?",
+      a: "Yes. Servey gives you the Mini's screen plus a real terminal from your iPhone or iPad, so it runs fine with no display attached.",
+    },
+    {
+      q: "How do I access a Mac Mini remotely without a keyboard or mouse?",
+      a: "Servey provides an on-screen trackpad, a full keyboard, and a terminal, so you can drive a headless Mini entirely from your phone.",
+    },
+    {
+      q: "Is a terminal included for server-style tasks?",
+      a: "Yes. Servey ships a genuine shell on your Mac, ideal for restarting services, tailing logs, or deploying on a headless Mini.",
+    },
+  ],
+  "real-terminal-on-your-mac-from-iphone": [
+    {
+      q: "Can I get a real terminal on my Mac from my iPhone?",
+      a: "Yes. Servey runs a genuine shell on your Mac - not a limited web console - over both local and remote connections.",
+    },
+    {
+      q: "Isn't SSH enough for a terminal on my Mac?",
+      a: "SSH works but is fiddly to expose safely. Servey gives you the same shell with no port forwarding, keys, or VPN to configure.",
+    },
+    {
+      q: "Does the terminal work when I'm away from home?",
+      a: "Yes. The terminal is available over the remote path too, so you can fix a build or run a deploy from anywhere.",
+    },
+  ],
+  "run-ai-agents-on-your-mac-remotely": [
+    {
+      q: "Can I monitor an AI coding agent from my phone?",
+      a: "Yes. Servey lets you watch and steer an agent running in your Mac's terminal from your iPhone, so you can approve steps or stop it from anywhere.",
+    },
+    {
+      q: "Why run an AI agent on my Mac instead of the cloud?",
+      a: "Your Mac already has your files and environment and no metered per-token infrastructure bills - Servey just lets you reach it while you are away.",
+    },
+    {
+      q: "Can I take over if the agent goes wrong?",
+      a: "Yes. You get a real terminal and full screen control, so you can intervene the moment something looks off.",
+    },
+  ],
+  "who-is-servey-for-developers-home-labs": [
+    {
+      q: "Who is Servey for?",
+      a: "Developers, home-lab and Mac Mini owners, people running AI agents or long jobs, and anyone who wants their Mac's full power from an iPhone or iPad.",
+    },
+    {
+      q: "Do I need to be technical to use Servey?",
+      a: "No. Setup is signing in with Google on both devices - the screen mirroring and trackpad work like any app.",
+    },
+    {
+      q: "Does Servey work for a home lab or always-on Mac?",
+      a: "Yes. It is built to reach an always-on or headless Mac, with a terminal for server-style tasks.",
+    },
+  ],
+  "run-ai-agents-locally-on-your-mac": [
+    {
+      q: "Can I run AI agents locally on my Mac?",
+      a: "Yes - local agents keep your data private, use your real environment, and avoid metered cloud bills. Servey lets you reach them from your phone.",
+    },
+    {
+      q: "Is running agents locally private?",
+      a: "It is more private than the cloud because the work stays on your Mac. Servey only pairs your own devices to view it.",
+    },
+    {
+      q: "How do I check a local agent when I leave my desk?",
+      a: "Servey mirrors your Mac and its terminal to your iPhone or iPad, so a local job never traps you at your desk.",
+    },
+  ],
+  "stay-in-control-of-ai-agents-from-anywhere": [
+    {
+      q: "How do I stay in control of an AI agent that uses my computer?",
+      a: "Keep a human in the loop: Servey lets you watch the agent, approve actions, and take over the terminal from your phone, anywhere.",
+    },
+    {
+      q: "Can I stop an AI agent remotely if it misbehaves?",
+      a: "Yes. With Servey's real terminal and screen control you can pause or kill a run the moment it goes off track.",
+    },
+    {
+      q: "Do I have to sit at my Mac to supervise an agent?",
+      a: "No. Servey brings your Mac's screen and shell to your iPhone or iPad so you can supervise from anywhere.",
+    },
+  ],
+};
+
 export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }

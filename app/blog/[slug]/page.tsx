@@ -7,7 +7,7 @@ import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { WaitlistDialog } from "@/components/waitlist-dialog";
-import { getPost, posts } from "@/lib/blog";
+import { author, contentUpdated, faqsBySlug, getPost, posts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -61,14 +61,20 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const url = `${site.url}/blog/${post.slug}`;
+  const postFaqs = faqsBySlug[post.slug] ?? [];
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
-    author: { "@type": "Organization", name: site.name, url: site.url },
+    dateModified: contentUpdated,
+    author: {
+      "@type": "Person",
+      name: author.name,
+      url: author.url,
+      description: author.bio,
+    },
     publisher: {
       "@type": "Organization",
       name: site.name,
@@ -78,6 +84,19 @@ export default async function BlogPostPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: post.keywords.join(", "),
   };
+  const faqLd =
+    postFaqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": `${url}#faq`,
+          mainEntity: postFaqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
 
   const others = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
@@ -87,6 +106,12 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
       <Header />
       <main className="container-page pb-24 pt-32">
         <article className="mx-auto max-w-2xl">
@@ -102,7 +127,25 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
           <p className="mt-3 text-sm text-muted">
+            By{" "}
+            <a
+              href={author.url}
+              rel="author noopener noreferrer"
+              target="_blank"
+              className="text-fg/80 transition-colors hover:text-accent-strong"
+            >
+              {author.name}
+            </a>
+            {" · "}
             <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>
+            {contentUpdated !== post.date && (
+              <>
+                {" · Updated "}
+                <time dateTime={contentUpdated}>
+                  {dateFmt.format(new Date(contentUpdated))}
+                </time>
+              </>
+            )}
             {" · "}
             {post.readingMinutes} min read
           </p>
@@ -144,6 +187,39 @@ export default async function BlogPostPage({
               return <p key={i}>{block.text}</p>;
             })}
           </div>
+
+          {/* FAQ — visible Q&A that mirrors the FAQPage JSON-LD for AI answer engines. */}
+          {postFaqs.length > 0 && (
+            <section className="mt-14 border-t border-border pt-8">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                Frequently asked questions
+              </h2>
+              <dl className="mt-5 space-y-6">
+                {postFaqs.map((f, i) => (
+                  <div key={i}>
+                    <dt className="text-base font-medium text-fg">{f.q}</dt>
+                    <dd className="mt-2 text-[15px] leading-relaxed text-muted">
+                      {f.a}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+
+          {/* Author */}
+          <aside className="mt-12 flex items-start gap-4 rounded-2xl border border-border bg-surface p-5">
+            <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-accent/15 text-base font-semibold text-accent-strong">
+              {author.name.charAt(0)}
+            </div>
+            <div>
+              <p className="text-sm font-medium text-fg">
+                {author.name}
+                <span className="font-normal text-muted"> · {author.role}</span>
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{author.bio}</p>
+            </div>
+          </aside>
 
           {/* CTA */}
           <div className="mt-12 flex flex-col items-start gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">

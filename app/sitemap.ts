@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { posts } from "@/lib/blog";
+import { contentUpdated, posts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const updated = new Date(contentUpdated);
   const postEntries: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${site.url}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
+    // Reflect the last real review of the content, not just first-published date.
+    lastModified: updated > new Date(p.date) ? updated : new Date(p.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
