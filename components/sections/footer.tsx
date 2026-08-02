@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart, Mail } from "lucide-react";
+import { ChevronUp, Heart, Mail } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { ContactDialog } from "@/components/contact-dialog";
 import { nav, site } from "@/lib/site";
@@ -16,6 +16,20 @@ export function Footer() {
               Your Mac. In your pocket. Native remote access - crystal-clear on your
               network, private peer-to-peer anywhere else.
             </p>
+
+            {/* Social proof + reciprocal link. Deliberately in the footer, not the
+                header, so it never competes with the waitlist CTA. */}
+            <a
+              href="https://www.producthunt.com/products/servey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-5 inline-flex items-center gap-2.5 rounded-full border border-border-strong bg-surface px-4 py-2.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-fg"
+            >
+              <span className="flex size-5 shrink-0 items-center justify-center rounded-md bg-[#da552f]/15 text-[#da552f]">
+                <ChevronUp className="size-3.5" strokeWidth={3} />
+              </span>
+              We&rsquo;re live on Product Hunt
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
