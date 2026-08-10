@@ -8,6 +8,7 @@ peer-to-peer anywhere else.
 Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
 Sitemaps live too
 Added price tags on site
+Updated sitemaps
 
 ## Stack
 
