@@ -21,6 +21,18 @@
   --accent-deep: #12321f;
   --accent-contrast: #04120a;
 
+  /* Gradient-text stops are themed. The dark values are near-white on purpose;
+   * light mode overrides them or the emphasised words wash out completely. */
+  --sweep-a: var(--accent);
+  --sweep-b: #7cffb0;
+  --sweep-c: #eafff2;
+  --grad-a: #eafff2;
+  --grad-b: var(--accent);
+  --grad-c: #12b45a;
+
+  /* Error state needs a token like everything else, or it cannot be themed. */
+  --danger: #f87171;
+
   color-scheme: dark;
 }
 
@@ -35,9 +47,21 @@
   --muted: #5b626b;
 
   --accent: #22dc6e;
-  --accent-strong: #0f9d4e; /* darker green for text/contrast on white */
+  /* 5.2:1 on --bg. The previous #0f9d4e was 3.3:1, under the 4.5:1 floor, and
+   * this token is used for small text all over the site. */
+  --accent-strong: #0a7a3c;
   --accent-deep: #e4f9ec;
   --accent-contrast: #04120a;
+
+  /* Darkened so gradient-filled headline words stay legible on a light ground. */
+  --sweep-a: #0a7a3c;
+  --sweep-b: #0e8f47;
+  --sweep-c: #0f9d4e;
+  --grad-a: #0a7a3c;
+  --grad-b: #0f9d4e;
+  --grad-c: #085c2d;
+
+  --danger: #c22a2a;
 
   color-scheme: light;
 }
@@ -54,6 +78,7 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-deep: var(--accent-deep);
   --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -81,7 +106,7 @@ body {
 
 /* Focus ring — always brand green, always visible. */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-strong);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -117,11 +142,11 @@ body {
 .text-sweep {
   background: linear-gradient(
     100deg,
-    var(--accent) 0%,
-    #7cffb0 25%,
-    #eafff2 45%,
-    #7cffb0 65%,
-    var(--accent) 100%
+    var(--sweep-a) 0%,
+    var(--sweep-b) 25%,
+    var(--sweep-c) 45%,
+    var(--sweep-b) 65%,
+    var(--sweep-a) 100%
   );
   background-size: 250% 100%;
   -webkit-background-clip: text;
@@ -140,7 +165,7 @@ body {
 
 /* Static brand gradient text (no animation). */
 .text-gradient-brand {
-  background: linear-gradient(120deg, #eafff2 0%, var(--accent) 60%, #12b45a 100%);
+  background: linear-gradient(120deg, var(--grad-a) 0%, var(--grad-b) 60%, var(--grad-c) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

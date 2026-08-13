@@ -205,7 +205,7 @@ export function WaitlistForm({
         <p
           id={`waitlist-error-${source}`}
           role="alert"
-          className="mt-2 pl-1 text-sm text-red-400"
+          className="mt-2 pl-1 text-sm text-danger"
         >
           {error}
         </p>

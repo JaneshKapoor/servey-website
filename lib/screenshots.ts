@@ -24,7 +24,8 @@ export interface ScreenshotSlot {
 export const screenshots = {
   "hero-devices": {
     frame: "ipad",
-    ratio: 16 / 10,
+    // Must match the real file (2560x1440) or object-cover crops the sides.
+    ratio: 2560 / 1440,
     hint: "iPad + iPhone",
     alt: "Servey on iPad and iPhone - a Mac desktop mirrored to the iPad with the control dock on the iPhone",
     src: "/screenshots/hero-devices.png",
@@ -32,7 +33,8 @@ export const screenshots = {
   },
   "device-picker": {
     frame: "iphone",
-    ratio: 9 / 19.5,
+    // Real file is 640x1640; the nominal 9/19.5 phone ratio cropped it.
+    ratio: 640 / 1640,
     hint: "iPhone - your Macs",
     alt: "Servey on iPhone listing the user's Macs - one on the local network and one remote on the same account, each tappable to connect",
     src: "/screenshots/ipad-macs-showcase.png",

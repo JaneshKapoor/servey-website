@@ -17,8 +17,8 @@ const Select = React.forwardRef<
         ref={ref}
         className={cn(
           "h-11 w-full appearance-none rounded-full border border-border-strong bg-surface pl-5 pr-11 text-sm text-fg transition-colors",
-          "focus-visible:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
-          "disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-red-500/70",
+          "focus-visible:border-accent-strong/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-strong",
+          "disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-danger/70",
           "data-[placeholder=true]:text-muted",
           className,
         )}

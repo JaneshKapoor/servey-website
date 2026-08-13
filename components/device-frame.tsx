@@ -31,7 +31,7 @@ function PlaceholderFill({ hint }: { hint: string }) {
         <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
           Screenshot coming
         </span>
-        <span className="text-xs text-muted/70">{hint}</span>
+        <span className="text-xs text-muted">{hint}</span>
       </div>
     </div>
   );

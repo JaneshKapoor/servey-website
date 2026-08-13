@@ -62,7 +62,7 @@ export function Header() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <WaitlistDialog source="nav">
-            <Button size="sm">Join waitlist</Button>
+            <Button size="sm">Join the waitlist</Button>
           </WaitlistDialog>
         </div>
 
@@ -122,7 +122,7 @@ export function Header() {
             <div className="mt-4">
               <WaitlistDialog source="nav-mobile">
                 <Button className="w-full" onClick={() => setOpen(false)}>
-                  Join waitlist
+                  Join the waitlist
                 </Button>
               </WaitlistDialog>
             </div>

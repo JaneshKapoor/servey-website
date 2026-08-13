@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 
 /**
  * Subtle magnetic pointer-follow for the primary hero CTA. Deliberately gentle:
@@ -21,10 +21,11 @@ export function Magnetic({
   max?: number;
 }) {
   const ref = React.useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const x = useSpring(useMotionValue(0), { stiffness: 260, damping: 24, mass: 0.5 });
 
   function onMove(e: React.PointerEvent) {
-    if (e.pointerType !== "mouse") return;
+    if (reduce || e.pointerType !== "mouse") return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
