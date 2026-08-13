@@ -39,7 +39,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: site.name }],
   creator: site.name,
-  alternates: { canonical: site.url },
+  alternates: {
+    canonical: site.url,
+    types: { "application/rss+xml": `${site.url}/feed.xml` },
+  },
   openGraph: {
     type: "website",
     url: site.url,
@@ -154,6 +157,13 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Visually hidden until focused - lets keyboard users jump the nav. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-contrast"
+        >
+          Skip to content
+        </a>
         {children}
         <Toaster
           position="bottom-right"
