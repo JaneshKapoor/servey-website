@@ -759,6 +759,122 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "termius-alternative-mac-terminal",
+    title: "Is Servey a Termius alternative? Honestly, only for one job",
+    metaTitle: "Termius alternative? Only for one job",
+    description:
+      "Termius is an SSH client for many servers. Servey is a zero-setup agent for one Mac, with a terminal and screen mirroring. An honest comparison.",
+    date: "2026-08-14",
+    readingMinutes: 8,
+    keywords: [
+      "termius alternative",
+      "ssh client for mac",
+      "run terminal on mac from iphone",
+      "mobile ssh client",
+      "mac terminal from iphone",
+    ],
+    lede:
+      "Termius comes up whenever someone wants a terminal on their phone, so it is a fair thing to be compared against. But the two products are shaped differently, and pretending otherwise would waste your time.",
+    body: [
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Termius is an SSH client: you bring the servers, configure the connections, and it reaches all of them from any platform. Servey is a host agent for a single machine - your Mac - that you reach from an iPhone or iPad with no SSH setup at all, and it also mirrors the screen. If you manage more than one machine, Termius is the right tool and Servey is not a replacement for it.",
+      },
+      { type: "h2", text: "What Termius actually is" },
+      {
+        type: "p",
+        text: "Termius is a mature, cross-platform SSH client that runs on macOS, Windows, Linux, iOS, iPadOS and Android. Alongside SSH it handles SFTP, Mosh, Telnet and serial connections, plus port forwarding, jump hosts and proxies. It stores credentials in encrypted vaults, supports hardware keys and biometrics, and adds team features such as shared vaults, SSO and session logging. It has been shipping since 2019 and has a very large user base.",
+      },
+      {
+        type: "p",
+        text: "In other words it is built to manage a fleet. That is a genuinely hard problem and Termius solves it well.",
+      },
+      { type: "h2", text: "What Servey actually is" },
+      {
+        type: "p",
+        text: "Servey installs a host app on your Mac. You sign in on the Mac and on your iPhone or iPad, and the Mac appears in a list. Tapping it opens a session: a real shell on that Mac, and optionally its mirrored screen with a trackpad and keyboard. There is no sshd to enable, no key to manage on a phone, no port to forward and no VPN. It reaches exactly one kind of target, and nothing else.",
+      },
+      { type: "h2", text: "Side by side" },
+      {
+        type: "table",
+        caption:
+          "Where the two overlap, and where they genuinely do not.",
+        headers: ["", "Termius", "Servey"],
+        rows: [
+          ["Reaches", "Any SSH host you configure", "A Mac running its host app"],
+          ["Setup to get in from outside", "SSH, plus VPN, port forward or jump host", "Sign in on both devices"],
+          ["Screen / GUI control", "No", "Yes"],
+          ["Multiple hosts", "Yes, unlimited", "No"],
+          ["SFTP, Mosh, Telnet, serial", "Yes", "No"],
+          ["Port forwarding, jump hosts", "Yes", "Not applicable"],
+          ["Snippets, workspaces, autocomplete", "Yes", "No"],
+          ["Team vaults, SSO, audit logs", "Yes", "No"],
+          ["Platforms", "macOS, Windows, Linux, iOS, iPadOS, Android", "macOS host; iPhone and iPad client"],
+          ["Track record", "Shipping since 2019, millions of users", "Pre-launch, no users"],
+        ],
+      },
+      { type: "h2", text: "The real difference: a client versus an agent" },
+      {
+        type: "p",
+        text: "This is the distinction that matters, and it explains every row in that table. Termius is a client. It speaks SSH to something that is already listening, which means the target has to be reachable: sshd running, and a route in from wherever you are. On your own network that is easy. From a cafe it means a VPN, a forwarded port, or an overlay network - and if your ISP uses CGNAT, forwarding a port may not be possible at all.",
+      },
+      {
+        type: "p",
+        text: "Servey is an agent. The Mac runs software that registers itself to your account and establishes the connection outward, so nothing needs to accept inbound traffic and nothing is exposed on a public address. That is why there is no configuration step. It is also why Servey cannot reach a machine you have not installed it on, which is a real limitation rather than an oversight.",
+      },
+      { type: "h2", text: "When Termius is the better choice" },
+      {
+        type: "p",
+        text: "Most of the time, if you are the kind of person who already uses Termius. Specifically:",
+      },
+      {
+        type: "ul",
+        items: [
+          "You connect to more than one machine, or to anything that is not a Mac.",
+          "You need SFTP, Mosh, Telnet, serial, port forwarding or jump hosts.",
+          "You work from Windows, Linux or Android.",
+          "You need team vaults, credential sharing, SSO or audit-grade session logs.",
+          "You want snippets, workspaces and a terminal refined over several years.",
+          "You want a tool with a long track record, which Servey does not have.",
+        ],
+      },
+      { type: "h2", text: "When Servey makes more sense" },
+      {
+        type: "ul",
+        items: [
+          "The machine you actually need is your own Mac, and only that.",
+          "You do not want to enable Remote Login or expose anything to the internet.",
+          "You have tried the SSH-from-a-phone route and abandoned it over setup.",
+          "You sometimes need to see the screen, not just type at a prompt.",
+        ],
+      },
+      { type: "h2", text: "Pricing, compared fairly" },
+      {
+        type: "p",
+        text: "Termius has a free tier that is generous on protocol features but keeps sync between devices on the paid plan, with Pro around $10 per month billed annually and team tiers above that. Servey's Terminal plan is Rs 99 per month in India or $1.99 internationally, and Full access - screen mirroring plus terminal - is Rs 299 or $4.49.",
+      },
+      {
+        type: "p",
+        text: "That comparison is not as favourable as the numbers make it look. Servey costs less because it does far less: one machine, no SFTP, no fleet management, no team features. It is a lower price for a much narrower job, not a discount on the same thing.",
+      },
+      { type: "h2", text: "What Servey does not have" },
+      {
+        type: "p",
+        text: "Worth stating plainly, because a comparison that only lists strengths is not a comparison. Servey has no SFTP, no multi-host support, no snippets or workspaces, no team or compliance features, and no Windows, Linux or Android client. Its terminal is a version one and does not have the refinements Termius has accumulated. And Servey is pre-launch: no users, no App Store reviews, nothing independent to check.",
+      },
+      {
+        type: "p",
+        text: "If a proven track record is what you are buying, that is Termius today, and that is a perfectly good reason to pick it.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "These two products share a keyboard and not much else. Termius is for infrastructure you run. Servey is for the one Mac you own, when getting to it should not require a VPN. If that second description is the one that fits, join the waitlist.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -778,7 +894,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-02";
+export const contentUpdated = "2026-08-14";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -786,6 +902,28 @@ export const contentUpdated = "2026-08-02";
  * contained (BLUF): the first sentence should stand on its own as the answer.
  */
 export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
+  "termius-alternative-mac-terminal": [
+    {
+      q: "Is Servey a replacement for Termius?",
+      a: "For most Termius users, no. Termius manages many servers over SSH, SFTP, Mosh, Telnet and serial across six platforms. Servey controls one machine - your Mac - from an iPhone or iPad. If you only use Termius to reach a single Mac and dislike the SSH setup, Servey may replace it. If you manage a fleet, it will not.",
+    },
+    {
+      q: "Do I still need to set up SSH to use Servey?",
+      a: "No. Termius is an SSH client, so your Mac needs Remote Login enabled and must be reachable - usually via a VPN, port forward or jump host when you are away. Servey installs a host app on your Mac and you sign in on both devices. No ports, no keys, no VPN.",
+    },
+    {
+      q: "Can Termius show my Mac's screen?",
+      a: "No. Termius is terminal-only and has never claimed otherwise. Servey includes screen mirroring with a real trackpad and keyboard alongside the terminal, for work that is not command-line work.",
+    },
+    {
+      q: "Is Servey cheaper than Termius?",
+      a: "The Terminal plan is Rs 99 per month in India or $1.99 internationally, against Termius Pro at roughly $10 per month billed annually. But Servey does far less - one Mac, no SFTP, no fleet management, no team features. It is a lower price for a much narrower job, not a discount on the same thing.",
+    },
+    {
+      q: "Why trust a pre-launch app with access to my Mac?",
+      a: "You should not take that on faith. Servey has not launched, has no users and no independent reviews. We document how pairing and encryption work, but if you need a proven track record today, Termius has one and Servey does not.",
+    },
+  ],
   "control-your-mac-from-iphone-ipad": [
     {
       q: "Can I control my Mac from my iPhone?",
