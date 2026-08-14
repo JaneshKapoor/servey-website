@@ -1,26 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Laptop, Smartphone, Cloud, Wifi, Globe } from "lucide-react";
 
+/**
+ * Width of the track in px. A percentage `x` transform would resolve against
+ * the dot's own 6px width, not the track, so the travel distance has to be
+ * measured. Re-measures on resize.
+ */
+function useTrackWidth() {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [width, setWidth] = React.useState(0);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) =>
+      setWidth(entry.contentRect.width),
+    );
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  return { ref, width };
+}
+
 function FlowDots({ color, count = 3 }: { color: string; count?: number }) {
+  const reduce = useReducedMotion();
+  const { ref, width } = useTrackWidth();
+  // Static dots convey the same "traffic flows along this path" idea without
+  // motion, so reduced-motion users still get the diagram's meaning.
+  if (reduce) {
+    return (
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center gap-2">
+        {Array.from({ length: count }).map((_, i) => (
+          <span
+            key={i}
+            className="size-1.5 rounded-full"
+            style={{ background: color, boxShadow: `0 0 8px ${color}` }}
+          />
+        ))}
+      </div>
+    );
+  }
   return (
-    <div className="pointer-events-none absolute inset-0 flex items-center">
-      {Array.from({ length: count }).map((_, i) => (
-        <motion.span
-          key={i}
-          className="absolute size-1.5 rounded-full"
-          style={{ background: color, boxShadow: `0 0 8px ${color}` }}
-          initial={{ left: "6%", opacity: 0 }}
-          animate={{ left: ["6%", "94%"], opacity: [0, 1, 1, 0] }}
-          transition={{
-            duration: 1.8,
-            delay: i * 0.6,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      ))}
+    <div ref={ref} className="pointer-events-none absolute inset-0 flex items-center">
+      {width > 0 &&
+        Array.from({ length: count }).map((_, i) => (
+          <motion.span
+            key={i}
+            // Travels on `x` (a compositor property) rather than `left`, which
+            // forced a layout + paint every frame. whileInView with once:false
+            // parks the loop while the diagram is scrolled out of view.
+            className="absolute left-0 size-1.5 rounded-full will-change-transform"
+            style={{ background: color, boxShadow: `0 0 8px ${color}` }}
+            initial={{ x: 0, opacity: 0 }}
+            whileInView={{ x: [0, width - 6], opacity: [0, 1, 1, 0] }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{
+              duration: 1.8,
+              delay: i * 0.6,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
     </div>
   );
 }
@@ -77,7 +120,7 @@ export function DualPathDiagram() {
         <div className="flex items-center justify-between gap-2">
           <Node icon={Laptop} label="Your Mac" />
           <div className="relative mx-1 h-10 flex-1">
-            <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-border-strong [border-top:1px_dashed_var(--border-strong)]" />
+            <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 [border-top:1px_dashed_var(--border-strong)]" />
             <FlowDots color="#2dd4bf" count={2} />
           </div>
           <div className="flex flex-col items-center gap-2">

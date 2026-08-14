@@ -7,7 +7,7 @@ import { nav, site } from "@/lib/site";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="hairline-top mt-8 bg-surface/30">
+    <footer className="mt-8 border-t border-border bg-surface/30">
       <div className="container-page py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">

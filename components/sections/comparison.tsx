@@ -64,7 +64,7 @@ export function Comparison() {
                   <div className="flex gap-2.5">
                     <Minus className="mt-0.5 size-4 shrink-0 text-muted/60" />
                     <div>
-                      <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-muted/70">
+                      <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
                         Traditional
                       </div>
                       <p className="mt-0.5 text-sm text-muted">{row.traditional}</p>

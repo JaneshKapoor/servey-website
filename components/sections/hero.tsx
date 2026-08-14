@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { Aurora } from "@/components/aurora";
@@ -15,6 +15,9 @@ import { screenshots } from "@/lib/screenshots";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
+  // Framer Motion bypasses the CSS reduced-motion block, so gate it here.
+  const reduce = useReducedMotion();
+  const rise = (y: number) => (reduce ? false : { opacity: 0, y });
   return (
     <section className="relative overflow-hidden pt-28 sm:pt-32">
       <Aurora intensity={1.15} />
@@ -23,7 +26,7 @@ export function Hero() {
       <div className="container-page relative">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={rise(12)}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease }}
             className="mb-6 flex justify-center"
@@ -35,7 +38,7 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={rise(16)}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.05 }}
             className="text-balance text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.25rem]"
@@ -46,7 +49,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={rise(16)}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
@@ -57,7 +60,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={rise(16)}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.18 }}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
@@ -81,7 +84,7 @@ export function Hero() {
 
         {/* Device mockup */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={rise(40)}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.25 }}
           className="relative mx-auto mt-16 max-w-5xl [perspective:1600px] sm:mt-20"

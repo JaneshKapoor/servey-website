@@ -16,7 +16,7 @@ export function LegalPage({
   return (
     <>
       <Header />
-      <main className="container-page pb-24 pt-32">
+      <main id="main" className="container-page pb-24 pt-32">
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -105,6 +105,18 @@ export default async function BlogPostPage({
         }
       : null;
 
+  // Breadcrumbs let Google render "servey.in › Blog › <post>" in the result
+  // instead of the raw URL, which measurably lifts click-through.
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${site.url}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+
   const others = relatedPosts(post.slug, 3);
 
   return (
@@ -119,16 +131,38 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <Header />
-      <main className="container-page pb-24 pt-32">
+      <main id="main" className="container-page pb-24 pt-32">
         <article className="mx-auto max-w-2xl">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-fg"
-          >
-            <ArrowLeft className="size-4" />
-            All articles
-          </Link>
+          {/* Visible trail mirrors the BreadcrumbList JSON-LD - Google expects
+              the two to agree before it will render the trail in results. */}
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted">
+              <li>
+                <Link href="/" className="transition-colors hover:text-fg">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden className="text-muted/50">
+                /
+              </li>
+              <li>
+                <Link href="/blog" className="transition-colors hover:text-fg">
+                  Blog
+                </Link>
+              </li>
+              <li aria-hidden className="text-muted/50">
+                /
+              </li>
+              <li aria-current="page" className="max-w-full truncate text-fg/70">
+                {post.title}
+              </li>
+            </ol>
+          </nav>
 
           <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
             {post.title}
@@ -168,6 +202,52 @@ export default async function BlogPostPage({
                       <li key={j}>{item}</li>
                     ))}
                   </ul>
+                );
+              if (block.type === "table")
+                return (
+                  // Wrapper scrolls on its own so a wide table never makes the
+                  // whole page scroll sideways on a phone.
+                  <div
+                    key={i}
+                    className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0"
+                  >
+                    <table className="w-full min-w-[34rem] border-collapse text-left text-[14px]">
+                      {block.caption && (
+                        <caption className="mb-3 text-left text-xs text-muted">
+                          {block.caption}
+                        </caption>
+                      )}
+                      <thead>
+                        <tr>
+                          {block.headers.map((h, j) => (
+                            <th
+                              key={j}
+                              scope="col"
+                              className="border-b border-border-strong pb-2.5 pr-4 align-bottom font-medium text-fg last:pr-0"
+                            >
+                              {h}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {block.rows.map((row, j) => (
+                          <tr key={j} className="border-b border-border last:border-0">
+                            {row.map((cell, k) => (
+                              <td
+                                key={k}
+                                className={`py-3 pr-4 align-top last:pr-0 ${
+                                  k === 0 ? "font-medium text-fg" : "text-muted"
+                                }`}
+                              >
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 );
               if (block.type === "img")
                 return (

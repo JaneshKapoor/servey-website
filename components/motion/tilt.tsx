@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 
 /**
  * Gentle pointer-follow tilt for device mockups. Disabled on touch / small
@@ -17,6 +17,7 @@ export function Tilt({
   max?: number;
 }) {
   const ref = React.useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
 
@@ -25,7 +26,7 @@ export function Tilt({
   const ry = useSpring(useTransform(px, [0, 1], [-max, max]), springCfg);
 
   function onMove(e: React.PointerEvent) {
-    if (e.pointerType !== "mouse") return;
+    if (reduce || e.pointerType !== "mouse") return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();

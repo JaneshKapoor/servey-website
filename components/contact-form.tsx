@@ -80,7 +80,7 @@ export function ContactForm({
         <span className="flex size-10 items-center justify-center rounded-full bg-accent/20 text-accent-strong">
           <Check className="size-5" />
         </span>
-        <p className="text-sm font-medium text-fg">Thanks — your message is on its way.</p>
+        <p className="text-sm font-medium text-fg">Thanks. Your message is on its way.</p>
         <p className="text-xs text-muted">We&rsquo;ll reply to the email you gave us.</p>
       </div>
     );
@@ -104,7 +104,7 @@ export function ContactForm({
           }}
           disabled={status === "submitting"}
         />
-        {errors.name && <p className="mt-1 pl-1 text-xs text-red-400">{errors.name}</p>}
+        {errors.name && <p className="mt-1 pl-1 text-xs text-danger">{errors.name}</p>}
       </div>
 
       <div>
@@ -125,7 +125,7 @@ export function ContactForm({
           }}
           disabled={status === "submitting"}
         />
-        {errors.email && <p className="mt-1 pl-1 text-xs text-red-400">{errors.email}</p>}
+        {errors.email && <p className="mt-1 pl-1 text-xs text-danger">{errors.email}</p>}
       </div>
 
       <div>
@@ -143,7 +143,7 @@ export function ContactForm({
           }}
           disabled={status === "submitting"}
         />
-        {errors.message && <p className="mt-1 pl-1 text-xs text-red-400">{errors.message}</p>}
+        {errors.message && <p className="mt-1 pl-1 text-xs text-danger">{errors.message}</p>}
       </div>
 
       {/* Honeypot */}

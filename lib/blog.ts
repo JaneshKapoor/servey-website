@@ -9,6 +9,9 @@ export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
   | { type: "ul"; items: string[] }
+  // Comparison tables are the structure answer engines extract most reliably
+  // from a page, so head-to-head posts should lead with one.
+  | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
   | { type: "img"; src: string; alt: string; width: number; height: number; caption?: string };
 
 export interface Post {

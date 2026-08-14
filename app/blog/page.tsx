@@ -54,7 +54,7 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(listLd) }}
       />
       <Header />
-      <main className="container-page pb-24 pt-32">
+      <main id="main" className="container-page pb-24 pt-32">
         <div className="mx-auto max-w-2xl">
           <Link
             href="/"
@@ -63,7 +63,9 @@ export default function BlogIndexPage() {
             <ArrowLeft className="size-4" />
             Back to Servey
           </Link>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Blog</h1>
+          <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
+            Mac remote access guides
+          </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
             Guides on controlling your Mac from your iPhone and iPad - screen mirroring,
             a real terminal, and getting work done from your pocket.

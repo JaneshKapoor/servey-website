@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Aurora } from "@/components/aurora";
 
 const line = "Control your Mac from anywhere - crystal clear.";
@@ -23,14 +23,15 @@ const word: Variants = {
 
 /** Second headline - the animated mid-scroll statement interstitial (§4). */
 export function Statement() {
+  const reduce = useReducedMotion();
   return (
-    <section className="relative flex min-h-[70vh] items-center overflow-hidden py-24">
+    <section className="relative flex min-h-[70dvh] items-center overflow-hidden py-24">
       <Aurora intensity={0.9} className="opacity-80" />
       <div className="container-page relative text-center">
         <motion.h2
           variants={container}
-          initial="hidden"
-          whileInView="show"
+          initial={reduce ? false : "hidden"}
+          whileInView={reduce ? undefined : "show"}
           viewport={{ once: true, amount: 0.5 }}
           className="mx-auto max-w-4xl text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           aria-label={line}
@@ -50,8 +51,8 @@ export function Statement() {
           })}
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={reduce ? false : { opacity: 0 }}
+          whileInView={reduce ? undefined : { opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mx-auto mt-6 max-w-md text-pretty text-base text-muted sm:text-lg"
