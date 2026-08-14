@@ -62,8 +62,17 @@ function FeatureBlock({ feature, flip }: { feature: Feature; flip: boolean }) {
 
 export function Features() {
   return (
-    <section id="features" className="scroll-mt-24 py-20 sm:py-28">
+    <section
+      id="features"
+      aria-labelledby="features-heading"
+      className="scroll-mt-24 py-20 sm:py-28"
+    >
       <div className="container-page space-y-24 sm:space-y-32">
+        {/* The six features render as h3. Without this the page ran h1 -> h3 x6
+            -> h2, and the section the nav points at had no accessible name. */}
+        <h2 id="features-heading" className="sr-only">
+          What Servey does
+        </h2>
         {features.map((feature, i) => (
           <FeatureBlock key={feature.index} feature={feature} flip={i % 2 === 1} />
         ))}
