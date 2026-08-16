@@ -491,6 +491,30 @@ returns a fake success to bots, and a **per-IP rate limit of 5/min**.
 ### Contact — `POST /api/contact`
 Same protections; writes to the Firestore `contacts` collection.
 
+### Transactional email — `lib/email.ts`
+
+Sends the waitlist confirmation through **Resend's REST API over plain fetch**
+(no SDK — `waitlist-providers.ts` already talks to Resend the same way).
+
+- **No-op without `RESEND_API_KEY`.** Signups still succeed, silently, in ~14 ms
+  with no network attempt. Local dev and previews therefore never send real mail.
+- **Never throws into the request path.** Every failure resolves. A signup that
+  was already persisted must not be reported as failed because the email did not
+  go out — the visitor would sign up again and get a duplicate response.
+- **Awaited, not fire-and-forget.** Serverless functions can be frozen the moment
+  the response returns, which silently drops an un-awaited send.
+- **Not sent on duplicates.** That address already has the email.
+- `List-Unsubscribe` uses a `mailto:` so it needs no endpoint to honour, which
+  keeps the promise in the footer true from day one.
+
+**Sending domain:** `hello@servey.in`, on Google Workspace. DNS at GoDaddy, and
+verified working end-to-end (SPF/DKIM/DMARC all PASS, DMARC at `p=quarantine`).
+
+> ⚠️ GoDaddy manages SPF through an `_spfm` delegation
+> (`v=spf1 include:dc-…._spfm.servey.in ~all`), **not** a plain root record. Add
+> Resend's include through GoDaddy's SPF interface. Hand-editing the root TXT
+> into a second SPF record makes **both** fail and silently breaks all mail.
+
 ### Deployment
 Vercel, auto-deploy on push to `main`. Env vars go in **Settings → Environment
 Variables** for Production *and* Preview. `NEXT_PUBLIC_*` values are inlined at

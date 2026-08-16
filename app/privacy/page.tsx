@@ -79,10 +79,25 @@ export default function PrivacyPage() {
 
       <h2>How we use your email</h2>
       <ul>
+        <li>
+          To send you one confirmation email when you join the waitlist, so you have
+          a record of it and a way to reach us.
+        </li>
         <li>To notify you when Servey is ready and share launch and pricing details.</li>
+        <li>
+          That is all. We do not send newsletters, drip sequences, or marketing from
+          anyone else.
+        </li>
         <li>We do not sell or rent your email address to anyone.</li>
-        <li>You can ask us to remove you from the waitlist at any time.</li>
+        <li>
+          You can leave at any time - reply &ldquo;unsubscribe&rdquo; to any email we
+          send, and we will remove you.
+        </li>
       </ul>
+      <p>
+        Waitlist email is delivered through <strong>Resend</strong>, which processes
+        your name and email address solely to send these messages on our behalf.
+      </p>
 
       <h2>Contact</h2>
       <p>
