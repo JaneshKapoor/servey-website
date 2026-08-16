@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
+import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
 import { faqs, features } from "@/lib/content";
 import "./globals.css";
@@ -165,6 +166,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <Analytics />
         <Toaster
           position="bottom-right"
           toastOptions={{

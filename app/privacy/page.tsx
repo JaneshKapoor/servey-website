@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" updated="July 2025">
+    <LegalPage title="Privacy Policy" updated="August 2026">
       <p>
         This is a placeholder privacy policy for the Servey marketing website while
         we finalize our full legal documentation ahead of launch. It describes our
@@ -31,11 +31,42 @@ export default function PrivacyPage() {
 
       <h2>What we collect</h2>
       <p>
-        On this website, the only personal information we collect is the{" "}
-        <strong>email address</strong> you voluntarily provide to join the waitlist,
-        along with basic metadata (the time of signup and which part of the page it
-        came from) so we can contact you about Servey&rsquo;s launch.
+        The only personal information you actively give us on this website is the{" "}
+        <strong>email address</strong> you provide to join the waitlist, along with
+        your name, country, the time of signup and which part of the page it came
+        from, so we can contact you about Servey&rsquo;s launch. Separately, we use
+        analytics to understand how the site is doing - described below.
       </p>
+
+      <h2>Analytics</h2>
+      <p>
+        We use <strong>PostHog</strong> to see how people find this site and whether
+        it is doing its job: which pages get read, which links get used, and how many
+        visitors go on to join the waitlist. We keep it as light-touch as we can:
+      </p>
+      <ul>
+        <li>
+          We do <strong>not</strong> build a personal profile for anonymous visitors,
+          and we never link analytics activity to the email address you give us on the
+          waitlist form.
+        </li>
+        <li>
+          We do <strong>not</strong> record your screen, your typing, or the contents
+          of any form on this site.
+        </li>
+        <li>
+          Your IP address is used to derive an approximate country, so we can see
+          where Servey is wanted. We use it for nothing else.
+        </li>
+        <li>
+          Analytics requests are served from <strong>servey.in</strong> rather than a
+          third-party domain, so the setup does not rely on third-party cookies.
+        </li>
+        <li>
+          If your browser sends a <strong>Do Not Track</strong> signal, we honour it
+          and collect nothing at all.
+        </li>
+      </ul>
 
       <h2>The Servey app</h2>
       <p>

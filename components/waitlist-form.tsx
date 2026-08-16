@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { countries } from "@/lib/countries";
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -51,6 +52,10 @@ export function WaitlistForm({
     }
 
     setStatus("submitting");
+    // `source` identifies which CTA this form was opened from, so the funnel
+    // below answers "which placement actually converts" without any extra
+    // instrumentation. `country` is the self-declared one, not IP-derived.
+    capture("waitlist_submitted", { source, country });
     try {
       const res = await fetch("/api/waitlist", {
         method: "POST",
@@ -66,10 +71,12 @@ export function WaitlistForm({
       if (!res.ok || !data.ok) {
         setStatus("idle");
         setError(data.error ?? "Something went wrong. Please try again.");
+        capture("waitlist_failed", { source, status: res.status });
         return;
       }
 
       setStatus("success");
+      capture("waitlist_signup", { source, country, duplicate: !!data.duplicate });
       if (data.duplicate) {
         toast.success("You're already on the list", {
           description: "We'll email you the moment Servey is ready.",
@@ -83,6 +90,7 @@ export function WaitlistForm({
     } catch {
       setStatus("idle");
       setError("Network error. Please try again.");
+      capture("waitlist_failed", { source, status: "network_error" });
     }
   }
 

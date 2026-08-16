@@ -6,9 +6,12 @@ on your iPhone and iPad, hardware-accelerated on your network and private
 peer-to-peer anywhere else.
 
 Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
-Sitemaps live too
-Added price tags on site
-Updated sitemaps
+
+> **Start here: [`docs/CONTEXT.md`](docs/CONTEXT.md)** — the full context primer for
+> this project (product, content system, SEO architecture, analytics, growth
+> constraints, and the standing rules that must not be broken). A print-ready
+> [`docs/context.pdf`](docs/context.pdf) is generated from it with
+> `npm run context:pdf`; edit the Markdown, never the PDF.
 
 ## Stack
 
@@ -28,9 +31,11 @@ npm run dev                  # http://localhost:3000
 ```
 
 ```bash
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # eslint
+npm run build        # production build
+npm run start        # serve the production build
+npm run lint         # eslint
+npm run indexnow     # ping IndexNow with the current sitemap URLs
+npm run context:pdf  # regenerate docs/context.pdf from docs/CONTEXT.md
 ```
 
 ## Project structure
@@ -58,6 +63,13 @@ lib/
   rate-limit.ts
 public/
   brand/                # Servey app-icon logos (used in nav/footer + favicon)
+  llms.txt              # curated map for AI answer engines
+docs/
+  CONTEXT.md            # full project context primer (source of truth)
+  context.pdf           # generated from CONTEXT.md — do not edit directly
+scripts/
+  indexnow.mjs          # IndexNow submission
+  build-context-pdf.mjs # CONTEXT.md -> context.pdf via headless Chrome
 source-material/        # the original brief + WebRTC explainer + one-pager HTML
 ```
 
@@ -110,6 +122,27 @@ success so the form still works in dev.
    - `www`: add a **CNAME** to `cname.vercel-dns.com`.
    - Set `servey.in` as the primary and redirect `www` → apex.
 5. Update `site.url` in `lib/site.ts` if the canonical domain ever changes.
+
+## Analytics
+
+**PostHog**, wired up in `lib/analytics.ts` + `components/analytics.tsx`.
+
+Set `NEXT_PUBLIC_POSTHOG_KEY` to switch it on — with the key unset every helper
+is a **silent no-op**, so local dev never pollutes production numbers. See
+`.env.example` for the EU-region and session-replay variables.
+
+- **Lazy-loaded.** `posthog-js` (~60 KB gz) is dynamically imported on first use
+  so it never lands in the shared bundle or delays first paint.
+- **Reverse-proxied** through `/ingest` (rewrites in `next.config.ts`) so content
+  blockers don't delete most of the data.
+- **No person profiles, no `identify()`, no session replay, and Do Not Track is
+  honoured.** Analytics is never linked to a waitlist email.
+- Funnel events: `waitlist_submitted` → `waitlist_signup` (with `duplicate`) /
+  `waitlist_failed`, plus `contact_message_sent`. Each carries `source`, so
+  "which CTA actually converts" is answerable out of the box.
+
+> If you change what is collected, update `app/privacy/page.tsx` in the same
+> commit — it makes specific promises about all of the above.
 
 ## Accessibility & performance
 
