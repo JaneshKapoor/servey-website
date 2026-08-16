@@ -54,51 +54,58 @@ const SUBJECT = "You're on the Servey waitlist";
 function textBody(name: string): string {
   return `Hi ${firstName(name)},
 
-You're on the list.
+You're on the list - thank you.
 
-Servey puts your Mac in your pocket - full screen mirroring, a real mouse and
+Servey puts your Mac in your pocket: full screen mirroring, a real mouse and
 keyboard, and a genuine terminal on your iPhone and iPad. Sharp on your own
 network, private peer-to-peer anywhere else.
 
-To be straight with you about where things stand: we are still building. There
-is nothing to download yet, and you have not been charged for anything. When
-Servey is ready you will get one email from us saying so, and the pricing will
-be exactly what is on the site.
+We're building it now, and you'll be among the first to know the moment it's
+ready to download.
 
-If you have a question, or you want to tell us what you would use Servey for,
-just reply to this. It reaches a person.
+Got a question, or something you'd want to use Servey for? Just reply to this -
+it reaches a person.
+
+Thanks once again for believing in us.
 
 Janesh
 ${site.url}
 
----
 You are receiving this because you joined the waitlist at ${site.domain}.
 Reply with "unsubscribe" and we will remove you.`;
 }
 
 function htmlBody(name: string): string {
-  // Inline styles only, one column, no external CSS - the constraints every
-  // mail client still imposes. Text-forward by design: image-heavy mail from a
-  // brand new sending domain is exactly what spam filters distrust.
+  // Deliberately looks like a letter, not a template. Gmail's Promotions
+  // classifier reads styled containers, background panels, wide banner images,
+  // buttons and multiple links as marketing, so this has none of them:
+  //   - one small square logo, inline at text size, not a full-width header
+  //   - no background colour, no card, no border radius, no CTA button
+  //   - exactly one link in the whole message
+  // The logo is the one concession that works against Primary placement; every
+  // other lever is pushed the other way to pay for it.
+  const first = escapeHtml(firstName(name));
   return `<!doctype html>
-<html><body style="margin:0;padding:0;background:#f7f9fa;">
-  <div style="max-width:520px;margin:0 auto;padding:32px 24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#16181c;">
-    <p style="margin:0 0 20px;font-size:20px;font-weight:600;letter-spacing:-0.02em;">Servey</p>
+<html><body style="margin:0;padding:0;">
+  <div style="max-width:500px;margin:0;padding:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#16181c;">
+    <img src="${site.url}/brand/servey-logo-192.png" width="40" height="40" alt="${site.name}"
+         style="width:40px;height:40px;border-radius:10px;display:block;margin:0 0 20px;">
 
-    <p style="margin:0 0 16px;">Hi ${escapeHtml(firstName(name))},</p>
+    <p style="margin:0 0 16px;">Hi ${first},</p>
 
-    <p style="margin:0 0 16px;"><strong>You're on the list.</strong></p>
+    <p style="margin:0 0 16px;">You&rsquo;re on the list - thank you.</p>
 
-    <p style="margin:0 0 16px;">Servey puts your Mac in your pocket - full screen mirroring, a real mouse and keyboard, and a genuine terminal on your iPhone and iPad. Sharp on your own network, private peer-to-peer anywhere else.</p>
+    <p style="margin:0 0 16px;">Servey puts your Mac in your pocket: full screen mirroring, a real mouse and keyboard, and a genuine terminal on your iPhone and iPad. Sharp on your own network, private peer-to-peer anywhere else.</p>
 
-    <p style="margin:0 0 16px;">To be straight with you about where things stand: we are still building. There is nothing to download yet, and you have not been charged for anything. When Servey is ready you will get one email from us saying so, and the pricing will be exactly what is on the site.</p>
+    <p style="margin:0 0 16px;">We&rsquo;re building it now, and you&rsquo;ll be among the first to know the moment it&rsquo;s ready to download.</p>
 
-    <p style="margin:0 0 16px;">If you have a question, or you want to tell us what you would use Servey for, just reply to this. It reaches a person.</p>
+    <p style="margin:0 0 16px;">Got a question, or something you&rsquo;d want to use Servey for? Just reply to this - it reaches a person.</p>
 
-    <p style="margin:0 0 4px;">Janesh</p>
-    <p style="margin:0 0 28px;"><a href="${site.url}" style="color:#0a7a3c;text-decoration:none;">${site.domain}</a></p>
+    <p style="margin:0 0 16px;">Thanks once again for believing in us.</p>
 
-    <hr style="border:none;border-top:1px solid #dfe4ea;margin:0 0 16px;">
+    <p style="margin:0 0 2px;">Janesh</p>
+    <p style="margin:0 0 24px;"><a href="${site.url}" style="color:#0a7a3c;">${site.domain}</a></p>
+
     <p style="margin:0;font-size:13px;color:#5b626b;">You are receiving this because you joined the waitlist at ${site.domain}. Reply with &ldquo;unsubscribe&rdquo; and we will remove you.</p>
   </div>
 </body></html>`;
@@ -122,16 +129,16 @@ export async function sendWaitlistConfirmation(opts: {
   name: string;
   email: string;
 }): Promise<SendResult> {
+  // No List-Unsubscribe header on purpose. It is one of the strongest signals
+  // Gmail uses to bucket mail as bulk marketing, and it is not required here:
+  // this is a one-to-one transactional reply to an action the person just took,
+  // not a campaign. The footer still tells them how to leave, in plain words, so
+  // the promise in the privacy policy holds. Add the header back for the launch
+  // broadcast, where it genuinely is bulk mail and Gmail expects it.
   return send({
     to: [opts.email],
     subject: SUBJECT,
     text: textBody(opts.name),
     html: htmlBody(opts.name),
-    // A mailto unsubscribe needs no endpoint to honour it, which keeps the
-    // promise in the footer true from day one. Gmail and Outlook both surface
-    // this as a one-click option.
-    headers: {
-      "List-Unsubscribe": `<mailto:${site.email}?subject=unsubscribe>`,
-    },
   });
 }
