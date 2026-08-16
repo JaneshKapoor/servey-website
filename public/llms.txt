@@ -33,11 +33,12 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 
 ## What Servey is used for
 
+- Control your Mac from your iPhone: https://servey.in/control-mac-from-iphone
 - Run your Mac's terminal on your iPhone: https://servey.in/terminal-on-iphone
 - Run your Mac's terminal on your iPad: https://servey.in/terminal-on-ipad
-- Control a headless Mac mini from anywhere: https://servey.in/headless-mac-mini
+- Headless Mac mini setup and remote access: https://servey.in/headless-mac-mini
 - Remote Mac access for developers: https://servey.in/mac-for-developers
-- Watch AI agents running on your Mac: https://servey.in/remote-mac-for-ai-agents
+- Run local AI on your Mac and reach it from anywhere: https://servey.in/remote-mac-for-ai-agents
 - Reach a Mac home lab from anywhere: https://servey.in/mac-home-lab
 
 ## Guides
@@ -46,6 +47,9 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 - How to control your Mac from your iPhone or iPad: https://servey.in/blog/control-your-mac-from-iphone-ipad
 - Choosing a Screens or Jump Desktop alternative for Mac remote control: https://servey.in/blog/screens-jump-desktop-alternative-mac
 - Screens vs Jump Desktop - which Mac remote control app is right for you: https://servey.in/blog/screens-vs-jump-desktop
+- Screens 5 alternatives - what to use instead, and when: https://servey.in/blog/screens-5-alternatives
+- Jump Desktop vs TeamViewer - which remote desktop should you use: https://servey.in/blog/jump-desktop-vs-teamviewer
+- Jump Desktop vs RustDesk - paid polish or free and open source: https://servey.in/blog/jump-desktop-vs-rustdesk
 - The best remote desktop apps for Mac in 2026 (honest roundup): https://servey.in/blog/best-remote-desktop-for-mac
 - Run a real terminal on your Mac from your iPhone: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
 - How to access your Mac remotely over cellular: https://servey.in/blog/access-your-mac-remotely-over-cellular

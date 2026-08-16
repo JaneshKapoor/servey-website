@@ -15,7 +15,7 @@ import {
   posts,
   relatedPosts,
 } from "@/lib/blog";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -41,13 +41,13 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       publishedTime: post.date,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
   };
 }
@@ -82,15 +82,16 @@ export default async function BlogPostPage({
       url: author.url,
       description: author.bio,
     },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      logo: { "@type": "ImageObject", url: `${site.url}/icon.png` },
-    },
+    // Reference the layout's Organization by @id rather than re-declaring it.
+    // Two inline copies drift apart silently; the use-case pages already use
+    // this idiom for the same reason.
+    publisher: { "@id": `${site.url}/#organization` },
     image: `${site.url}/opengraph-image`,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     keywords: post.keywords.join(", "),
   };
+  // Google retired FAQ rich results on 7 May 2026 - this earns no SERP
+  // treatment now, and is kept for the answer engines that still read it.
   const faqLd =
     postFaqs.length > 0
       ? {

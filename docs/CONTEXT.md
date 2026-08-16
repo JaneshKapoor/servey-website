@@ -96,6 +96,7 @@ npm run build        # production build
 npm run lint         # eslint
 npm run indexnow     # ping IndexNow with the current sitemap URLs
 npm run context:pdf  # regenerate docs/context.pdf from docs/CONTEXT.md
+npm run seo:audit    # assert the SEO invariants against live (or --base=localhost)
 ```
 
 ---
@@ -108,7 +109,7 @@ app/
                           #   <Analytics/>, Toaster, skip link
   page.tsx                # landing page — composes the sections
   globals.css             # design tokens (dark + light), utilities, keyframes
-  [useCase]/page.tsx      # the six use-case landing pages (see §5)
+  [useCase]/page.tsx      # the 7 use-case landing pages (see §5)
   blog/page.tsx           # blog index — H1 "Mac remote access guides"
   blog/[slug]/page.tsx    # post renderer + Article/FAQPage/BreadcrumbList JSON-LD
   privacy/  terms/        # legal pages
@@ -130,8 +131,8 @@ components/
 lib/
   site.ts                 # site constants — name, url, tagline, description, nav
   content.ts              # homepage copy: features, steps, comparison, faqs, pricing
-  blog.ts                 # all 12 posts + FAQ map + contentUpdated
-  use-cases.ts            # the six landing pages
+  blog.ts                 # all 15 posts + FAQ map + contentUpdated
+  use-cases.ts            # the 7 landing pages
   screenshots.ts          # typed registry of image slots
   analytics.ts            # lazy PostHog loader + capture helpers
   waitlist-providers.ts   # swappable Firebase / Formspree / Resend / console
@@ -145,7 +146,9 @@ docs/
   CONTEXT.md              # this document (source of truth)
   context.pdf             # generated — do not edit
 scripts/
-  indexnow.mjs  build-context-pdf.mjs
+  indexnow.mjs            # IndexNow submission
+  build-context-pdf.mjs   # CONTEXT.md -> context.pdf via headless Chrome
+  seo-audit.mjs           # asserts the SEO invariants; exits non-zero on failure
 source-material/          # original brief, WebRTC explainer, one-pager
 ```
 
@@ -165,7 +168,7 @@ Homepage sections: `trustItems`, `features` (6), `steps` (3), `comparison`
 `features` also feeds `SoftwareApplication.featureList` and `faqs` feeds the
 homepage `FAQPage` — so editing copy here updates the structured data.
 
-### `lib/blog.ts` — 12 posts
+### `lib/blog.ts` — 15 posts
 
 Blocks are a discriminated union:
 
@@ -181,7 +184,7 @@ type Block =
 `table` exists because comparison tables are the structure answer engines
 extract most reliably. Head-to-head posts should lead with one.
 
-`contentUpdated` (currently `2026-08-14`) is a single date that drives
+`contentUpdated` (currently `2026-08-16`) is a single date that drives
 `lastModified` across the sitemap. **Bump it when content is meaningfully
 revised** — it is deliberately not a build timestamp, because claiming every
 page changed on every deploy gets the signal discounted.
@@ -200,11 +203,35 @@ page changed on every deploy gets the signal discounted.
 | `stay-in-control-of-ai-agents-from-anywhere` | AI oversight |
 | `best-remote-desktop-for-mac` | Honest roundup (9 min) |
 | `termius-alternative-mac-terminal` | Termius comparison (8 min) |
+| `screens-5-alternatives` | Roundup — targets `screens 5 alternative` |
+| `jump-desktop-vs-teamviewer` | Head-to-head — the proven format, TeamViewer volume |
+| `jump-desktop-vs-rustdesk` | Head-to-head — free/open-source branch of intent |
 
-### `lib/use-cases.ts` — 6 landing pages, served by `app/[useCase]/page.tsx`
+The last three were added on 16 Aug 2026 in direct response to the query data in
+§7: competitor-vs-competitor is the only non-brand format earning clicks. In all
+three, **Servey is deliberately not the hero** — it appears once, late, labelled
+as our own pre-launch project, and each mention tells the reader to buy an
+established product if they need something today. That restraint is the reason
+these pages get read and cited; do not "improve" it into a sales pitch.
 
-`terminal-on-iphone` · `terminal-on-ipad` · `headless-mac-mini` ·
-`mac-for-developers` · `remote-mac-for-ai-agents` · `mac-home-lab`
+> **Internal linking works by keyword overlap, not anchors.** `p` blocks render
+> as plain text - `app/blog/[slug]/page.tsx` parses no markdown or HTML - so the
+> only real internal-link mechanism is exact-string keyword overlap feeding
+> `relatedPosts()`. Engineering the `keywords` array *is* the link graph.
+
+### `lib/use-cases.ts` — 7 landing pages, served by `app/[useCase]/page.tsx`
+
+`control-mac-from-iphone` · `terminal-on-iphone` · `terminal-on-ipad` ·
+`headless-mac-mini` · `mac-for-developers` · `remote-mac-for-ai-agents` ·
+`mac-home-lab`
+
+`control-mac-from-iphone` was added on 16 Aug 2026 and is **the commercial pillar
+for the core product intent**, which §7 shows was fragmented across ten phrasings
+earning zero clicks. It is first in the array, so it leads the cross-link mesh.
+Its `relatedSlug` points at `control-your-mac-from-iphone-ipad`, which is the
+*informational* spoke for the same intent - the two must reinforce each other,
+never compete. If you add another page targeting "control Mac from iPhone",
+you are re-creating the exact fragmentation this page was built to fix.
 
 **Why these exist.** Competitor research found Termius uses a landing-page
 *template technique*: ~70% shared structure, ~30% task-specific content, plus a
@@ -227,14 +254,14 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**22 URLs in `sitemap.xml`**, priority-ordered:
+**26 URLs in `sitemap.xml`**, priority-ordered:
 
 | Priority | URLs |
 |---|---|
 | 1.0 | `/` |
-| 0.9 | the 6 use-case pages *(above blog — these are the commercial pages)* |
+| 0.9 | the 7 use-case pages *(above blog — these are the commercial pages)* |
 | 0.8 | `/blog` |
-| 0.7 | the 12 blog posts |
+| 0.7 | the 15 blog posts |
 | 0.3 | `/privacy`, `/terms` |
 
 Not in the sitemap but live: `/robots.txt`, `/sitemap.xml`, `/feed.xml`,
@@ -260,6 +287,18 @@ This is the most invested-in part of the site. Change it carefully.
 > **Breadcrumb rule:** the number of `ListItem`s in `BreadcrumbList` must equal
 > the number of visible breadcrumb links. A mismatch is exactly what Google
 > penalises. This was shipped wrong once (3 in JSON-LD, 2 visible) and fixed.
+
+> **FAQ rich results are dead — the markup is not.** Google added the
+> deprecation notice on **7 May 2026**: FAQ rich results no longer render, the
+> Search Console report and Rich Results Test support were removed in June 2026,
+> and the API data went in August 2026. **Do not strip the `FAQPage` JSON-LD.**
+> `FAQPage` remains a valid Schema.org type, Google confirms unused structured
+> data does not affect Search, and answer engines still parse it. What changed is
+> the *expectation*: FAQ blocks no longer win SERP real estate, so they must earn
+> their place through user value and AI citability instead. Deprecated alongside
+> the June 2025 batch: `HowTo`, `SpecialAnnouncement`, `ClaimReview`,
+> `VehicleListing`, `EstimatedSalary`, `LearningVideo`, Course carousel. `QAPage`
+> is retained.
 
 ### Metadata rules
 - Title template is `%s - Servey`, which adds **9 characters**. Keep `metaTitle`
@@ -287,16 +326,45 @@ accepted (HTTP 200).
 A curated map for answer engines, including a "What Servey is used for" section
 pointing at the six use-case URLs. Keep it in sync when routes change.
 
-### Current Google Search Console picture (3-month view, as of Aug 2026)
+### Current Google Search Console picture (3-month view, to 14 Aug 2026)
 
-- 14 clicks · 502 impressions · **2.8% CTR** · **average position 14.9**
-- India: 9 clicks / 95 impressions (**9.5%**) — brand converts
-- US: 1 click / 95 impressions (**1.0%**) — non-brand does not rank yet
+**16 clicks · 626 impressions · 2.6% CTR · average position 15.8** across 39
+queries. Previous reading (to ~2 Aug): 14 clicks · 502 impressions · 2.8% ·
+position 14.9. Impressions are growing; position drifted slightly *down*, which
+is expected when new pages enter the index low and dilute the average.
 
-**Diagnosis:** position 14.9 is page two, which takes roughly 1% of clicks
-versus ~25% on page one. A 2.8% CTR is *above* par for that position, so the
+**Diagnosis:** position 15.8 is page two, which takes roughly 1% of clicks
+versus ~25% on page one. A 2.6% CTR is *above* par for that position, so the
 titles and descriptions are working — **this is a ranking problem, not a
 copywriting problem.** The fix is authority and coverage, not more rewrites.
+
+#### What the query data proves (the most useful thing in this document)
+
+Brand (`servey`) is 7 clicks / 131 impressions — **44% of all clicks from 21% of
+impressions.** Everything below is the non-brand picture.
+
+| Cluster | Impressions | Clicks | Read |
+|---|---|---|---|
+| **Competitor vs competitor** (screens vs jump desktop + variants) | ~58 | **2** | ✅ The only non-brand cluster earning clicks |
+| **AI on Mac** (run local ai on mac, mac ai agent…) | ~15 | 0 | Biggest non-competitor cluster |
+| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core product intent — fragmented |
+| **Headless Mac mini** (7 phrasings) | ~9 | 0 | Fragmented |
+| `airplayuiagent` | 4 | 0 | Accidental, off-intent (a macOS process name) |
+
+**Three conclusions that should drive content decisions:**
+
+1. **The comparison format is the only proven winner** — and specifically
+   *competitor-vs-competitor*, where Servey is not the subject. `screens vs jump
+   desktop` earns clicks; nothing else non-brand does. Build more of these.
+2. **The core product intent is fragmented across ~10 phrasings, each with 1-2
+   impressions and zero clicks** ("control mac with iphone", "iphone control
+   mac", "use iphone as mac remote", "access mac from iphone"…). That pattern
+   means Google reads the site as marginally relevant to all of them and
+   authoritative on none. The fix is a single strong pillar page for the intent,
+   with the existing blog post as its informational spoke — not more pages
+   competing for the same thing.
+3. **Pure how-to content is not ranking.** The informational posts generate
+   impressions but no clicks. Comparison and alternative pages do the work.
 
 ---
 

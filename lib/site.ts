@@ -11,6 +11,21 @@ export const site = {
   accent: "#22dc6e",
 } as const;
 
+/**
+ * The shared Open Graph / Twitter card image.
+ *
+ * Pass this object rather than the bare string "/opengraph-image": the string
+ * form emits only og:image, dropping width, height and alt. Some scrapers will
+ * not render a large summary card without explicit dimensions, so every page
+ * that passed a string was quietly shipping a weaker card than the homepage.
+ */
+export const ogImage = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: `${site.name} - control your Mac from your iPhone and iPad`,
+} as const;
+
 // Leading "/" so these also resolve from /blog and /privacy etc., not just the
 // homepage where the header also appears.
 export const nav = [

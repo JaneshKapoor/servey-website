@@ -45,6 +45,128 @@ export interface UseCase {
 
 export const useCases: UseCase[] = [
   /* ---------------------------------------------------------------- */
+  /**
+   * The commercial pillar for the core product intent. Search Console showed
+   * this demand arriving as ~10 different phrasings ("control mac with
+   * iphone", "remote access mac from iphone", "use iphone as mac remote", ...)
+   * with the site marginally relevant to all of them and authoritative on
+   * none, because no page existed for the whole job.
+   *
+   * The blog post `control-your-mac-from-iphone-ipad` owns the informational
+   * version of this query and is deliberately set as `relatedSlug` so the two
+   * reinforce each other instead of competing.
+   */
+  {
+    slug: "control-mac-from-iphone",
+    navLabel: "Control Mac from iPhone",
+    metaTitle: "Control your Mac from your iPhone remotely",
+    description:
+      "Use your iPhone as a remote for your Mac: the real desktop, a trackpad, a keyboard and a terminal, with no VPN, no port forwarding and no static IP.",
+    h1: "Control your Mac from your iPhone",
+    lede:
+      "Your Mac is where the work is. Your iPhone is what you actually have on you. Getting from one to the other should not require a VPN, a forwarded port or an IP address you have to remember.",
+    tiles: [
+      {
+        title: "The real desktop, not a file browser",
+        body: "You get your Mac's actual screen: your apps, your windows, your menu bar. Anything you could do sitting at the machine, you can do from the phone.",
+      },
+      {
+        title: "Mouse and keyboard that behave",
+        body: "The pointer moves the way a trackpad does, with a proper secondary click, and the keyboard reaches the keys iOS normally hides: Esc, Tab, Ctrl and the arrows.",
+      },
+      {
+        title: "A real terminal in the same app",
+        body: "When the job is command-shaped, switch to a genuine shell on the Mac rather than pointing a virtual mouse at a Terminal window.",
+      },
+      {
+        title: "Nothing to configure",
+        body: "No Remote Login, no port forward, no VPN profile and no static IP. Sign in with the same account on both devices and the Mac is listed.",
+      },
+    ],
+    sections: [
+      {
+        h2: "How do you control your Mac with your iPhone?",
+        body: [
+          "You run a host app on the Mac, sign in on both devices, and the Mac's screen appears on the phone with working input. From there the iPhone is a window onto the real machine: you move a pointer with an on-screen trackpad, click and right-click, type into any app with a full keyboard, and drop into a real terminal when a task is better typed than clicked.",
+          "Nothing is executed on the phone. The Mac does all the work and sends its screen; the phone sends back your taps and keystrokes. That is why the experience is your actual Mac rather than a mobile approximation of it - your files, your apps, your logins and your environment are already there, because it is the same machine you left at your desk.",
+        ],
+        bullets: [
+          "Screen mirroring for anything visual, at the Mac's real aspect ratio.",
+          "Trackpad, keyboard and a real shell, all in one session.",
+          "One account pairs your own devices; there is nothing else to set up.",
+        ],
+      },
+      {
+        h2: "Can you access your Mac from an iPhone when you are not at home?",
+        body: [
+          "Yes, and this is the part that decides whether a remote tool is actually useful. On the same Wi-Fi almost anything works, including the Screen Sharing already built into macOS. The moment you leave, your Mac sits behind a home router that does not accept inbound connections, and the tool has to solve that for you or hand the problem back.",
+          "The traditional answers all cost something. Forwarding a port puts a service on the public internet. A VPN is another thing to run and keep working. An overlay network means installing a client on every device. And if your ISP uses CGNAT, port forwarding is not available to you at all.",
+          "Servey pairs your devices through your account instead, then opens a private, end-to-end encrypted connection directly between them when you are away. There is nothing listening on a public address and nothing to change on the router. It is built to hold up on cellular and other strict networks, which is where remote access usually breaks.",
+        ],
+      },
+      {
+        h2: "How to control a MacBook from an iPhone remotely",
+        body: [
+          "A MacBook works exactly like any other Mac with one condition attached: it has to be awake and online when you reach for it. A desktop Mac on a shelf satisfies that by default. A laptop does not, because closing the lid or leaving it on battery will put it to sleep, and a sleeping Mac cannot answer.",
+          "The fix is a setting, not a product. Leave it on power and set macOS to prevent automatic sleeping when the display is off, or keep the lid open and let the display sleep on its own. If the machine is going to be unattended for a while, it is worth confirming it stays reachable before you rely on it.",
+          "Be clear about the limit: Servey cannot wake a Mac that is asleep and does not do Wake on LAN. It reaches a machine that is running but out of reach, which is a different thing from reaching a machine that is off.",
+        ],
+      },
+      {
+        h2: "What using an iPhone as a Mac remote is actually good for",
+        body: [
+          "It is at its best for short, decisive tasks where the cost is not the work but the getting there. Restart a service that has wedged. Check whether a build went green and rerun it if it did not. Dismiss the permission dialog that has been quietly blocking a job for an hour. Grab a file, start a download, kill a process before it fills the disk, or look at what an app is actually doing rather than what its log claims.",
+          "It is a poor fit for sustained work. A phone screen is a phone screen, and driving a full desktop through one is fine for five minutes and tiring for fifty. If you expect to work for a stretch rather than intervene for a moment, an iPad with a keyboard is a far better client and reaches the same Mac from the same account.",
+        ],
+      },
+      {
+        h2: "Where Apple's built-in options and other apps are better",
+        body: [
+          "If you never leave your own network, use macOS Screen Sharing. It is free, already installed, and on a good local link it is genuinely excellent. Paying for anything to do the same job on the same Wi-Fi would be a waste.",
+          "At the desk, Apple's proximity features win outright. Universal Control lets one keyboard and mouse cross between a Mac and an iPad, and Sidecar turns an iPad into a second display. Neither is remote access - both want the devices near each other - but when they apply, nothing beats them. Worth clearing up a common mix-up too: iPhone Mirroring in recent macOS runs the opposite direction, putting your iPhone on your Mac's screen, not your Mac on your phone.",
+          "And Screens and Jump Desktop have years of refinement, broader protocol support and, unlike Servey, they ship today. Servey is pre-launch. If you need something proven this afternoon, they have earned that and we have not.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I control my Mac with my iPhone?",
+        a: "Yes. With a host app running on the Mac you can see its screen on the iPhone and drive it with an on-screen trackpad and a full keyboard, plus a real terminal for command-line work. The Mac does the work; the phone is the screen and the input.",
+      },
+      {
+        q: "How do I access my Mac from my iPhone over cellular?",
+        a: "You need a tool that can connect without inbound access to your home network. Servey opens a private, end-to-end encrypted path directly between your own two devices, so there is no port to forward and no VPN to run, and it is built to work on strict mobile and carrier networks.",
+      },
+      {
+        q: "Do I need a VPN or port forwarding to control my Mac remotely?",
+        a: "Not with Servey. Devices pair through your account rather than through your router, so nothing is exposed on a public address. Other approaches, including plain VNC or SSH, do generally need a port forward, a VPN or an overlay network to reach a Mac from outside.",
+      },
+      {
+        q: "Can I use my iPhone as a mouse and keyboard for my Mac?",
+        a: "Yes, through the mirrored screen: the trackpad moves the Mac's real pointer and the keyboard types into whatever has focus. If the two devices are sitting on the same desk, though, Apple's Universal Control is the better tool for that particular job.",
+      },
+      {
+        q: "Will it work if my MacBook's lid is closed?",
+        a: "Only if the MacBook is awake. On power you can set macOS to prevent automatic sleeping when the display is off, which keeps it reachable. Servey cannot wake a sleeping Mac and does not support Wake on LAN.",
+      },
+      {
+        q: "Is Servey available now?",
+        a: "No. Servey is pre-launch, so this page describes how the app is built rather than anyone's experience of using it. There are no users and no reviews behind it, and the waitlist is open.",
+      },
+    ],
+    keywords: [
+      "control mac from iphone",
+      "remote access mac from iphone",
+      "how to control my mac with iphone",
+      "use iphone to control mac",
+      "use iphone as mac remote",
+      "how to control macbook from iphone remotely",
+      "access mac from iphone",
+    ],
+    relatedSlug: "control-your-mac-from-iphone-ipad",
+  },
+
+  /* ---------------------------------------------------------------- */
   {
     slug: "terminal-on-iphone",
     navLabel: "Terminal on iPhone",
@@ -245,10 +367,10 @@ export const useCases: UseCase[] = [
   {
     slug: "headless-mac-mini",
     navLabel: "Headless Mac mini",
-    metaTitle: "Control a headless Mac mini remotely",
+    metaTitle: "Headless Mac mini setup and remote access",
     description:
-      "Run a Mac mini with no monitor attached and still reach its screen and shell from an iPhone or iPad, including after a reboot. How it works.",
-    h1: "Control a headless Mac mini from anywhere",
+      "Set up a Mac mini with no monitor and still reach its screen and shell from an iPhone or iPad, after a reboot and from outside your network.",
+    h1: "Headless Mac mini setup and remote access",
     lede:
       "A Mac mini with no display is an excellent little server right up to the moment something goes wrong and you need to see the screen.",
     tiles: [
@@ -273,8 +395,28 @@ export const useCases: UseCase[] = [
       {
         h2: "What people actually run on a headless Mac mini",
         body: [
-          "A mini tucked on a shelf makes a very good always-on machine: a build agent, a media server, a backup target, a place to leave long jobs running, or simply a second Mac that is always awake. It is quiet, it sips power, and macOS-only tooling runs on it natively.",
-          "The catch is access. The moment it has no monitor, every problem becomes harder than it should be.",
+          "A mini tucked on a shelf makes a very good always-on server: a build agent, a media server, a backup target, a place to leave long jobs running, or simply a second Mac that is always awake. It is quiet, it sips power, and macOS-only tooling - Xcode, iOS automation, Apple media workflows - runs on it natively in a way no Linux box can match.",
+          "The catch is access. A Mac mini server is only as useful as your ability to reach it, and the moment it has no monitor, every problem becomes harder than it should be.",
+        ],
+      },
+      {
+        h2: "How do you set up a headless Mac mini?",
+        body: [
+          "Do the first-boot setup with a display attached, then change four settings before you take the monitor away. The order matters, because a couple of them are much harder to fix once the mini is already headless.",
+          "Turn on automatic login in Users and Groups, or a restart leaves the machine sitting at the login window where nothing is running yet. Note the honest trade-off: automatic login and FileVault are mutually exclusive, so an encrypted mini will always stop after a reboot until someone unlocks it. In Energy settings, prevent automatic sleeping when the display is off and enable restart after a power failure. Then install whatever remote access you plan to use and confirm it works while the display is still attached, because verifying it afterwards means finding a monitor again.",
+        ],
+        bullets: [
+          "Automatic login on, or accept that FileVault will block unattended reboots.",
+          "Prevent automatic sleeping when the display is off.",
+          "Start up automatically after a power failure.",
+          "Test remote access before the monitor comes off, not after.",
+        ],
+      },
+      {
+        h2: "Does macOS have a headless mode?",
+        body: [
+          "No. Unlike Linux, macOS has no server or headless mode to switch into - it always runs its full graphical session whether or not a display is plugged in. macOS Server as a product was discontinued years ago, and what remains is ordinary macOS with the sharing services built into System Settings.",
+          "That has a practical consequence worth understanding. A headless Mac mini is not a stripped-down machine; it is a completely normal Mac whose screen nobody is looking at. Every GUI-only prompt, login window, update dialog and modal still appears exactly as it would on a monitor. They are all still there, still blocking whatever sits behind them - you simply cannot see them. This is why a shell alone eventually runs out of road on a headless Mac, and why being able to pull up the actual screen matters more here than on a Linux server.",
         ],
       },
       {
@@ -306,6 +448,14 @@ export const useCases: UseCase[] = [
     ],
     faqs: [
       {
+        q: "Does macOS have a headless mode?",
+        a: "No. macOS has no headless or server mode to switch into; it always runs its full graphical session whether or not a display is attached. A headless Mac mini is just a normal Mac with nobody looking at its screen, which is why GUI prompts still appear and still block things.",
+      },
+      {
+        q: "What should I change before running a Mac mini headless?",
+        a: "Enable automatic login so a reboot does not stop at the login window, prevent automatic sleeping when the display is off, turn on restart after a power failure, and test your remote access while a monitor is still attached. Note that automatic login cannot be used with FileVault.",
+      },
+      {
         q: "Does the Mac mini need a monitor or a dummy plug?",
         a: "No. Servey streams the Mac's screen whether or not a display is attached, so you do not need a dummy HDMI adapter to keep it usable.",
       },
@@ -327,11 +477,13 @@ export const useCases: UseCase[] = [
       },
     ],
     keywords: [
-      "headless mac mini remote access",
+      "mac mini headless",
+      "headless mac mini setup",
+      "mac mini headless setup",
+      "macos headless mode",
+      "headless macos",
+      "mac mini server remote access",
       "control mac mini without monitor",
-      "mac mini home server remote control",
-      "remote desktop headless mac",
-      "terminal for mac mini without monitor",
     ],
     relatedSlug: "control-a-headless-mac-mini-remotely",
   },
@@ -427,7 +579,7 @@ export const useCases: UseCase[] = [
       "access development mac remotely",
       "check build from phone",
       "remote terminal for mac",
-      "control mac from iphone without vpn",
+      "developer mac remote access without vpn",
     ],
     relatedSlug: "who-is-servey-for-developers-home-labs",
   },
@@ -436,12 +588,12 @@ export const useCases: UseCase[] = [
   {
     slug: "remote-mac-for-ai-agents",
     navLabel: "For AI agents",
-    metaTitle: "Check on AI agents running on your Mac",
+    metaTitle: "Run local AI agents on your Mac from anywhere",
     description:
-      "Leave a coding agent working on your Mac and still watch it, answer its prompts and stop it, from an iPhone or iPad, wherever you are.",
-    h1: "Watch AI agents on your Mac from anywhere",
+      "Run AI agents and local models on your own Mac, then watch them, answer their prompts and stop them from an iPhone or iPad, wherever you are.",
+    h1: "Run local AI on your Mac, and reach it from anywhere",
     lede:
-      "Agents that run for a long time raise an awkward question: what happens when one needs you and you are not at the desk?",
+      "Running an AI agent on your own Mac is the private, fast, unmetered option. It has one weakness: agents that run for a long time need you, and you are not always at the desk.",
     tiles: [
       {
         title: "Answer the prompt that blocks it",
@@ -461,6 +613,20 @@ export const useCases: UseCase[] = [
       },
     ],
     sections: [
+      {
+        h2: "How do you run AI locally on a Mac?",
+        body: [
+          "You run the model or the agent as an ordinary app on the Mac itself, using Apple silicon's unified memory rather than a rented GPU. For local models that usually means a runner like Ollama, LM Studio or an MLX-based tool, where the model weights sit on your disk and inference happens on your machine. For coding agents it usually means a command-line agent running in a terminal, against your real checkout, with your toolchain and credentials already in place.",
+          "The constraint is memory, not cleverness. Model size is what decides whether something runs comfortably, so a Mac with more unified memory runs larger models; a base configuration will be happier with smaller ones. Beyond that the appeal is straightforward: your code and data never leave the machine, there is no per-hour VM you forgot to shut down, and the agent works against your actual environment instead of a blank sandbox you rebuild every time.",
+        ],
+      },
+      {
+        h2: "Should you give an AI agent access to your computer?",
+        body: [
+          "Cautiously, and with a way to stop it. An agent that can control your computer is useful precisely because it can act without asking, and that is the same reason it deserves limits. The sensible posture is to scope what it can touch, keep it away from credentials it does not need, prefer a directory it can safely make a mess in, and never leave a destructive action on autopilot because approving each one got tedious.",
+          "The other half is supervision. Most agent trouble is not dramatic; it is a long, quiet detour in the wrong direction, or a run that stopped forty minutes ago waiting for a yes or no. Being able to read the output and kill the process is worth more than any amount of configuration you set beforehand. That argues for keeping a terminal you can reach from wherever you happen to be, which is the specific gap Servey fills.",
+        ],
+      },
       {
         h2: "Why this is a real problem now",
         body: [
@@ -498,7 +664,15 @@ export const useCases: UseCase[] = [
     faqs: [
       {
         q: "Does Servey run or manage AI agents?",
-        a: "No. It gives you a terminal and a screen on your own Mac. Whatever agents or tools you run there are yours to choose and manage.",
+        a: "No. It gives you a terminal and a screen on your own Mac. Whatever agents or tools you run there are yours to choose and manage, and Servey has no integration with any of them.",
+      },
+      {
+        q: "How do I run AI locally on my Mac?",
+        a: "Install a local model runner such as Ollama, LM Studio or an MLX-based tool, or run a command-line coding agent in a terminal on the Mac. Everything executes on your hardware, so unified memory is the main limit on how large a model you can use comfortably.",
+      },
+      {
+        q: "Is it safe to give an AI agent access to my computer?",
+        a: "It is a trade-off, not a yes or no. Scope what the agent can reach, keep credentials it does not need out of its way, and keep a route to read its output and stop it. Supervision matters more than configuration, because most problems are long quiet detours rather than single dramatic actions.",
       },
       {
         q: "Can I answer an agent's prompt from my phone?",
@@ -518,13 +692,15 @@ export const useCases: UseCase[] = [
       },
     ],
     keywords: [
+      "run local ai on mac",
+      "mac ai agent",
+      "run ai locally on mac",
+      "how to give ai access to your computer",
+      "ai agent controls computer",
       "monitor ai agents on mac remotely",
       "check on coding agent from phone",
-      "run ai agents locally on mac",
-      "remote access mac ai agent",
-      "stay in control of ai agents",
     ],
-    relatedSlug: "run-ai-agents-on-your-mac-remotely",
+    relatedSlug: "run-ai-agents-locally-on-your-mac",
   },
 
   /* ---------------------------------------------------------------- */

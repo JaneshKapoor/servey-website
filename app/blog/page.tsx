@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { posts } from "@/lib/blog";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 
 export const metadata: Metadata = {
   // "Blog - Servey" alone is too short to say anything useful in a result.
@@ -18,7 +18,16 @@ export const metadata: Metadata = {
     title: `Blog - ${site.name}`,
     description:
       "Guides on controlling your Mac from your iPhone and iPad - remote desktop, screen mirroring, and a real terminal.",
-    images: ["/opengraph-image"],
+    images: [ogImage],
+  },
+  // Without its own twitter block this page inherited the root layout's, so the
+  // card read "Servey - Your Mac. In your pocket." while og:title said "Blog".
+  twitter: {
+    card: "summary_large_image",
+    title: `Blog - ${site.name}`,
+    description:
+      "Guides on controlling your Mac from your iPhone and iPad - remote desktop, screen mirroring, and a real terminal.",
+    images: [ogImage],
   },
 };
 
@@ -37,7 +46,7 @@ export default function BlogIndexPage() {
     "@id": `${site.url}/blog`,
     name: `${site.name} Blog`,
     url: `${site.url}/blog`,
-    publisher: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: { "@id": `${site.url}/#organization` },
     blogPost: sorted.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,

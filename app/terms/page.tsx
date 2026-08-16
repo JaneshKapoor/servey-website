@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
 import { ContactDialog } from "@/components/contact-dialog";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service and waitlist rules",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: `${site.url}/terms`,
     title: `Terms of Service - ${site.name}`,
     description: "The terms for using the Servey website and joining the waitlist.",
-    images: ["/opengraph-image"],
+    images: [ogImage],
   },
 };
 

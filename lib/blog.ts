@@ -875,6 +875,388 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "screens-5-alternatives",
+    metaTitle: "Screens 5 alternatives for Mac and iPad",
+    title: "Screens 5 alternatives: what to use instead, and when",
+    description:
+      "Honest Screens 5 alternatives for controlling a Mac from an iPhone or iPad - Jump Desktop, RustDesk, Chrome Remote Desktop, Screen Sharing and more.",
+    date: "2026-08-16",
+    keywords: [
+      "Screens 5 alternative",
+      "Screens alternative",
+      "Screens 5 vs Jump Desktop",
+      "best remote desktop for Mac",
+      "best Mac remote desktop app",
+    ],
+    readingMinutes: 7,
+    lede:
+      "Screens is a genuinely good app, so most people searching for an alternative have a specific reason: a platform it does not cover, a feature it does not have, or a licence change they did not want. Here is what to switch to for each reason - and when the honest answer is to stay put.",
+    body: [
+      {
+        type: "table",
+        caption:
+          "Screens 5 and the main alternatives, compared by the job each one is actually best at.",
+        headers: [
+          "Tool",
+          "Best for",
+          "Platforms",
+          "Access from outside your network",
+          "Real terminal",
+        ],
+        rows: [
+          [
+            "Screens 5",
+            "The most polished Apple-only experience",
+            "macOS, iOS, iPadOS",
+            "Screens Connect companion app",
+            "No",
+          ],
+          [
+            "Jump Desktop",
+            "Windows and Linux machines too",
+            "macOS, iOS, iPadOS, Windows, Android",
+            "Jump Desktop Connect, or your own RDP/VNC route",
+            "No",
+          ],
+          [
+            "RustDesk",
+            "Free, open source, self-hosting",
+            "macOS, Windows, Linux, iOS, Android",
+            "Project relay by default, or a relay you host",
+            "No",
+          ],
+          [
+            "Chrome Remote Desktop",
+            "The fastest free setup",
+            "Browser, plus iOS and Android apps",
+            "Works anywhere through your Google account",
+            "No",
+          ],
+          [
+            "macOS Screen Sharing",
+            "Free, already on your Mac",
+            "macOS host, VNC clients elsewhere",
+            "VPN or port forwarding",
+            "No - SSH separately",
+          ],
+          [
+            "Splashtop",
+            "Streaming-heavy and graphics work",
+            "macOS, Windows, Linux, iOS, Android",
+            "Works anywhere through your account",
+            "No",
+          ],
+          [
+            "Servey (pre-launch)",
+            "One Mac, from an iPhone or iPad",
+            "macOS host; iPhone and iPad client",
+            "Automatic after signing in on both devices",
+            "Yes",
+          ],
+        ],
+      },
+      { type: "h2", text: "Why do people look for a Screens 5 alternative?" },
+      {
+        type: "p",
+        text: "In practice there are four reasons, and which one applies to you decides the answer. The first is platform: Screens is Apple-only by design, so the moment you need to reach a Windows PC or a Linux box it cannot help. The second is licensing - Screens has changed how it is sold across major versions, and some long-time users went looking after an upgrade rather than because of the app itself. The third is the connection story: reaching your Mac from outside your home network depends on the Screens Connect companion, which is one more moving part to keep running. The fourth is scope: Screens mirrors a screen, and if what you actually wanted was a command line, a screen-only tool means driving a GUI with a trackpad overlay to reach a shell. None of these are bugs. They are the edges of a deliberately narrow product.",
+      },
+      { type: "h2", text: "What is the closest direct replacement for Screens 5?" },
+      {
+        type: "p",
+        text: "Jump Desktop is the closest like-for-like replacement, and it is the one most people end up on. It covers the same core job - see and drive a remote desktop from a Mac, iPhone or iPad - and then goes further in the direction Screens deliberately does not: it speaks RDP and VNC as well as its own Fluid protocol, and it runs on Windows and Android too. Jump Desktop Connect handles reaching a machine from outside your network without router configuration, which is the same problem Screens Connect solves. The trade-off is character rather than capability: Screens is the more focused, more Apple-feeling app, and people who chose it for that will notice Jump Desktop is built to serve a wider audience. If you want that comparison in detail, we have a separate head-to-head on Screens versus Jump Desktop.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Pick Jump Desktop if you also need Windows or Linux machines, or want protocol flexibility.",
+          "Pick Jump Desktop if you want an established, actively developed app with a long track record on iPad.",
+          "Stay with Screens if Apple-native polish was the reason you bought it in the first place.",
+        ],
+      },
+      { type: "h2", text: "Is there a free alternative to Screens 5?" },
+      {
+        type: "p",
+        text: "Yes, three of them, and each is free for a different reason. macOS Screen Sharing is already on your Mac: turn it on in System Settings under Sharing and connect from any VNC client. It costs nothing and is perfectly good on your own Wi-Fi, but reaching it from outside means a VPN or port forwarding, which is exactly the work the paid apps exist to remove. Chrome Remote Desktop is free from Google and is by far the fastest thing to get working from anywhere - install, sign in, done - but it is basic by design, with touch input that was not built around iPad and no terminal. RustDesk is free and open source, cross-platform, and can be fully self-hosted if you would rather not trust anyone else's relay. The cost there is your time rather than your money.",
+      },
+      { type: "h2", text: "What if you mostly need a command line, not a screen?" },
+      {
+        type: "p",
+        text: "Then a remote desktop app is the wrong shape of tool, and you will be happier with a terminal. A large amount of what people use Screens for is restarting a service, tailing a log, re-running a build, or checking on a headless Mac Mini - all of which are faster typed than clicked. SSH from a phone works if you are willing to enable Remote Login and get a route in from outside, usually a VPN, a forwarded port or a jump host. A dedicated mobile SSH client such as Termius handles the fleet case well. What none of the screen-first apps in the table above give you is a genuine shell alongside the picture, so today you are generally choosing one or the other rather than getting both in one app.",
+      },
+      { type: "h2", text: "When Screens 5 is still the right answer" },
+      {
+        type: "p",
+        text: "Stay with Screens if your setup is entirely Apple and the app already works for you. It is a mature, well-designed product from Edovia, it feels like a Mac and iOS app should, and switching costs you a paid licence and a working configuration in exchange for problems you may not have. Specifically, Screens is still the better choice when:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Every machine you need to reach is a Mac, and every device you reach it from is an Apple one.",
+          "Native design and a quiet interface matter more to you than protocol breadth.",
+          "Screens Connect already works on your network and you have no reason to touch it.",
+          "You need something proven today, from a vendor with years of shipping behind it.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is what we are building, so weigh this section accordingly. It is aimed at a narrower version of the problem than Screens: controlling one Mac from an iPhone or iPad, with no network configuration at all, and with a real shell sitting next to the mirrored screen rather than behind it. Setup is signing in with Google on both devices - no VPN, no port forwarding, no companion service to keep running - and it picks its own path, streaming directly when both devices are on the same Wi-Fi and falling back to a private end-to-end encrypted connection between your own devices when you are away.",
+      },
+      {
+        type: "p",
+        text: "The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is pre-launch and waitlist-only: there is nothing to download today, no users, and no independent reviews to check. If you need a working alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.",
+      },
+      { type: "h2", text: "How to choose in one minute" },
+      {
+        type: "ul",
+        items: [
+          "Need Windows or Linux as well as Macs? Jump Desktop.",
+          "Want free, and never leave your own Wi-Fi? macOS Screen Sharing.",
+          "Want free and working from anywhere with zero effort? Chrome Remote Desktop.",
+          "Want free, open source, and happy to run your own server? RustDesk.",
+          "Want your iPad as a second monitor rather than a remote control? Sidecar, Duet or Astropad - a different category entirely.",
+          "Mostly typing commands? A terminal or SSH client, not a remote desktop.",
+          "Want zero configuration plus a genuine terminal on one Mac? Servey, once it launches.",
+        ],
+      },
+      { type: "h2", text: "A note on pricing" },
+      {
+        type: "p",
+        text: "Pricing in this category moves, and licence models have changed more than once, so check each vendor's own page before you buy rather than trusting any comparison article - including this one. What is stable enough to plan around is the shape of each model: the built-in and open-source options cost nothing up front, the Apple-focused apps are commercial products, and the business-oriented tools bill per seat. Match the model to how you actually use the thing, not to the headline number.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "If you are leaving Screens 5 because you need more platforms, Jump Desktop is the answer. If you are leaving over cost, Screen Sharing, Chrome Remote Desktop and RustDesk all do the core job for free with different trade-offs. If you are leaving because you wanted a terminal, no screen-first app on this list will fix that - and that is the gap Servey is being built into. If none of those describe you, staying with Screens is a perfectly good decision.",
+      },
+    ],
+  },
+  {
+    slug: "jump-desktop-vs-teamviewer",
+    metaTitle: "Jump Desktop vs TeamViewer: which to pick",
+    title: "Jump Desktop vs TeamViewer: which remote desktop should you use?",
+    description:
+      "An honest head-to-head of Jump Desktop and TeamViewer for Mac - what each one is really built for, where each genuinely wins, and how to choose.",
+    date: "2026-08-16",
+    keywords: [
+      "Jump Desktop vs TeamViewer",
+      "TeamViewer alternative Mac",
+      "Jump Desktop alternative Mac",
+      "best remote desktop for Mac",
+      "control Mac remotely",
+    ],
+    readingMinutes: 7,
+    lede:
+      "Jump Desktop and TeamViewer both put a distant computer on your screen, which makes them look like competitors. They were built for different jobs - reaching your own machines versus supporting other people's - and that difference decides the answer more than any feature list does.",
+    body: [
+      {
+        type: "table",
+        caption: "Jump Desktop and TeamViewer at a glance.",
+        headers: ["", "Jump Desktop", "TeamViewer"],
+        rows: [
+          ["Built for", "Reaching machines you own", "IT support and managed fleets"],
+          [
+            "Client platforms",
+            "macOS, iOS, iPadOS, Windows, Android",
+            "Windows, macOS, Linux, iOS, Android, ChromeOS and more",
+          ],
+          [
+            "Protocols",
+            "RDP and VNC, plus its own Fluid protocol",
+            "Its own proprietary protocol",
+          ],
+          [
+            "Connect with nothing installed on the host",
+            "Yes, over RDP or VNC",
+            "No, TeamViewer must be on both ends",
+          ],
+          [
+            "Helping someone else, live",
+            "Not what it is for",
+            "Yes - session codes, chat, remote reboot",
+          ],
+          ["Unattended access", "Yes", "Yes, with a device management console"],
+          ["File transfer", "Yes", "Yes"],
+          [
+            "Pricing model",
+            "Paid app, bought per platform; separate team plans",
+            "Free for genuine personal use; per-seat subscription for business",
+          ],
+          [
+            "Touch input on iPad",
+            "A long-standing strength",
+            "Workable, but not the design centre",
+          ],
+          [
+            "Most-cited weakness",
+            "No Linux client of its own",
+            "Commercial-use detection can flag personal users",
+          ],
+          ["Real terminal", "No", "No"],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Choose Jump Desktop if you are reaching your own computers, especially from an iPad or iPhone, and you want the best input feel for the money. Choose TeamViewer if you need to support machines other people are sitting at, cover platforms beyond Apple and Windows, or manage many devices from one console with logging and access control. The two overlap on the narrow case of unattended access to your own desktop, and that is the only case where the choice is genuinely close. For everything else, one of them is clearly the wrong shape and the decision is easy once you name your actual job.",
+      },
+      { type: "h2", text: "What is Jump Desktop actually for?" },
+      {
+        type: "p",
+        text: "Jump Desktop is a personal remote-control app for machines you own. It speaks RDP and VNC, which means it can connect to a Mac with Screen Sharing enabled or a Windows PC with Remote Desktop turned on without installing anything extra on the host, and it adds its own Fluid protocol for a faster, more responsive session when you do install its companion. Jump Desktop Connect handles the away-from-home case so you are not forwarding ports. Its reputation on iPad is the thing people mention most: the trackpad, keyboard and gesture handling were clearly designed by someone who uses them daily, rather than bolted onto a desktop app. It is a paid product with no free tier, and that is the trade you are making - you pay once instead of maintaining a licence relationship.",
+      },
+      { type: "h2", text: "What is TeamViewer actually for?" },
+      {
+        type: "p",
+        text: "TeamViewer is a remote-support and device-management platform that happens to include remote desktop. Its defining feature is the attended session: someone reads you a code over the phone, you connect, and you fix their machine - no account, no network knowledge, no firewall rules on their end. Around that it has built unattended access, a management console, group and permission structures, session logging, file transfer, remote printing and support for platforms well beyond the consumer ones, including Linux, ChromeOS and embedded devices. It is free for genuine personal use and sold per seat for business use. Understanding it as support software rather than as a nicer VNC explains almost everything about how it behaves, including the parts individual users find heavy.",
+      },
+      { type: "h2", text: "Where TeamViewer is genuinely better than Jump Desktop" },
+      {
+        type: "p",
+        text: "TeamViewer wins clearly on reach and on helping other people, and it is not close. If any of the following describe you, Jump Desktop is the wrong tool and you should stop comparing:",
+      },
+      {
+        type: "ul",
+        items: [
+          "You need to help a relative or a colleague fix their machine live, with them sitting in front of it. Jump Desktop has no equivalent of the code-based attended session.",
+          "You need Linux, ChromeOS or less common platforms as first-class clients, not just as things you connect to.",
+          "You manage more than a handful of devices and want a console, groups, permissions, and session logs.",
+          "You need it to work through a corporate firewall you do not control, which TeamViewer is unusually good at.",
+          "You want a capable free option for personal use, which Jump Desktop does not offer at all.",
+          "You need supporting features like remote printing, wake-on-LAN, or session recording for compliance.",
+        ],
+      },
+      { type: "h2", text: "Where Jump Desktop is genuinely better than TeamViewer" },
+      {
+        type: "p",
+        text: "Jump Desktop wins on the individual-user experience and on cost predictability. Its touch input on iPad is better tuned than TeamViewer's, which matters enormously if the iPad is your main client rather than an occasional one. It can connect to standard RDP and VNC hosts with no agent installed, so it fits into setups you did not build for it. Its pricing is a paid app rather than an ongoing per-seat relationship, which suits a person with three machines far better than a subscription designed for a support desk. And it avoids TeamViewer's most-complained-about behaviour: automated commercial-use detection, which sometimes flags heavy personal users and interrupts sessions until they resolve it. If you are one person reaching your own computers, that difference alone often decides it.",
+      },
+      { type: "h2", text: "Which is better for controlling a Mac from an iPad?" },
+      {
+        type: "p",
+        text: "Jump Desktop, for most people, and the reason is input rather than picture quality. Driving a desktop operating system through a touchscreen is a hard interaction problem - you need a precise pointer, a right click that does not require a menu dive, modifier keys, and text selection that behaves. Jump Desktop has spent years on that specific problem and it shows. TeamViewer will do the job, and if you already run it for support work there is no reason to add a second app, but its touch layer reads as a port of a desktop interface rather than something designed for a tablet. If your workflow is genuinely iPad-first, that gap is felt within about five minutes of real use.",
+      },
+      { type: "h2", text: "What about pricing?" },
+      {
+        type: "p",
+        text: "Compare the models rather than the numbers, because the numbers change and both vendors restructure their plans periodically. Jump Desktop is a paid app you buy for the platforms you use, with separate plans aimed at teams. TeamViewer is free for genuine personal use and sold as a per-seat subscription for business, with tiers based on concurrent users and managed devices. That means a single person with a few of their own machines usually pays less overall with Jump Desktop, while an organisation supporting many endpoints gets far more for its money from TeamViewer. Check both vendors' current pricing pages before you commit - and if you will use a tool for anything that could count as work, read TeamViewer's commercial-use terms first rather than after.",
+      },
+      { type: "h2", text: "Where a newer option like Servey fits" },
+      {
+        type: "p",
+        text: "Neither of these tools treats the command line as a first-class thing, and both make you think about setup at least once. That is the narrow gap Servey is being built into: one Mac, reached from an iPhone or iPad, with a genuine shell alongside the mirrored screen and no VPN, ports or IP addresses to configure - you sign in with Google on both devices. It is Apple-only, it reaches only a Mac running its host app, and it is pre-launch and waitlist-only, so there is nothing to install today and no track record to check. It is not a replacement for either product here; it is one to watch if the specific thing you keep wanting is a terminal in your pocket.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Jump Desktop is the better personal remote-control app, particularly from an iPad, and the better value for one person with their own machines. TeamViewer is the better support and fleet-management platform, covers far more platforms, and is the only one of the two that solves the problem of helping someone else with their computer. Neither is a compromise choice - they are different products that share a screenshot. Name the job first and the answer follows.",
+      },
+    ],
+  },
+  {
+    slug: "jump-desktop-vs-rustdesk",
+    metaTitle: "Jump Desktop vs RustDesk: an honest look",
+    title: "Jump Desktop vs RustDesk: paid polish or free and open source?",
+    description:
+      "Jump Desktop vs RustDesk for Mac remote access - a paid, polished app against a free open-source one you can self-host. Where each genuinely wins.",
+    date: "2026-08-16",
+    keywords: [
+      "Jump Desktop vs RustDesk",
+      "RustDesk alternative Mac",
+      "free remote desktop for Mac",
+      "best remote desktop for Mac",
+      "Jump Desktop alternative Mac",
+    ],
+    readingMinutes: 6,
+    lede:
+      "This comparison is really a question about what you would rather spend: money or time. Jump Desktop is a paid app that works out of the box. RustDesk is free, open source, and can be run entirely on infrastructure you control - if you are willing to run it.",
+    body: [
+      {
+        type: "table",
+        caption: "Jump Desktop and RustDesk, side by side.",
+        headers: ["", "Jump Desktop", "RustDesk"],
+        rows: [
+          ["Licence", "Commercial, closed source", "Open source (AGPL)"],
+          [
+            "Cost model",
+            "Paid app, bought per platform",
+            "Free; a paid self-hosted server edition exists",
+          ],
+          [
+            "Platforms",
+            "macOS, iOS, iPadOS, Windows, Android",
+            "macOS, Windows, Linux, iOS, Android, web",
+          ],
+          [
+            "Protocols",
+            "RDP and VNC, plus its own Fluid protocol",
+            "Its own protocol only",
+          ],
+          [
+            "Connect to a host with nothing extra installed",
+            "Yes, over RDP or VNC",
+            "No, RustDesk needed on both ends",
+          ],
+          [
+            "Away-from-home access",
+            "Jump Desktop Connect",
+            "Project-run relay by default, or your own",
+          ],
+          ["Self-hosting", "No", "Yes - run your own ID and relay servers"],
+          ["Linux", "Connect to it over VNC", "First-class client and host"],
+          ["Touch input on iPad", "A long-standing strength", "Functional, less refined"],
+          ["Support", "Commercial vendor", "Community, with paid options"],
+          ["Real terminal", "No", "No"],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Choose Jump Desktop if you want remote access to work well immediately and the input experience on an iPad matters to you. Choose RustDesk if you want to pay nothing, keep the source auditable, or run the whole thing on servers you control so no third party sits between your devices. The honest framing is that these are not competing on quality so much as on posture: one is a product you buy and stop thinking about, the other is infrastructure you adopt. People who are happy with RustDesk are usually people who enjoy running their own services. People who are happy with Jump Desktop usually wanted the problem to go away.",
+      },
+      { type: "h2", text: "What RustDesk is genuinely better at" },
+      {
+        type: "p",
+        text: "RustDesk wins outright on cost, transparency and control, and those are real advantages rather than consolation prizes. It is free, so there is no licence to buy for each platform and no per-device maths as your machine count grows. It is open source under the AGPL, so the code can be inspected by anyone - a meaningfully stronger position than trusting a vendor's description of its own encryption. Most importantly it can be fully self-hosted: run your own ID and relay servers and no third-party infrastructure is involved in your sessions at all, which is something none of the commercial options in this category can offer. It also treats Linux as a first-class platform on both ends, where Jump Desktop can only connect to Linux over VNC.",
+      },
+      { type: "h2", text: "What Jump Desktop is genuinely better at" },
+      {
+        type: "p",
+        text: "Jump Desktop wins on polish, on protocol flexibility, and on the specific experience of driving a desktop from a touchscreen. Its iPad input handling - pointer precision, right click, modifier keys, text selection - has had years of attention and is noticeably ahead of RustDesk's mobile clients, which are functional but clearly secondary to the desktop experience. It also speaks RDP and VNC, so it can connect to a Mac with Screen Sharing on or a Windows box with Remote Desktop enabled without installing anything on the host at all, while RustDesk requires its own software on both ends. And there is a vendor to hold responsible when something breaks, versus a community issue tracker.",
+      },
+      { type: "h2", text: "Is RustDesk safe to use?" },
+      {
+        type: "p",
+        text: "The code is open and auditable, which is a genuine security advantage, but the default configuration deserves a clear-eyed look. Out of the box, RustDesk routes connection setup through relay servers run by the project rather than by you. Sessions are encrypted, but you are still trusting infrastructure operated by a third party, and if that is not acceptable then self-hosting is the answer - it is supported, documented, and the main reason people choose RustDesk in the first place. Worth stating separately: remote-access tools of every brand are a favourite of phone scammers, so never install any of them because someone who called you asked you to. That warning applies equally to RustDesk, TeamViewer and everything else in the category, and it is about the caller, not the software.",
+      },
+      { type: "h2", text: "Which should you pick for a Mac?" },
+      {
+        type: "p",
+        text: "If your client is an iPhone or iPad, Jump Desktop is the more comfortable choice, and the gap is in input rather than picture. If your client is another desktop and you value self-hosting, RustDesk is excellent and costs nothing. A reasonable middle path that a lot of people land on: use macOS Screen Sharing on your own Wi-Fi where it is already free and installed, and add one of these two for the away-from-home case. Both handle that case without router configuration - Jump Desktop through Jump Desktop Connect, RustDesk through a relay you either borrow or host - which is the part people most often give up on when they try to solve it themselves.",
+      },
+      {
+        type: "ul",
+        items: [
+          "iPad-first, want it to just work: Jump Desktop.",
+          "Cost is the deciding factor: RustDesk.",
+          "You want nobody else's servers involved at all: RustDesk, self-hosted.",
+          "You need Linux on both ends: RustDesk.",
+          "You need to reach plain RDP or VNC hosts with no agent: Jump Desktop.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is our own project and it does something narrower than either of these. It puts one Mac on your iPhone or iPad - sharp screen mirroring plus a genuine shell on the Mac, not a web console - with no VPN, ports or relay server to configure, because you just sign in with Google on both devices. It is Apple-only, it reaches only a Mac running its host app, it cannot be self-hosted, and it is pre-launch and waitlist-only, so there is nothing to download and nothing independent to check yet. If you are choosing a tool to use this week, pick one of the two above. Servey is worth watching only if the terminal is the part you keep missing.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most from it. Jump Desktop is the better answer if you want a finished product, the best touch input in the category, and the ability to connect to machines that were never set up for it. Both are legitimate choices, and the deciding question is not which is better software but whether you would rather spend money or time.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -894,7 +1276,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-14";
+export const contentUpdated = "2026-08-16";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -902,6 +1284,84 @@ export const contentUpdated = "2026-08-14";
  * contained (BLUF): the first sentence should stand on its own as the answer.
  */
 export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
+  "screens-5-alternatives": [
+    {
+      q: "What is the best alternative to Screens 5?",
+      a: "Jump Desktop is the closest like-for-like alternative. It does the same core job and adds RDP and VNC support plus Windows and Android clients, so it covers the machines Screens cannot. If cost is your reason for switching, macOS Screen Sharing, Chrome Remote Desktop and RustDesk are all free with different trade-offs.",
+    },
+    {
+      q: "Is there a free Screens 5 alternative?",
+      a: "Yes, three. macOS Screen Sharing is built into every Mac and free on your own network, but needs a VPN or port forwarding from outside. Chrome Remote Desktop is free and works anywhere with almost no setup, though it is basic and not tuned for iPad. RustDesk is free, open source and can be self-hosted if you want no third party involved.",
+    },
+    {
+      q: "Why did people start looking for Screens alternatives?",
+      a: "Mostly for four reasons: Screens is Apple-only, so it cannot reach Windows or Linux; its licensing has changed across major versions; reaching your Mac from outside depends on the Screens Connect companion; and it mirrors a screen but has no terminal. None of those are defects - they are the edges of a deliberately focused product.",
+    },
+    {
+      q: "Does any Screens alternative include a real terminal?",
+      a: "None of the established screen-first apps do - Screens, Jump Desktop, RustDesk, Splashtop and Chrome Remote Desktop are all mirroring tools, so you drive a GUI to reach a shell. For command-line work you generally add SSH or a mobile SSH client. Servey is being built to include a genuine shell alongside mirroring, but it is pre-launch and waitlist-only.",
+    },
+    {
+      q: "Should I just stay with Screens 5?",
+      a: "Often, yes. If every machine you reach is a Mac, every device you reach it from is an Apple one, and your setup already works, switching costs you a licence and a working configuration to solve problems you may not have. Screens is a mature, well-designed product and native polish is a legitimate reason to keep it.",
+    },
+    {
+      q: "Can I use an iPad as a second monitor instead?",
+      a: "That is a different category. Apple Sidecar, Duet Display and Astropad extend your Mac's desktop onto an iPad sitting next to it. Remote desktop apps like Screens control a Mac that is somewhere else. If your Mac is within arm's reach, you probably want the second-monitor tools, not this list.",
+    },
+  ],
+  "jump-desktop-vs-teamviewer": [
+    {
+      q: "Is Jump Desktop better than TeamViewer?",
+      a: "Neither is better in general - they solve different problems. Jump Desktop is the better personal remote-control app for machines you own, especially from an iPad, and the better value for one person. TeamViewer is the better platform for supporting other people's machines, covering Linux and ChromeOS, and managing many devices with logging and access control.",
+    },
+    {
+      q: "Which is better for controlling a Mac from an iPad?",
+      a: "Jump Desktop, for most people, and the difference is input rather than picture quality. Precise pointing, right click, modifier keys and text selection on a touchscreen are a hard interaction problem, and Jump Desktop has spent years on it. TeamViewer works, but its touch layer reads as a port of a desktop interface.",
+    },
+    {
+      q: "Is TeamViewer free for personal use?",
+      a: "Yes, TeamViewer is free for genuine personal, non-commercial use, and paid per seat for business. Its automated commercial-use detection sometimes flags heavy personal users and interrupts sessions until it is resolved, which is the most common complaint from individuals. Jump Desktop has no free tier at all, so you are comparing free-with-conditions against paid-and-simple.",
+    },
+    {
+      q: "Can Jump Desktop help someone else fix their computer?",
+      a: "Not really - that is TeamViewer's core strength and Jump Desktop has no equivalent. TeamViewer's attended session lets someone read you a code over the phone so you can connect to the machine they are sitting at, with no account or network setup on their end. If remote support is your job, that alone decides it.",
+    },
+    {
+      q: "Does either one give me a terminal on my Mac?",
+      a: "No. Both are screen-mirroring tools, so reaching a shell means driving the Mac's GUI with a remote pointer, or setting up SSH separately. Servey is being built to put a genuine shell alongside the mirrored screen, but it is Apple-only and pre-launch, so it is something to watch rather than a current option.",
+    },
+    {
+      q: "Which is cheaper?",
+      a: "For one person with a few of their own machines, Jump Desktop usually costs less overall, because it is a paid app rather than an ongoing per-seat subscription. For an organisation supporting many endpoints, TeamViewer delivers far more for the money. Both vendors restructure their plans periodically, so check current pricing directly before committing.",
+    },
+  ],
+  "jump-desktop-vs-rustdesk": [
+    {
+      q: "Is RustDesk a good alternative to Jump Desktop?",
+      a: "Yes, if you value cost and control over polish. RustDesk is free, open source under the AGPL, cross-platform including Linux, and can be fully self-hosted so no third party is involved in your sessions. Jump Desktop is the more refined product, particularly on iPad, and it can connect to plain RDP and VNC hosts with nothing installed.",
+    },
+    {
+      q: "Is RustDesk safe?",
+      a: "The code is open and auditable, which is a real advantage, but by default connection setup goes through relay servers run by the project rather than by you. Sessions are encrypted, but if third-party infrastructure is unacceptable, self-hosting your own ID and relay servers removes it entirely and is the main reason people pick RustDesk.",
+    },
+    {
+      q: "Which is better on an iPhone or iPad?",
+      a: "Jump Desktop, clearly. Its touch input - pointer precision, right click, modifier keys, text selection - has had years of attention, while RustDesk's mobile clients are functional but secondary to its desktop experience. If a tablet or phone is your main client rather than an occasional one, that gap is noticeable within minutes.",
+    },
+    {
+      q: "Do I need to self-host RustDesk?",
+      a: "No, it works out of the box using the project's public relay servers. Self-hosting is optional and is what unlocks its strongest privacy argument, since it means no infrastructure you do not control touches your sessions. It does require running and maintaining a server, which is the time cost you trade for the zero licence cost.",
+    },
+    {
+      q: "Can either one reach a Mac with nothing extra installed?",
+      a: "Jump Desktop can, because it speaks VNC and RDP - so a Mac with Screen Sharing enabled or a PC with Remote Desktop turned on is reachable with no agent on the host. RustDesk requires its own software on both ends. That matters if you need to connect to machines that were never set up for your tool.",
+    },
+    {
+      q: "Does either include a terminal?",
+      a: "No, both are screen-mirroring tools, so command-line work means driving a GUI remotely or setting up SSH alongside. Servey is being built with a genuine shell next to the mirrored screen, but it is Apple-only, cannot be self-hosted, and is pre-launch and waitlist-only, so it is not an option you can use today.",
+    },
+  ],
   "termius-alternative-mac-terminal": [
     {
       q: "Is Servey a replacement for Termius?",

@@ -97,7 +97,12 @@ export function Hero() {
             {/* LCP element - preload it rather than letting it lazy-load. */}
             <IpadFrame slot={screenshots["hero-devices"]} className="w-full" priority />
             <div className="absolute -bottom-8 right-2 w-[26%] max-w-[180px] sm:-bottom-10 sm:right-6">
-              <IphoneFrame slot={screenshots["device-picker"]} />
+              {/* Inset phone is 26% of the mockup, capped at 180px - it hits
+                  that cap once the mockup passes ~692px wide. */}
+              <IphoneFrame
+                slot={screenshots["device-picker"]}
+                sizes="(max-width: 700px) 26vw, 180px"
+              />
             </div>
           </Tilt>
         </motion.div>
