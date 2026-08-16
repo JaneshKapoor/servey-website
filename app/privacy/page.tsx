@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal-page";
 import { ContactDialog } from "@/components/contact-dialog";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy and data handling",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: `${site.url}/privacy`,
     title: `Privacy Policy - ${site.name}`,
     description: "How Servey handles your data - account-scoped and private by design.",
-    images: ["/opengraph-image"],
+    images: [ogImage],
   },
 };
 

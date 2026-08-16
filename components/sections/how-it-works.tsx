@@ -37,7 +37,11 @@ export function HowItWorks() {
 
           <Reveal delay={0.1}>
             <Tilt max={4} className="[perspective:1400px]">
-              <Screenshot name="mac-host-ui" />
+              {/* This grid splits at lg, not md - one column below 1024px. */}
+              <Screenshot
+                name="mac-host-ui"
+                sizes="(max-width: 1024px) 100vw, (max-width: 1200px) 50vw, 548px"
+              />
             </Tilt>
             <p className="mt-4 text-center text-xs text-muted">
               The Servey host on your Mac - online and discoverable, ready for your devices.

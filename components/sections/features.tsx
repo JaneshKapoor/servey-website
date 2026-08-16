@@ -8,13 +8,20 @@ import { PrivacyIllustration } from "@/components/privacy-illustration";
 import { features, type Feature } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+/**
+ * The visual sits in one half of a 1200px container with a 4rem gutter, so it
+ * tops out around 548px - a third of what the hero-sized default would ask the
+ * browser to download.
+ */
+const FEATURE_IMAGE_SIZES = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 548px";
+
 function Visual({ feature }: { feature: Feature }) {
   if (feature.diagram) return <DualPathDiagram />;
   if (feature.privacy) return <PrivacyIllustration />;
   if (feature.screenshot) {
     return (
       <Tilt max={5} className="[perspective:1400px]">
-        <Screenshot name={feature.screenshot} />
+        <Screenshot name={feature.screenshot} sizes={FEATURE_IMAGE_SIZES} />
       </Tilt>
     );
   }

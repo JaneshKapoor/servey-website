@@ -20,9 +20,23 @@ function PageviewTracker() {
   React.useEffect(() => {
     if (!pathname) return;
     const query = searchParams.toString();
-    capturePageview(
-      `${window.location.origin}${pathname}${query ? `?${query}` : ""}`,
-    );
+    const send = () =>
+      capturePageview(
+        `${window.location.origin}${pathname}${query ? `?${query}` : ""}`,
+      );
+
+    // The layout's speculation rules prerender likely next pages, and a
+    // prerendered document runs this effect while it is still hidden. Firing
+    // there would count a view of a page nobody opened, so hold the event until
+    // the prerender is actually activated - and drop it if it never is.
+    const { prerendering } =
+      // Chrome's Prerender2 flag, not in lib.dom yet.
+      document as Document & { prerendering?: boolean };
+    if (prerendering) {
+      document.addEventListener("prerenderingchange", send, { once: true });
+      return () => document.removeEventListener("prerenderingchange", send);
+    }
+    send();
   }, [pathname, searchParams]);
 
   return null;

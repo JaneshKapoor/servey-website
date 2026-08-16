@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@/components/analytics";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 import { faqs, features } from "@/lib/content";
+import { screenshots, type ScreenshotSlot } from "@/lib/screenshots";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,20 +51,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} - Your Mac. In your pocket.`,
     description: site.description,
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: `${site.name} - control your Mac from your iPhone and iPad`,
-      },
-    ],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} - Your Mac. In your pocket.`,
     description: site.description,
-    images: ["/opengraph-image"],
+    images: [ogImage],
   },
   robots: { index: true, follow: true },
   // Favicon + apple-touch-icon are provided by app/icon.png and app/apple-icon.png.
@@ -73,6 +67,26 @@ export const viewport: Viewport = {
   themeColor: "#0a0b0d",
   colorScheme: "dark light",
 };
+
+/**
+ * The real captures, as ImageObjects hung off the product node.
+ *
+ * Only slots with `ready` and measured dimensions qualify - a placeholder is
+ * not a screenshot of the product, and declaring one as such would break the
+ * "never fabricate a screenshot" rule at the structured-data layer too. The
+ * dimensions come from the registry so schema can never disagree with the file.
+ */
+const screenshotSlots: ScreenshotSlot[] = Object.values(screenshots);
+const productScreenshots = screenshotSlots
+  .filter((s) => s.ready && s.src && s.width && s.height)
+  .map((s) => ({
+    "@type": "ImageObject",
+    "@id": `${site.url}${s.src}#image`,
+    contentUrl: `${site.url}${s.src}`,
+    width: s.width,
+    height: s.height,
+    caption: s.alt,
+  }));
 
 // A single @graph so search + AI engines get the organization, the site, the
 // product (with its real feature list), and the FAQ as machine-readable Q&A.
@@ -107,6 +121,7 @@ const jsonLd = {
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       featureList: features.map((f) => f.title.replace(/\.$/, "")),
+      screenshot: productScreenshots.map((s) => ({ "@id": s["@id"] })),
       offers: [
         {
           "@type": "Offer",
@@ -124,6 +139,9 @@ const jsonLd = {
         },
       ],
     },
+    // Google retired FAQ *rich results* on 7 May 2026, so expect no stars or
+    // accordions in the SERP from this. It stays because the markup is still
+    // valid and answer engines read it for machine-readable Q&A.
     {
       "@type": "FAQPage",
       "@id": `${site.url}/#faq`,
@@ -133,7 +151,42 @@ const jsonLd = {
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     },
+    ...productScreenshots,
   ],
+};
+
+/**
+ * Speculation Rules - prefetch and prerender same-origin navigations.
+ *
+ * Every page here is statically generated, so the speculated response is a file
+ * off the CDN and the work is close to free; by the time the click lands the
+ * next document is already parsed and its LCP image decoded.
+ *
+ * `moderate` (hover / pointerdown) rather than `eager`, because eager would
+ * speculate all ~20 links on the blog index at once for one click. Both lists
+ * carry the same rule on purpose: prerender is capped at two in flight and is
+ * dropped entirely under memory pressure or Data Saver, and the prefetch is
+ * what still helps in those cases.
+ *
+ * `href_matches: "/*"` is relative, so it is same-origin by construction. The
+ * exclusions are the two paths that are not documents - /api/* is POST-only
+ * JSON and /ingest/* is the PostHog proxy, where a speculative GET would be a
+ * wasted round trip at best and a phantom event at worst.
+ */
+const documentRule = {
+  where: {
+    and: [
+      { href_matches: "/*" },
+      { not: { href_matches: "/api/*" } },
+      { not: { href_matches: "/ingest/*" } },
+    ],
+  },
+  eagerness: "moderate",
+};
+
+const speculationRules = {
+  prefetch: [documentRule],
+  prerender: [documentRule],
 };
 
 export default function RootLayout({
@@ -151,6 +204,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('servey-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`,
           }}
+        />
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }}
         />
         <script
           type="application/ld+json"

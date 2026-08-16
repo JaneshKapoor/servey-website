@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/indexnow.mjs",
+    "seo:audit": "node scripts/seo-audit.mjs",
     "context:pdf": "node scripts/build-context-pdf.mjs"
   },
   "dependencies": {

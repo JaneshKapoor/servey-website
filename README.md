@@ -36,6 +36,7 @@ npm run start        # serve the production build
 npm run lint         # eslint
 npm run indexnow     # ping IndexNow with the current sitemap URLs
 npm run context:pdf  # regenerate docs/context.pdf from docs/CONTEXT.md
+npm run seo:audit    # assert the SEO invariants against live (or --base=localhost)
 ```
 
 ## Project structure

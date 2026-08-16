@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { WaitlistDialog } from "@/components/waitlist-dialog";
 import { getPost } from "@/lib/blog";
 import { getUseCase, useCases } from "@/lib/use-cases";
-import { site } from "@/lib/site";
+import { site, ogImage } from "@/lib/site";
 
 export function generateStaticParams() {
   return useCases.map((u) => ({ useCase: u.slug }));
@@ -40,13 +40,13 @@ export async function generateMetadata({
       url,
       title: page.h1,
       description: page.description,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: page.h1,
       description: page.description,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
   };
 }
@@ -64,6 +64,8 @@ export default async function UseCasePage({
   const related = getPost(page.relatedSlug);
   const others = useCases.filter((u) => u.slug !== page.slug);
 
+  // Google retired FAQ rich results on 7 May 2026 - this earns no SERP
+  // treatment now, and is kept for the answer engines that still read it.
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

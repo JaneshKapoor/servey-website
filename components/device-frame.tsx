@@ -69,14 +69,22 @@ function SlotContent({
 /* ---------------------------------------------------------------- *
  * Frames                                                            *
  * ---------------------------------------------------------------- */
+/**
+ * Each frame renders at a different width depending on where it is placed, so
+ * `sizes` is a prop with the widest placement as the default. A call site that
+ * renders the frame narrower must pass its own or the browser picks a source
+ * sized for the wide case and downloads several times the bytes it needs.
+ */
 export function MacWindow({
   slot,
   className,
   priority,
+  sizes = "(max-width: 768px) 100vw, 620px",
 }: {
   slot: ScreenshotSlot;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <div
@@ -92,7 +100,7 @@ export function MacWindow({
         <span className="ml-3 font-mono text-[11px] text-muted">Servey - host</span>
       </div>
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" priority={priority} />
+        <SlotContent slot={slot} sizes={sizes} priority={priority} />
       </div>
     </div>
   );
@@ -102,10 +110,13 @@ export function IpadFrame({
   slot,
   className,
   priority,
+  // Default is the hero, where the frame fills the max-w-5xl mockup column.
+  sizes = "(max-width: 1024px) 100vw, 1040px",
 }: {
   slot: ScreenshotSlot;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <div
@@ -118,7 +129,7 @@ export function IpadFrame({
         className="relative w-full overflow-hidden rounded-[1.1rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
-        <SlotContent slot={slot} sizes="(max-width: 1024px) 100vw, 1040px" priority={priority} />
+        <SlotContent slot={slot} sizes={sizes} priority={priority} />
       </div>
     </div>
   );
@@ -127,9 +138,12 @@ export function IpadFrame({
 export function IphoneFrame({
   slot,
   className,
+  // Default is the feature column; the hero's inset phone is far narrower.
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 548px",
 }: {
   slot: ScreenshotSlot;
   className?: string;
+  sizes?: string;
 }) {
   return (
     <div
@@ -144,7 +158,7 @@ export function IphoneFrame({
         className="relative w-full overflow-hidden rounded-[1rem] bg-black"
         style={{ aspectRatio: String(slot.ratio) }}
       >
-        <SlotContent slot={slot} sizes="(max-width: 768px) 55vw, 340px" />
+        <SlotContent slot={slot} sizes={sizes} />
       </div>
     </div>
   );
@@ -154,10 +168,12 @@ export function CropFrame({
   slot,
   className,
   priority,
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 548px",
 }: {
   slot: ScreenshotSlot;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
     <div
@@ -167,7 +183,7 @@ export function CropFrame({
       )}
     >
       <div className="relative w-full" style={{ aspectRatio: String(slot.ratio) }}>
-        <SlotContent slot={slot} sizes="(max-width: 768px) 100vw, 620px" priority={priority} />
+        <SlotContent slot={slot} sizes={sizes} priority={priority} />
       </div>
     </div>
   );
@@ -180,19 +196,21 @@ export function CropFrame({
 export function Screenshot({
   name,
   className,
+  sizes,
 }: {
   name: ScreenshotKey;
   className?: string;
+  sizes?: string;
 }) {
   const slot = screenshots[name];
   switch (slot.frame) {
     case "ipad":
-      return <IpadFrame slot={slot} className={className} />;
+      return <IpadFrame slot={slot} className={className} sizes={sizes} />;
     case "iphone":
-      return <IphoneFrame slot={slot} className={className} />;
+      return <IphoneFrame slot={slot} className={className} sizes={sizes} />;
     case "crop":
     case "diagram":
     default:
-      return <CropFrame slot={slot} className={className} />;
+      return <CropFrame slot={slot} className={className} sizes={sizes} />;
   }
 }
