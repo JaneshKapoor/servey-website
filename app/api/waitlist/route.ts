@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
 import { saveSignup } from "@/lib/waitlist-providers";
+import { sendWaitlistConfirmation } from "@/lib/email";
 import { countryCodes } from "@/lib/countries";
 
 export const runtime = "nodejs";
@@ -82,6 +83,17 @@ export async function POST(req: NextRequest) {
       { ok: false, error: "Something went wrong. Please try again." },
       { status: 502 },
     );
+  }
+
+  // Only on a genuinely new signup - a duplicate already has this email sitting
+  // in their inbox, and re-sending it reads as a bug.
+  //
+  // Awaited rather than fired and forgotten because serverless functions can be
+  // frozen the moment the response is returned, which would drop the send. It
+  // resolves on every failure path, so the signup is never reported as failed
+  // just because the confirmation did not go out.
+  if (!result.duplicate) {
+    await sendWaitlistConfirmation({ name, email });
   }
 
   return NextResponse.json({ ok: true, duplicate: result.duplicate });
