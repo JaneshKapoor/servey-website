@@ -9,9 +9,15 @@ Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
 
 > **Start here: [`docs/CONTEXT.md`](docs/CONTEXT.md)** — the full context primer for
 > this project (product, content system, SEO architecture, analytics, growth
-> constraints, and the standing rules that must not be broken). A print-ready
-> [`docs/context.pdf`](docs/context.pdf) is generated from it with
-> `npm run context:pdf`; edit the Markdown, never the PDF.
+> constraints, and the standing rules that must not be broken).
+>
+> **Then: [`docs/SEO-CONTEXT.md`](docs/SEO-CONTEXT.md)** — the search and
+> answer-engine playbook: what we do, **what we deliberately do not do**, the
+> query-cluster → page ownership map, and the evidence behind each call. Read it
+> before touching anything that affects ranking.
+>
+> Print-ready PDFs of both are generated with `npm run context:pdf`, which
+> renders every `docs/*.md`. Edit the Markdown, never the PDF.
 
 ## Stack
 
