@@ -64,7 +64,7 @@ We're building it now, and you'll be among the first to know the moment it's
 ready to download.
 
 Got a question, or something you'd want to use Servey for? Just reply to this -
-it reaches a person.
+we're listening.
 
 Thanks once again for believing in us.
 
@@ -99,7 +99,7 @@ function htmlBody(name: string): string {
 
     <p style="margin:0 0 16px;">We&rsquo;re building it now, and you&rsquo;ll be among the first to know the moment it&rsquo;s ready to download.</p>
 
-    <p style="margin:0 0 16px;">Got a question, or something you&rsquo;d want to use Servey for? Just reply to this - it reaches a person.</p>
+    <p style="margin:0 0 16px;">Got a question, or something you&rsquo;d want to use Servey for? Just reply to this - we&rsquo;re listening.</p>
 
     <p style="margin:0 0 16px;">Thanks once again for believing in us.</p>
 
