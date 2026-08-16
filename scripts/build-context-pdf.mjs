@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 /**
- * Renders docs/CONTEXT.md -> docs/context.pdf.
+ * Renders every docs/*.md to a matching docs/*.pdf.
  *
- * The Markdown is the source of truth; the PDF is a build artifact. Generating
- * it rather than hand-maintaining it is the point - a context document that has
- * silently drifted from the codebase is worse than no context document, and two
- * hand-edited copies drift immediately.
+ * The Markdown is the source of truth; each PDF is a build artifact. Generating
+ * them rather than hand-maintaining them is the point - a context document that
+ * has silently drifted from the codebase is worse than no context document, and
+ * two hand-edited copies drift immediately.
+ *
+ * Every .md in docs/ is picked up automatically, so adding a new document needs
+ * no change here. Output name is the source name lowercased with dashes kept:
+ * CONTEXT.md -> context.pdf, SEO-CONTEXT.md -> seo-context.pdf.
  *
  * Uses headless Chrome (already on any machine that can test this site) instead
  * of adding a heavyweight PDF dependency.
@@ -13,15 +17,21 @@
  * Usage: npm run context:pdf
  */
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { marked } from "marked";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const SOURCE = join(root, "docs", "CONTEXT.md");
-const OUTPUT = join(root, "docs", "context.pdf");
+const DOCS = join(root, "docs");
 
 /** Chrome ships under different names depending on the machine. */
 const CHROME_CANDIDATES = [
@@ -110,34 +120,51 @@ const CSS = `
   strong { color: #000; font-weight: 600; }
 `;
 
-const markdown = readFileSync(SOURCE, "utf8");
-const html = `<!doctype html>
+const sources = readdirSync(DOCS)
+  .filter((f) => f.endsWith(".md"))
+  .sort();
+
+if (sources.length === 0) {
+  console.error("No .md files found in docs/");
+  process.exit(1);
+}
+
+const chrome = findChrome();
+const scratch = mkdtempSync(join(tmpdir(), "servey-docs-"));
+
+try {
+  for (const source of sources) {
+    const markdown = readFileSync(join(DOCS, source), "utf8");
+    // First heading becomes the PDF's document title; fall back to the filename.
+    const heading = markdown.match(/^#\s+(.+)$/m)?.[1] ?? source;
+    const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<title>Servey - Website Context</title>
+<title>${heading}</title>
 <style>${CSS}</style>
 </head><body>${await marked.parse(markdown)}</body></html>`;
 
-const scratch = mkdtempSync(join(tmpdir(), "servey-context-"));
-const htmlPath = join(scratch, "context.html");
+    const htmlPath = join(scratch, `${source}.html`);
+    const output = join(DOCS, source.replace(/\.md$/, ".pdf").toLowerCase());
 
-try {
-  writeFileSync(htmlPath, html, "utf8");
-  execFileSync(
-    findChrome(),
-    [
-      "--headless=new",
-      "--disable-gpu",
-      "--no-first-run",
-      "--no-pdf-header-footer",
-      // Give fonts and layout a beat to settle before the snapshot.
-      "--virtual-time-budget=4000",
-      `--print-to-pdf=${OUTPUT}`,
-      pathToFileURL(htmlPath).href,
-    ],
-    { stdio: "pipe" },
-  );
-  const kb = (readFileSync(OUTPUT).length / 1024).toFixed(0);
-  console.log(`Wrote docs/context.pdf (${kb} KB) from docs/CONTEXT.md`);
+    writeFileSync(htmlPath, html, "utf8");
+    execFileSync(
+      chrome,
+      [
+        "--headless=new",
+        "--disable-gpu",
+        "--no-first-run",
+        "--no-pdf-header-footer",
+        // Give fonts and layout a beat to settle before the snapshot.
+        "--virtual-time-budget=4000",
+        `--print-to-pdf=${output}`,
+        pathToFileURL(htmlPath).href,
+      ],
+      { stdio: "pipe" },
+    );
+
+    const kb = (readFileSync(output).length / 1024).toFixed(0);
+    console.log(`docs/${source} -> docs/${source.replace(/\.md$/, ".pdf").toLowerCase()} (${kb} KB)`);
+  }
 } finally {
   rmSync(scratch, { recursive: true, force: true });
 }

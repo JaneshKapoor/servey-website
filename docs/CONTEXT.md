@@ -9,7 +9,12 @@ conversation.
 - **Production:** <https://servey.in> (Vercel, auto-deploys on push to `main`)
 - **Last reviewed:** 16 August 2026
 - **Source of truth:** `docs/CONTEXT.md`. `docs/context.pdf` is generated from it
-  by `npm run context:pdf` — never edit the PDF directly.
+  by `npm run context:pdf` — never edit the PDF directly. (That command renders
+  every `docs/*.md`, so new documents are picked up automatically.)
+- **Companion:** [`SEO-CONTEXT.md`](SEO-CONTEXT.md) — the search and
+  answer-engine playbook: what we do, what we deliberately do not do, the query
+  cluster map, and the evidence behind each decision. Read it before changing
+  anything that touches ranking.
 
 ---
 
@@ -144,7 +149,9 @@ public/
   f79fa191….txt           # IndexNow key file
 docs/
   CONTEXT.md              # this document (source of truth)
+  SEO-CONTEXT.md          # search + answer-engine playbook (do / do not / why)
   context.pdf             # generated — do not edit
+  seo-context.pdf         # generated — do not edit
 scripts/
   indexnow.mjs            # IndexNow submission
   build-context-pdf.mjs   # CONTEXT.md -> context.pdf via headless Chrome
