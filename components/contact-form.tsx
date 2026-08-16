@@ -6,6 +6,7 @@ import { Check, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { capture } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -59,6 +60,8 @@ export function ContactForm({
         return;
       }
       setStatus("success");
+      // No message body or address - just that a message happened.
+      capture("contact_message_sent");
       toast.success("Message sent ✅", { description: "We'll get back to you soon." });
       onSuccess?.();
     } catch {

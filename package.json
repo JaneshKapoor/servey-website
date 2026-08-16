@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "context:pdf": "node scripts/build-context-pdf.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.15",
@@ -19,6 +20,7 @@
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.23.0",
     "next": "16.2.10",
+    "posthog-js": "^1.417.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sonner": "^2.0.7",
@@ -32,6 +34,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "marked": "^18.0.9",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
