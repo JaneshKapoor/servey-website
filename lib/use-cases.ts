@@ -802,3 +802,16 @@ export const useCases: UseCase[] = [
 export function getUseCase(slug: string) {
   return useCases.find((u) => u.slug === slug);
 }
+
+/**
+ * The inverse of `relatedSlug`: every use case that points at this blog post.
+ *
+ * `relatedSlug` only ever linked one way - use case out to the guide - which
+ * left the use-case pages reachable from nothing but the sitemap. Rendering
+ * this on the post closes the loop, so the crawler can walk from the blog,
+ * which Google does index well, into the commercial pages, which it did not
+ * index at all.
+ */
+export function useCasesForPost(postSlug: string): UseCase[] {
+  return useCases.filter((u) => u.relatedSlug === postSlug);
+}
