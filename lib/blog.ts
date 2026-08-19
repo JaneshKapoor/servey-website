@@ -1257,6 +1257,266 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "splashtop-vs-jump-desktop",
+    metaTitle: "Splashtop vs Jump Desktop for Mac",
+    title: "Splashtop vs Jump Desktop: subscription or buy it once?",
+    description:
+      "Splashtop vs Jump Desktop for Mac remote access. One is a subscription tuned for performance and teams, the other a one-time purchase with the best iPad input.",
+    date: "2026-08-19",
+    keywords: [
+      "Splashtop vs Jump Desktop",
+      "Splashtop alternative Mac",
+      "Jump Desktop alternative Mac",
+      "best remote desktop for Mac",
+      "remote desktop Mac subscription",
+    ],
+    readingMinutes: 7,
+    lede:
+      "These two are both good, and they are aimed at different people. Splashtop is a subscription built around streaming performance and managing a fleet. Jump Desktop is a one-time purchase built around one person reaching their own machines, with the best touch input in the category. The pricing model is not a detail here - it is the decision.",
+    body: [
+      {
+        type: "table",
+        caption: "Splashtop and Jump Desktop, side by side.",
+        headers: ["", "Splashtop", "Jump Desktop"],
+        rows: [
+          ["Cost model", "Subscription, per user or per computer", "One-time purchase per platform"],
+          ["Business tier", "The main product", "Jump Desktop for Teams, sold separately"],
+          ["Host platforms", "macOS, Windows, Linux", "macOS, Windows, plus any RDP or VNC host"],
+          ["Client platforms", "macOS, Windows, Linux, iOS, Android, browser", "macOS, iOS, iPadOS, Windows, Android"],
+          ["Protocols", "Its own protocol only", "RDP and VNC, plus its own Fluid protocol"],
+          ["Connect to a host with nothing extra installed", "No", "Yes, over RDP or VNC"],
+          ["Away-from-home access", "Built in", "Jump Desktop Connect"],
+          ["Remote sound", "A long-standing strength", "Supported"],
+          ["Multi-monitor", "Strong, including per-monitor selection", "Supported, and can split monitors across iPad displays"],
+          ["Session recording, roles, audit", "Yes, on business tiers", "Limited to Teams"],
+          ["Touch input on iPad", "Functional", "A long-standing strength"],
+          ["Real terminal", "No", "No"],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Choose Splashtop if you are supporting machines that are not yours, if more than a couple of people need access, or if the work is visually demanding enough that frame rate and colour matter. Choose Jump Desktop if you are one person reaching your own small number of machines, you would rather pay once than monthly, and your client is an iPad. The uncomfortable truth about this comparison is that a lot of people pick on features and then regret it on billing, or pick on price and then find the tool was not built for the job they actually have. Work out which of those two people you are first, because it settles the question faster than any feature table.",
+      },
+      { type: "h2", text: "What Splashtop is genuinely better at" },
+      {
+        type: "p",
+        text: "Splashtop is built for sustained, demanding streaming and it shows. Its high frame-rate modes hold up on work where a laggy or washed-out picture is not merely annoying but disqualifying - video editing, colour work, CAD, anything where you are judging what is on screen rather than just clicking through it. Remote audio has been a priority for years rather than an afterthought. Multi-monitor handling is more mature, including picking a single monitor out of several. It also treats Linux as a real host platform, and it can be reached from a plain browser, which matters when you are on a machine you cannot install software on. And once you are past one user it has the management layer that individuals never think about until they need it: session recording, role-based permissions, audit trails, deployment at scale. Jump Desktop only reaches for that with its separate Teams product.",
+      },
+      { type: "h2", text: "What Jump Desktop is genuinely better at" },
+      {
+        type: "p",
+        text: "Jump Desktop wins on economics for individuals and on the specific experience of driving a Mac from an iPad. Buying it once per platform, with no recurring bill, is unusual in a category that has moved almost entirely to subscriptions, and over a few years the difference is not small. Its iPad input handling - pointer precision, right click, modifier keys, text selection, Apple Pencil, splitting monitors across external displays with Stage Manager - has had years of attention and is the reason people stay with it. It also speaks RDP and VNC, so it can reach a Mac with Screen Sharing already enabled, or a Windows machine with Remote Desktop turned on, without installing anything on the host at all. Splashtop always needs its own software on both ends.",
+      },
+      { type: "h2", text: "Pricing, compared fairly" },
+      {
+        type: "p",
+        text: "Splashtop sells subscriptions, with an inexpensive personal-scale tier covering a small number of computers and business tiers priced per user that climb as you add features like session recording and unattended support. Jump Desktop is bought once on each platform you use, so a Mac and an iPad is two purchases and then nothing, with Jump Desktop Connect available as a small monthly charge per computer if you want the simplified away-from-home path, and Teams as a separate subscription if you outgrow single-user use. Both companies change prices, so treat any specific figure you read anywhere - including here - as a starting point to verify rather than a quote. The stable part is the shape: recurring versus up front, and which of those two you would rather explain to yourself in three years.",
+      },
+      { type: "h2", text: "Which should you pick for a Mac?" },
+      {
+        type: "p",
+        text: "For a single person reaching their own Mac from an iPad, Jump Desktop is the more comfortable tool and the cheaper one over any reasonable time horizon. For anyone whose remote access is really remote support - other people's machines, unattended, with a record of what happened - Splashtop is built for that and Jump Desktop is not, and no amount of saving on licences makes up for missing management features when you need them. A detail worth knowing before you commit either way: on your own Wi-Fi, macOS Screen Sharing is already installed and free, and it is genuinely good. Both of these products earn their money mainly on the away-from-home case, where they save you from port forwarding and VPN configuration.",
+      },
+      {
+        type: "ul",
+        items: [
+          "One person, own machines, iPad client: Jump Desktop.",
+          "Supporting machines that are not yours: Splashtop.",
+          "Video, design or colour-critical work: Splashtop.",
+          "You would rather not have another subscription: Jump Desktop.",
+          "You need to reach a host with nothing installed on it: Jump Desktop, over RDP or VNC.",
+          "You need Linux hosts or browser-only clients: Splashtop.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is our own project and it is deliberately narrower than both. It puts one Mac on your iPhone and iPad - sharp screen mirroring plus a genuine shell on the Mac, not a web console - with no VPN, ports or relay to configure, because you sign in with Google on both devices. It is Apple-only, it reaches only a Mac running its host app, it has no fleet management, no session recording and no Linux support, and it is pre-launch and waitlist-only, so there is nothing to download yet and nothing independent to check. If you need a tool this week, pick one of the two above. Servey is worth watching only if the terminal is the part you keep missing, because that is the gap neither of these fills.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Splashtop is the better answer when remote access is a job you do for other people or on demanding visual work, and when the management layer around the session matters as much as the session. Jump Desktop is the better answer when it is your own Mac, your own iPad, and you resent monthly bills for software you use occasionally. Neither is a compromise, and the honest deciding question is not which is better but whether you are running a fleet or running your own life.",
+      },
+    ],
+  },
+  {
+    slug: "anydesk-vs-teamviewer",
+    metaTitle: "AnyDesk vs TeamViewer: an honest look",
+    title: "AnyDesk vs TeamViewer: which remote desktop should you actually use?",
+    description:
+      "AnyDesk vs TeamViewer in 2026: a lean, fast, cheaper tool against the broadest feature set in the category. Where each genuinely wins, and the free-tier catch.",
+    date: "2026-08-19",
+    keywords: [
+      "AnyDesk vs TeamViewer",
+      "TeamViewer alternative Mac",
+      "AnyDesk alternative",
+      "best Mac remote desktop app",
+      "best remote desktop for Mac",
+    ],
+    readingMinutes: 7,
+    lede:
+      "This is the most-searched pairing in remote desktop, and the honest summary is that AnyDesk is lighter, faster on bad connections and cheaper, while TeamViewer does far more and is far more widely deployed. The thing that decides it for most people is not a feature at all - it is how each company treats the free tier.",
+    body: [
+      {
+        type: "table",
+        caption: "AnyDesk and TeamViewer, side by side.",
+        headers: ["", "AnyDesk", "TeamViewer"],
+        rows: [
+          ["Free for personal use", "Yes, with features held back", "Yes, but commercial use is actively detected"],
+          ["Paid entry price", "Lower", "Higher"],
+          ["Footprint", "Very small, runs without installing", "Larger"],
+          ["Performance on poor connections", "A long-standing strength", "Good"],
+          ["Platform breadth", "Broad", "Broader, including mobile device control and IoT"],
+          ["Enterprise and compliance features", "Present", "The most complete in the category"],
+          ["Integrations and ecosystem", "Fewer", "Extensive"],
+          ["Unattended access on free tier", "No", "Limited"],
+          ["Mac host support", "Yes", "Yes"],
+          ["Tuned for iPad touch input", "No", "No"],
+          ["Real terminal", "No", "No"],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Choose AnyDesk if you want something lean that connects quickly, performs well when the network is poor, and costs less when you do start paying. Choose TeamViewer if you need breadth - more platforms, mobile device control, integrations, compliance features - or if you are working somewhere that already standardised on it. For strictly personal use both are free, and the practical difference is that TeamViewer's commercial-use detection is aggressive enough that ordinary people using it for genuinely personal reasons sometimes get flagged and have sessions cut short. That single behaviour drives more switching than any feature comparison.",
+      },
+      { type: "h2", text: "The free tier is the real difference" },
+      {
+        type: "p",
+        text: "Both products are free for personal, non-commercial use, and both mean it. TeamViewer enforces the boundary with automated detection, and when it decides a session looks commercial it cuts the connection after a few minutes and asks you to buy a licence. Appeals are possible but the process is tedious, and being wrongly flagged while helping a relative is a well-worn complaint rather than a rare edge case. AnyDesk takes a quieter approach: the free tier simply omits the things a business would need, such as unattended access and the address book, so there is less to police. If you are a genuine home user, that difference in posture matters more day to day than any of the technical comparisons below.",
+      },
+      { type: "h2", text: "What AnyDesk is genuinely better at" },
+      {
+        type: "p",
+        text: "AnyDesk is lighter and it feels it. The client is small and can be run without a full installation, which is genuinely useful when you are on a machine you would rather not modify. Its codec was designed around responsiveness, and on constrained or high-latency connections - hotel Wi-Fi, tethered phones, connections to another continent - it tends to stay usable where heavier tools become unpleasant. Paid tiers start meaningfully cheaper than TeamViewer's, and the gap widens as you add seats. The interface is simpler, which cuts both ways but is a real advantage if all you want is to connect to a machine and do something.",
+      },
+      { type: "h2", text: "What TeamViewer is genuinely better at" },
+      {
+        type: "p",
+        text: "TeamViewer does more, and for many organisations that is decisive rather than merely nice. It reaches a wider range of devices, including remote control of mobile devices and industrial and IoT endpoints that AnyDesk does not target. It has a far larger integration ecosystem, so it slots into existing ticketing and management stacks without custom work. Its compliance, auditing and device-management story is the most developed in the category, which matters if you have to answer to an auditor rather than only to yourself. And ubiquity is itself a feature: if you support non-technical people, there is a reasonable chance they have already heard of it, already have it installed, or can be talked through installing it over the phone.",
+      },
+      { type: "h2", text: "A warning that applies to both" },
+      {
+        type: "p",
+        text: "Remote access tools of every brand are the favourite instrument of phone scammers, and AnyDesk and TeamViewer are both named constantly in those scams because they are the best known. Never install either one because somebody who called you asked you to, no matter who they claim to be - not your bank, not Microsoft, not your internet provider. This is not a criticism of either product. It is a property of the category: software that lets someone else drive your computer is exactly as dangerous as the person you give it to, and the failure is always in the phone call rather than the code.",
+      },
+      { type: "h2", text: "Which should you pick for a Mac?" },
+      {
+        type: "p",
+        text: "Neither is Mac-first, and it is worth saying plainly. Both work on macOS, both require you to grant Screen Recording and Accessibility permissions before they can do anything useful, and both are built around a Windows-centric idea of remote support rather than around Apple hardware. Neither is tuned for touch, so driving a Mac from an iPad with either is workable rather than pleasant. If your job is supporting a mixed fleet from a desk, that is fine and one of these two is probably right. If your job is reaching your own Mac from your own iPad, the Mac-focused tools - Screens, Jump Desktop, or macOS Screen Sharing on your own network - are a better fit than either of these, and you should read a comparison aimed at that instead.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Personal use, want to be left alone: AnyDesk.",
+          "Poor or high-latency connections: AnyDesk.",
+          "Lowest cost once you start paying: AnyDesk.",
+          "Mixed fleet, integrations, compliance: TeamViewer.",
+          "Remote control of mobile or IoT devices: TeamViewer.",
+          "Supporting non-technical people who may already have it: TeamViewer.",
+          "Reaching your own Mac from an iPad: neither, look at Mac-focused tools.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is our own project and it does not compete with either of these. It is Apple-only, it connects your own devices to your own Mac rather than letting you support anyone else's, and it has none of the fleet, compliance or cross-platform capability that these two are built on. What it does is put one Mac on your iPhone and iPad with sharp screen mirroring and a genuine shell on the Mac, and no VPN or port forwarding to arrange. It is pre-launch and waitlist-only, so there is nothing to download and nothing independent to verify yet. If you are choosing a remote support tool, choose one of the two above.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "AnyDesk is the better answer for individuals and small teams who want speed, a low bill and to be left alone by licensing enforcement. TeamViewer is the better answer for organisations that need breadth, integrations and an auditable trail, and that would rather have one tool covering everything than the fastest one covering most things. Both are mature and both are safe when you are the one initiating the session. The deciding question is whether you are supporting a business or supporting yourself.",
+      },
+    ],
+  },
+  {
+    slug: "chrome-remote-desktop-vs-jump-desktop",
+    metaTitle: "Chrome Remote Desktop vs Jump Desktop",
+    title: "Chrome Remote Desktop vs Jump Desktop: is free good enough?",
+    description:
+      "Chrome Remote Desktop is free and sets up in minutes. Jump Desktop costs money and is better in daily use. Here is where the gap shows on a Mac.",
+    date: "2026-08-19",
+    keywords: [
+      "Chrome Remote Desktop vs Jump Desktop",
+      "Chrome Remote Desktop Mac",
+      "free remote desktop for Mac",
+      "Jump Desktop alternative Mac",
+      "control Mac from iPad",
+    ],
+    readingMinutes: 6,
+    lede:
+      "Chrome Remote Desktop is free, takes about five minutes to set up, and needs no router configuration. That is a genuinely strong offer and a lot of people never need more. This is an honest account of where it runs out, and whether the gap is worth paying to close.",
+    body: [
+      {
+        type: "table",
+        caption: "Chrome Remote Desktop and Jump Desktop, side by side.",
+        headers: ["", "Chrome Remote Desktop", "Jump Desktop"],
+        rows: [
+          ["Cost", "Free", "One-time purchase per platform"],
+          ["Account required", "A Google account on both ends", "None beyond the app"],
+          ["Setup effort", "Very low", "Low"],
+          ["Away-from-home access", "Built in, no port forwarding", "Jump Desktop Connect"],
+          ["Protocols", "Its own only", "RDP and VNC, plus its own Fluid protocol"],
+          ["Connect to a host with nothing extra installed", "No", "Yes, over RDP or VNC"],
+          ["Client on a machine you cannot install to", "Yes, any Chrome browser", "No, needs the app"],
+          ["Multi-monitor", "Workable but awkward", "Supported, and refined on iPad"],
+          ["Remote sound on a Mac", "Limited", "Supported"],
+          ["File transfer", "Basic", "Built in"],
+          ["Touch input on iPad", "Basic", "A long-standing strength"],
+          ["Real terminal", "No", "No"],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Use Chrome Remote Desktop if you need to reach your Mac occasionally, from wherever you happen to be, and you mostly want to grab a file, restart something or check that a job finished. Buy Jump Desktop if you are driving that Mac for real - regularly, for stretches at a time, especially from an iPad. The gap between them is not about whether the connection works. Both connect. The gap is entirely in how it feels after the first ten minutes, and whether that matters depends on how long your sessions actually are.",
+      },
+      { type: "h2", text: "What Chrome Remote Desktop is genuinely better at" },
+      {
+        type: "p",
+        text: "It is free, permanently, with no tier to outgrow and no licence to track, and that is not a small thing when the alternative is paying per platform. Setup is the easiest in the category: install the host package, sign in with the Google account you already have, and you can reach the machine from anywhere without touching your router. And it has one capability none of the paid apps can match - you can sit down at any computer in the world with Chrome on it, sign in, and be on your Mac in under a minute with nothing installed. If you travel and use machines that are not yours, that is a real advantage rather than a consolation. For occasional access it is genuinely sufficient, and people who tell you it is not are usually describing a heavier use case than yours.",
+      },
+      { type: "h2", text: "What Jump Desktop is genuinely better at" },
+      {
+        type: "p",
+        text: "Jump Desktop is better at everything that becomes noticeable during a long session. Its Fluid protocol is more responsive and holds up better as conditions get worse. Input on an iPad is the clearest difference: pointer precision, right click, modifier keys, text selection and Apple Pencil support have all had years of attention, where Chrome Remote Desktop's mobile clients are functional but plainly secondary to the browser experience. It handles multiple monitors properly rather than as an afterthought. It speaks RDP and VNC, so it can reach machines that were never set up for it. And it does not tie your access to a Google account on both ends, which some people care about a great deal and others not at all.",
+      },
+      { type: "h2", text: "The test that settles it" },
+      {
+        type: "p",
+        text: "Ask how long your typical session is. Under about ten minutes and Chrome Remote Desktop's rough edges never really surface - you connect, you do the thing, you leave, and the money you did not spend is the whole story. Over about half an hour and the same rough edges become the entire experience: imprecise pointing, awkward modifier keys, a picture that softens when the connection dips. Almost nobody regrets starting with the free option, because it costs nothing to find out which of those two you are. The mistake is staying on it out of inertia long after your sessions got longer.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Occasional access, short sessions: Chrome Remote Desktop.",
+          "You often use computers that are not yours: Chrome Remote Desktop.",
+          "Cost is the deciding factor: Chrome Remote Desktop.",
+          "Long sessions from an iPad: Jump Desktop.",
+          "You need to reach a host with nothing installed on it: Jump Desktop.",
+          "You would rather your remote access not depend on a Google account: Jump Desktop.",
+        ],
+      },
+      { type: "h2", text: "What neither of them does" },
+      {
+        type: "p",
+        text: "Neither gives you a real terminal. That sounds like a narrow complaint until you notice how much of what people actually do remotely is command line work: checking a build, restarting a service, tailing a log, killing a process that has hung. Doing that through a mirrored screen means pointing at a tiny Terminal window with a laggy cursor, which works but is miserable. The usual workaround is a separate SSH client alongside the remote desktop app, which means two tools, two connections and two sets of credentials to keep straight.",
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is our own project and it exists mainly because of that last paragraph. It puts one Mac on your iPhone and iPad with sharp screen mirroring and a genuine shell in the same app, with no VPN, ports or relay to configure, because you sign in with Google on both devices. It is Apple-only, it reaches only a Mac running its host app, it cannot connect to Windows or Linux, it has no browser client, and it is pre-launch and waitlist-only, so there is nothing to download and nothing independent to check yet. If you need something today, Chrome Remote Desktop costs nothing and Jump Desktop is excellent. Servey is worth watching only if the terminal is the part you keep missing.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Chrome Remote Desktop is the right starting point for almost everyone, because it is free, it is fast to set up, and it answers the question of whether you need anything better. Jump Desktop is what you buy once that question has been answered - when you know your sessions are long, your client is an iPad, and the friction has stopped being tolerable. Start free, upgrade on evidence rather than on a review, and do not let anyone tell you the paid option is mandatory when your sessions last four minutes.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -1276,7 +1536,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-16";
+export const contentUpdated = "2026-08-19";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -1548,6 +1808,60 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Do I have to sit at my Mac to supervise an agent?",
       a: "No. Servey brings your Mac's screen and shell to your iPhone or iPad so you can supervise from anywhere.",
+    },
+  ],
+  "splashtop-vs-jump-desktop": [
+    {
+      q: "Is Splashtop or Jump Desktop better for a Mac?",
+      a: "For one person reaching their own Mac, especially from an iPad, Jump Desktop is the better fit and cheaper over time because it is a one-time purchase. Splashtop is better if you are supporting machines that are not yours, need session recording and role-based access, or do colour-critical or video work where frame rate matters.",
+    },
+    {
+      q: "Is Jump Desktop cheaper than Splashtop?",
+      a: "For an individual, usually yes. Jump Desktop is bought once per platform with no recurring fee, while Splashtop is a subscription. The gap widens the longer you use it. Splashtop can work out better per person once you have several users, because its business tiers bundle management features Jump Desktop only offers through its separate Teams product.",
+    },
+    {
+      q: "Can Splashtop connect to a Mac without installing anything on it?",
+      a: "No. Splashtop needs its own software on both ends. Jump Desktop can connect over RDP or VNC, so it can reach a Mac that already has Screen Sharing enabled without installing a host app at all.",
+    },
+    {
+      q: "Do either of them give you a terminal on your Mac?",
+      a: "No. Both mirror the screen, so reaching a command line means pointing at the Terminal window inside the mirrored desktop. Neither includes a real shell, which is why people often run a separate SSH client alongside them.",
+    },
+  ],
+  "anydesk-vs-teamviewer": [
+    {
+      q: "Is AnyDesk better than TeamViewer?",
+      a: "AnyDesk is lighter, performs better on poor connections, and costs less once you start paying. TeamViewer does considerably more, covering more device types, more integrations and stronger compliance and auditing. AnyDesk suits individuals and small teams; TeamViewer suits organisations that need breadth and an auditable trail.",
+    },
+    {
+      q: "Are AnyDesk and TeamViewer free?",
+      a: "Both are free for personal, non-commercial use. The difference is enforcement. TeamViewer actively detects commercial use and cuts sessions short when it flags one, which sometimes catches genuine home users. AnyDesk instead leaves business features such as unattended access out of the free tier, so there is less to police.",
+    },
+    {
+      q: "Why does TeamViewer say my use is commercial?",
+      a: "TeamViewer's automated detection looks at patterns such as how many devices you connect to and how often. It can misread ordinary personal use, and being wrongly flagged while helping family is a common complaint. You can appeal for a free personal licence, though the process takes time.",
+    },
+    {
+      q: "Is AnyDesk or TeamViewer good for controlling a Mac from an iPad?",
+      a: "Neither is a strong choice. Both work on macOS but need Screen Recording and Accessibility permissions, and both are built around Windows-centric remote support rather than touch input. For driving a Mac from an iPad, Mac-focused tools such as Screens, Jump Desktop, or macOS Screen Sharing on your own network fit better.",
+    },
+  ],
+  "chrome-remote-desktop-vs-jump-desktop": [
+    {
+      q: "Is Chrome Remote Desktop good enough instead of Jump Desktop?",
+      a: "For short, occasional sessions, yes. Chrome Remote Desktop is free, sets up in minutes and needs no router configuration. Jump Desktop is worth paying for once your sessions run long or your client is an iPad, because its input handling and protocol responsiveness are noticeably better over time.",
+    },
+    {
+      q: "What are the limitations of Chrome Remote Desktop on a Mac?",
+      a: "Remote sound is limited on macOS, multi-monitor setups are workable but awkward, file transfer is basic, and touch input on an iPad is functional rather than refined. It also requires a Google account on both ends and cannot connect to hosts over RDP or VNC.",
+    },
+    {
+      q: "Is Chrome Remote Desktop really free?",
+      a: "Yes, permanently and with no paid tier. It is a Google product with no licence to buy or track. The cost is in capability rather than money: it does less than the paid apps, and its mobile clients are clearly secondary to the browser experience.",
+    },
+    {
+      q: "Can I use Chrome Remote Desktop from a computer that is not mine?",
+      a: "Yes, and this is its clearest advantage. Any machine with Chrome will do, with nothing installed. Jump Desktop needs its own app, so it cannot help you on a borrowed computer.",
     },
   ],
 };

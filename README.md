@@ -1,17 +1,17 @@
 # Servey - marketing website
 
-The premium marketing/landing site for **Servey** — a native app that puts your
+The premium marketing/landing site for **Servey** - a native app that puts your
 Mac in your pocket: full screen mirroring, mouse, keyboard, and a real terminal
 on your iPhone and iPad, hardware-accelerated on your network and private
 peer-to-peer anywhere else.
 
 Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
 
-> **Start here: [`docs/CONTEXT.md`](docs/CONTEXT.md)** — the full context primer for
+> **Start here: [`docs/CONTEXT.md`](docs/CONTEXT.md)** - the full context primer for
 > this project (product, content system, SEO architecture, analytics, growth
 > constraints, and the standing rules that must not be broken).
 >
-> **Then: [`docs/SEO-CONTEXT.md`](docs/SEO-CONTEXT.md)** — the search and
+> **Then: [`docs/SEO-CONTEXT.md`](docs/SEO-CONTEXT.md)** - the search and
 > answer-engine playbook: what we do, **what we deliberately do not do**, the
 > query-cluster → page ownership map, and the evidence behind each call. Read it
 > before touching anything that affects ranking.
@@ -32,7 +32,7 @@ Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
 
 ```bash
 npm install
-cp .env.example .env.local   # optional — the form works without it (console provider)
+cp .env.example .env.local   # optional - the form works without it (console provider)
 npm run dev                  # http://localhost:3000
 ```
 
@@ -73,7 +73,7 @@ public/
   llms.txt              # curated map for AI answer engines
 docs/
   CONTEXT.md            # full project context primer (source of truth)
-  context.pdf           # generated from CONTEXT.md — do not edit directly
+  context.pdf           # generated from CONTEXT.md - do not edit directly
 scripts/
   indexnow.mjs          # IndexNow submission
   build-context-pdf.mjs # CONTEXT.md -> context.pdf via headless Chrome
@@ -82,7 +82,7 @@ source-material/        # the original brief + WebRTC explainer + one-pager HTML
 
 ## Screenshots
 
-No fake product UI is shipped — every image is a styled **placeholder** inside the
+No fake product UI is shipped - every image is a styled **placeholder** inside the
 correct device frame with a real, descriptive `alt`. To drop in real captures:
 
 1. Save the file to `public/screenshots/<key>.png`
@@ -102,7 +102,7 @@ force it with `WAITLIST_PROVIDER`:
 | **Firebase** (recommended) | `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY` | Writes `{ email, createdAt, source, userAgent }` to a `waitlist` collection; de-dupes by email (doc id = email). |
 | **Formspree** | `FORMSPREE_ENDPOINT` | Zero-backend fallback. |
 | **Resend** | `RESEND_API_KEY`, `RESEND_AUDIENCE_ID` | Adds the email to a Resend audience; handles duplicates. |
-| **console** (default) | — | Logs and succeeds so the form works with no setup. |
+| **console** (default) | - | Logs and succeeds so the form works with no setup. |
 
 Protections: hidden **honeypot** field + a simple per-IP **rate limit** (5/min).
 Secrets are read from `.env.local` only and never hardcoded.
@@ -134,7 +134,7 @@ success so the form still works in dev.
 
 **PostHog**, wired up in `lib/analytics.ts` + `components/analytics.tsx`.
 
-Set `NEXT_PUBLIC_POSTHOG_KEY` to switch it on — with the key unset every helper
+Set `NEXT_PUBLIC_POSTHOG_KEY` to switch it on - with the key unset every helper
 is a **silent no-op**, so local dev never pollutes production numbers. See
 `.env.example` for the EU-region and session-replay variables.
 
@@ -149,10 +149,10 @@ is a **silent no-op**, so local dev never pollutes production numbers. See
   "which CTA actually converts" is answerable out of the box.
 
 > If you change what is collected, update `app/privacy/page.tsx` in the same
-> commit — it makes specific promises about all of the above.
+> commit - it makes specific promises about all of the above.
 
 ## Accessibility & performance
 
 Semantic landmarks, keyboard-navigable, brand-green focus rings, labeled form,
 `alt` on every image, and `prefers-reduced-motion` honored throughout. Images use
-`next/image`, fonts use `next/font`, and heavy motion is client-only — no CLS.
+`next/image`, fonts use `next/font`, and heavy motion is client-only - no CLS.

@@ -1,4 +1,4 @@
-# Servey — Website Context
+# Servey - Website Context
 
 **Single-source context primer for the servey.in marketing site.**
 Read this first. It is written so that a person or a model can pick up the work
@@ -9,9 +9,9 @@ conversation.
 - **Production:** <https://servey.in> (Vercel, auto-deploys on push to `main`)
 - **Last reviewed:** 16 August 2026
 - **Source of truth:** `docs/CONTEXT.md`. `docs/context.pdf` is generated from it
-  by `npm run context:pdf` — never edit the PDF directly. (That command renders
+  by `npm run context:pdf` - never edit the PDF directly. (That command renders
   every `docs/*.md`, so new documents are picked up automatically.)
-- **Companion:** [`SEO-CONTEXT.md`](SEO-CONTEXT.md) — the search and
+- **Companion:** [`SEO-CONTEXT.md`](SEO-CONTEXT.md) - the search and
   answer-engine playbook: what we do, what we deliberately do not do, the query
   cluster map, and the evidence behind each decision. Read it before changing
   anything that touches ranking.
@@ -26,7 +26,7 @@ data, or create legal exposure.
 
 | # | Rule | Why it exists |
 |---|---|---|
-| 1 | **Never fabricate a product screenshot.** | Every image is either a real capture or a styled placeholder in a device frame. `components/device-frame.tsx` carries the note "Placeholder fill — styled, never a fake product screenshot." |
+| 1 | **Never fabricate a product screenshot.** | Every image is either a real capture or a styled placeholder in a device frame. `components/device-frame.tsx` carries the note "Placeholder fill - styled, never a fake product screenshot." |
 | 2 | **No invented ratings, testimonials, download counts, user numbers, or `AggregateRating` schema.** | Servey is pre-launch with zero public users. Any such claim is fabricated, and `AggregateRating` without real reviews is a Google structured-data violation. |
 | 3 | **Never overclaim in a comparison.** Every competitor comparison must state where the competitor is genuinely better. | It is the site's main credibility asset and the reason the comparison posts are citable. |
 | 4 | **Never imply Termius shipped malware.** | Termius was the *victim* of the ZuRu impersonation campaign. Asserting otherwise would be false and defamatory. |
@@ -35,7 +35,7 @@ data, or create legal exposure.
 | 7 | **Pricing is pre-launch.** Offers use `availability: PreOrder`. Cards drive to the waitlist, never to checkout. | Nobody can be charged yet. |
 | 8 | **If you add anything that collects data, update `app/privacy/page.tsx` in the same change.** | The policy makes specific promises. Shipping a tracker without updating it makes the published policy false. |
 
-### Known open issue — carried deliberately
+### Known open issue - carried deliberately
 
 `public/screenshots/hero-devices.png` is a real capture that exposes personal
 filenames (`Drivinglicensetest.pdf`, `Payment Reciept.pdf`,
@@ -58,7 +58,7 @@ A native Apple app that puts your Mac in your pocket.
   the devices are on different networks. No VPN, no port forwarding.
 - Sign in with Google on both devices; Servey only ever pairs devices on the
   **same account**.
-- Native Swift/SwiftUI — deliberately not an Electron or Java port.
+- Native Swift/SwiftUI - deliberately not an Electron or Java port.
 
 **Status: pre-launch, waitlist only.** There is no downloadable build. This
 constraint drives most of the growth decisions in §9.
@@ -85,13 +85,13 @@ Monthly subscription, cancel anytime, **not charged until launch**.
 
 - **Next.js 16.2.10** (App Router) + **React 19.2.4** + **TypeScript**
 - **React Compiler** enabled (`reactCompiler: true`)
-- **Tailwind CSS v4** using `@theme inline` — tokens live in `app/globals.css`
+- **Tailwind CSS v4** using `@theme inline` - tokens live in `app/globals.css`
 - **Framer Motion** for reveals and micro-interactions
 - **Radix UI** primitives (Dialog, Accordion) behind shadcn-style wrappers
 - **lucide-react** icons, **sonner** toasts
-- **next/font** — Inter + JetBrains Mono, self-hosted
+- **next/font** - Inter + JetBrains Mono, self-hosted
 - **firebase-admin** for waitlist/contact persistence
-- **posthog-js** for analytics (lazy-loaded — see §8)
+- **posthog-js** for analytics (lazy-loaded - see §8)
 
 ### Commands
 
@@ -112,14 +112,14 @@ npm run seo:audit    # assert the SEO invariants against live (or --base=localho
 app/
   layout.tsx              # fonts, metadata, JSON-LD @graph, theme bootstrap,
                           #   <Analytics/>, Toaster, skip link
-  page.tsx                # landing page — composes the sections
+  page.tsx                # landing page - composes the sections
   globals.css             # design tokens (dark + light), utilities, keyframes
   [useCase]/page.tsx      # the 7 use-case landing pages (see §5)
-  blog/page.tsx           # blog index — H1 "Mac remote access guides"
+  blog/page.tsx           # blog index - H1 "Mac remote access guides"
   blog/[slug]/page.tsx    # post renderer + Article/FAQPage/BreadcrumbList JSON-LD
   privacy/  terms/        # legal pages
-  api/waitlist/route.ts   # POST — honeypot + rate limit + provider
-  api/contact/route.ts    # POST — Firestore `contacts`
+  api/waitlist/route.ts   # POST - honeypot + rate limit + provider
+  api/contact/route.ts    # POST - Firestore `contacts`
   feed.xml/route.ts       # RSS 2.0, force-static
   not-found.tsx           # 404, noindex + follow
   opengraph-image.tsx     # generated 1200x630 OG image
@@ -134,7 +134,7 @@ components/
   waitlist-form.tsx  contact-form.tsx  waitlist-dialog.tsx  contact-dialog.tsx
   dual-path-diagram.tsx  privacy-illustration.tsx  theme-toggle.tsx  wordmark.tsx
 lib/
-  site.ts                 # site constants — name, url, tagline, description, nav
+  site.ts                 # site constants - name, url, tagline, description, nav
   content.ts              # homepage copy: features, steps, comparison, faqs, pricing
   blog.ts                 # all 15 posts + FAQ map + contentUpdated
   use-cases.ts            # the 7 landing pages
@@ -150,8 +150,8 @@ public/
 docs/
   CONTEXT.md              # this document (source of truth)
   SEO-CONTEXT.md          # search + answer-engine playbook (do / do not / why)
-  context.pdf             # generated — do not edit
-  seo-context.pdf         # generated — do not edit
+  context.pdf             # generated - do not edit
+  seo-context.pdf         # generated - do not edit
 scripts/
   indexnow.mjs            # IndexNow submission
   build-context-pdf.mjs   # CONTEXT.md -> context.pdf via headless Chrome
@@ -166,16 +166,16 @@ source-material/          # original brief, WebRTC explainer, one-pager
 All copy is data, not JSX. Three registries drive nearly every page.
 
 ### `lib/site.ts`
-Site-wide constants. `site.url` is the canonical origin — change it here and
+Site-wide constants. `site.url` is the canonical origin - change it here and
 sitemap, robots, JSON-LD and every canonical tag follow.
 
 ### `lib/content.ts`
 Homepage sections: `trustItems`, `features` (6), `steps` (3), `comparison`
 (7 rows), `faqs` (6), `pricing` (2 plans × 2 regions).
 `features` also feeds `SoftwareApplication.featureList` and `faqs` feeds the
-homepage `FAQPage` — so editing copy here updates the structured data.
+homepage `FAQPage` - so editing copy here updates the structured data.
 
-### `lib/blog.ts` — 15 posts
+### `lib/blog.ts` - 18 posts
 
 Blocks are a discriminated union:
 
@@ -193,7 +193,7 @@ extract most reliably. Head-to-head posts should lead with one.
 
 `contentUpdated` (currently `2026-08-16`) is a single date that drives
 `lastModified` across the sitemap. **Bump it when content is meaningfully
-revised** — it is deliberately not a build timestamp, because claiming every
+revised** - it is deliberately not a build timestamp, because claiming every
 page changed on every deploy gets the signal discounted.
 
 | Slug | Angle |
@@ -210,13 +210,13 @@ page changed on every deploy gets the signal discounted.
 | `stay-in-control-of-ai-agents-from-anywhere` | AI oversight |
 | `best-remote-desktop-for-mac` | Honest roundup (9 min) |
 | `termius-alternative-mac-terminal` | Termius comparison (8 min) |
-| `screens-5-alternatives` | Roundup — targets `screens 5 alternative` |
-| `jump-desktop-vs-teamviewer` | Head-to-head — the proven format, TeamViewer volume |
-| `jump-desktop-vs-rustdesk` | Head-to-head — free/open-source branch of intent |
+| `screens-5-alternatives` | Roundup - targets `screens 5 alternative` |
+| `jump-desktop-vs-teamviewer` | Head-to-head - the proven format, TeamViewer volume |
+| `jump-desktop-vs-rustdesk` | Head-to-head - free/open-source branch of intent |
 
 The last three were added on 16 Aug 2026 in direct response to the query data in
 §7: competitor-vs-competitor is the only non-brand format earning clicks. In all
-three, **Servey is deliberately not the hero** — it appears once, late, labelled
+three, **Servey is deliberately not the hero** - it appears once, late, labelled
 as our own pre-launch project, and each mention tells the reader to buy an
 established product if they need something today. That restraint is the reason
 these pages get read and cited; do not "improve" it into a sales pitch.
@@ -226,7 +226,7 @@ these pages get read and cited; do not "improve" it into a sales pitch.
 > only real internal-link mechanism is exact-string keyword overlap feeding
 > `relatedPosts()`. Engineering the `keywords` array *is* the link graph.
 
-### `lib/use-cases.ts` — 7 landing pages, served by `app/[useCase]/page.tsx`
+### `lib/use-cases.ts` - 7 landing pages, served by `app/[useCase]/page.tsx`
 
 `control-mac-from-iphone` · `terminal-on-iphone` · `terminal-on-ipad` ·
 `headless-mac-mini` · `mac-for-developers` · `remote-mac-for-ai-agents` ·
@@ -243,8 +243,8 @@ you are re-creating the exact fragmentation this page was built to fix.
 **Why these exist.** Competitor research found Termius uses a landing-page
 *template technique*: ~70% shared structure, ~30% task-specific content, plus a
 cross-link mesh between the variants. Servey copies the technique but on a
-different axis — **task × device** rather than Termius's **SSH client ×
-platform** — because competing on their axis means fighting where they hold
+different axis - **task × device** rather than Termius's **SSH client ×
+platform** - because competing on their axis means fighting where they hold
 #1. Termius does not rank at all for "run terminal on mac from iphone"; the
 pages that do are small indie apps.
 
@@ -266,7 +266,7 @@ and `navLabel` for the cross-link mesh.
 | Priority | URLs |
 |---|---|
 | 1.0 | `/` |
-| 0.9 | the 7 use-case pages *(above blog — these are the commercial pages)* |
+| 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* |
 | 0.8 | `/blog` |
 | 0.7 | the 15 blog posts |
 | 0.3 | `/privacy`, `/terms` |
@@ -295,7 +295,7 @@ This is the most invested-in part of the site. Change it carefully.
 > the number of visible breadcrumb links. A mismatch is exactly what Google
 > penalises. This was shipped wrong once (3 in JSON-LD, 2 visible) and fixed.
 
-> **FAQ rich results are dead — the markup is not.** Google added the
+> **FAQ rich results are dead - the markup is not.** Google added the
 > deprecation notice on **7 May 2026**: FAQ rich results no longer render, the
 > Search Console report and Rich Results Test support were removed in June 2026,
 > and the API data went in August 2026. **Do not strip the `FAQPage` JSON-LD.**
@@ -314,13 +314,13 @@ This is the most invested-in part of the site. Change it carefully.
 - **Every page sets an explicit `alternates.canonical` and an explicit
   `openGraph.url`.** Without the latter, OG inherits the homepage URL from the
   root layout and disagrees with the canonical.
-- The canonicals are now doubly load-bearing — see the trailing-slash note in §8.
+- The canonicals are now doubly load-bearing - see the trailing-slash note in §8.
 
 ### Crawlers
-`app/robots.ts` explicitly allows the AI answer engines by name — `GPTBot`,
+`app/robots.ts` explicitly allows the AI answer engines by name - `GPTBot`,
 `OAI-SearchBot`, `ChatGPT-User`, `ClaudeBot`, `Claude-Web`, `Claude-SearchBot`,
 `PerplexityBot`, `Perplexity-User`, `Google-Extended`, `Applebot-Extended`,
-`Bingbot`, `Amazonbot`, `CCBot` — because some stacks block them by default and
+`Bingbot`, `Amazonbot`, `CCBot` - because some stacks block them by default and
 the intent here is to be citable.
 
 ### IndexNow
@@ -342,25 +342,25 @@ is expected when new pages enter the index low and dilute the average.
 
 **Diagnosis:** position 15.8 is page two, which takes roughly 1% of clicks
 versus ~25% on page one. A 2.6% CTR is *above* par for that position, so the
-titles and descriptions are working — **this is a ranking problem, not a
+titles and descriptions are working - **this is a ranking problem, not a
 copywriting problem.** The fix is authority and coverage, not more rewrites.
 
 #### What the query data proves (the most useful thing in this document)
 
-Brand (`servey`) is 7 clicks / 131 impressions — **44% of all clicks from 21% of
+Brand (`servey`) is 7 clicks / 131 impressions - **44% of all clicks from 21% of
 impressions.** Everything below is the non-brand picture.
 
 | Cluster | Impressions | Clicks | Read |
 |---|---|---|---|
 | **Competitor vs competitor** (screens vs jump desktop + variants) | ~58 | **2** | ✅ The only non-brand cluster earning clicks |
 | **AI on Mac** (run local ai on mac, mac ai agent…) | ~15 | 0 | Biggest non-competitor cluster |
-| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core product intent — fragmented |
+| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core product intent - fragmented |
 | **Headless Mac mini** (7 phrasings) | ~9 | 0 | Fragmented |
 | `airplayuiagent` | 4 | 0 | Accidental, off-intent (a macOS process name) |
 
 **Three conclusions that should drive content decisions:**
 
-1. **The comparison format is the only proven winner** — and specifically
+1. **The comparison format is the only proven winner** - and specifically
    *competitor-vs-competitor*, where Servey is not the subject. `screens vs jump
    desktop` earns clicks; nothing else non-brand does. Build more of these.
 2. **The core product intent is fragmented across ~10 phrasings, each with 1-2
@@ -368,14 +368,14 @@ impressions.** Everything below is the non-brand picture.
    mac", "use iphone as mac remote", "access mac from iphone"…). That pattern
    means Google reads the site as marginally relevant to all of them and
    authoritative on none. The fix is a single strong pillar page for the intent,
-   with the existing blog post as its informational spoke — not more pages
+   with the existing blog post as its informational spoke - not more pages
    competing for the same thing.
 3. **Pure how-to content is not ranking.** The informational posts generate
    impressions but no clicks. Comparison and alternative pages do the work.
 
 ---
 
-## 8. Analytics — PostHog
+## 8. Analytics - PostHog
 
 Added August 2026. Key design decisions, all deliberate:
 
@@ -391,7 +391,7 @@ and no call site needs a guard.
 **Reverse-proxied.** `next.config.ts` rewrites `/ingest/*` to PostHog, because
 `*.i.posthog.com` sits on default content-blocker lists.
 - The rewrites are returned as a **plain array**, which puts them in the
-  `afterFiles` phase — evaluated **before** dynamic routes. That is what stops
+  `afterFiles` phase - evaluated **before** dynamic routes. That is what stops
   `app/[useCase]` from swallowing `/ingest/*`.
 - `skipTrailingSlashRedirect: true` is required because PostHog's ingest paths
   end in a slash (`/ingest/e/`) and Next's default 308 would break capture.
@@ -399,10 +399,10 @@ and no call site needs a guard.
   canonical tags described in §7 are what keep duplicates out of the index.
 
 **Privacy posture** (matched word-for-word by `app/privacy/page.tsx`):
-- `person_profiles: "identified_only"` and **nothing calls `identify()`** — so
+- `person_profiles: "identified_only"` and **nothing calls `identify()`** - so
   no person profile is created and no analytics data is linked to a waitlist
   email. Keep it that way unless the policy is updated first.
-- `respect_dnt: true` — Do Not Track is honoured. On-brand for a product sold
+- `respect_dnt: true` - Do Not Track is honoured. On-brand for a product sold
   on privacy.
 - Session replay **off** unless `NEXT_PUBLIC_POSTHOG_SESSION_RECORDING=true`.
   Turning it on records real browsing and requires a policy update.
@@ -423,7 +423,7 @@ whole site dynamic.
 | `waitlist_submitted` | `source`, `country` | Passed validation, request started |
 | `waitlist_signup` | `source`, `country`, `duplicate` | **The conversion** |
 | `waitlist_failed` | `source`, `status` | Server or network failure |
-| `contact_message_sent` | — | No message body or address captured |
+| `contact_message_sent` | - | No message body or address captured |
 
 `source` is already threaded through every waitlist CTA (`nav`, `nav-mobile`,
 `hero`, …), so **"which placement converts" is answerable with no extra
@@ -440,7 +440,7 @@ oversight.**
 
 ---
 
-## 9. Growth — what is actually available pre-launch
+## 9. Growth - what is actually available pre-launch
 
 Most launch directories reject announced-only products. Verified rules:
 
@@ -449,7 +449,7 @@ Most launch directories reject announced-only products. Verified rules:
 | **AlternativeTo** | ❌ Blocked | *"If the app is Coming Soon (announced only), in closed/private beta, invite-only, or in Early Access phase, we do not accept it."* |
 | **Show HN** | ❌ Blocked | *"If your work isn't ready for users to try out, please don't do a Show HN."* and *"Don't post landing pages or fundraisers."* |
 | **App Store listing** | ⏳ At launch | The **#1 most-cited source** in this category (77 citations) |
-| **YouTube demo** | ✅ Available | **#2 most-cited** (74 citations) — the highest-leverage move available now |
+| **YouTube demo** | ✅ Available | **#2 most-cited** (74 citations) - the highest-leverage move available now |
 | **Reddit** (r/macapps, r/homelab) | ✅ Available | **#3 most-cited** (65 citations). Genuine participation, not a launch post |
 | **BetaList / Peerlist / Uneed** | ✅ Available | Built specifically for unlaunched products |
 | **HN as a normal submission** | ✅ Available | Show HN is barred, but submitting a blog post as a regular link is fine |
@@ -463,7 +463,7 @@ submission can go in on launch day. Prepare logo, screenshots and a demo video.
 ### Competitor landscape
 
 Screens, Jump Desktop, Termius, plus the generic remote-desktop tools.
-**Termius is only a partial competitor** — the honest overlap is narrow: *"run
+**Termius is only a partial competitor** - the honest overlap is narrow: *"run
 a terminal on your own Mac without SSH setup."* Chasing "termius alternative"
 broadly would attract multi-host-SSH searchers who bounce, which pollutes
 waitlist quality while pre-launch. The comparison post is deliberately titled
@@ -473,7 +473,7 @@ waitlist quality while pre-launch. The comparison post is deliberately titled
 
 ## 10. Backend
 
-### Waitlist — `POST /api/waitlist`
+### Waitlist - `POST /api/waitlist`
 Swappable provider chosen automatically from env, or forced with
 `WAITLIST_PROVIDER`:
 
@@ -482,25 +482,25 @@ Swappable provider chosen automatically from env, or forced with
 | **Firebase** *(recommended)* | `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY` | Writes to `waitlist`; **doc id = the normalized email**, which is what de-dupes |
 | **Formspree** | `FORMSPREE_ENDPOINT` | Zero-backend fallback |
 | **Resend** | `RESEND_API_KEY`, `RESEND_AUDIENCE_ID` | 409 is treated as duplicate |
-| **console** *(default)* | — | Logs and succeeds, so the form works with no setup |
+| **console** *(default)* | - | Logs and succeeds, so the form works with no setup |
 
 Validation: email regex + ≤254 chars, name ≥2 chars, country must be in
 `lib/countries.ts`. Protections: hidden **honeypot** field (`website`) that
 returns a fake success to bots, and a **per-IP rate limit of 5/min**.
 
-### Contact — `POST /api/contact`
+### Contact - `POST /api/contact`
 Same protections; writes to the Firestore `contacts` collection.
 
-### Transactional email — `lib/email.ts`
+### Transactional email - `lib/email.ts`
 
 Sends the waitlist confirmation through **Resend's REST API over plain fetch**
-(no SDK — `waitlist-providers.ts` already talks to Resend the same way).
+(no SDK - `waitlist-providers.ts` already talks to Resend the same way).
 
 - **No-op without `RESEND_API_KEY`.** Signups still succeed, silently, in ~14 ms
   with no network attempt. Local dev and previews therefore never send real mail.
 - **Never throws into the request path.** Every failure resolves. A signup that
   was already persisted must not be reported as failed because the email did not
-  go out — the visitor would sign up again and get a duplicate response.
+  go out - the visitor would sign up again and get a duplicate response.
 - **Awaited, not fire-and-forget.** Serverless functions can be frozen the moment
   the response returns, which silently drops an un-awaited send.
 - **Not sent on duplicates.** That address already has the email.
@@ -536,8 +536,7 @@ in `app/globals.css`, exposed to Tailwind v4 via `@theme inline`:
 ### Accessibility rules that were hard-won
 
 - **`--accent` is bright green and is NOT accessible on light backgrounds
-  (1.72:1).** Use **`--accent-strong`** for anything that must meet contrast —
-  it resolves to `#22dc6e` in dark and `#0a7a3c` (5.2:1) in light. This has
+  (1.72:1).** Use **`--accent-strong`** for anything that must meet contrast -   it resolves to `#22dc6e` in dark and `#0a7a3c` (5.2:1) in light. This has
   caused two separate regressions; check both themes.
 - Gradient stops are **tokenized per theme**. They were once hardcoded
   near-white outside the light block, which made headline words invisible in
@@ -547,7 +546,7 @@ in `app/globals.css`, exposed to Tailwind v4 via `@theme inline`:
   `useReducedMotion()`. `RevealItem` passes `variants={reduce ? undefined : item}`
   rather than relying on inference that could pin sections at `opacity: 0`.
 - Targets: 4.5:1 body text, 3:1 large text and focus indicators (SC 1.4.11).
-- Heading order matters — `features.tsx` carries an `sr-only` `<h2>` because the
+- Heading order matters - `features.tsx` carries an `sr-only` `<h2>` because the
   page otherwise ran h1 → h3×6 → h2 and the nav target had no accessible name.
 
 ### Two CSS traps already hit
@@ -558,10 +557,10 @@ in `app/globals.css`, exposed to Tailwind v4 via `@theme inline`:
 - **`gap-px` grid dividers need a parent background** to show through. The
   trust strip sets `bg-border` on the `<ul>` and `bg-bg` on the cells.
 
-### Screenshots — `lib/screenshots.ts`
+### Screenshots - `lib/screenshots.ts`
 Typed slots with `ratio`, `alt`, `src`, `ready`. `ready: false` renders the
 styled placeholder. `iphone-controls` and `dual-path` are still placeholders.
-**Ratios must match the real file** — two were wrong and `object-cover` was
+**Ratios must match the real file** - two were wrong and `object-cover` was
 silently cropping.
 
 ---
@@ -581,7 +580,7 @@ from the object store, but the repo was briefly unusable.
 **Recommendation: move the repo off iCloud** (e.g. `~/dev/servey-website`).
 
 If git ever reports *"not a git repository"* while `.git` exists, check for a
-missing `.git/HEAD` first — restoring it with `ref: refs/heads/main` is usually
+missing `.git/HEAD` first - restoring it with `ref: refs/heads/main` is usually
 the whole fix.
 
 ---
@@ -591,7 +590,7 @@ the whole fix.
 **Owner:**
 - Add `NEXT_PUBLIC_POSTHOG_KEY` in Vercel (Production + Preview), then redeploy
 - Decide the consent-banner question (§8)
-- Record the YouTube demo — highest-leverage channel available pre-launch
+- Record the YouTube demo - highest-leverage channel available pre-launch
 - Reddit participation in r/macapps and r/homelab
 - Email the waitlist (never used)
 - Request GSC indexing for the 7 newest URLs; check **Indexing → Pages** for
@@ -604,4 +603,4 @@ the whole fix.
 - `LazyMotion` swap (~33 KB gzip off homepage First Load JS)
 - Reduce eyebrow labels (10 against a budget of 3); break the run of 6
   consecutive zigzag sections
-- Re-shoot `hero-devices.png` (privacy — currently a deliberate "leave it")
+- Re-shoot `hero-devices.png` (privacy - currently a deliberate "leave it")

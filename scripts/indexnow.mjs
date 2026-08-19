@@ -6,7 +6,7 @@
  *   npm run indexnow                    # submit every URL in the live sitemap
  *   npm run indexnow -- /blog/some-post # submit specific paths only
  *
- * The key must stay reachable at https://servey.in/<key>.txt — that file is how
+ * The key must stay reachable at https://servey.in/<key>.txt - that file is how
  * IndexNow verifies we own the domain. Do not rename it.
  */
 const KEY = "f79fa191eb94133fb4c62f3e675a3633";
