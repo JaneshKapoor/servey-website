@@ -15,6 +15,7 @@ import {
   posts,
   relatedPosts,
 } from "@/lib/blog";
+import { useCasesForPost } from "@/lib/use-cases";
 import { site, ogImage } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -119,6 +120,7 @@ export default async function BlogPostPage({
   };
 
   const others = relatedPosts(post.slug, 3);
+  const relatedUseCases = useCasesForPost(post.slug);
 
   return (
     <>
@@ -318,6 +320,32 @@ export default async function BlogPostPage({
               <Button size="md">Join the waitlist</Button>
             </WaitlistDialog>
           </div>
+
+          {/* The commercial counterpart to this guide. Rendered above "Keep
+              reading" on purpose: it is the link most likely to be followed by
+              a reader who has finished the article and wants the product page,
+              and it is the only inbound path a crawler has into the use-case
+              cluster from the part of the site Google actually indexes. */}
+          {relatedUseCases.length > 0 && (
+            <aside className="mt-14">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                Servey for this
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {relatedUseCases.map((u) => (
+                  <li key={u.slug}>
+                    <Link
+                      href={`/${u.slug}`}
+                      className="group inline-flex items-center gap-2 text-fg transition-colors hover:text-accent-strong"
+                    >
+                      {u.h1}
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
 
           {/* Related */}
           {others.length > 0 && (

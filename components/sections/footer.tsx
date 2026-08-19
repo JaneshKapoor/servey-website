@@ -3,6 +3,7 @@ import { ChevronUp, Heart, Mail } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { ContactDialog } from "@/components/contact-dialog";
 import { nav, site } from "@/lib/site";
+import { useCases } from "@/lib/use-cases";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -32,7 +33,29 @@ export function Footer() {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
+            {/* Use cases live in the footer because they were otherwise orphaned:
+                the pages cross-link to each other, but nothing outside the cluster
+                linked in, so the only route to them was the sitemap. Search Console
+                counted 33 internal links across the whole site, and the three most
+                linked targets were /privacy, /terms and /blog - i.e. the footer was
+                the only internal linking the crawler could see. A footer nav puts
+                every one of them one hop from every page. */}
+            <nav aria-label="Use cases" className="flex flex-col gap-3">
+              <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                Use cases
+              </span>
+              {useCases.map((u) => (
+                <Link
+                  key={u.slug}
+                  href={`/${u.slug}`}
+                  className="text-sm text-muted transition-colors hover:text-fg"
+                >
+                  {u.navLabel}
+                </Link>
+              ))}
+            </nav>
+
             <nav aria-label="Product" className="flex flex-col gap-3">
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 Product
