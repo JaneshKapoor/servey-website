@@ -1,4 +1,4 @@
-# Servey — SEO Context
+# Servey - SEO Context
 
 **The SEO playbook for servey.in: what we do, what we deliberately do not do,
 and the evidence behind each decision.**
@@ -8,16 +8,16 @@ This file covers search and answer-engine strategy only.
 
 - **Last reviewed:** 16 August 2026
 - **Source of truth:** `docs/SEO-CONTEXT.md`. `docs/seo-context.pdf` is generated
-  from it by `npm run context:pdf` — never edit the PDF.
+  from it by `npm run context:pdf` - never edit the PDF.
 
 > **Why this file exists.** Nearly every conclusion below was expensive to reach
 > and easy to forget. Several were reached *twice* because the reasoning was not
 > written down. If you are about to "improve" something here, read the reason
-> first — most of these are deliberate trade-offs, not oversights.
+> first - most of these are deliberate trade-offs, not oversights.
 
 ---
 
-## 1. Baseline — where we actually are
+## 1. Baseline - where we actually are
 
 Google Search Console, 3-month window to **14 August 2026**:
 
@@ -33,12 +33,12 @@ Prior reading (to ~2 Aug): 14 clicks · 502 impressions · 2.8% · position 14.9
 Impressions are growing; position drifted slightly down, which is normal when
 new pages enter the index low and pull the average with them.
 
-**Brand vs non-brand:** `servey` alone is 7 clicks / 131 impressions — **44% of
+**Brand vs non-brand:** `servey` alone is 7 clicks / 131 impressions - **44% of
 all clicks from 21% of impressions.** Non-brand is the entire growth opportunity.
 
 **Index coverage (verified 16 Aug 2026):**
-- **Google** — sitemap submitted, **26 URLs discovered**, last read 16 Aug 2026.
-- **Bing** — indexed. Homepage plus at least four blog URLs return on a phrase
+- **Google** - sitemap submitted, **26 URLs discovered**, last read 16 Aug 2026.
+- **Bing** - indexed. Homepage plus at least four blog URLs return on a phrase
   search, and Bing's own AI summary describes Servey accurately from our pages.
   This matters because **ChatGPT Search reads Bing's index**, so the pipe to the
   largest answer engine is connected.
@@ -48,7 +48,7 @@ all clicks from 21% of impressions.** Non-brand is the entire growth opportunity
 Position 15.8 is page two, which takes roughly **1% of clicks** versus ~25% on
 page one. CTR of 2.6% is *above* par for that position, which means **titles and
 descriptions are working.** This is a **ranking problem, not a copywriting
-problem**, and the bottleneck is authority — we have effectively no backlinks.
+problem**, and the bottleneck is authority - we have effectively no backlinks.
 
 **Do not respond to flat numbers by rewriting metadata again.** That lever is
 already pulled. The remaining levers are links, entity presence, and shipping.
@@ -63,13 +63,13 @@ All 39 queries, clustered:
 |---|---|---|---|
 | **Competitor vs competitor** (`screens vs jump desktop` + ~11 variants) | ~58 | **2** | ✅ The only non-brand cluster earning clicks |
 | **AI on Mac** (`run local ai on mac`, `mac ai agent`) | ~15 | 0 | Largest non-competitor cluster |
-| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core intent — was fragmented |
+| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core intent - was fragmented |
 | **Headless Mac mini** (7 phrasings) | ~9 | 0 | Was fragmented |
 | `airplayuiagent` | 4 | 0 | Accidental, off-intent (a macOS process name) |
 
 **Three conclusions that drive every content decision:**
 
-1. **Comparison content is the only proven format** — specifically
+1. **Comparison content is the only proven format** - specifically
    *competitor-vs-competitor*, where Servey is **not** the subject. We rank by
    genuinely helping someone choose between two other products.
 2. **Fragmentation is the failure mode.** Ten phrasings of one intent, each with
@@ -107,14 +107,14 @@ All 39 queries, clustered:
 
 ### Technical
 - **Static generation everywhere.** Every route is Static/SSG; guard this.
-- **Speculation Rules** — same-origin prefetch/prerender at `moderate` eagerness,
+- **Speculation Rules** - same-origin prefetch/prerender at `moderate` eagerness,
   excluding `/api/` and `/ingest/`.
 - **Structured data**: one `@graph` (Organization → WebSite → SoftwareApplication
   with PreOrder Offers → FAQPage → ImageObject), plus per-page `Article` /
   `WebPage` / `BreadcrumbList` / `FAQPage`. Cross-reference by `@id`; never
   re-declare a node inline.
 - **`sizes` on every responsive image**, matched to its real rendered width.
-- **IndexNow** after every content deploy (`npm run indexnow`) — fastest route
+- **IndexNow** after every content deploy (`npm run indexnow`) - fastest route
   into Bing, and therefore into ChatGPT Search.
 - **`npm run seo:audit`** before/after deploys. Currently **26/26 pass**.
 
@@ -123,7 +123,7 @@ All 39 queries, clustered:
   isolation.
 - **Question-shaped H2s** mirroring real queries.
 - **Direct answer in the first sentence** after each heading, then support.
-- **`robots.ts` explicitly allows AI crawlers by name** — GPTBot, OAI-SearchBot,
+- **`robots.ts` explicitly allows AI crawlers by name** - GPTBot, OAI-SearchBot,
   ChatGPT-User, ClaudeBot, Claude-Web, Claude-SearchBot, PerplexityBot,
   Perplexity-User, Google-Extended, Applebot-Extended, Bingbot, Amazonbot, CCBot.
 
@@ -134,7 +134,7 @@ All 39 queries, clustered:
 This section is as important as the last one. Each of these is a considered
 decision with a reason.
 
-### Never — integrity
+### Never - integrity
 | We don't | Why |
 |---|---|
 | Invent ratings, testimonials, review counts, user numbers, or `AggregateRating` | Servey is pre-launch with zero public users. `AggregateRating` without real reviews is a Google structured-data violation, and the rest is simply false. |
@@ -146,12 +146,12 @@ decision with a reason.
 | Keyword-stuff, cloak, or hide text | Trivially detected; the fragmentation fix is pillar pages, not stuffing. |
 | Publish thin AI-generated filler to inflate page count | Google's QRG §4.6.5–6 targets exactly this. Page count is not the goal. |
 
-### Not now — strategy
+### Not now - strategy
 | We don't | Why |
 |---|---|
-| **Chase "recommend me a tool" AI queries** | Verified 16 Aug: ChatGPT answered "tool to screen share to my Mac from my phone" with Chrome Remote Desktop, AnyDesk, TeamViewer. **Correctly** — Servey has nothing to download, so recommending it would be a worse answer. Structurally unwinnable until launch. Do not treat it as an SEO failure. |
+| **Chase "recommend me a tool" AI queries** | Verified 16 Aug: ChatGPT answered "tool to screen share to my Mac from my phone" with Chrome Remote Desktop, AnyDesk, TeamViewer. **Correctly** - Servey has nothing to download, so recommending it would be a worse answer. Structurally unwinnable until launch. Do not treat it as an SEO failure. |
 | **Chase "termius alternative" broadly** | It would pull multi-host-SSH searchers who bounce, polluting waitlist quality pre-launch. The honest overlap is narrow: "run a terminal on your own Mac without SSH setup". |
-| **Compete on Termius's page axis** (SSH client × platform) | They hold #1 there. We copied their *template technique* onto a different axis — **task × device** — where they do not rank at all. |
+| **Compete on Termius's page axis** (SSH client × platform) | They hold #1 there. We copied their *template technique* onto a different axis - **task × device** - where they do not rank at all. |
 | **Add more pages targeting "control Mac from iPhone"** | That recreates the exact fragmentation `/control-mac-from-iphone` was built to fix. One pillar, many spokes. |
 | **Rewrite metadata again to chase CTR** | 2.6% is already above par for position 15.8. The lever is pulled. |
 | **Build doorway pages per query variant** | The 10 phrasings get absorbed by one strong page, not 10 weak ones. |
@@ -160,7 +160,7 @@ decision with a reason.
 ### Myths we do not act on
 | Belief | Reality |
 |---|---|
-| **`llms.txt` improves AI citation** | **It does not.** No major engine consumes it; this is evidence-based, not opinion. We keep ours because it costs nothing and is a tidy human-readable map — **but it is not a citation lever and must not be cited as one.** |
+| **`llms.txt` improves AI citation** | **It does not.** No major engine consumes it; this is evidence-based, not opinion. We keep ours because it costs nothing and is a tidy human-readable map - **but it is not a citation lever and must not be cited as one.** |
 | FAQ schema wins SERP real estate | **Retired 7 May 2026.** See §7. |
 | More pages = more traffic | 39 queries across 26 pages says relevance is fine; authority is the constraint. |
 | Content needs chunking / AI-specific keyword rewriting | Engines handle synonyms; this is wasted effort. |
@@ -176,22 +176,22 @@ fragmentation comes back.
 |---|---|---|
 | Control Mac from iPhone | `/control-mac-from-iphone` | `blog/control-your-mac-from-iphone-ipad` |
 | Terminal from iPhone | `/terminal-on-iphone` | `blog/real-terminal-on-your-mac-from-iphone` |
-| Terminal from iPad | `/terminal-on-ipad` | — |
+| Terminal from iPad | `/terminal-on-ipad` | - |
 | Headless Mac mini / macOS headless mode | `/headless-mac-mini` | `blog/control-a-headless-mac-mini-remotely` |
 | Run local AI on Mac / mac ai agent | `/remote-mac-for-ai-agents` | `blog/run-ai-agents-locally-on-your-mac`, `blog/run-ai-agents-on-your-mac-remotely`, `blog/stay-in-control-of-ai-agents-from-anywhere` |
 | Developer remote Mac access | `/mac-for-developers` | `blog/who-is-servey-for-developers-home-labs` |
-| Mac home lab | `/mac-home-lab` | — |
-| Cellular / strict networks | `blog/access-your-mac-remotely-over-cellular` | — |
+| Mac home lab | `/mac-home-lab` | - |
+| Cellular / strict networks | `blog/access-your-mac-remotely-over-cellular` | - |
 | Screens vs Jump Desktop | `blog/screens-vs-jump-desktop` | `blog/screens-jump-desktop-alternative-mac` |
-| Screens 5 alternatives | `blog/screens-5-alternatives` | — |
-| Jump Desktop vs TeamViewer | `blog/jump-desktop-vs-teamviewer` | — |
-| Jump Desktop vs RustDesk | `blog/jump-desktop-vs-rustdesk` | — |
-| Termius / SSH overlap | `blog/termius-alternative-mac-terminal` | — |
-| Category roundup | `blog/best-remote-desktop-for-mac` | — |
+| Screens 5 alternatives | `blog/screens-5-alternatives` | - |
+| Jump Desktop vs TeamViewer | `blog/jump-desktop-vs-teamviewer` | - |
+| Jump Desktop vs RustDesk | `blog/jump-desktop-vs-rustdesk` | - |
+| Termius / SSH overlap | `blog/termius-alternative-mac-terminal` | - |
+| Category roundup | `blog/best-remote-desktop-for-mac` | - |
 
 ---
 
-## 6. Internal linking — a quirk that matters
+## 6. Internal linking - a quirk that matters
 
 **`p` blocks render as plain text.** `app/blog/[slug]/page.tsx` parses no
 markdown and no HTML, so **you cannot put an anchor in body copy.** The only real
@@ -218,7 +218,7 @@ automatically from the `useCases` array order, so adding a page wires it in.
 | `SpecialAnnouncement`, `ClaimReview`, `VehicleListing`, `EstimatedSalary`, `LearningVideo`, Course carousel, Book Actions | Removed June 2025 | Do not add |
 | `QAPage` | Retained | Available if ever useful |
 | `VideoObject` | Active | **Add when the YouTube demo exists** |
-| `AggregateRating` | Active | **Forbidden here** — no real reviews exist |
+| `AggregateRating` | Active | **Forbidden here** - no real reviews exist |
 
 ---
 
@@ -229,7 +229,7 @@ automatically from the `useCases` array order, so adding a page wires it in.
    unwinnable, and it blocks the highest-authority directories (§9).
 2. **Effectively no backlinks.** The real reason for position 15.8.
 3. **Almost no entity presence.** AI engines weight presence on YouTube, Reddit,
-   LinkedIn and Wikipedia. We have essentially none — and **three of those four
+   LinkedIn and Wikipedia. We have essentially none - and **three of those four
    are free and available pre-launch.**
 4. **The brand name carries a search tax.** Bing responds to "servey" with *"Do
    you mean **survey**?"*. Google brand search works (131 impressions), so it is
@@ -241,7 +241,7 @@ automatically from the `useCases` array order, so adding a page wires it in.
 
 ---
 
-## 9. Channels — available vs blocked pre-launch
+## 9. Channels - available vs blocked pre-launch
 
 Verified against each platform's own rules.
 
@@ -263,7 +263,7 @@ Verified against each platform's own rules.
 
 | Tool | What it answers | How |
 |---|---|---|
-| **`npm run seo:audit`** | Do the on-page invariants still hold? | Titles ≤60, descriptions 110–160, canonical self-reference, og:url agreement, one h1, no skipped headings, valid JSON-LD with resolving `@id`s, **BreadcrumbList count == visible trail**, all sitemap URLs 200. Exits non-zero — can gate a deploy. |
+| **`npm run seo:audit`** | Do the on-page invariants still hold? | Titles ≤60, descriptions 110–160, canonical self-reference, og:url agreement, one h1, no skipped headings, valid JSON-LD with resolving `@id`s, **BreadcrumbList count == visible trail**, all sitemap URLs 200. Exits non-zero - can gate a deploy. |
 | **Google Search Console** | Impressions, position, query clusters | The cluster table in §2 is the useful view, not the top-line number |
 | **Bing / ChatGPT** | Are we retrievable by answer engines? | Phrase search on Bing; test **comparison** queries, not "recommend me a tool" |
 | **PostHog** | What happens after the click | `$pageview`, `waitlist_submitted` → `waitlist_signup` (with `duplicate`), `waitlist_failed`, all carrying `source` |
@@ -283,7 +283,7 @@ Verified against each platform's own rules.
 1. **Record the YouTube demo.** Highest-leverage action available pre-launch,
    feeds YouTube + Reddit + the launch-day AlternativeTo submission, and is the
    only top-3 cited source reachable before shipping.
-2. **Reddit participation** in r/macapps and r/homelab — genuine, not promotional.
+2. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
 3. **Email the waitlist.** Costs nothing, never used.
 4. **BetaList / Peerlist / Uneed** submissions.
 5. **Add `VideoObject` schema** once the demo exists.
@@ -300,6 +300,9 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-08-19 | **Internal-linking fix:** the 7 use-case pages were orphaned - they cross-linked to each other but nothing linked in, so the homepage emitted only 4 internal links (`/`, `/blog`, `/privacy`, `/terms`). GSC counted 33 internal links sitewide with `/privacy`, `/terms`, `/blog` as top targets, i.e. the footer was the only link graph Google saw. Added a footer `Use cases` nav (homepage 4 -> 11 links) and a `Servey for this` block on posts inverting `relatedSlug`. |
+| 2026-08-19 | 3 comparison posts (`splashtop-vs-jump-desktop`, `anydesk-vs-teamviewer`, `chrome-remote-desktop-vs-jump-desktop`), keyword-wired to `screens-vs-jump-desktop`. **26 -> 29 URLs.** |
+| 2026-08-19 | Em dashes replaced with `-` across code comments and docs (owner preference). None were in rendered copy. `source-material/` left untouched as owner input. |
 | 2026-08-16 | 3 comparison posts (`screens-5-alternatives`, `jump-desktop-vs-teamviewer`, `jump-desktop-vs-rustdesk`); `/control-mac-from-iphone` pillar; headless + local-AI pages retargeted; Speculation Rules; image `sizes` fix; `ImageObject` JSON-LD; og:image dimensions on all pages; `/blog` twitter card fix; `Article` publisher by `@id`; `scripts/seo-audit.mjs`. **22 → 26 URLs.** Sitemap re-read by Google: 26 discovered. |
 | 2026-08-16 | PostHog analytics (lazy-loaded, first-party proxied, DNT honoured, no person profiles). |
 | 2026-08-14 | 6 use-case landing pages; Termius comparison; `table` block type; breadcrumbs; RSS feed; 404 page; light-mode contrast and reduced-motion fixes. **15 → 22 URLs.** |

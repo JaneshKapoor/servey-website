@@ -278,7 +278,7 @@ export default async function BlogPostPage({
             })}
           </div>
 
-          {/* FAQ — visible Q&A that mirrors the FAQPage JSON-LD for AI answer engines. */}
+          {/* FAQ - visible Q&A that mirrors the FAQPage JSON-LD for AI answer engines. */}
           {postFaqs.length > 0 && (
             <section className="mt-14 border-t border-border pt-8">
               <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">

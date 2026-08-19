@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 /**
  * Dark-default theme toggle. The icon is driven purely by CSS off the
  * `data-theme` attribute (set pre-paint in the layout), so no React state is
- * needed — we just read/flip the attribute on click.
+ * needed - we just read/flip the attribute on click.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   function toggle() {

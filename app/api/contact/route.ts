@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Invalid request." }, { status: 400 });
   }
 
-  // Honeypot — silently accept bots.
+  // Honeypot - silently accept bots.
   if (typeof body.website === "string" && body.website.trim() !== "") {
     return NextResponse.json({ ok: true });
   }
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
     if (db) {
       await db.collection("contacts").add(doc);
     } else {
-      // Dev / unconfigured fallback — log, never lose the message silently.
+      // Dev / unconfigured fallback - log, never lose the message silently.
       console.info(`[contact] (no Firebase) message from ${email}: ${message.slice(0, 80)}`);
     }
   } catch (err) {

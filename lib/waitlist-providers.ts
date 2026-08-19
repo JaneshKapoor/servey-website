@@ -42,7 +42,7 @@ export async function saveSignup(signup: Signup): Promise<SaveResult> {
     case "resend":
       return saveToResend(signup);
     default:
-      // Dev fallback — never persist secrets or invent a backend.
+      // Dev fallback - never persist secrets or invent a backend.
       console.info(`[waitlist] (console provider) new signup: ${signup.name} <${signup.email}> (${signup.country}) from ${signup.source}`);
       return { ok: true, duplicate: false };
   }
