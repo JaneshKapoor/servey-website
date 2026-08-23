@@ -637,6 +637,7 @@ export const posts: Post[] = [
       "Mac remote access app",
       "control Mac remotely",
       "remote control Mac from iPhone",
+      "macOS Screen Sharing",
     ],
     readingMinutes: 9,
     lede:
@@ -888,6 +889,7 @@ export const posts: Post[] = [
       "Screens 5 vs Jump Desktop",
       "best remote desktop for Mac",
       "best Mac remote desktop app",
+      "macOS Screen Sharing",
     ],
     readingMinutes: 7,
     lede:
@@ -1622,6 +1624,7 @@ export const posts: Post[] = [
       "free remote desktop for Mac",
       "Jump Desktop alternative Mac",
       "control Mac from iPad",
+      "macOS Screen Sharing",
     ],
     readingMinutes: 6,
     lede:
@@ -1754,6 +1757,121 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "does-mac-screen-sharing-work-over-the-internet",
+    metaTitle: "Does Mac Screen Sharing work over the internet?",
+    title: "Does macOS Screen Sharing work over the internet?",
+    description:
+      "Not on its own - macOS Screen Sharing stops at your router. Here is why, and the four realistic ways to reach your Mac's screen from outside your network.",
+    date: "2026-08-23",
+    keywords: [
+      "does Mac Screen Sharing work over the internet",
+      "macOS Screen Sharing",
+      "Screen Sharing outside my network",
+      "access Mac remotely",
+      "control Mac from iPhone",
+    ],
+    readingMinutes: 6,
+    lede:
+      "Screen Sharing is already on your Mac, it is free, and it works beautifully - right up to the edge of your home network. Here is exactly where it stops, why Apple removed the feature that used to fix this, and what actually works instead.",
+    body: [
+      {
+        type: "p",
+        text: "You turned on Screen Sharing in System Settings, connected to your Mac from another room, and it was perfect. Then you tried the same thing from a cafe, and nothing happened at all. This is the single most common point of confusion about Apple's built-in remote access, and the answer is more useful than a plain yes or no.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "No. macOS Screen Sharing does not work over the internet on its own. It is designed for your local network, and outside that network it will not find your Mac at all. It is not broken and you have not misconfigured it - reaching across the internet is simply not something it does by itself. Everything below is about the four ways people bridge that gap, and what each one costs you.",
+      },
+      { type: "h2", text: "Why it stops at your router" },
+      {
+        type: "p",
+        text: "Two separate things have to happen for a screen sharing session to start: your device has to find your Mac, and then it has to open a connection to it. Screen Sharing fails at both once you leave the house.",
+      },
+      {
+        type: "p",
+        text: "Discovery uses Bonjour, Apple's local network service discovery. It is what makes your Mac appear in the Finder sidebar automatically, and it is deliberately confined to the local network - Bonjour announcements do not cross a router. Once you are on a different network, there is nothing to discover.",
+      },
+      {
+        type: "p",
+        text: "The connection itself runs over VNC on port 5900. On your own Wi-Fi that is a direct hop. From outside, your Mac is sitting behind your router's NAT with no public address of its own, so an incoming connection has nowhere to land. If you are on mobile data, your phone is usually behind carrier-grade NAT too, which means neither end has a reachable address. That is the whole problem, and it is a networking problem rather than an Apple one.",
+      },
+      { type: "h2", text: "Apple used to solve this, then removed it" },
+      {
+        type: "p",
+        text: "If you remember this working years ago, you are not misremembering. Back to My Mac did exactly this job: it used your iCloud account to find and reach your Mac from anywhere, with no router configuration. Apple discontinued it in macOS Mojave in 2018 and pointed users toward third-party alternatives. Nothing built into macOS has replaced it since, which is why this question keeps being asked.",
+      },
+      {
+        type: "p",
+        text: "One thing that does still work over the internet is asking to share screens through Messages with another Apple ID. That is built for helping another person with their Mac, and it needs someone at the other end to accept the request - so it is no use for reaching your own machine while you are out.",
+      },
+      { type: "h2", text: "Does Apple Remote Desktop fix it?" },
+      {
+        type: "p",
+        text: "No, and this catches people out because the name sounds like it should. Apple Remote Desktop is a paid admin tool on the Mac App Store, built for managing a room full of Macs - software distribution, reporting, running commands across many machines at once. It speaks the same underlying protocol and hits the same NAT wall. Buying it does not give you internet access to your Mac; it gives you fleet management on a network you can already reach.",
+      },
+      {
+        type: "p",
+        text: "The third name in this family is Remote Management, the separate checkbox in Sharing settings. That is the toggle Apple Remote Desktop uses. It is not a different way of reaching your Mac from outside either.",
+      },
+      { type: "h2", text: "The four ways to actually reach it from outside" },
+      {
+        type: "table",
+        caption: "Reaching a Mac's screen from outside your network, and what each approach costs.",
+        headers: ["Approach", "Setup", "Works behind CGNAT", "The catch"],
+        rows: [
+          [
+            "Forward port 5900 on your router",
+            "Router config, plus a static IP or dynamic DNS",
+            "No",
+            "Exposes a screen sharing port to the open internet. Widely scanned. Not worth doing.",
+          ],
+          [
+            "VPN back to your home network",
+            "Run and maintain a VPN server",
+            "Usually not",
+            "Secure and legitimate, but it is infrastructure you now own and keep running.",
+          ],
+          [
+            "A mesh VPN such as Tailscale",
+            "Install on both devices, sign in",
+            "Yes",
+            "Genuinely good. Still a second product to run alongside the thing you actually wanted.",
+          ],
+          [
+            "A remote access app that traverses NAT itself",
+            "Install, sign in, done",
+            "Yes",
+            "You are trusting the app's connection handling and privacy model, so check both.",
+          ],
+        ],
+      },
+      {
+        type: "ul",
+        items: [
+          "Only ever on your own Wi-Fi: plain Screen Sharing is fine, and free.",
+          "Comfortable running infrastructure: a VPN or Tailscale, then Screen Sharing over it.",
+          "You want it to just work from a phone: a purpose-built remote access app.",
+          "Never: forwarding port 5900 to the internet.",
+        ],
+      },
+      { type: "h2", text: "How Servey handles this" },
+      {
+        type: "p",
+        text: "Servey was built for precisely the gap Back to My Mac left behind. There is no router configuration at any point - no port forwarding, no VPN to maintain, no dynamic DNS, no static IP. You sign in with Google on your Mac and on your iPhone or iPad, and your Mac is simply there. It works out which path to use on its own: on your own Wi-Fi it streams a direct hardware-encoded HEVC feed, which is sharper than the VNC picture Screen Sharing gives you and stays legible when you pinch to zoom into small text. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that hardly touches our servers - and its NAT traversal is built to hold up on strict carrier networks and CGNAT, exactly where port forwarding cannot help you.",
+      },
+      {
+        type: "p",
+        text: "The other thing Screen Sharing cannot do is give you a shell. Servey puts a genuine terminal on your Mac one tap away from the mirrored screen, so when the answer is a command you type it, and when the answer is a dialog box only the GUI can dismiss, you are already looking at it. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "macOS Screen Sharing is excellent software with one hard boundary: your local network. Apple has not shipped a built-in way across that boundary since 2018, so every solution is either infrastructure you run yourself or an app that handles it for you. If you are happy maintaining a VPN, Screen Sharing over Tailscale is a perfectly good answer. If you would rather sign in once and have your Mac appear on your phone - with a real terminal beside the screen - that is what Servey is for, and it launches soon from $1.99 a month, or ₹99 in India.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -1781,6 +1899,24 @@ export const contentUpdated = "2026-08-23";
  * contained (BLUF): the first sentence should stand on its own as the answer.
  */
 export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
+  "does-mac-screen-sharing-work-over-the-internet": [
+    {
+      q: "Can I use macOS Screen Sharing outside my home network?",
+      a: "Not on its own. Screen Sharing relies on Bonjour to find your Mac, and Bonjour does not cross a router, so from another network there is nothing to discover. You need either a VPN back to your home network, a mesh VPN like Tailscale, port forwarding (which is a bad idea), or a remote access app that handles NAT traversal for you.",
+    },
+    {
+      q: "Why did Back to My Mac stop working?",
+      a: "Apple discontinued Back to My Mac in macOS Mojave in 2018 and pointed users toward third-party alternatives. It was the built-in feature that let you reach your Mac from anywhere using your iCloud account, and nothing in macOS has replaced it since. That is why this question is still so common.",
+    },
+    {
+      q: "Does Apple Remote Desktop work over the internet?",
+      a: "Not by itself. Apple Remote Desktop is a paid admin tool for managing many Macs at once, and it hits the same NAT limitation as Screen Sharing. It still needs a VPN or port forwarding to reach a machine outside your network. Buying it does not give you internet access to your Mac.",
+    },
+    {
+      q: "Is it safe to forward port 5900 to reach my Mac?",
+      a: "No, and it is the one option worth ruling out. Port 5900 is scanned constantly across the internet, and exposing a screen sharing service directly means anything that reaches it can attempt to connect. If you need access from outside, use a VPN, a mesh VPN, or an app that establishes an encrypted connection between your own devices instead.",
+    },
+  ],
   "screens-5-alternatives": [
     {
       q: "What is the best alternative to Screens 5?",
