@@ -53,7 +53,33 @@ ground the dead pages covered:
 
 **`https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet`**
 
-Search operators to find the linking pages:
+### Verified prospect list (checked 2026-08-24)
+
+These pages are live, on-topic, and still link to a URL that returns 404. Each
+was confirmed by fetching the page, extracting its apple.com links, and
+resolving each link's status code.
+
+The most valuable dead target is **`support.apple.com/en-us/HT208922`**, which
+was Apple's own Back to My Mac deprecation notice. It now 404s and is cited by
+three of the largest Mac publications.
+
+| Page | Dead link it carries | Notes |
+|---|---|---|
+| AppleInsider - "three quick and easy alternatives to Back to My Mac" | `support.apple.com/en-us/HT208922` | Highest authority. Article is the canonical "what replaces it" piece. |
+| MacRumors - "Apple Eliminating Back to My Mac Service" | `support.apple.com/en-us/HT208922` | News piece, still ranks. |
+| 9to5Mac - "All versions of macOS losing Back to My Mac" | `support.apple.com/en-us/HT208922` | Same dead citation. |
+| iMore - "Alternatives to Back to My Mac" | `help.apple.com/remotedesktop/mac/3.9/` | Title is a direct intent match for our post. |
+| OWC / MacSales - "Three Ways to Remotely Access and Control a Mac" | `support.apple.com/kb/ht4908` | Also links a dead iTunes URL. |
+
+Approach these in that order. AppleInsider, MacRumors and 9to5Mac all have
+public tips/corrections addresses, and a dead-link correction is a normal,
+welcome email to a newsroom rather than a pitch.
+
+Note the framing that works here: you are reporting that **Apple's own
+documentation link is broken**, which is true, verifiable in one click, and
+useful to them regardless of whether they link back to us.
+
+Search operators to find further pages:
 
 ```
 "back to my mac" "apple.com/support/backtomymac"
