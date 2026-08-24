@@ -175,7 +175,7 @@ Homepage sections: `trustItems`, `features` (6), `steps` (3), `comparison`
 `features` also feeds `SoftwareApplication.featureList` and `faqs` feeds the
 homepage `FAQPage` - so editing copy here updates the structured data.
 
-### `lib/blog.ts` - 18 posts
+### `lib/blog.ts` - 19 posts
 
 Blocks are a discriminated union:
 
