@@ -142,6 +142,7 @@ decision with a reason.
 | Publish a comparison that hides where a competitor wins | It is the entire credibility asset. A post that reads like an advert has failed at its job. |
 | Imply Termius shipped malware | They were the **victim** of the ZuRu impersonation campaign. Saying otherwise is false and defamatory. |
 | Solicit upvotes anywhere | Against Product Hunt / AlternativeTo rules; triggers rank penalties. |
+| **Add our own links to Wikipedia** (dead-link building) | Verified 24 Aug: Wikipedia renders external links as `rel="nofollow"` sitewide, so they pass no ranking signal. Adding our own also violates WP:COI/WP:REFSPAM, where the failure mode is `servey.in` on the public Wikipedia spam blacklist. Wikipedia is downstream of independent press, not a substitute. Broken-link building **off** Wikipedia is fine and is our active tactic - see `docs/BACKLINKS.md`. |
 | Buy links, use PBNs, or exchange links | Cheap short-term, fatal long-term. |
 | Keyword-stuff, cloak, or hide text | Trivially detected; the fragmentation fix is pillar pages, not stuffing. |
 | Publish thin AI-generated filler to inflate page count | Google's QRG §4.6.5–6 targets exactly this. Page count is not the goal. |
@@ -155,6 +156,7 @@ decision with a reason.
 | **Add more pages targeting "control Mac from iPhone"** | That recreates the exact fragmentation `/control-mac-from-iphone` was built to fix. One pillar, many spokes. |
 | **Rewrite metadata again to chase CTR** | 2.6% is already above par for position 15.8. The lever is pulled. |
 | **Build doorway pages per query variant** | The 10 phrasings get absorbed by one strong page, not 10 weak ones. |
+| **Do multilingual / translated SEO** | Considered 24 Aug and deliberately held. 19 posts x 7 locales is 133 URLs on a domain with **2 referring domains** already averaging position 16.3. Translations multiply pages, not authority, and scaled machine translation without human review is named in Google's spam policies. The tactic works for language-independent utility queries ("instagram photo downloads"); ours are niche Mac comparison queries whose product names, docs and buyers are all English. Revisit once referring domains are in double digits, then as a **one-language, 4-post pilot** chosen from GSC Countries data - never a 7-locale bulk translation. |
 | Chase `airplayuiagent` traffic | Accidental, off-intent, and converts nobody. |
 
 ### Myths we do not act on
