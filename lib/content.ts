@@ -8,6 +8,56 @@ export const trustItems = [
   { icon: "Globe", label: "Works anywhere" },
 ] as const;
 
+/**
+ * Who it's for - the audience answer.
+ *
+ * The landing page argued what Servey is and what to do next, but never named
+ * a person. These four cards each state a before and an after for one real
+ * audience, and promote the matching use-case page out of footer-only linking.
+ *
+ * `slug` must be a real slug in lib/use-cases.ts. The section derives its
+ * "more" links by excluding these four, so adding a use case surfaces it
+ * automatically instead of silently staying in the footer.
+ */
+export interface Audience {
+  icon: string;
+  who: string;
+  before: string;
+  after: string;
+  slug: string;
+}
+
+export const audiences: Audience[] = [
+  {
+    icon: "Code2",
+    who: "Developers",
+    before: "A build is running on the Mac at your desk, and you are not at your desk.",
+    after: "Tail the log, restart the job, or open a simulator from your phone - in your real environment, with your toolchain and credentials already in place.",
+    slug: "mac-for-developers",
+  },
+  {
+    icon: "Bot",
+    who: "Anyone running AI agents",
+    before: "Your coding agent has been working for forty minutes and has stopped to ask a yes-or-no question.",
+    after: "See what it is doing, answer the prompt, and let it carry on - without walking back to the desk to press one key.",
+    slug: "remote-mac-for-ai-agents",
+  },
+  {
+    icon: "Server",
+    who: "Headless Mac and home lab owners",
+    before: "The Mac mini has no monitor, no keyboard, and lives on a shelf behind the router.",
+    after: "Its screen and its shell on your iPad, through the login screen and back after a reboot, with nothing exposed to the internet.",
+    slug: "headless-mac-mini",
+  },
+  {
+    icon: "Smartphone",
+    who: "Everyone else with a Mac",
+    before: "The file, the screenshot, the one click you need is on a Mac you left at home.",
+    after: "Your whole desktop on your iPhone, aspect-correct and sharp enough to actually read - so you just do it and move on.",
+    slug: "control-mac-from-iphone",
+  },
+];
+
 /* Numbered feature sections (alternating left/right). */
 export interface Feature {
   index: string;

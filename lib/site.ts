@@ -30,6 +30,7 @@ export const ogImage = {
 // homepage where the header also appears.
 export const nav = [
   { label: "Features", href: "/#features" },
+  { label: "Who it's for", href: "/#who-its-for" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Compare", href: "/#compare" },
   { label: "Pricing", href: "/#pricing" },
