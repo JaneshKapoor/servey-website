@@ -2174,7 +2174,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-26";
+export const contentUpdated = "2026-08-27";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
