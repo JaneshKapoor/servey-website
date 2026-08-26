@@ -291,6 +291,9 @@ Verified against each platform's own rules.
 | **Show HN** | ❌ Blocked | *"If your work isn't ready for users to try out, please don't do a Show HN."* |
 | **App Store listing** | ⏳ At launch | **#1 most-cited source** in this category (77 citations) |
 | **YouTube demo** | ✅ Available | **#2 most-cited** (74 citations). **The highest-leverage action available today, and still not done.** |
+
+See [`docs/DEMO-VIDEO.md`](DEMO-VIDEO.md) for what the existing footage can and cannot
+be used for, and the shot list for recording it properly.
 | **Reddit** (r/macapps, r/homelab) | ✅ Available | **#3 most-cited** (65 citations). Genuine participation, never a launch post |
 | **BetaList / Peerlist / Uneed** | ✅ Available | Built specifically for unlaunched products |
 | **HN as a normal submission** | ✅ Available | Show HN is barred; submitting a post as a regular link is fine |
