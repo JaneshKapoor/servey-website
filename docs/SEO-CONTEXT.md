@@ -6,7 +6,7 @@ and the evidence behind each decision.**
 Companion to [`CONTEXT.md`](CONTEXT.md), which covers the product and codebase.
 This file covers search and answer-engine strategy only.
 
-- **Last reviewed:** 16 August 2026
+- **Last reviewed:** 26 August 2026
 - **Source of truth:** `docs/SEO-CONTEXT.md`. `docs/seo-context.pdf` is generated
   from it by `npm run context:pdf` - never edit the PDF.
 
@@ -19,25 +19,42 @@ This file covers search and answer-engine strategy only.
 
 ## 1. Baseline - where we actually are
 
-Google Search Console, 3-month window to **14 August 2026**:
+Google Search Console, 3-month window to **25 August 2026**:
 
-| Metric | Value |
-|---|---|
-| Clicks | **16** |
-| Impressions | **626** |
-| CTR | **2.6%** |
-| Average position | **15.8** |
-| Distinct queries | 39 |
+| Metric | Value | 11 days earlier |
+|---|---|---|
+| Clicks | **38** | 16 |
+| Impressions | **1,460** | 626 |
+| CTR | **2.6%** | 2.6% |
+| Average position | **16.4** | 15.8 |
 
-Prior reading (to ~2 Aug): 14 clicks · 502 impressions · 2.8% · position 14.9.
-Impressions are growing; position drifted slightly down, which is normal when
-new pages enter the index low and pull the average with them.
+**Impressions and clicks both roughly 2.3x in eleven days.** This is by some way
+the largest movement the site has recorded, and it is the first reading where
+the trend is unambiguous rather than noise. CTR held exactly flat at 2.6% while
+volume more than doubled, which is the healthy shape: the new impressions are
+converting at the same rate as the old ones, so we are reaching more of the same
+kind of query rather than drifting into irrelevant ones.
 
-**Brand vs non-brand:** `servey` alone is 7 clicks / 131 impressions - **44% of
-all clicks from 21% of impressions.** Non-brand is the entire growth opportunity.
+Position drifting 15.8 -> 16.4 alongside that growth is **not** a regression. New
+pages enter the index low and pull the average down; a rising page count with
+rising clicks and a falling average position is what growth looks like from
+here. Judge this site on clicks and impressions, not on average position, until
+the page count stops changing.
 
-**Index coverage (verified 16 Aug 2026):**
-- **Google** - sitemap submitted, **26 URLs discovered**, last read 16 Aug 2026.
+**Brand vs non-brand:** `servey` alone is 9 clicks / 215 impressions - **24% of
+clicks from 15% of impressions.** This was 44% of clicks eleven days ago. Brand
+volume grew (7 -> 9 clicks) while its *share* nearly halved, which means the
+growth is coming from non-brand queries. That is the number this whole strategy
+was aimed at, and it moved.
+
+**Top non-brand queries:** `screens vs jump desktop` (3 clicks / 22 impressions),
+`jump desktop vs screens 5` (1 / 19), `jump desktop vs rustdesk` (1 / 16). The
+competitor-vs-competitor cluster remains the only non-brand cluster earning
+clicks, and it is now earning more of them. Note `jump desktop vs rustdesk`
+appearing here for the first time - a post shipped 19 Aug now converts.
+
+**Index coverage (verified 26 Aug 2026):**
+- **Google** - sitemap submitted, **32 URLs**, last read 16 Aug 2026.
 - **Bing** - indexed. Homepage plus at least four blog URLs return on a phrase
   search, and Bing's own AI summary describes Servey accurately from our pages.
   This matters because **ChatGPT Search reads Bing's index**, so the pipe to the
@@ -45,10 +62,15 @@ all clicks from 21% of impressions.** Non-brand is the entire growth opportunity
 
 ### The core diagnosis
 
-Position 15.8 is page two, which takes roughly **1% of clicks** versus ~25% on
+Position 16.4 is page two, which takes roughly **1% of clicks** versus ~25% on
 page one. CTR of 2.6% is *above* par for that position, which means **titles and
 descriptions are working.** This is a **ranking problem, not a copywriting
 problem**, and the bottleneck is authority - we have effectively no backlinks.
+
+The 2.3x growth to 25 Aug does not change this diagnosis, it confirms it. We are
+winning more impressions because we have more relevant pages, and converting them
+at a steady rate. What we are still not doing is moving off page two, and no
+amount of additional content does that on its own.
 
 **Do not respond to flat numbers by rewriting metadata again.** That lever is
 already pulled. The remaining levers are links, entity presence, and shipping.
@@ -85,7 +107,7 @@ All 39 queries, clustered:
 ### Content
 - **Write competitor-vs-competitor comparisons.** The proven format. Currently:
   `screens-vs-jump-desktop`, `jump-desktop-vs-teamviewer`,
-  `jump-desktop-vs-rustdesk`, `screens-5-alternatives`,
+  `jump-desktop-vs-rustdesk`, `rustdesk-vs-anydesk`, `screens-5-alternatives`,
   `screens-jump-desktop-alternative-mac`, `termius-alternative-mac-terminal`,
   `best-remote-desktop-for-mac`.
 - **Lead comparison posts with a `table` block.** Tables are the structure answer
@@ -116,7 +138,7 @@ All 39 queries, clustered:
 - **`sizes` on every responsive image**, matched to its real rendered width.
 - **IndexNow** after every content deploy (`npm run indexnow`) - fastest route
   into Bing, and therefore into ChatGPT Search.
-- **`npm run seo:audit`** before/after deploys. Currently **26/26 pass**.
+- **`npm run seo:audit`** before/after deploys. Currently **32/32 pass**.
 
 ### Answer engines (AEO / GEO)
 - **Self-contained passages of ~130–170 words** that still make sense quoted in
@@ -144,6 +166,7 @@ decision with a reason.
 | Solicit upvotes anywhere | Against Product Hunt / AlternativeTo rules; triggers rank penalties. |
 | **Add our own links to Wikipedia** (dead-link building) | Verified 24 Aug: Wikipedia renders external links as `rel="nofollow"` sitewide, so they pass no ranking signal. Adding our own also violates WP:COI/WP:REFSPAM, where the failure mode is `servey.in` on the public Wikipedia spam blacklist. Wikipedia is downstream of independent press, not a substitute. Broken-link building **off** Wikipedia is fine and is our active tactic - see `docs/BACKLINKS.md`. |
 | Buy links, use PBNs, or exchange links | Cheap short-term, fatal long-term. |
+| **Work a bulk "N places to get backlinks" list top to bottom** | Triaged one of 75 on 26 Aug: **9 were usable now.** The rest were editorial placements you must earn (Forbes, TechCrunch), revenue-gated directories we cannot enter pre-launch, review sites needing real customers, open-source-only listings, or content farms. Submitting to dozens of unrelated low-quality directories in a burst is the classic footprint of a link scheme, and on a domain with 2 referring domains it is the *only* pattern in our profile. Pick for relevance, submit steadily, and never post the same text everywhere without a canonical. See `docs/BACKLINKS.md` §6. |
 | Keyword-stuff, cloak, or hide text | Trivially detected; the fragmentation fix is pillar pages, not stuffing. |
 | Publish thin AI-generated filler to inflate page count | Google's QRG §4.6.5–6 targets exactly this. Page count is not the goal. |
 
@@ -154,7 +177,7 @@ decision with a reason.
 | **Chase "termius alternative" broadly** | It would pull multi-host-SSH searchers who bounce, polluting waitlist quality pre-launch. The honest overlap is narrow: "run a terminal on your own Mac without SSH setup". |
 | **Compete on Termius's page axis** (SSH client × platform) | They hold #1 there. We copied their *template technique* onto a different axis - **task × device** - where they do not rank at all. |
 | **Add more pages targeting "control Mac from iPhone"** | That recreates the exact fragmentation `/control-mac-from-iphone` was built to fix. One pillar, many spokes. |
-| **Rewrite metadata again to chase CTR** | 2.6% is already above par for position 15.8. The lever is pulled. |
+| **Rewrite metadata again to chase CTR** | 2.6% is already above par for position 16.4, and held flat while impressions grew 2.3x. The lever is pulled. |
 | **Build doorway pages per query variant** | The 10 phrasings get absorbed by one strong page, not 10 weak ones. |
 | **Do multilingual / translated SEO** | Considered 24 Aug and deliberately held. 19 posts x 7 locales is 133 URLs on a domain with **2 referring domains** already averaging position 16.3. Translations multiply pages, not authority, and scaled machine translation without human review is named in Google's spam policies. The tactic works for language-independent utility queries ("instagram photo downloads"); ours are niche Mac comparison queries whose product names, docs and buyers are all English. Revisit once referring domains are in double digits, then as a **one-language, 4-post pilot** chosen from GSC Countries data - never a 7-locale bulk translation. |
 | Chase `airplayuiagent` traffic | Accidental, off-intent, and converts nobody. |
@@ -185,6 +208,8 @@ fragmentation comes back.
 | Mac home lab | `/mac-home-lab` | - |
 | Cellular / strict networks | `blog/access-your-mac-remotely-over-cellular` | - |
 | Screens vs Jump Desktop | `blog/screens-vs-jump-desktop` | `blog/screens-jump-desktop-alternative-mac` |
+| Back to My Mac replacement | `blog/what-replaced-back-to-my-mac` | `blog/does-mac-screen-sharing-work-over-the-internet` |
+| RustDesk vs AnyDesk | `blog/rustdesk-vs-anydesk` | - |
 | Screens 5 alternatives | `blog/screens-5-alternatives` | - |
 | Jump Desktop vs TeamViewer | `blog/jump-desktop-vs-teamviewer` | - |
 | Jump Desktop vs RustDesk | `blog/jump-desktop-vs-rustdesk` | - |
@@ -302,6 +327,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-08-26 | **Two posts, 30 -> 32 URLs.** `what-replaced-back-to-my-mac` exists to serve the broken-link campaign: AppleInsider, MacRumors and 9to5Mac all cite `support.apple.com/en-us/HT208922`, which still 404s (re-verified today, along with the other three dead Apple URLs). Our only replacement resource was `does-mac-screen-sharing-work-over-the-internet`, which covers Back to My Mac in a single section - Back to My Mac appeared 4 times sitewide, all inside that one post. An exact-match page makes the swap an easier yes for an editor. `rustdesk-vs-anydesk` feeds the only cluster earning non-brand clicks; RustDesk positions itself against AnyDesk explicitly, and the open-source axis already converts via `jump-desktop-vs-rustdesk`. Link graph engineered rather than incidental: `Back to My Mac replacement` added as a 6th keyword to the Screen Sharing post (it genuinely has a section and an FAQ on it), giving inbound counts of **6 and 3 on arrival** against the 1 the previous post shipped with. Includes the AnyDesk 2024 production-systems incident, stated with its disclosure and cert rotation, because the comparison axis is literally auditable-vs-trust-the-vendor and omitting it would be dishonest. seo:audit 32/32. |
 | 2026-08-23 | `does-mac-screen-sharing-work-over-the-internet` - first post in the Apple-tools cluster. Apple Remote Desktop appeared **0 times** anywhere on the site; Screen Sharing and VNC appeared only as passing mentions inside comparison posts, with one keyword entry sitewide (`VNC alternative Mac`). No page targeted Apple's built-in tooling. Targets the Screen Sharing variant of the query (higher volume than the ARD variant Macky targets) and covers ARD and Remote Management inside it. Link graph: shipped with 1 inbound, so `macOS Screen Sharing` was added as a 6th keyword to the three posts that genuinely discuss it (`chrome-remote-desktop-vs-jump-desktop` 7 mentions, `best-remote-desktop-for-mac` 6, `screens-5-alternatives` 5) - inbound 1 -> 2, outbound now 3 topically-matched posts. **29 -> 30 URLs.** |
 | 2026-08-23 | **Comparison posts re-pitched.** The 6 comparison/roundup posts read as neutral review-site content: `jump-desktop-vs-teamviewer` had 2 Servey mentions in 1,526 words (1.3/1k), `anydesk-vs-teamviewer` 2 in 1,298. Their `Where Servey fits` sections actively deflected ("it does not compete with either of these", "pick one of the two above") and all 5 `Bottom line` sections had no Servey at all. Added a **Servey column to all 5 head-to-head tables** (each already ended with a `Real terminal | No | No` row), rewrote every Servey section to lead with real advantages (hardware HEVC sharpness, shell + screen one tap apart, zero config, P2P E2E, CGNAT, price), and added a closing pitch to each `Bottom line`. Honest competitor-is-better sections kept intact. Density 1.3-4.8/1k -> 4.0-6.0/1k. |
 | 2026-08-19 | **Internal-linking fix:** the 7 use-case pages were orphaned - they cross-linked to each other but nothing linked in, so the homepage emitted only 4 internal links (`/`, `/blog`, `/privacy`, `/terms`). GSC counted 33 internal links sitewide with `/privacy`, `/terms`, `/blog` as top targets, i.e. the footer was the only link graph Google saw. Added a footer `Use cases` nav (homepage 4 -> 11 links) and a `Servey for this` block on posts inverting `relatedSlug`. |

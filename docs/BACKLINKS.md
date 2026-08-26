@@ -1,11 +1,13 @@
 # Servey backlink playbook
 
-Status as of 2026-08-24: **2 referring domains.** This is the single biggest
+Status as of 2026-08-26: **2 referring domains.** This is the single biggest
 constraint on the site. Technical SEO is finished and content is ahead of the
 field; nothing else moves the needle until this number grows.
 
-Position 16.3 average is the symptom. Pages 2 and 3 are where good content on a
-domain with no authority lands.
+Position 16.4 average is the symptom. Pages 2 and 3 are where good content on a
+domain with no authority lands. Impressions grew 2.3x in the eleven days to
+25 Aug without the average position improving, which is exactly what an
+authority ceiling looks like: more relevance, same ranking band.
 
 ---
 
@@ -48,10 +50,18 @@ Mojave (2018) and left dead documentation behind. Verified 404s:
 - `https://support.apple.com/en-us/HT204618` -> 404
 
 Thousands of blog posts, forum answers and tutorials from 2010-2018 still link
-to those URLs. Our replacement resource already exists and covers the exact
-ground the dead pages covered:
+to those URLs. All four were **re-verified as 404 on 26 Aug 2026.**
 
-**`https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet`**
+Our replacement resource is now an exact-match page, published 26 Aug:
+
+**`https://servey.in/blog/what-replaced-back-to-my-mac`**
+
+This matters for hit rate. Until now the only thing we could offer was
+`does-mac-screen-sharing-work-over-the-internet`, which is a good post but
+covers Back to My Mac in one section of a piece about something else. An editor
+replacing a dead *Back to My Mac* citation wants a page about Back to My Mac.
+The Screen Sharing post stays the secondary suggestion for pages whose dead
+link was about Screen Sharing or Apple Remote Desktop rather than BTMM.
 
 ### Verified prospect list (checked 2026-08-24)
 
@@ -181,9 +191,9 @@ us.
 > (apple.com/support/backtomymac) now 404s - Apple pulled the feature in Mojave
 > and eventually took the docs down too.
 >
-> I wrote up what actually replaced it, including why Screen Sharing alone
-> can't reach a Mac from outside the network and the four options that do:
-> https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet
+> I wrote up what actually replaced it - what the feature really did, why
+> Apple's own suggested alternatives don't cover the job, and the four options
+> that do: https://servey.in/blog/what-replaced-back-to-my-mac
 >
 > Useful as a replacement or not, entirely your call - just wanted to flag the
 > dead link.
@@ -206,3 +216,119 @@ Ranked honestly:
 3. **Broken-link outreach**, per section 1.
 4. **Directory submissions**, per section 3. Low value each, but cheap and
    they compound.
+
+---
+
+## 6. Triage of the "75 places to get backlinks" list (26 Aug 2026)
+
+A circulated list of 75 sites, sorted by Domain Rating. Worked through against
+our actual constraints: pre-launch, no revenue, closed source, no downloadable
+app, Apple-only, and 2 referring domains.
+
+**Result: 9 are usable now.** The rest are blocked, irrelevant, or not the kind
+of thing you can simply "get".
+
+### The three things wrong with reading a list like this top to bottom
+
+1. **Most of the high-DR entries are `nofollow`.** Reddit, Quora, Medium,
+   Pinterest, Imgur, Flickr, GitHub and Wikipedia all mark outbound links
+   `nofollow` or `ugc`. A DR 99 domain that passes no ranking signal is worth
+   exactly as much as a DR 20 one that does. These are worth doing for
+   **referral traffic and entity presence**, which is a real and separate
+   benefit, but they are not link building and should not be counted as such.
+2. **The list conflates three unrelated activities.** Self-serve profiles you
+   can fill in today, editorial placements you must earn over months, and
+   content farms you publish on yourself are not the same task and do not have
+   the same value. Forbes and TechCrunch are not "places to get backlinks",
+   they are outlets that write about you if there is a reason to.
+3. **Doing all 75 would itself be the problem.** A burst of submissions to
+   dozens of unrelated low-quality directories is the recognisable footprint of
+   a link scheme, and on a profile with 2 referring domains it would be the
+   *only* pattern visible. Relevance beats volume at this size.
+
+Also worth noticing: **SEO Wins (DR 27)** sits at #20 in a list otherwise
+dominated by DR 90+ names, and it is the list author's own product. Treat the
+list as marketing for it, which does not make the good entries less good.
+
+### Do now - the 9 that survive triage
+
+| # on list | Target | Link | Why it survives |
+|---|---|---|---|
+| 19 | **Crunchbase** | nofollow | Free company profile. The canonical startup entity record, which is what AI engines and journalists check. Best new find on the list. |
+| 21 | **GitHub** | nofollow | `JaneshKapoor/servey-website` is already public - its **Website field currently points at `servey-website.vercel.app`, not `servey.in`.** Free fix, see below. |
+| 40 | **BetaList** | dofollow | Already in section 3. Purpose-built for pre-launch. |
+| 60 | **Indie Hackers** | nofollow | Already in section 3. The audience actually owns Macs. |
+| 17 | **Medium** | nofollow | Draft is written and sitting in `docs/medium/`. Set `canonical` to servey.in. |
+| 68 | **dev.to** | dofollow-ish | Republish the Medium piece with canonical set. Genuinely relevant dev audience. |
+| 62 | **Hashnode** | dofollow-ish | Same treatment. |
+| 16 | **YourStory** | dofollow | India startup media, accepts founder submissions. Real fit for an INR-priced product from an India-based founder, and none of the other outlets on the list are. |
+| 27 | **Reddit** | nofollow | Already ranked #3 in `SEO-CONTEXT.md` §9 as a most-cited source. Participation only, never a launch post. |
+
+**The GitHub fix**, because it is free and currently wrong:
+
+```
+gh repo edit JaneshKapoor/servey-website \
+  --homepage "https://servey.in" \
+  --description "Marketing site for Servey - control your Mac from your iPhone or iPad."
+```
+
+The `servey-website.vercel.app` alias itself is **not** a duplicate-content
+problem: verified 26 Aug that it serves `<link rel="canonical" href="https://servey.in">`
+and its `robots.txt` declares `Host: https://servey.in`. Only the repo metadata
+points at the wrong URL.
+
+### Blocked until launch
+
+AlternativeTo, Alternative Me, Hacker News (Show HN explicitly bars unreleased
+work), Product Hunt full launch, Lobste.rs, App Store. Same reasoning as
+`SEO-CONTEXT.md` §9.
+
+### Blocked by revenue - we have none
+
+TrustMRR, Latka, Starter Story, Failory, Revenue Memo, Boring Cash Cow, Micro
+Founder, Milestones, Founder Reports. All of these gate on published revenue
+figures. Pre-launch with zero revenue, there is nothing to submit, and
+inventing a number is not on the table.
+
+### Blocked by needing real customers
+
+TrustRadius, PeerSpot. Both are review platforms requiring verified customer
+reviews. We have no public users, and **inventing reviews is on the permanent
+never list** in `SEO-CONTEXT.md` §4.
+
+### Not applicable to this product
+
+| Target | Why |
+|---|---|
+| Chrome Web Store | We have no browser extension. |
+| SourceForge, OSS Gallery | Open-source projects only. Servey is closed source. |
+| Privacy Tools | Listing criteria effectively require open source. |
+| Gumroad | Nothing to sell pre-launch. |
+| Toolify AI | An AI-tools directory. Servey is not an AI tool; listing it there is the kind of stretch that gets a listing rejected and teaches an engine the wrong thing about us. |
+| Yelp | Local businesses. |
+| Goodreads | Books. |
+| Fandom, WikiHow | Editorial wikis, same COI problem as Wikipedia. |
+| Pinterest, Imgur, Flickr, Pixabay, Pexels | Image hosts. Nofollow, no relevant audience. |
+| MakerPad | No-code tooling. |
+| StackShare | Would mean publishing our internal stack in detail. Swift/SwiftUI is already public in our own copy; going further is against the standing rule not to disclose the internal stack. |
+| Wikipedia | Rejected with evidence in section 1. |
+
+### Editorial - must be earned, not "gotten"
+
+Forbes, TechCrunch, VentureBeat, Entrepreneur, Smashing Magazine, DZone,
+Hackernoon, First Round Review, The Hustle, Foundr, SaaStr, AppSumo Blog,
+Mixergy, My First Million, Indie Bites, SaaS Club, GrowthMentor, Niche Pursuits.
+
+These are outlets and podcasts. The route in is a story, and pre-launch we do
+not yet have one beyond "founder is building a thing". **The broken-link
+campaign in section 1 is the version of this that works today**, because it
+approaches a newsroom with something useful to them rather than something we
+want from them.
+
+### Self-publishing platforms - use sparingly
+
+Substack, Blogger, HubPages, Vocal Media. Publishing your own content on a
+high-DR domain is a self-made link, and search engines treat it accordingly.
+One good republication with `canonical` set is worth doing. The same article
+pasted across six platforms without canonicals is duplicate content competing
+with our own page, which is actively harmful.
