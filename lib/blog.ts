@@ -1899,7 +1899,11 @@ export const posts: Post[] = [
       { type: "h2", text: "The short answer" },
       {
         type: "p",
-        text: "Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross.",
+        text: "Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross."
+      },
+      {
+        type: "p",
+        text: "In practice that leaves four options, and the rest of this page walks through each one: a VPN back to your home network, a mesh VPN such as Tailscale, port forwarding on your router, or a remote access app that handles the networking for you. That last group includes Screens, Jump Desktop, RustDesk, AnyDesk and Servey, which is the app we make and which exists specifically because Apple left this gap open. We have tried to be straight about where each of the others is the better answer.",
       },
       { type: "h2", text: "What Back to My Mac actually did" },
       {
@@ -1922,28 +1926,38 @@ export const posts: Post[] = [
       { type: "h2", text: "What covers each part of the job now" },
       {
         type: "table",
-        caption: "The three jobs Back to My Mac did, and what covers each one today.",
-        headers: ["What it did", "Still built into macOS?", "What covers it now"],
+        caption: "The jobs Back to My Mac did, what covers each one today, and which of them Servey covers.",
+        headers: ["What it did", "Still built into macOS?", "What covers it now", "Servey"],
         rows: [
           [
             "Find your Mac from any network",
             "No",
             "A VPN back to your home network, a mesh VPN such as Tailscale, or an app that handles NAT traversal for you",
+            "Yes - sign in on both devices and your Mac is there",
           ],
           [
             "Show your Mac's screen from anywhere",
             "Local network only",
             "Screen Sharing tunnelled over a VPN, or a third-party remote access app",
+            "Yes - hardware-encoded HEVC, sharper than the VNC picture",
           ],
           [
             "Reach your Mac's files from anywhere",
             "No",
             "iCloud Drive for files you chose in advance, or SMB File Sharing over a VPN for the whole disk",
+            "No - not as a disk mounted in the Finder",
           ],
           [
             "Require no router configuration",
             "Not applicable",
             "Only tools that bring their own relay or peer-to-peer layer",
+            "Yes - none at any point",
+          ],
+          [
+            "Give you a shell on the machine",
+            "Never did this",
+            "SSH, if you set it up and can reach the host",
+            "Yes - a real terminal, one tap from the screen",
           ],
         ],
       },
@@ -1968,7 +1982,7 @@ export const posts: Post[] = [
           "A VPN back to your home network. Runs on many routers or on a spare machine, and once connected everything behaves as though you were at home, Screen Sharing included. It is the closest thing to a true replacement and the most work to set up and keep running.",
           "A mesh VPN such as Tailscale. Far easier than a traditional VPN, handles NAT traversal for you, and puts your devices on a private network wherever they are. This is what most technical Mac owners moved to, and it pairs well with Screen Sharing.",
           "Port forwarding on your router. Technically works, and worth ruling out. It exposes port 5900 to the open internet, where it is scanned constantly, and it fails entirely behind carrier-grade NAT.",
-          "A remote access app that handles the network itself. Screens, Jump Desktop, RustDesk, AnyDesk and others all bring their own relay or peer-to-peer layer, so there is nothing to configure. This is the option that most resembles the old experience of it simply working.",
+          "A remote access app that handles the network itself. Screens, Jump Desktop, RustDesk, AnyDesk and Servey all bring their own relay or peer-to-peer layer, so there is nothing to configure. This is the option that most resembles the old experience of it simply working, and if you want it working today rather than soon, buy one of the established ones.",
         ],
       },
       { type: "h2", text: "Where Servey fits" },
