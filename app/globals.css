@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ *
- * Servey brand tokens — dark is the hero, light is a trivial variant. *
+ * Servey brand tokens - dark is the hero, light is a trivial variant.  *
  * ------------------------------------------------------------------ */
 :root {
   /* surfaces */
@@ -87,8 +87,20 @@
   --radius-2xl: 1.5rem;
 }
 
-* {
-  border-color: var(--border);
+/*
+ * Default border colour for every element.
+ *
+ * MUST stay inside `@layer base`. Tailwind v4 puts its utilities in
+ * `@layer utilities`, and unlayered CSS outranks *every* layer - so as a
+ * top-level rule this silently overrode all border-colour utilities site-wide
+ * (`border-accent/30`, `border-border-strong`, `hover:border-border-strong`
+ * and friends all computed to `--border` instead). Layering it puts it back
+ * below the utilities, which is what a default is supposed to be.
+ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 html {
@@ -104,7 +116,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Focus ring — always brand green, always visible. */
+/* Focus ring - always brand green, always visible. */
 :focus-visible {
   outline: 2px solid var(--accent-strong);
   outline-offset: 2px;
@@ -138,7 +150,7 @@ body {
   padding-inline: 1.25rem;
 }
 
-/* Shiny neon-green text sweep — one-shot on load, respects reduced motion. */
+/* Shiny neon-green text sweep - one-shot on load, respects reduced motion. */
 .text-sweep {
   background: linear-gradient(
     100deg,

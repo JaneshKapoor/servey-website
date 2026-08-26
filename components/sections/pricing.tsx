@@ -11,7 +11,7 @@ import { pricing } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Pricing() {
-  const [region, setRegion] = React.useState<"inr" | "usd">("inr");
+  const [region, setRegion] = React.useState<"inr" | "usd">("usd");
 
   return (
     <section id="pricing" className="scroll-mt-24 py-20 sm:py-28">

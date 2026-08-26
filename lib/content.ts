@@ -208,19 +208,25 @@ export const faqs = [
   },
   {
     q: "When is it launching and how much will it cost?",
-    a: "Servey is a simple monthly subscription. The Terminal plan is ₹99/month in India and $1.99/month internationally; Full access - screen mirroring plus terminal - is ₹299/month in India and $4.49/month internationally. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
+    a: "Servey is a simple monthly subscription. The Terminal plan is $1.99/month, or ₹99/month in India; Full access - screen mirroring plus terminal - is $4.49/month, or ₹299/month in India. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
   },
 ] as const;
 
 /**
- * Two plans, priced per region. INR for India, USD everywhere else.
+ * Two plans, priced per region. USD everywhere, INR for India.
+ *
+ * International (USD) is the default tab, and `regions` is ordered to match so
+ * the selected tab is also the first one. USD is the only currency in the
+ * SoftwareApplication Offers in `app/layout.tsx`, so this keeps the visible
+ * price consistent with the structured data a crawler reads.
+ *
  * Pre-launch: cards drive to the waitlist, not checkout.
  */
 export const pricing = {
   note: "Simple monthly pricing. Cancel anytime. You won't be charged until Servey launches.",
   regions: [
-    { id: "in", label: "India", symbol: "₹", key: "inr" },
     { id: "intl", label: "International", symbol: "$", key: "usd" },
+    { id: "in", label: "India", symbol: "₹", key: "inr" },
   ],
   plans: [
     {

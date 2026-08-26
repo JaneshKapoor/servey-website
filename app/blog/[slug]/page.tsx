@@ -17,6 +17,7 @@ import {
 } from "@/lib/blog";
 import { useCasesForPost } from "@/lib/use-cases";
 import { site, ogImage } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -206,7 +207,15 @@ export default async function BlogPostPage({
                     ))}
                   </ul>
                 );
-              if (block.type === "table")
+              if (block.type === "table") {
+                // Comparison tables carry a "Servey" column. Highlight it in the
+                // brand accent (which is already green) so the reader's eye
+                // lands on our column instead of scanning past it. Falls back to
+                // no highlight on tables that have no Servey column at all.
+                const serveyCol = block.headers.findIndex(
+                  (h) => h.trim().toLowerCase() === "servey",
+                );
+                const lastRow = block.rows.length - 1;
                 return (
                   // Wrapper scrolls on its own so a wide table never makes the
                   // whole page scroll sideways on a phone.
@@ -226,7 +235,11 @@ export default async function BlogPostPage({
                             <th
                               key={j}
                               scope="col"
-                              className="border-b border-border-strong pb-2.5 pr-4 align-bottom font-medium text-fg last:pr-0"
+                              className={cn(
+                                "border-b border-border-strong pb-2.5 pr-4 align-bottom font-medium text-fg last:pr-0",
+                                j === serveyCol &&
+                                  "rounded-t-lg border-x border-t border-b-accent/60 border-x-accent/60 border-t-accent/60 bg-accent-deep/50 px-3 pt-2.5 text-accent-strong",
+                              )}
                             >
                               {h}
                             </th>
@@ -239,9 +252,15 @@ export default async function BlogPostPage({
                             {row.map((cell, k) => (
                               <td
                                 key={k}
-                                className={`py-3 pr-4 align-top last:pr-0 ${
-                                  k === 0 ? "font-medium text-fg" : "text-muted"
-                                }`}
+                                className={cn(
+                                  "py-3 pr-4 align-top last:pr-0",
+                                  k === 0 ? "font-medium text-fg" : "text-muted",
+                                  k === serveyCol &&
+                                    "border-x border-x-accent/60 bg-accent-deep/50 px-3 font-medium text-fg",
+                                  k === serveyCol &&
+                                    j === lastRow &&
+                                    "rounded-b-lg border-b border-b-accent/60",
+                                )}
                               >
                                 {cell}
                               </td>
@@ -252,6 +271,7 @@ export default async function BlogPostPage({
                     </table>
                   </div>
                 );
+              }
               if (block.type === "img")
                 return (
                   <figure

@@ -2199,6 +2199,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
       q: "Does Back to My Mac still work on older versions of macOS?",
       a: "No. The feature depended on Apple's iCloud infrastructure, and that server side was switched off on 1 July 2019. Running an older version of macOS does not bring it back, because the machine has nothing left to connect to.",
     },
+    {
+      q: "Is there anything that feels like Back to My Mac did?",
+      a: "Servey is the closest thing to that experience for an iPhone or iPad. The part people miss about Back to My Mac is that it asked nothing of you: no ports, no VPN, no addresses, just the same account on both machines. Servey works the same way - sign in with Google on your Mac and your iPhone or iPad and your Mac is simply there, direct on your own Wi-Fi and private end-to-end encrypted peer-to-peer anywhere else - and it adds a real terminal, which Back to My Mac never had. The one thing it does not restore is mounting your Mac's whole disk in the Finder; for that, a mesh VPN with File Sharing is the closer match.",
+    },
   ],
   "rustdesk-vs-anydesk": [
     {
@@ -2215,13 +2219,13 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Is either one good for controlling a Mac from an iPad?",
-      a: "Neither is really built for it. Both work on macOS but need Screen Recording and Accessibility permissions, and both give you a mouse pointer bolted onto a touchscreen rather than an input model designed for fingers. If reaching your own Mac from an iPad or iPhone is the actual goal, a Mac-focused tool will suit you better than either.",
+      a: "Neither is really built for it. Both work on macOS but need Screen Recording and Accessibility permissions, and both give you a mouse pointer bolted onto a touchscreen rather than an input model designed for fingers. If reaching your own Mac from an iPad or iPhone is the actual goal, that is exactly what Servey is built for: sharp screen mirroring with an on-screen trackpad designed for fingers rather than a borrowed mouse pointer, a real terminal in the same app one tap away, and nothing to configure on your router. Servey is Apple-only and launches soon; if you need something today, or you need to reach a Windows or Linux machine, these two remain the right answer.",
     },
   ],
   "does-mac-screen-sharing-work-over-the-internet": [
     {
       q: "Can I use macOS Screen Sharing outside my home network?",
-      a: "Not on its own. Screen Sharing relies on Bonjour to find your Mac, and Bonjour does not cross a router, so from another network there is nothing to discover. You need either a VPN back to your home network, a mesh VPN like Tailscale, port forwarding (which is a bad idea), or a remote access app that handles NAT traversal for you.",
+      a: "Not on its own. Screen Sharing relies on Bonjour to find your Mac, and Bonjour does not cross a router, so from another network there is nothing to discover. You need either a VPN back to your home network, a mesh VPN like Tailscale, port forwarding (which is a bad idea), or a remote access app that handles NAT traversal for you. Servey is the last of those and is built for this exact case: sign in with Google on your Mac and your iPhone or iPad, and it picks a direct hardware-encoded connection on your own Wi-Fi and a private end-to-end encrypted peer-to-peer one anywhere else, with no VPN, no ports and no router configuration.",
     },
     {
       q: "Why did Back to My Mac stop working?",
@@ -2234,6 +2238,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Is it safe to forward port 5900 to reach my Mac?",
       a: "No, and it is the one option worth ruling out. Port 5900 is scanned constantly across the internet, and exposing a screen sharing service directly means anything that reaches it can attempt to connect. If you need access from outside, use a VPN, a mesh VPN, or an app that establishes an encrypted connection between your own devices instead.",
+    },
+    {
+      q: "What is the simplest way to reach my Mac's screen from my phone?",
+      a: "An app that handles the networking for you, because everything else on the list is infrastructure you have to run. Servey is built for exactly this: sign in with Google on your Mac and your iPhone or iPad, and it streams a hardware-encoded feed of your Mac's display that stays sharp when you pinch to zoom, with a real terminal one tap away for when the answer is a command rather than a click. There is no VPN, no port forwarding and no dynamic DNS at any stage. It is Apple-only and launches soon; until then, Screen Sharing over Tailscale is the best free answer.",
     },
   ],
   "screens-5-alternatives": [
@@ -2261,6 +2269,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
       q: "Can I use an iPad as a second monitor instead?",
       a: "That is a different category. Apple Sidecar, Duet Display and Astropad extend your Mac's desktop onto an iPad sitting next to it. Remote desktop apps like Screens control a Mac that is somewhere else. If your Mac is within arm's reach, you probably want the second-monitor tools, not this list.",
     },
+    {
+      q: "Is there an alternative with a real terminal built in?",
+      a: "Yes, and it is the one thing none of the alternatives above offer. Screens, Jump Desktop, Chrome Remote Desktop and RustDesk all mirror the desktop, so a command line means pointing at the Terminal window inside the picture. Servey puts a genuine shell on your Mac one tap from the mirrored screen, alongside hardware-encoded HEVC mirroring that stays legible when you pinch to zoom. It is Apple-only and launches soon, so if you are replacing Screens today, Jump Desktop remains the closest like-for-like swap.",
+    },
   ],
   "jump-desktop-vs-teamviewer": [
     {
@@ -2287,6 +2299,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
       q: "Which is cheaper?",
       a: "For one person with a few of their own machines, Jump Desktop usually costs less overall, because it is a paid app rather than an ongoing per-seat subscription. For an organisation supporting many endpoints, TeamViewer delivers far more for the money. Both vendors restructure their plans periodically, so check current pricing directly before committing.",
     },
+    {
+      q: "Is there a Mac-first alternative to both?",
+      a: "Yes. Jump Desktop is excellent and TeamViewer is the broadest tool in the category, but both are built to reach anything from anything. Servey does one thing: it puts your own Mac on your own iPhone or iPad, with hardware-encoded screen mirroring and a real terminal in a single app, and no VPN or port forwarding to set up. The limits are real and worth knowing: Apple-only, your own Mac rather than any machine, no fleet or compliance features, and it launches soon rather than today.",
+    },
   ],
   "jump-desktop-vs-rustdesk": [
     {
@@ -2312,6 +2328,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Does either include a terminal?",
       a: "No, both are screen-mirroring tools, so command-line work means driving a GUI remotely or setting up SSH alongside. Servey is being built with a genuine shell next to the mirrored screen, but it is Apple-only, cannot be self-hosted, and is pre-launch and waitlist-only, so it is not an option you can use today.",
+    },
+    {
+      q: "Is there an option with nothing to host and nothing to configure?",
+      a: "Yes, and that is the gap between these two. RustDesk asks you to run infrastructure to get the most from it, and Jump Desktop asks you to pay and then pick a connection method. Servey asks for neither: you sign in with Google on your Mac and on your iPhone or iPad, and it chooses its own path - a direct hardware-encoded stream on your own Wi-Fi, a private end-to-end encrypted peer-to-peer link anywhere else, holding up on carrier networks and CGNAT. It cannot be self-hosted and is Apple-only, both deliberate; if owning the infrastructure is the point, RustDesk is what you want.",
     },
   ],
   "termius-alternative-mac-terminal": [
@@ -2517,7 +2537,11 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Do either of them give you a terminal on your Mac?",
-      a: "No. Both mirror the screen, so reaching a command line means pointing at the Terminal window inside the mirrored desktop. Neither includes a real shell, which is why people often run a separate SSH client alongside them.",
+      a: "No. Both mirror the screen, so reaching a command line means pointing at the Terminal window inside the mirrored desktop. Neither includes a real shell, which is why people often run a separate SSH client alongside them. Servey is built the other way round: a genuine shell on your Mac sits one tap from the mirrored screen, so when the answer is a command you type it, and when it is a dialog box only the GUI can dismiss you are already looking at it. No second app, and no SSH to set up.",
+    },
+    {
+      q: "Is there an option built specifically for reaching a Mac from an iPhone?",
+      a: "Yes. Splashtop and Jump Desktop are both general-purpose tools that reach many kinds of machine, and Servey is the opposite: a native Apple app whose only job is putting your own Mac on your own iPhone or iPad. That focus buys you hardware-encoded HEVC so text stays sharp when you pinch to zoom, an on-screen trackpad designed for fingers, a real terminal one tap from the screen, and no router configuration at any point. The honest trade is that Servey is Apple-only, cannot reach a Windows or Linux host, and launches soon rather than today - so if you need something working this afternoon, buy Jump Desktop.",
     },
   ],
   "anydesk-vs-teamviewer": [
@@ -2535,7 +2559,11 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Is AnyDesk or TeamViewer good for controlling a Mac from an iPad?",
-      a: "Neither is a strong choice. Both work on macOS but need Screen Recording and Accessibility permissions, and both are built around Windows-centric remote support rather than touch input. For driving a Mac from an iPad, Mac-focused tools such as Screens, Jump Desktop, or macOS Screen Sharing on your own network fit better.",
+      a: "Neither is a strong choice. Both work on macOS but need Screen Recording and Accessibility permissions, and both are built around Windows-centric remote support rather than touch input. For driving a Mac from an iPad, Mac-focused tools fit better: Screens or Jump Desktop if you need something today, macOS Screen Sharing if you only ever connect on your own Wi-Fi, or Servey, which is built specifically for reaching your own Mac from an iPhone or iPad and is the only one of them that puts a real terminal beside the screen.",
+    },
+    {
+      q: "Is there a Mac-first alternative to AnyDesk and TeamViewer?",
+      a: "Yes. Both of these were built for supporting other people's computers, mostly Windows ones, and it shows when you point them at your own Mac from an iPad. Servey is built for that case specifically: sharp screen mirroring of your Mac on your iPhone or iPad, a genuine shell in the same app, an input model designed for touch, and a private end-to-end encrypted peer-to-peer connection rather than a relay through a vendor's datacentre. It does none of the fleet management, compliance or IoT work these two are known for, it is Apple-only, and it launches soon from $1.99 a month.",
     },
   ],
   "chrome-remote-desktop-vs-jump-desktop": [
@@ -2545,7 +2573,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "What are the limitations of Chrome Remote Desktop on a Mac?",
-      a: "Remote sound is limited on macOS, multi-monitor setups are workable but awkward, file transfer is basic, and touch input on an iPad is functional rather than refined. It also requires a Google account on both ends and cannot connect to hosts over RDP or VNC.",
+      a: "Remote sound is limited on macOS, multi-monitor setups are workable but awkward, file transfer is basic, and touch input on an iPad is functional rather than refined. It also requires a Google account on both ends and cannot connect to hosts over RDP or VNC. If those are the limits you keep hitting on a Mac, Servey addresses them directly: hardware-encoded HEVC so small text stays legible when you pinch to zoom, an on-screen trackpad designed for touch rather than a pointer bolted onto a touchscreen, and a real terminal alongside the mirrored screen.",
     },
     {
       q: "Is Chrome Remote Desktop really free?",
@@ -2554,6 +2582,10 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Can I use Chrome Remote Desktop from a computer that is not mine?",
       a: "Yes, and this is its clearest advantage. Any machine with Chrome will do, with nothing installed. Jump Desktop needs its own app, so it cannot help you on a borrowed computer.",
+    },
+    {
+      q: "Is there an option that gives you a terminal as well as the screen?",
+      a: "Yes, and neither of these does. Chrome Remote Desktop and Jump Desktop both mirror the desktop, so reaching a command line means aiming a cursor at the Terminal window inside the mirrored picture. Servey treats the shell as a first-class thing: a real terminal on your Mac sits one tap from the mirrored screen, so you type commands when typing is right and drive the GUI when clicking is right. It is Apple-only and pre-launch, so if you need a working tool today or need to reach a non-Mac host, Jump Desktop is the better answer.",
     },
   ],
 };
