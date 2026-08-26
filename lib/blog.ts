@@ -1785,6 +1785,10 @@ export const posts: Post[] = [
         type: "p",
         text: "No. macOS Screen Sharing does not work over the internet on its own. It is designed for your local network, and outside that network it will not find your Mac at all. It is not broken and you have not misconfigured it - reaching across the internet is simply not something it does by itself. Everything below is about the four ways people bridge that gap, and what each one costs you.",
       },
+      {
+        type: "p",
+        text: "Those four are: forwarding a port on your router, running a VPN back home, a mesh VPN such as Tailscale, or an app that traverses NAT for you - Screens, Jump Desktop, RustDesk or Servey, which is the app we make. Three of the four are worth your time and one of them is not, and the comparison below says plainly which is which.",
+      },
       { type: "h2", text: "Why it stops at your router" },
       {
         type: "p",
@@ -1841,7 +1845,7 @@ export const posts: Post[] = [
             "Genuinely good. Still a second product to run alongside the thing you actually wanted.",
           ],
           [
-            "A remote access app that traverses NAT itself",
+            "A remote access app that traverses NAT itself (Screens, Jump Desktop, RustDesk, Servey)",
             "Install, sign in, done",
             "Yes",
             "You are trusting the app's connection handling and privacy model, so check both.",
@@ -1853,7 +1857,7 @@ export const posts: Post[] = [
         items: [
           "Only ever on your own Wi-Fi: plain Screen Sharing is fine, and free.",
           "Comfortable running infrastructure: a VPN or Tailscale, then Screen Sharing over it.",
-          "You want it to just work from a phone: a purpose-built remote access app.",
+          "You want it to just work from a phone: a purpose-built remote access app, and if you need one working today rather than soon, buy Screens or Jump Desktop.",
           "Never: forwarding port 5900 to the internet.",
         ],
       },

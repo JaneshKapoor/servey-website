@@ -119,6 +119,19 @@ All 39 queries, clustered:
   established product if they need one today.
 - **One commercial pillar per intent**, with informational blog posts as spokes
   pointing at it (`/control-mac-from-iphone` ← `control-your-mac-from-iphone-ipad`).
+- **Name Servey in the first ~15% of the article, and measure it.** Two metrics,
+  both easy to check by stripping tags and counting character offsets:
+  **first-mention depth ≤15%** and **density 4.0-6.0 per 1k words** (a short post
+  will run a little over on density; depth is the one that matters). The
+  informational posts both drifted to 56% and 63% because they had no reason to
+  name Servey until the dedicated section - a reader on a phone scrolls a long
+  way before learning a product exists. The fix that works is **structural, not a
+  pitch**: give the post's table a Servey column, or name Servey inside the row
+  or list item it genuinely belongs to, alongside the competitors.
+- **On pages used for outreach, keep the honest "No".** The Back to My Mac table
+  says Servey does *not* mount your Mac's disk in the Finder, because it doesn't.
+  A table that only says yes is worth nothing to a reader, and an editor deciding
+  whether to swap a dead citation for our page will not link to an advert.
 
 ### On-page
 - `metaTitle` **≤51 chars** (the `%s - Servey` template adds 9; rendered ≤60).
@@ -327,6 +340,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-08-26 | **Servey raised in the two Apple-tools posts.** First-mention depth was 63% (`what-replaced-back-to-my-mac`) and 56% (`does-mac-screen-sharing-work-over-the-internet`), against 3% on `jump-desktop-vs-rustdesk` and 12% on `rustdesk-vs-anydesk`. The comparison posts score well because they lead with a table carrying a Servey column; the informational posts had tables with no Servey in them. Fixed structurally rather than by adding copy: the Back to My Mac jobs table gained a Servey column plus a terminal row (and an honest **No** on mounting the disk in the Finder), and the Screen Sharing approaches table - whose shape is approach x cost, so a Servey column would be a category error - instead names Screens, Jump Desktop, RustDesk and Servey inside the row they all belong to. Both posts now open the short-answer section by naming all four routes with a `which is the app we make` disclosure. **63% -> 14% and 56% -> 14%**; density 5.9 and 6.6 per 1k. The disclosure and the honest No are load-bearing here, not decoration: these are the pages the AppleInsider / MacRumors / 9to5Mac broken-link outreach points at. |
 | 2026-08-26 | **Two posts, 30 -> 32 URLs.** `what-replaced-back-to-my-mac` exists to serve the broken-link campaign: AppleInsider, MacRumors and 9to5Mac all cite `support.apple.com/en-us/HT208922`, which still 404s (re-verified today, along with the other three dead Apple URLs). Our only replacement resource was `does-mac-screen-sharing-work-over-the-internet`, which covers Back to My Mac in a single section - Back to My Mac appeared 4 times sitewide, all inside that one post. An exact-match page makes the swap an easier yes for an editor. `rustdesk-vs-anydesk` feeds the only cluster earning non-brand clicks; RustDesk positions itself against AnyDesk explicitly, and the open-source axis already converts via `jump-desktop-vs-rustdesk`. Link graph engineered rather than incidental: `Back to My Mac replacement` added as a 6th keyword to the Screen Sharing post (it genuinely has a section and an FAQ on it), giving inbound counts of **6 and 3 on arrival** against the 1 the previous post shipped with. Includes the AnyDesk 2024 production-systems incident, stated with its disclosure and cert rotation, because the comparison axis is literally auditable-vs-trust-the-vendor and omitting it would be dishonest. seo:audit 32/32. |
 | 2026-08-23 | `does-mac-screen-sharing-work-over-the-internet` - first post in the Apple-tools cluster. Apple Remote Desktop appeared **0 times** anywhere on the site; Screen Sharing and VNC appeared only as passing mentions inside comparison posts, with one keyword entry sitewide (`VNC alternative Mac`). No page targeted Apple's built-in tooling. Targets the Screen Sharing variant of the query (higher volume than the ARD variant Macky targets) and covers ARD and Remote Management inside it. Link graph: shipped with 1 inbound, so `macOS Screen Sharing` was added as a 6th keyword to the three posts that genuinely discuss it (`chrome-remote-desktop-vs-jump-desktop` 7 mentions, `best-remote-desktop-for-mac` 6, `screens-5-alternatives` 5) - inbound 1 -> 2, outbound now 3 topically-matched posts. **29 -> 30 URLs.** |
 | 2026-08-23 | **Comparison posts re-pitched.** The 6 comparison/roundup posts read as neutral review-site content: `jump-desktop-vs-teamviewer` had 2 Servey mentions in 1,526 words (1.3/1k), `anydesk-vs-teamviewer` 2 in 1,298. Their `Where Servey fits` sections actively deflected ("it does not compete with either of these", "pick one of the two above") and all 5 `Bottom line` sections had no Servey at all. Added a **Servey column to all 5 head-to-head tables** (each already ended with a `Real terminal | No | No` row), rewrote every Servey section to lead with real advantages (hardware HEVC sharpness, shell + screen one tap apart, zero config, P2P E2E, CGNAT, price), and added a closing pitch to each `Bottom line`. Honest competitor-is-better sections kept intact. Density 1.3-4.8/1k -> 4.0-6.0/1k. |
