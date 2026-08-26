@@ -1770,6 +1770,7 @@ export const posts: Post[] = [
       "Screen Sharing outside my network",
       "access Mac remotely",
       "control Mac from iPhone",
+      "Back to My Mac replacement",
     ],
     readingMinutes: 6,
     lede:
@@ -1872,6 +1873,270 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "what-replaced-back-to-my-mac",
+    metaTitle: "What replaced Back to My Mac?",
+    title: "Back to My Mac is gone: what actually replaced it",
+    description:
+      "Apple removed Back to My Mac in macOS Mojave and never replaced it. Here is what it really did, and what covers each part of the job today.",
+    date: "2026-08-26",
+    keywords: [
+      "Back to My Mac replacement",
+      "Back to My Mac alternative",
+      "macOS Screen Sharing",
+      "access Mac remotely",
+      "remote Mac without VPN",
+      "best remote desktop for Mac",
+    ],
+    readingMinutes: 6,
+    lede:
+      "For years, Back to My Mac was the answer to reaching your own Mac from anywhere: no ports, no VPN, no IP addresses. Apple removed it in 2018 and shipped nothing to take its place. Here is exactly what you lost and what genuinely fills the gap.",
+    body: [
+      {
+        type: "p",
+        text: "If you set up a Mac before 2018, there is a good chance you used Back to My Mac without ever thinking about how it worked. You ticked a box in iCloud preferences, and your Mac at home simply appeared in the Finder sidebar of your Mac at work. Then one year it was not there any more, and the replacement never arrived. This is what it did, why it went, and what actually covers the job now.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross.",
+      },
+      { type: "h2", text: "What Back to My Mac actually did" },
+      {
+        type: "p",
+        text: "It solved three separate problems at once, which is why losing it hurt more than it first appeared. The first was discovery: it used your iCloud account to make your Macs findable from any network, effectively extending Bonjour beyond the local network it is normally confined to. The second was connectivity: it opened an encrypted tunnel between your machines, negotiating its way through home routers automatically rather than asking you to forward ports or hold a static IP. The third was that it carried both Screen Sharing and File Sharing over that tunnel, so a Mac hundreds of miles away behaved almost exactly like a Mac in the next room.",
+      },
+      {
+        type: "p",
+        text: "The part people remember most fondly is what it did not ask of you. There was no router configuration, no dynamic DNS account, no VPN to maintain, no address to memorise. You signed in to the same iCloud account on both machines and the rest was handled. That expectation is the real thing Apple removed, and it is why every replacement feels like more work than it should.",
+      },
+      { type: "h2", text: "Why did Apple remove it?" },
+      {
+        type: "p",
+        text: "Apple never published a detailed reason. The deprecation notice in Mojave simply recommended alternatives for each of the three jobs: iCloud Drive for reaching files, Screen Sharing for reaching a screen, and Apple Remote Desktop for managing machines. That advice was widely criticised at the time, because two of those three only work on your local network and the third is a paid administration tool, so none of them actually does the thing Back to My Mac was valued for.",
+      },
+      {
+        type: "p",
+        text: "The reasonable guess is maintenance cost against usage. The feature relied on a fairly involved combination of wide-area Bonjour, IPv6 and IPsec tunnelling, plus router negotiation that had to keep working against a moving target of consumer hardware. It was almost certainly used by a small, technical minority of Mac owners. Apple's own dead documentation is the clearest evidence of how completely it was retired: the support page that announced the shutdown now returns a 404.",
+      },
+      { type: "h2", text: "What covers each part of the job now" },
+      {
+        type: "table",
+        caption: "The three jobs Back to My Mac did, and what covers each one today.",
+        headers: ["What it did", "Still built into macOS?", "What covers it now"],
+        rows: [
+          [
+            "Find your Mac from any network",
+            "No",
+            "A VPN back to your home network, a mesh VPN such as Tailscale, or an app that handles NAT traversal for you",
+          ],
+          [
+            "Show your Mac's screen from anywhere",
+            "Local network only",
+            "Screen Sharing tunnelled over a VPN, or a third-party remote access app",
+          ],
+          [
+            "Reach your Mac's files from anywhere",
+            "No",
+            "iCloud Drive for files you chose in advance, or SMB File Sharing over a VPN for the whole disk",
+          ],
+          [
+            "Require no router configuration",
+            "Not applicable",
+            "Only tools that bring their own relay or peer-to-peer layer",
+          ],
+        ],
+      },
+      { type: "h2", text: "Is Screen Sharing a replacement?" },
+      {
+        type: "p",
+        text: "Only on your own Wi-Fi. macOS Screen Sharing is genuinely good software and it is free on every Mac, but it depends on Bonjour to find your Mac and Bonjour announcements do not cross a router. From a cafe or a mobile connection there is nothing for it to discover, and even if you knew the address, your Mac sits behind your router's NAT with no reachable public address of its own. If you are on mobile data you are usually behind carrier-grade NAT as well, so neither end can be reached directly. This is a networking limitation rather than an Apple one, and it is exactly the limitation Back to My Mac used to paper over.",
+      },
+      {
+        type: "p",
+        text: "Screen sharing through Messages does work over the internet, but it is built for helping another person with their Mac and needs someone at the other end to accept the request. That makes it useless for reaching your own machine while you are out, which is the case that matters here.",
+      },
+      { type: "h2", text: "Does Apple Remote Desktop replace it?" },
+      {
+        type: "p",
+        text: "No, and the name is genuinely misleading. Apple Remote Desktop is a paid administration tool on the Mac App Store, designed for managing a room full of Macs: software distribution, reporting, running commands across many machines at once. It speaks the same underlying protocol as Screen Sharing and runs into the same NAT wall. Buying it does not give you access to your Mac from outside your network; it gives you fleet management on a network you can already reach. It was listed in Apple's own deprecation advice, which is part of why that advice landed so badly.",
+      },
+      { type: "h2", text: "The four realistic replacements" },
+      {
+        type: "ul",
+        items: [
+          "A VPN back to your home network. Runs on many routers or on a spare machine, and once connected everything behaves as though you were at home, Screen Sharing included. It is the closest thing to a true replacement and the most work to set up and keep running.",
+          "A mesh VPN such as Tailscale. Far easier than a traditional VPN, handles NAT traversal for you, and puts your devices on a private network wherever they are. This is what most technical Mac owners moved to, and it pairs well with Screen Sharing.",
+          "Port forwarding on your router. Technically works, and worth ruling out. It exposes port 5900 to the open internet, where it is scanned constantly, and it fails entirely behind carrier-grade NAT.",
+          "A remote access app that handles the network itself. Screens, Jump Desktop, RustDesk, AnyDesk and others all bring their own relay or peer-to-peer layer, so there is nothing to configure. This is the option that most resembles the old experience of it simply working.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey was built for exactly the gap Back to My Mac left. There is no router configuration at any point: no port forwarding, no VPN to maintain, no dynamic DNS, no static IP. You sign in with Google on your Mac and on your iPhone or iPad, and your Mac is simply there - which is the same bargain iCloud used to offer. It chooses its own path: on your own Wi-Fi it streams a direct hardware-encoded HEVC feed, sharper than the VNC picture Screen Sharing gives you and still legible when you pinch to zoom into small text. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, with NAT traversal built to survive strict carrier networks and CGNAT.",
+      },
+      {
+        type: "p",
+        text: "It also adds the thing Back to My Mac never had: a genuine terminal on your Mac, one tap from the mirrored screen, so when the answer is a command you type it rather than driving a keyboard through a video feed. The honest limits are worth stating. Servey is Apple-only, it reaches your own Mac rather than any machine anywhere, and it does not mount your Mac's disk in the Finder the way Back to My Mac's File Sharing did. If whole-disk file access from afar is the part you miss most, a mesh VPN with File Sharing is the closer match.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Back to My Mac was quietly one of the best things about owning two Macs, and Apple has not replaced it in the seven years since it was switched off. The advice Apple gave on the way out does not survive contact with the actual problem, because Screen Sharing and File Sharing both stop at your router. The two honest answers today are a mesh VPN if you enjoy running your own infrastructure, or an app that handles the network for you if you do not. If what you want back is the specific feeling of your Mac just being there on the device in your hand, with a real shell alongside it, that is what Servey is for. It launches soon from $1.99 a month, or ₹99 in India.",
+      },
+    ],
+  },
+  {
+    slug: "rustdesk-vs-anydesk",
+    metaTitle: "RustDesk vs AnyDesk: which should you use?",
+    title: "RustDesk vs AnyDesk: open source or the better codec?",
+    description:
+      "RustDesk is free, open source and self-hostable. AnyDesk is proprietary and hard to beat on a poor connection. Where each genuinely wins on a Mac.",
+    date: "2026-08-26",
+    keywords: [
+      "RustDesk vs AnyDesk",
+      "RustDesk alternative Mac",
+      "AnyDesk alternative",
+      "free remote desktop for Mac",
+      "best remote desktop for Mac",
+      "best Mac remote desktop app",
+    ],
+    readingMinutes: 7,
+    lede:
+      "RustDesk is usually described as the open-source AnyDesk, and the comparison is fair enough to be useful. But the two are making very different offers, and the one that suits you depends far more on how you feel about running a server than on any feature list.",
+    body: [
+      {
+        type: "p",
+        text: "These two get compared constantly, and for good reason: they look alike, they work alike, and RustDesk has openly positioned itself as the open-source answer to tools like AnyDesk. The interesting differences are not in the feature grid. They are in who operates the infrastructure your session runs through, what happens when something breaks, and what each one costs you in time rather than money.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Choose RustDesk if you want to pay nothing, want the code to be auditable, or want to run the whole system on servers you control so that no third party is involved in your sessions at all. Choose AnyDesk if you want something that connects immediately, stays usable on a genuinely bad connection, and comes with a company to hold responsible. For most people the deciding question is not which is better software. It is whether self-hosting sounds like a benefit or a chore. If it sounds like a benefit, RustDesk is one of the best things in this category. If it sounds like a chore, AnyDesk will make you happier.",
+      },
+      {
+        type: "table",
+        caption: "RustDesk, AnyDesk and Servey, side by side.",
+        headers: ["", "RustDesk", "AnyDesk", "Servey"],
+        rows: [
+          [
+            "Licence",
+            "Open source, AGPL-3.0",
+            "Proprietary",
+            "Proprietary",
+          ],
+          [
+            "Cost",
+            "Free, including self-hosting",
+            "Free for personal use, paid for commercial",
+            "From $1.99/month, no free tier",
+          ],
+          [
+            "Self-hostable",
+            "Yes, and it is the main reason to choose it",
+            "No",
+            "No, deliberately",
+          ],
+          [
+            "Who runs the relay",
+            "The project by default, or you",
+            "AnyDesk",
+            "Nobody, it is peer-to-peer between your devices",
+          ],
+          [
+            "Performance on a poor connection",
+            "Good",
+            "Excellent, its strongest claim",
+            "Good, and tuned for carrier networks and CGNAT",
+          ],
+          [
+            "Platforms",
+            "macOS, Windows, Linux, iOS, Android, web",
+            "macOS, Windows, Linux, iOS, Android, ChromeOS",
+            "macOS host, iPhone and iPad clients only",
+          ],
+          [
+            "Touch input quality on iPad",
+            "Functional, clearly secondary",
+            "Functional, clearly secondary",
+            "The thing it was designed around",
+          ],
+          [
+            "Support when it breaks",
+            "Community issue tracker",
+            "A vendor with a support contract",
+            "A small team, pre-launch",
+          ],
+          [
+            "Real terminal",
+            "No",
+            "No",
+            "Yes",
+          ],
+        ],
+      },
+      { type: "h2", text: "Where RustDesk genuinely wins" },
+      {
+        type: "p",
+        text: "Cost, transparency and control, and all three are real advantages rather than consolation prizes. It is free with no per-device arithmetic as your machine count grows, which matters more than it sounds once you have a laptop, a desktop and a Mac mini. It is open source under the AGPL, so the code can be inspected by anyone, which is a meaningfully stronger position than trusting a vendor's description of its own encryption. Most importantly it can be fully self-hosted: run your own ID and relay servers and no third-party infrastructure touches your sessions at all. No proprietary tool in this category can offer that, and for anyone with a home lab it is often the whole argument. It also treats Linux as a first-class platform on both ends.",
+      },
+      { type: "h2", text: "Where AnyDesk genuinely wins" },
+      {
+        type: "p",
+        text: "Responsiveness on bad networks, and it is not close. AnyDesk's codec was designed around latency rather than image fidelity, and on hotel Wi-Fi, a tethered phone, or a connection across an ocean it tends to stay usable where other tools become unpleasant to drive. This is its central engineering claim and it holds up in practice. The client is also small and can be run without a full installation, which is genuinely useful on a machine you would rather not modify. Beyond performance, it offers the things an unpaid project structurally cannot: a support contract, a company accountable for uptime, an address book and unattended access that work without you standing up any infrastructure, and an installer your less technical colleagues will not be frightened of.",
+      },
+      { type: "h2", text: "Security: two different bargains" },
+      {
+        type: "p",
+        text: "Neither option is simply safer than the other, and it is worth being precise about what you are actually trading. RustDesk's advantage is that the code is open and the infrastructure can be yours. Its default configuration deserves a clear-eyed look though: out of the box, connection setup is routed through relay servers operated by the project rather than by you. Sessions are encrypted, but you are trusting infrastructure that somebody else runs, and if that is not acceptable then self-hosting is the answer. Open source also does not mean audited. It means auditable, which is only worth something if someone with the right expertise actually looks.",
+      },
+      {
+        type: "p",
+        text: "AnyDesk's bargain is the ordinary one you make with any commercial vendor: you cannot inspect the code, so you are trusting the company's engineering and its disclosure practices. On that second point there is a specific event worth knowing about. In early 2024 AnyDesk disclosed a security incident affecting its production systems. It revoked and replaced its code-signing certificates and invalidated passwords for its web portal, advising customers to change them, and stated that it had found no evidence that end-user devices were affected. The disclosure and the certificate rotation were the right responses. It is still a reasonable data point if your reason for reading this comparison is that you would rather not depend on a vendor at all.",
+      },
+      {
+        type: "p",
+        text: "One warning applies equally to both and to everything else in this category. Remote access tools are the favourite instrument of phone scammers, and AnyDesk in particular is named constantly in those scams because it is well known and installs quickly. Never install any remote access tool because somebody who called you asked you to, whoever they claim to be. That is a property of the category rather than a criticism of either product, and the failure is always in the phone call rather than the code.",
+      },
+      { type: "h2", text: "On a Mac specifically" },
+      {
+        type: "p",
+        text: "Neither is Mac-first, and both make you feel it during setup. Each needs Screen Recording and Accessibility permissions granted in System Settings before it can do anything useful, and each is built around a broadly Windows-shaped idea of remote support rather than around Apple hardware. RustDesk's macOS build has historically been the fussier of the two to get permissions working on, though it has improved. Neither is tuned for touch, so driving a Mac from an iPad with either is workable rather than pleasant: you get a mouse pointer bolted onto a touchscreen rather than an input model designed for fingers.",
+      },
+      {
+        type: "p",
+        text: "If your actual job is supporting a mixed fleet of machines from a desk, that is fine and one of these two is probably right for you. If your job is reaching your own Mac from your own iPad, the Mac-focused tools are a better fit than either, and it is worth reading a comparison aimed at that instead.",
+      },
+      { type: "h2", text: "Which should you pick" },
+      {
+        type: "ul",
+        items: [
+          "You want nobody else's servers involved at all: RustDesk, self-hosted.",
+          "You want a bill of zero and do not mind the public relays: RustDesk as it ships.",
+          "Your connection is the problem, not your budget: AnyDesk.",
+          "You need unattended access and an address book without running a server: AnyDesk.",
+          "You support non-technical people who need to install something quickly: AnyDesk.",
+          "You are a Linux household: RustDesk, comfortably.",
+          "You mainly want your own Mac on your own iPhone or iPad: neither was designed for that.",
+        ],
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Both of these are general-purpose tools built to reach anything from anything, and it shows the moment you try to drive your own Mac from an iPad. Servey does one thing instead: it puts your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart, with an on-screen trackpad designed for fingers rather than a pointer borrowed from a desktop. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp when you pinch to zoom. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, holding up on the mobile networks and CGNAT that defeat most tools.",
+      },
+      {
+        type: "p",
+        text: "Setup is signing in with Google on both devices: no relay to choose, no ports to forward, no infrastructure to maintain. The trades are deliberate and worth stating plainly. Servey is Apple-only, it cannot be self-hosted, and it reaches your own Mac rather than any machine anywhere. If running your own infrastructure is the entire point for you, that is what RustDesk is for and it does it well. If you need to fix a relative's Windows laptop over a terrible connection, that is AnyDesk. Servey launches soon from $1.99 a month, or ₹99 in India, and the waitlist is open now.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most out of it. AnyDesk is the better answer if you want a finished product that connects fast, survives a bad network, and comes with somebody to call. Both are legitimate, and the deciding question is not which is better software but whether infrastructure is something you enjoy owning. If your honest answer is that you would rather own none of it, and the machine you actually want to reach is your own Mac, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your iPhone or iPad. It launches soon.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -1891,7 +2156,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-23";
+export const contentUpdated = "2026-08-26";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -1899,6 +2164,42 @@ export const contentUpdated = "2026-08-23";
  * contained (BLUF): the first sentence should stand on its own as the answer.
  */
 export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
+  "what-replaced-back-to-my-mac": [
+    {
+      q: "What replaced Back to My Mac?",
+      a: "Nothing built into macOS replaced it. Apple deprecated Back to My Mac in macOS Mojave in 2018 and shut the service off entirely on 1 July 2019, recommending iCloud Drive, Screen Sharing and Apple Remote Desktop instead. Two of those only work on your local network and the third is a paid admin tool, so in practice the replacements are a VPN back to your home network, a mesh VPN such as Tailscale, or a third-party remote access app that handles NAT traversal for you.",
+    },
+    {
+      q: "When exactly did Back to My Mac stop working?",
+      a: "Apple deprecated it in macOS Mojave in 2018 and the service stopped working completely on 1 July 2019. Macs running High Sierra and earlier kept it until that shutdown date. Apple's own support page announcing the change has since been taken down and now returns a 404.",
+    },
+    {
+      q: "Can I get Back to My Mac functionality without a VPN?",
+      a: "Yes. Any remote access app that brings its own relay or peer-to-peer layer will reach your Mac from outside your network with no router configuration, which is the part Back to My Mac made effortless. Screens, Jump Desktop, RustDesk, AnyDesk and Servey all do this. A mesh VPN such as Tailscale is the other common answer, and it is closer to the original in that it also restores file sharing across the whole disk.",
+    },
+    {
+      q: "Does Back to My Mac still work on older versions of macOS?",
+      a: "No. The feature depended on Apple's iCloud infrastructure, and that server side was switched off on 1 July 2019. Running an older version of macOS does not bring it back, because the machine has nothing left to connect to.",
+    },
+  ],
+  "rustdesk-vs-anydesk": [
+    {
+      q: "Is RustDesk a good alternative to AnyDesk?",
+      a: "Yes, particularly if cost or self-hosting matters to you. RustDesk is free and open source under the AGPL, and you can run your own ID and relay servers so no third party is involved in your sessions. The trade-offs are that AnyDesk performs better on poor connections, its mobile clients are more refined, and there is a company to hold accountable when something breaks.",
+    },
+    {
+      q: "Is RustDesk safe to use?",
+      a: "It is as safe as its configuration. The source is open and auditable, which is a genuine advantage, but by default connection setup runs through relay servers operated by the project rather than by you. If that is not acceptable, self-hosting is supported and is the main reason people choose RustDesk. Note that open source means auditable rather than audited, and that the biggest real-world risk with any remote access tool is installing it because a stranger on the phone asked you to.",
+    },
+    {
+      q: "Which is faster, RustDesk or AnyDesk?",
+      a: "AnyDesk, on constrained connections. Its codec was designed around latency rather than image fidelity, and on hotel Wi-Fi, tethered connections or long-distance links it typically stays usable where other tools become sluggish. On a fast local network the practical difference between the two is much smaller.",
+    },
+    {
+      q: "Is either one good for controlling a Mac from an iPad?",
+      a: "Neither is really built for it. Both work on macOS but need Screen Recording and Accessibility permissions, and both give you a mouse pointer bolted onto a touchscreen rather than an input model designed for fingers. If reaching your own Mac from an iPad or iPhone is the actual goal, a Mac-focused tool will suit you better than either.",
+    },
+  ],
   "does-mac-screen-sharing-work-over-the-internet": [
     {
       q: "Can I use macOS Screen Sharing outside my home network?",
