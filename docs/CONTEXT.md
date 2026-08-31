@@ -7,7 +7,7 @@ conversation.
 
 - **Repo:** `github.com/JaneshKapoor/servey-website`
 - **Production:** <https://servey.in> (Vercel, auto-deploys on push to `main`)
-- **Last reviewed:** 26 August 2026
+- **Last reviewed:** 31 August 2026
 - **Source of truth:** `docs/CONTEXT.md`. `docs/context.pdf` is generated from it
   by `npm run context:pdf` - never edit the PDF directly. (That command renders
   every `docs/*.md`, so new documents are picked up automatically.)
@@ -136,7 +136,7 @@ components/
 lib/
   site.ts                 # site constants - name, url, tagline, description, nav
   content.ts              # homepage copy: features, steps, comparison, faqs, pricing
-  blog.ts                 # all 21 posts + FAQ map + contentUpdated
+  blog.ts                 # all 23 posts + FAQ map + contentUpdated
   use-cases.ts            # the 7 landing pages
   screenshots.ts          # typed registry of image slots
   analytics.ts            # lazy PostHog loader + capture helpers
@@ -175,7 +175,7 @@ Homepage sections: `trustItems`, `features` (6), `steps` (3), `comparison`
 `features` also feeds `SoftwareApplication.featureList` and `faqs` feeds the
 homepage `FAQPage` - so editing copy here updates the structured data.
 
-### `lib/blog.ts` - 21 posts
+### `lib/blog.ts` - 23 posts
 
 Blocks are a discriminated union:
 
@@ -261,14 +261,14 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**32 URLs in `sitemap.xml`**, priority-ordered:
+**34 URLs in `sitemap.xml`**, priority-ordered:
 
 | Priority | URLs |
 |---|---|
 | 1.0 | `/` |
 | 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* |
 | 0.8 | `/blog` |
-| 0.7 | the 21 blog posts |
+| 0.7 | the 23 blog posts |
 | 0.3 | `/privacy`, `/terms` |
 
 Not in the sitemap but live: `/robots.txt`, `/sitemap.xml`, `/feed.xml`,

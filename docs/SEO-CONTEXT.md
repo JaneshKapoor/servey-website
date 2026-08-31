@@ -6,7 +6,7 @@ and the evidence behind each decision.**
 Companion to [`CONTEXT.md`](CONTEXT.md), which covers the product and codebase.
 This file covers search and answer-engine strategy only.
 
-- **Last reviewed:** 26 August 2026
+- **Last reviewed:** 31 August 2026
 - **Source of truth:** `docs/SEO-CONTEXT.md`. `docs/seo-context.pdf` is generated
   from it by `npm run context:pdf` - never edit the PDF.
 
@@ -19,58 +19,43 @@ This file covers search and answer-engine strategy only.
 
 ## 1. Baseline - where we actually are
 
-Google Search Console, 3-month window to **25 August 2026**:
+Google Search Console, 3-month window to **29 August 2026** (read 31 Aug):
 
-| Metric | Value | 11 days earlier |
-|---|---|---|
-| Clicks | **38** | 16 |
-| Impressions | **1,460** | 626 |
-| CTR | **2.6%** | 2.6% |
-| Average position | **16.4** | 15.8 |
+| Metric | Value | 25 Aug | 14 Aug |
+|---|---|---|---|
+| Clicks | **54** | 38 | 16 |
+| Impressions | **2,200** | 1,460 | 626 |
+| CTR | **2.5%** | 2.6% | 2.6% |
+| Average position | **16.5** | 16.4 | 15.8 |
+| Distinct queries | **162** | 39 | - |
 
-**Impressions and clicks both roughly 2.3x in eleven days.** This is by some way
-the largest movement the site has recorded, and it is the first reading where
-the trend is unambiguous rather than noise. CTR held exactly flat at 2.6% while
-volume more than doubled, which is the healthy shape: the new impressions are
-converting at the same rate as the old ones, so we are reaching more of the same
-kind of query rather than drifting into irrelevant ones.
+**Clicks +42% and impressions +51% in four days; the query count more than
+quadrupled.** The query count is the number that matters most here. Going from
+39 to 162 distinct queries means Google has stopped treating us as a handful of
+pages about Jump Desktop and started matching us across the whole category.
 
-Position drifting 15.8 -> 16.4 alongside that growth is **not** a regression. New
-pages enter the index low and pull the average down; a rising page count with
-rising clicks and a falling average position is what growth looks like from
-here. Judge this site on clicks and impressions, not on average position, until
-the page count stops changing.
+Position holding flat at ~16.5 while impressions grow is the expected shape and
+is **not** a regression - see the note in §10 on reading position correctly.
 
-**Brand vs non-brand:** `servey` alone is 9 clicks / 215 impressions - **24% of
-clicks from 15% of impressions.** This was 44% of clicks eleven days ago. Brand
-volume grew (7 -> 9 clicks) while its *share* nearly halved, which means the
-growth is coming from non-brand queries. That is the number this whole strategy
-was aimed at, and it moved.
+**Brand vs non-brand:** `servey` is 9 clicks / 257 impressions - **17% of clicks
+from 12% of impressions.** Brand share of clicks has gone 44% -> 24% -> 17% over
+three readings while brand click volume stayed flat at 9. Non-brand is now
+carrying essentially all growth. That was the goal of this whole strategy.
 
-**Top non-brand queries:** `screens vs jump desktop` (3 clicks / 22 impressions),
-`jump desktop vs screens 5` (1 / 19), `jump desktop vs rustdesk` (1 / 16). The
-competitor-vs-competitor cluster remains the only non-brand cluster earning
-clicks, and it is now earning more of them. Note `jump desktop vs rustdesk`
-appearing here for the first time - a post shipped 19 Aug now converts.
+**Attribution caveat:** the 162-row query table accounts for only **23 of the 54
+clicks**. GSC anonymises rare queries, so ~31 clicks are unattributable to a
+specific term. Cluster click counts below are therefore floors, not totals.
 
-**Index coverage (verified 26 Aug 2026):**
-- **Google** - sitemap submitted, **32 URLs**, last read 16 Aug 2026.
-- **Bing** - indexed. Homepage plus at least four blog URLs return on a phrase
-  search, and Bing's own AI summary describes Servey accurately from our pages.
-  This matters because **ChatGPT Search reads Bing's index**, so the pipe to the
-  largest answer engine is connected.
+**Index coverage (verified 31 Aug 2026):**
+- **Google** - sitemap submitted, now **34 URLs**.
+- **Bing** - indexed; ChatGPT Search reads Bing's index, so that pipe is connected.
 
 ### The core diagnosis
 
-Position 16.4 is page two, which takes roughly **1% of clicks** versus ~25% on
-page one. CTR of 2.6% is *above* par for that position, which means **titles and
+Position 16.5 is page two, which takes roughly **1% of clicks** versus ~25% on
+page one. CTR of 2.5% is *above* par for that position, which means **titles and
 descriptions are working.** This is a **ranking problem, not a copywriting
 problem**, and the bottleneck is authority - we have effectively no backlinks.
-
-The 2.3x growth to 25 Aug does not change this diagnosis, it confirms it. We are
-winning more impressions because we have more relevant pages, and converting them
-at a steady rate. What we are still not doing is moving off page two, and no
-amount of additional content does that on its own.
 
 **Do not respond to flat numbers by rewriting metadata again.** That lever is
 already pulled. The remaining levers are links, entity presence, and shipping.
@@ -79,26 +64,45 @@ already pulled. The remaining levers are links, entity presence, and shipping.
 
 ## 2. What the query data proves
 
-All 39 queries, clustered:
+All 162 queries, clustered (3-month window to 29 Aug 2026):
 
-| Cluster | Impressions | Clicks | Verdict |
-|---|---|---|---|
-| **Competitor vs competitor** (`screens vs jump desktop` + ~11 variants) | ~58 | **2** | ✅ The only non-brand cluster earning clicks |
-| **AI on Mac** (`run local ai on mac`, `mac ai agent`) | ~15 | 0 | Largest non-competitor cluster |
-| **Control Mac from iPhone** (10 phrasings) | ~12 | 0 | Core intent - was fragmented |
-| **Headless Mac mini** (7 phrasings) | ~9 | 0 | Was fragmented |
-| `airplayuiagent` | 4 | 0 | Accidental, off-intent (a macOS process name) |
+| Cluster | Phrasings | Impressions | Clicks | Verdict |
+|---|---|---|---|---|
+| **Competitor vs competitor** (Jump Desktop is in nearly all of them) | ~20 | ~235 | **14** | ✅ Earns every attributable non-brand click |
+| **Control Mac FROM iPhone** (`remote access mac from iphone`, `control mac with iphone`, ...) | **55** | **~120** | **0** | ❌ Our core product intent. Biggest miss on the site |
+| **Control iPhone FROM Mac** (`remote control iphone from mac`, ...) | 13 | ~46 | 0 | ❌ Inverse intent - we had no page for it at all |
+| **Headless Mac mini** (`headless mac mini setup`, `macos headless mode`, ...) | 12 | ~32 | 0 | ❌ How-to intent; we only had a "why" page |
+| **AI on Mac** (`mac ai agent`, `run local ai on mac`) | 10 | ~26 | 0 | Three posts already; saturated, do not add more |
+| **Screens 5 pricing** (`screens 5 cost`, `screens 5 price`) | 4 | ~17 | 0 | Commercial intent, uncovered. Blocked: pricing not verifiable |
+| `airplayuiagent`, `publicrelay`, `splashbuddy` | 5 | ~8 | 0 | Accidental - macOS process names. Ignore |
 
-**Three conclusions that drive every content decision:**
+**The finding that reset priorities on 31 Aug:** the *"control my Mac from my
+iPhone"* family - Servey's exact job - produces **~120 impressions across 55
+distinct phrasings and converts zero of them.** It is by far the largest cluster
+on the site and the only one where we should be the definitive answer.
+
+The cause was diagnosable by reading the page. `control-your-mac-from-iphone-ipad`
+was written as a *pitch* ("what good Mac remote control should feel like"), not
+as a *guide*. It never mentioned System Settings, Screen Sharing, VNC or any
+actual step. Google ranked it for the topic and then buried it, because the
+queries are overwhelmingly `how to ...` and the page answered nothing. Rebuilt
+31 Aug as a real how-to that leads with Apple's free built-in route.
+
+**Four conclusions that drive every content decision:**
 
 1. **Comparison content is the only proven format** - specifically
    *competitor-vs-competitor*, where Servey is **not** the subject. We rank by
    genuinely helping someone choose between two other products.
-2. **Fragmentation is the failure mode.** Ten phrasings of one intent, each with
-   1-2 impressions and zero clicks, is what Google does when it reads a site as
-   marginally relevant to all of a group and authoritative on none. The fix is
-   **one strong pillar**, not more pages.
-3. **Pure how-to content is not ranking.** It earns impressions and no clicks.
+2. **Fragmentation is the failure mode.** 55 phrasings of one intent with zero
+   clicks is what Google does when it reads a site as marginally relevant to all
+   of a group and authoritative on none.
+3. **A page that pitches instead of answering cannot rank for a how-to query**,
+   however well optimised. Lead with the free/built-in answer, then position
+   Servey against the part it genuinely does not solve. This is exactly the
+   shape that made `does-mac-screen-sharing-work-over-the-internet` convert.
+4. **Check for inverse intent.** ~46 impressions were people wanting the
+   *opposite* direction (their iPhone from their Mac). Serving that on its own
+   page both captures the traffic and stops it diluting the core page.
 
 ---
 
@@ -212,10 +216,11 @@ fragmentation comes back.
 
 | Intent cluster | Owning page | Supporting spokes |
 |---|---|---|
-| Control Mac from iPhone | `/control-mac-from-iphone` | `blog/control-your-mac-from-iphone-ipad` |
+| Control Mac from iPhone | `/control-mac-from-iphone` | `blog/control-your-mac-from-iphone-ipad` (the how-to half - see §2) |
+| Control iPhone from Mac (inverse intent) | `blog/control-iphone-from-mac` | - |
 | Terminal from iPhone | `/terminal-on-iphone` | `blog/real-terminal-on-your-mac-from-iphone` |
 | Terminal from iPad | `/terminal-on-ipad` | - |
-| Headless Mac mini / macOS headless mode | `/headless-mac-mini` | `blog/control-a-headless-mac-mini-remotely` |
+| Headless Mac mini / macOS headless mode | `/headless-mac-mini` | `blog/headless-mac-mini-setup` (setup), `blog/control-a-headless-mac-mini-remotely` (access) |
 | Run local AI on Mac / mac ai agent | `/remote-mac-for-ai-agents` | `blog/run-ai-agents-locally-on-your-mac`, `blog/run-ai-agents-on-your-mac-remotely`, `blog/stay-in-control-of-ai-agents-from-anywhere` |
 | Developer remote Mac access | `/mac-for-developers` | `blog/who-is-servey-for-developers-home-labs` |
 | Mac home lab | `/mac-home-lab` | - |
@@ -343,6 +348,10 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-08-31 | **GSC query count went 39 -> 162, which exposed the real problem.** Pulled the full query list rather than the top 10 and clustered it (§2). The `control my Mac from my iPhone` family - Servey's exact job - was **~120 impressions across 55 phrasings, converting zero**, the largest cluster on the site. Cause was legible on the page: `control-your-mac-from-iphone-ipad` was a pitch, not a guide, and never named System Settings, Screen Sharing or VNC while the queries were overwhelmingly `how to ...`. **Rebuilt it as a genuine how-to** that leads with Apple's free built-in route, then places Servey against the away-from-home case it does not solve - the same shape that made `does-mac-screen-sharing-work-over-the-internet` convert. Added a 4-row approaches table, 7 FAQs replacing 3 pitch-only ones, `metaTitle`, and 7 keywords covering the actual phrasings. This page is the *informational* half of the pair; `/control-mac-from-iphone` stays the commercial half, so the rewrite reduces overlap rather than creating it. |
+| 2026-08-31 | **Two posts, 32 -> 34 URLs, both chosen from zero-click clusters rather than by adding more competitor comparisons.** `control-iphone-from-mac` serves **inverse intent** - ~46 impressions across 13 phrasings of people wanting their *iPhone* from their *Mac*, which we had no page for and which was diluting the core page. Answered honestly with iPhone Mirroring (requirements verified against Apple support 120421) including the limitation that decides the question: the phone must be locked and *near* the Mac, so it is not remote access, and iOS permits no third-party equivalent. States plainly that **Servey does not control iPhones** before pivoting to the direction that does work. `headless-mac-mini-setup` serves ~32 impressions of *setup* intent (`headless mac mini setup`, `macos headless mode`) that the existing access-oriented post does not answer; real commands, and the FileVault-vs-auto-login trade-off stated as a trade-off rather than a recommendation. Link-worthy for the r/homelab outreach in BACKLINKS §2. |
+| 2026-08-31 | **Servey row highlighting.** The green-border treatment added 27 Aug only detected a Servey *column*. Tables comparing *approaches* (rather than products) put Servey in a row, so the rebuilt core post got no highlight. Extended `app/blog/[slug]/page.tsx` to detect either orientation. |
+| 2026-08-31 | **Not written: a `screens 5 cost` post** (~17 impressions, pure commercial intent, uncovered). Edovia does not publish pricing on the product page, and shipping figures we cannot verify - or vague copy that ranks for nothing - both fail. Revisit only with a verifiable source. |
 | 2026-08-26 | **Servey raised in the two Apple-tools posts.** First-mention depth was 63% (`what-replaced-back-to-my-mac`) and 56% (`does-mac-screen-sharing-work-over-the-internet`), against 3% on `jump-desktop-vs-rustdesk` and 12% on `rustdesk-vs-anydesk`. The comparison posts score well because they lead with a table carrying a Servey column; the informational posts had tables with no Servey in them. Fixed structurally rather than by adding copy: the Back to My Mac jobs table gained a Servey column plus a terminal row (and an honest **No** on mounting the disk in the Finder), and the Screen Sharing approaches table - whose shape is approach x cost, so a Servey column would be a category error - instead names Screens, Jump Desktop, RustDesk and Servey inside the row they all belong to. Both posts now open the short-answer section by naming all four routes with a `which is the app we make` disclosure. **63% -> 14% and 56% -> 14%**; density 5.9 and 6.6 per 1k. The disclosure and the honest No are load-bearing here, not decoration: these are the pages the AppleInsider / MacRumors / 9to5Mac broken-link outreach points at. |
 | 2026-08-26 | **Two posts, 30 -> 32 URLs.** `what-replaced-back-to-my-mac` exists to serve the broken-link campaign: AppleInsider, MacRumors and 9to5Mac all cite `support.apple.com/en-us/HT208922`, which still 404s (re-verified today, along with the other three dead Apple URLs). Our only replacement resource was `does-mac-screen-sharing-work-over-the-internet`, which covers Back to My Mac in a single section - Back to My Mac appeared 4 times sitewide, all inside that one post. An exact-match page makes the swap an easier yes for an editor. `rustdesk-vs-anydesk` feeds the only cluster earning non-brand clicks; RustDesk positions itself against AnyDesk explicitly, and the open-source axis already converts via `jump-desktop-vs-rustdesk`. Link graph engineered rather than incidental: `Back to My Mac replacement` added as a 6th keyword to the Screen Sharing post (it genuinely has a section and an FAQ on it), giving inbound counts of **6 and 3 on arrival** against the 1 the previous post shipped with. Includes the AnyDesk 2024 production-systems incident, stated with its disclosure and cert rotation, because the comparison axis is literally auditable-vs-trust-the-vendor and omitting it would be dishonest. seo:audit 32/32. |
 | 2026-08-23 | `does-mac-screen-sharing-work-over-the-internet` - first post in the Apple-tools cluster. Apple Remote Desktop appeared **0 times** anywhere on the site; Screen Sharing and VNC appeared only as passing mentions inside comparison posts, with one keyword entry sitewide (`VNC alternative Mac`). No page targeted Apple's built-in tooling. Targets the Screen Sharing variant of the query (higher volume than the ARD variant Macky targets) and covers ARD and Remote Management inside it. Link graph: shipped with 1 inbound, so `macOS Screen Sharing` was added as a 6th keyword to the three posts that genuinely discuss it (`chrome-remote-desktop-vs-jump-desktop` 7 mentions, `best-remote-desktop-for-mac` 6, `screens-5-alternatives` 5) - inbound 1 -> 2, outbound now 3 topically-matched posts. **29 -> 30 URLs.** |

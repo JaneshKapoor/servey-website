@@ -208,14 +208,23 @@ export default async function BlogPostPage({
                   </ul>
                 );
               if (block.type === "table") {
-                // Comparison tables carry a "Servey" column. Highlight it in the
-                // brand accent (which is already green) so the reader's eye
-                // lands on our column instead of scanning past it. Falls back to
-                // no highlight on tables that have no Servey column at all.
+                // Comparison tables carry Servey either as a column (head-to-head
+                // posts, one product per column) or as a row (posts comparing
+                // approaches, where each approach is a row). Highlight whichever
+                // it is in the brand accent (already green) so the reader's eye
+                // lands on us instead of scanning past. Tables with neither -
+                // diagnostic tables, for instance - get no highlight.
                 const serveyCol = block.headers.findIndex(
                   (h) => h.trim().toLowerCase() === "servey",
                 );
+                const serveyRow =
+                  serveyCol === -1
+                    ? block.rows.findIndex(
+                        (r) => r[0]?.trim().toLowerCase() === "servey",
+                      )
+                    : -1;
                 const lastRow = block.rows.length - 1;
+                const lastCol = block.headers.length - 1;
                 return (
                   // Wrapper scrolls on its own so a wide table never makes the
                   // whole page scroll sideways on a phone.
@@ -248,7 +257,13 @@ export default async function BlogPostPage({
                       </thead>
                       <tbody>
                         {block.rows.map((row, j) => (
-                          <tr key={j} className="border-b border-border last:border-0">
+                          <tr
+                            key={j}
+                            className={cn(
+                              "border-b border-border last:border-0",
+                              j === serveyRow && "border-b-transparent",
+                            )}
+                          >
                             {row.map((cell, k) => (
                               <td
                                 key={k}
@@ -260,6 +275,14 @@ export default async function BlogPostPage({
                                   k === serveyCol &&
                                     j === lastRow &&
                                     "rounded-b-lg border-b border-b-accent/60",
+                                  j === serveyRow &&
+                                    "border-y border-y-accent/60 bg-accent-deep/50 py-3 font-medium text-fg",
+                                  j === serveyRow &&
+                                    k === 0 &&
+                                    "rounded-l-lg border-l border-l-accent/60 pl-3 text-accent-strong",
+                                  j === serveyRow &&
+                                    k === lastCol &&
+                                    "rounded-r-lg border-r border-r-accent/60 pr-3",
                                 )}
                               >
                                 {cell}

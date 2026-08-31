@@ -38,71 +38,128 @@ export interface Post {
 export const posts: Post[] = [
   {
     slug: "control-your-mac-from-iphone-ipad",
+    metaTitle: "Control your Mac from your iPhone",
     title: "How to control your Mac from your iPhone or iPad",
     description:
-      "A practical guide to controlling your Mac from an iPhone or iPad - screen mirroring, mouse, keyboard, and a real terminal, on your network or anywhere.",
+      "How to control your Mac from an iPhone or iPad - the free option built into macOS, why it stops working when you leave the house, and what to use instead.",
     date: "2026-07-09",
     keywords: [
       "control Mac from iPhone",
       "control Mac from iPad",
-      "remote desktop for Mac",
+      "remote access Mac from iPhone",
       "access Mac remotely",
       "iPhone Mac remote control",
+      "remote desktop for Mac",
+      "macOS Screen Sharing",
     ],
-    readingMinutes: 5,
+    readingMinutes: 7,
     lede:
-      "Your Mac has the storage, the horsepower, and all your files. Your iPhone and iPad are what you actually have in your hand. Here is how to bridge the two - and what to look for in a tool that does it well.",
+      "There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and what to do about the part it cannot solve.",
     body: [
       {
         type: "p",
-        text: "There are plenty of moments when you want your Mac but only have your phone: a build broke while you were on the couch, a render needs babysitting, or a file lives on your desktop and you are on a train. Controlling your Mac from an iPhone or iPad turns your pocket device into a window onto your real machine - the full desktop, your apps, your terminal.",
+        text: "There are plenty of moments when you want your Mac but only have your phone: a build broke while you were on the couch, a render needs babysitting, or a file lives on your desktop and you are on a train. The good news is that macOS has shipped the core of this for years and you do not have to buy anything to try it. The catch is that the built-in route was designed for a local network, and most of the times you actually want your Mac are the times you are not on it.",
       },
-      { type: "h2", text: "What good Mac remote control should feel like" },
+      {
+        type: "table",
+        caption:
+          "The three ways to reach a Mac from an iPhone or iPad, and where each one stops.",
+        headers: ["", "On your own Wi-Fi", "Away from home", "Terminal", "Cost"],
+        rows: [
+          [
+            "macOS Screen Sharing plus a VNC app",
+            "Yes - free and built in",
+            "No, not without a VPN or port forwarding",
+            "Separate SSH app",
+            "Free",
+          ],
+          [
+            "A VPN or mesh VPN back home",
+            "Yes",
+            "Yes, once it is set up and running everywhere",
+            "Separate SSH app",
+            "Free to low",
+          ],
+          [
+            "A purpose-built remote app",
+            "Yes",
+            "Yes, with no network configuration",
+            "Depends on the app",
+            "Paid",
+          ],
+          [
+            "Servey",
+            "Yes - hardware-encoded HEVC",
+            "Yes - automatic, encrypted peer-to-peer",
+            "Yes - a real shell, built in",
+            "From $1.99/month",
+          ],
+        ],
+      },
+      { type: "h2", text: "The free way, step by step" },
       {
         type: "p",
-        text: "Remote access for a Mac has existed for years, but most tools were built for cross-platform IT support, not for the specific experience of driving a Mac from an Apple touchscreen. A tool built for this should get a few things right:",
+        text: "Every Mac has a VNC server built into it, and turning it on takes about thirty seconds. On the Mac, open System Settings, go to General and then Sharing, and switch on Screen Sharing. Click the small info button next to it and note the address it shows you - it will look like a name ending in .local, and that is what you will connect to. While you are there, switch on Remote Login as well if you want SSH, because the two are separate services and turning on one does not turn on the other.",
+      },
+      {
+        type: "p",
+        text: "On the iPhone or iPad you need a VNC client, because iOS does not have one built in. There are several on the App Store at a range of prices. Point it at the .local address from the previous step, sign in with your Mac account name and password, and your desktop appears. On the same Wi-Fi this works well and costs nothing beyond the client app.",
+      },
+      {
+        type: "p",
+        text: "Two things commonly go wrong here. If the connection is refused, check that both devices really are on the same network - a phone that has silently dropped to mobile data will fail with a confusing error. And if you have a Mac mini or any Mac with no display attached, the desktop may arrive at an odd, cramped resolution, which is a headless-specific problem rather than anything to do with your phone.",
+      },
+      { type: "h2", text: "Why it stops working when you leave the house" },
+      {
+        type: "p",
+        text: "This is the wall almost everyone hits. Screen Sharing is designed for a local network, and .local addresses only mean anything on the network you are standing in. The moment you are on mobile data or someone else's Wi-Fi, there is no route to your Mac at all. Your home router does not accept unsolicited inbound connections, your home IP address changes when your provider feels like it, and a large number of people are behind carrier-grade NAT, which means there is no inbound path to open even if you wanted one.",
+      },
+      {
+        type: "p",
+        text: "The traditional fixes are port forwarding with dynamic DNS, or a VPN back to your home network. Port forwarding is the one to avoid: putting VNC or SSH directly on the public internet gets them found by automated scanners within hours, and it does not work at all behind CGNAT. A VPN is the sound version of this idea, and a mesh VPN such as Tailscale is genuinely good - free for personal use, and it solves the CGNAT problem properly. The honest cost is that it is one more service to install, update and reason about on every device you own, and it gets you a network connection rather than a good experience on a touchscreen.",
+      },
+      { type: "h2", text: "What actually makes this pleasant on a phone" },
+      {
+        type: "p",
+        text: "Getting a picture is only half of it. Most remote desktop tools were built for cross-platform IT support, where somebody sits at a desk with a mouse and fixes a colleague's Windows machine. Driving a Mac from a five-inch touchscreen is a different problem, and the things that separate a tool you keep using from one you uninstall are fairly specific:",
       },
       {
         type: "ul",
         items: [
-          "Sharp, aspect-correct screen mirroring - text you can actually read, not a blurry, cropped rectangle.",
-          "Real input: a precise on-screen trackpad with left and right click, plus a full keyboard including Copy, Paste, Esc, and Tab.",
-          "Low latency on your local network, so the cursor tracks your finger instead of lagging behind it.",
-          "A connection that just works away from home, without you configuring a VPN or forwarding ports on your router.",
-          "Privacy by design - your screen should stay between your own devices, not pass through a stranger's servers.",
+          "Sharp, aspect-correct mirroring - text you can actually read, not a blurry cropped rectangle you have to squint at.",
+          "Real input: a precise on-screen trackpad with left and right click, plus a full keyboard including Esc, Tab, and the modifier keys.",
+          "Low latency, so the cursor tracks your finger instead of lagging behind it.",
+          "A connection that works away from home without you configuring anything.",
+          "A real terminal, because a lot of what you want your Mac for is one command rather than a whole desktop.",
         ],
       },
-      { type: "h2", text: "The setup problem most tools ignore" },
       {
         type: "p",
-        text: "The single biggest reason people give up on remote desktop is networking. Traditional tools ask you to set up a VPN, forward ports, or memorize IP addresses. That is fine for an IT department and miserable for everyone else. The better model is simple: sign in on both devices with an account you already have, and let the app pair your own devices for you.",
+        text: "That last point is the one people underestimate. Restarting a service, tailing a log, checking why a job stalled or kicking off a rebuild are all faster typed than they are done by dragging a mouse pointer around with your thumb. A tool that makes you install a separate SSH app and switch between the two is solving half the problem.",
+      },
+      { type: "h2", text: "Where Servey fits" },
+      {
+        type: "p",
+        text: "Servey is built for exactly this one job: your Mac, in your pocket, on your own iPhone or iPad. Screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - live in the same native app, one tap apart. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp enough to read and you can pinch to zoom into it. Away from home it switches automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on the strict mobile networks where most tools give up. Setup is signing in with Google on both devices: no VPN, no ports, no dynamic DNS, no relay server to choose.",
       },
       {
         type: "p",
-        text: "This is exactly the approach Servey takes. You install it on your Mac and on your iPhone or iPad, sign in with Google on each, and your Mac appears on your phone automatically - no VPN, no port forwarding, nothing to configure.",
+        text: "Where it is honestly not the right answer: Servey is Apple-only, with the Mac as host and the iPhone or iPad as the client, so if you need to reach a Windows box or a Linux server it is the wrong tool and something like RustDesk or Jump Desktop will serve you better. It also cannot be self-hosted, which for some people is the entire point of the mesh VPN approach. And if you only ever need your Mac while sitting in the same house as it, macOS Screen Sharing is free and already installed, and there is no reason to pay for anything.",
       },
-      { type: "h2", text: "On your network vs. anywhere else" },
+      { type: "h2", text: "Which one should you use" },
       {
-        type: "p",
-        text: "The best experience happens when both devices are on the same Wi-Fi: a direct, high-performance video stream gives you the sharpest possible picture at a high frame rate. When you are away, a good tool should switch automatically to a private connection between your devices, so you never have to think about which mode you are in.",
-      },
-      {
-        type: "p",
-        text: "Servey does this switch for you. At home it streams directly for maximum quality; away from home it falls back to a private, end-to-end encrypted connection between your own devices, and it stays reliable even on strict mobile and carrier networks where many tools give up.",
-      },
-      { type: "h2", text: "Do not forget the terminal" },
-      {
-        type: "p",
-        text: "Screen mirroring is great for clicking around, but a lot of what you want your Mac for is command-line work: restart a service, tail a log, kick off a deploy, fix a build. A remote tool that includes a genuine terminal - a real shell on your Mac, not a toy web console - turns your phone into a legitimate way to get work done.",
-      },
-      {
-        type: "p",
-        text: "Servey ships a real terminal alongside screen mirroring, available over both the local and remote connection paths, so you can drive a headless Mac Mini or fix a project from anywhere.",
+        type: "ul",
+        items: [
+          "You only need your Mac from the sofa: macOS Screen Sharing plus any VNC client. Free.",
+          "You need it from anywhere and enjoy running infrastructure: a mesh VPN such as Tailscale.",
+          "You need to reach Windows or Linux machines too: a cross-platform tool like Jump Desktop or RustDesk.",
+          "You want your own Mac from your own iPhone with nothing to configure, and a terminal in the same app: Servey.",
+        ],
       },
       { type: "h2", text: "The short version" },
       {
         type: "p",
-        text: "To control your Mac from your iPhone or iPad well, you want sharp mirroring, real input, a terminal, automatic networking, and privacy - without the VPN-and-port-forwarding tax. Servey is built natively for the Apple ecosystem to do exactly this. It is launching soon; you can join the waitlist to be notified before release.",
+        text: "Turn on Screen Sharing in System Settings and grab a VNC client, and you can control your Mac from your iPhone on your own Wi-Fi today for free. The part that is genuinely hard is everywhere else, and it is hard because of NAT and changing IP addresses rather than because of anything on your Mac. Either adopt a VPN and maintain it, or use an app that handles the networking for you. Servey is built to be the second of those for Apple devices specifically, with a real terminal alongside the screen. It launches soon; the waitlist is open now.",
       },
     ],
   },
@@ -2155,6 +2212,252 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "control-iphone-from-mac",
+    metaTitle: "Control your iPhone from your Mac",
+    title: "How to control your iPhone from your Mac, and what Apple actually allows",
+    description:
+      "Can you control an iPhone from a Mac? Yes, with iPhone Mirroring in macOS Sequoia - but only when the phone is next to you. Here is what works and what does not.",
+    date: "2026-08-31",
+    keywords: [
+      "control iPhone from Mac",
+      "remote control iPhone from Mac",
+      "iPhone Mirroring",
+      "control Mac from iPhone",
+      "access Mac remotely",
+    ],
+    readingMinutes: 6,
+    lede:
+      "Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, read on, because the direction that genuinely works remotely is the opposite one.",
+    body: [
+      {
+        type: "table",
+        caption:
+          "The four ways to see or control an iPhone from a Mac, and what each one is actually for.",
+        headers: ["", "What it does", "Works when the iPhone is elsewhere?", "Cost"],
+        rows: [
+          [
+            "iPhone Mirroring",
+            "Full interactive control of your iPhone in a window on your Mac",
+            "No - the phone must be locked and near your Mac",
+            "Free, built into macOS Sequoia",
+          ],
+          [
+            "QuickTime Player",
+            "Shows and records the iPhone screen; you cannot control the phone",
+            "No - requires a USB cable",
+            "Free, built into macOS",
+          ],
+          [
+            "Apple Configurator",
+            "Bulk configuration, app installs and restores for managed devices",
+            "No - USB, and it is a provisioning tool rather than a screen",
+            "Free, but aimed at IT",
+          ],
+          [
+            "Mobile device management",
+            "Policy, apps and remote wipe across a fleet of company phones",
+            "Yes, for management actions - but it is not remote control",
+            "Paid, business only",
+          ],
+        ],
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "You can control your iPhone from your Mac, and the tool is iPhone Mirroring, which Apple shipped in macOS Sequoia. Your phone appears in a window, you drive it with your mouse and keyboard, and notifications come through to the Mac. It is genuinely good. What it is not is remote access: the feature is built on Continuity, which means it works over Bluetooth and Wi-Fi between two devices in the same room. If your iPhone is at home and you are at the office, nothing on this list will let you reach it, and that is a deliberate design decision by Apple rather than a gap somebody is about to fill.",
+      },
+      { type: "h2", text: "What iPhone Mirroring needs" },
+      {
+        type: "p",
+        text: "Apple is specific about the requirements, and every one of them has to be true or the feature simply will not appear. Your Mac needs macOS Sequoia 15 or later and either Apple silicon or the Apple T2 Security Chip. Your iPhone needs iOS 18 or later and must have a passcode set. Both devices have to be signed in to the same Apple Account with two-factor authentication turned on, and both need Bluetooth and Wi-Fi enabled. Your Mac must not be sharing its internet connection or using AirPlay or Sidecar at the time. You can pair only one Mac with one iPhone at a time.",
+      },
+      {
+        type: "p",
+        text: "The requirement that matters most is the physical one. Your iPhone has to be locked and near your Mac - it can be face down on the desk or charging in StandBy, but it has to be there. The phone also stays locked for the whole session, which is a nice privacy property: nobody walking past can see what you are doing, and nobody can pick the phone up and use it while you are mirroring it.",
+      },
+      { type: "h2", text: "Why you cannot control an iPhone over the internet" },
+      {
+        type: "p",
+        text: "This surprises people who are used to Windows or Android, where remote control apps for phones have existed for years. On iOS, an app cannot read the screen of the whole system or inject taps into other apps. There is no API for it, and App Store review would not permit it if there were. Screen recording is possible with the user's explicit consent through ReplayKit, but recording is not control, and it stops the moment the app is backgrounded. So the tools that do exist for reaching an iPhone remotely are management tools rather than remote desktops: mobile device management can push apps, apply policy, lock or wipe a company phone from anywhere, but it cannot show an administrator the screen and let them tap around on it.",
+      },
+      {
+        type: "p",
+        text: "Anything advertising full remote control of an iPhone from across the internet is worth treating with real suspicion. Either it requires the phone to be supervised and enrolled through a business MDM, or it depends on the phone being jailbroken, or it is simply describing screen recording. This is one of the areas where Apple's restrictions genuinely protect you, and the honest answer is that the feature does not exist for consumer devices.",
+      },
+      { type: "h2", text: "The other options, briefly" },
+      {
+        type: "ul",
+        items: [
+          "QuickTime Player: plug the iPhone into the Mac with a cable, choose File then New Movie Recording, and pick the iPhone as the camera source. You get the live screen and can record it. You cannot tap anything - it is a mirror, not a remote.",
+          "Apple Configurator: free from the App Store and built for deploying devices in bulk. Useful for restores, app installs and supervision, useless as a screen.",
+          "Switch Control: an Accessibility feature that lets you drive an iPhone or iPad using another Apple device on the same network. It is designed for people with motor impairments and it is slow for general use, but it is a real answer for accessibility needs.",
+          "Mobile device management: the only option that reaches a phone that is not in the room, and it is aimed at company fleets rather than your own phone.",
+        ],
+      },
+      { type: "h2", text: "The direction that does work remotely" },
+      {
+        type: "p",
+        text: "It is worth checking which problem you are actually trying to solve, because a lot of people arrive at this question having got the two devices the wrong way round in their head. The reason you almost never need to reach an iPhone remotely is that the iPhone is the device you already have with you. The machine that is stuck somewhere else, with your files, your projects and your long-running jobs on it, is the Mac. And unlike the iPhone direction, that one is entirely possible.",
+      },
+      {
+        type: "p",
+        text: "That is the job Servey is built for. It puts your Mac on your iPhone or iPad: crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - one tap apart in a single native app. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp enough to read and you can pinch to zoom into it. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on the strict mobile networks that defeat most tools. There is no VPN to configure, no ports to forward and no relay server to choose: you sign in with Google on both devices and your Mac shows up.",
+      },
+      {
+        type: "p",
+        text: "To be clear about what Servey does not do, since this page is about the opposite direction: it does not control your iPhone, and no third-party app can. Servey is Mac-as-host and iPhone or iPad-as-client, deliberately, because that is the direction where the remote problem is real and worth solving. It launches soon from $1.99 a month, and the waitlist is open now.",
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. And if the device you were really trying to reach is your Mac, that problem is solved - by Apple's own Screen Sharing on your local network, and by a purpose-built app like Servey everywhere else.",
+      },
+    ],
+  },
+  {
+    slug: "headless-mac-mini-setup",
+    metaTitle: "Headless Mac mini setup guide",
+    title: "How to set up a headless Mac mini that stays reachable",
+    description:
+      "A practical guide to running a Mac mini with no monitor: enable the right services first, stop it sleeping, survive a power cut, and fix the resolution problem.",
+    date: "2026-08-31",
+    keywords: [
+      "headless Mac Mini setup",
+      "macOS headless mode",
+      "Mac Mini no monitor",
+      "Mac Mini home server",
+      "headless Mac Mini remote control",
+      "control Mac Mini from iPad",
+    ],
+    readingMinutes: 7,
+    lede:
+      "A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in.",
+    body: [
+      {
+        type: "p",
+        text: "Do all of this while the monitor is still plugged in. Every step below is far easier with a screen attached, and two of them are close to impossible without one. The single most common way this goes wrong is unplugging the display first and then discovering that remote login was never switched on.",
+      },
+      {
+        type: "table",
+        caption:
+          "What actually breaks when you take the monitor away, and what fixes each one.",
+        headers: ["What breaks", "Why", "The fix"],
+        rows: [
+          [
+            "You cannot get in at all",
+            "Screen Sharing and Remote Login are both off by default",
+            "Turn both on before you disconnect anything",
+          ],
+          [
+            "The machine disappears after a while",
+            "macOS sleeps on idle, and a sleeping Mac answers nothing",
+            "Disable system and disk sleep with pmset",
+          ],
+          [
+            "It never comes back after a power cut",
+            "It stays powered off, or stops at the FileVault unlock screen",
+            "Enable automatic restart; understand the FileVault trade-off",
+          ],
+          [
+            "The desktop is tiny or a strange shape",
+            "With no display attached, macOS falls back to a default resolution",
+            "A dummy HDMI plug, or set the resolution in your client",
+          ],
+          [
+            "It works at home but not from outside",
+            "Your router blocks inbound connections; your IP address changes",
+            "Use a tool that handles NAT traversal rather than forwarding ports",
+          ],
+        ],
+      },
+      { type: "h2", text: "Step 1: turn on the two services you will need" },
+      {
+        type: "p",
+        text: "There are two separate doors into a Mac and you want both, because they fail independently and each rescues the other. Screen Sharing gives you the graphical desktop over VNC. Remote Login gives you SSH, which keeps working when the window server is confused, the machine is under heavy load, or you simply want to run one command without waiting for a picture to arrive. Open System Settings, go to General and then Sharing, and switch on both Screen Sharing and Remote Login. You can do the same from the command line, which is worth knowing because it is how you will fix things later:",
+      },
+      {
+        type: "ul",
+        items: [
+          "sudo systemsetup -setremotelogin on - turns on SSH.",
+          "sudo systemsetup -getremotelogin - confirms it took.",
+          "scutil --get LocalHostName - shows the .local name you will use to reach the machine on your own network.",
+        ],
+      },
+      {
+        type: "p",
+        text: "While you are in Sharing, give the machine a name you will actually recognise. A Mac called something like mini-server is much easier to live with than the default, which tends to be your full name with an apostrophe in it that then has to be escaped every time you type it.",
+      },
+      { type: "h2", text: "Step 2: stop it going to sleep" },
+      {
+        type: "p",
+        text: "This is the step people skip, and it produces the most confusing symptom: the machine works perfectly for an hour and then stops answering, apparently at random. A sleeping Mac does not respond to screen sharing or SSH. The pmset command controls all of this, and the -a flag applies the setting to every power source:",
+      },
+      {
+        type: "ul",
+        items: [
+          "sudo pmset -a sleep 0 - never put the system to sleep.",
+          "sudo pmset -a disksleep 0 - keep the disks spinning, which matters if the machine serves files.",
+          "sudo pmset -a displaysleep 0 - there is no display, but leaving this on can still confuse some remote clients.",
+          "sudo pmset -a womp 1 - wake the machine when it receives a network packet, as a safety net.",
+          "pmset -g - print the current settings so you can check your work.",
+        ],
+      },
+      {
+        type: "p",
+        text: "One caveat worth knowing: on Apple silicon a Mac mini idles at a few watts, so leaving it awake permanently costs very little in electricity. This is much less of a trade-off than it was on Intel machines, and it is the right default for a server.",
+      },
+      { type: "h2", text: "Step 3: make it survive a power cut" },
+      {
+        type: "p",
+        text: "A machine on a shelf will eventually lose power, and the question is whether it comes back on its own or waits for you to walk over and press the button. Run sudo pmset -a autorestart 1 so the Mac powers itself back on after a power failure. In System Settings under Energy you will find the equivalent switch if you prefer clicking.",
+      },
+      {
+        type: "p",
+        text: "Then there is FileVault, and this is a genuine trade-off rather than a setting with a correct answer. With FileVault on, a Mac that reboots stops at the unlock screen and waits for a password before it finishes booting, which means no network, no SSH and no screen sharing until somebody types it. With FileVault off, the machine boots all the way to the login window or straight into the desktop if you have enabled automatic login, and comes back on its own. For a machine holding real data in a home you share with other people, keeping FileVault on and accepting the manual restart is the defensible choice. For a build box on a shelf with nothing sensitive on the disk, turning it off and enabling automatic login in Users and Groups is reasonable. Decide deliberately, because the failure mode only shows up weeks later during a power cut you are not home for.",
+      },
+      { type: "h2", text: "Step 4: fix the resolution problem" },
+      {
+        type: "p",
+        text: "With no display connected, macOS has no display to describe, so it falls back to a default that is often small and the wrong shape. You connect from your iPad expecting a desktop and get a cramped little rectangle in the corner. There are two ways out. The cheap and reliable one is a dummy HDMI plug - a two-pound adapter that pretends to be a monitor, so macOS sees a real display and offers real resolutions. The other is to use a remote tool that negotiates the resolution itself rather than inheriting whatever the Mac decided on its own. Apple silicon Macs handle the headless case better than Intel ones did, but the dummy plug is still the answer that always works, and it is worth buying one before you need it.",
+      },
+      { type: "h2", text: "Step 5: reaching it from outside your network" },
+      {
+        type: "p",
+        text: "Everything so far works on your own Wi-Fi. The moment you leave the house, both Screen Sharing and SSH stop being reachable, because your router does not accept unsolicited inbound connections and your home IP address changes when your provider feels like it. Many people are also behind carrier-grade NAT, which means there is no inbound path to forward even if you want one.",
+      },
+      {
+        type: "p",
+        text: "The traditional answers are port forwarding with dynamic DNS, or a VPN back to your home network. Port forwarding is the one to avoid: exposing VNC or SSH directly to the internet puts them in front of automated scanners within hours. A mesh VPN such as Tailscale is a genuinely good answer and worth knowing about - it is free for personal use, it solves the CGNAT problem, and once it is running your Mac mini is reachable by name from anywhere. The cost is that it is another service to install, keep updated and reason about on every device.",
+      },
+      { type: "h2", text: "Driving it from an iPhone or iPad" },
+      {
+        type: "p",
+        text: "The other approach is a tool that does the network part for you, and if the device in your hand is an iPhone or iPad this is where Servey fits. You install it on the Mac mini and on your phone or tablet, sign in with Google on both, and the mini appears - no VPN to maintain, no ports open, no dynamic DNS. On your own Wi-Fi it streams hardware-encoded HEVC, so the terminal text on a headless build box is sharp enough to read and you can pinch to zoom into it. Away from home it switches automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds up on mobile networks that defeat most tools.",
+      },
+      {
+        type: "p",
+        text: "The part that matters most for a headless machine is that Servey ships a real terminal next to the screen, one tap away. Most of what you do to a Mac mini on a shelf is command-line work - restart a service, tail a log, check why a job stalled, kick off a rebuild - and for that you do not want to wait for a desktop to render and then drive a mouse pointer with your thumb. Where it is honestly not the right fit: Servey is Apple-only, so if half your machines run Linux you want something else, and it cannot be self-hosted, which is the whole point of the mesh VPN approach for some people. It launches soon from $1.99 a month.",
+      },
+      { type: "h2", text: "A sanity check before you unplug the monitor" },
+      {
+        type: "ul",
+        items: [
+          "Screen Sharing and Remote Login are both on, and you have tested each from another device on the same network.",
+          "pmset -g shows sleep and disksleep at 0.",
+          "autorestart is enabled, and you have decided what you are doing about FileVault.",
+          "The machine has a memorable name, and you know its .local address.",
+          "You have a way in from outside the house, and you have tested it from mobile data rather than assuming.",
+          "A dummy HDMI plug is either fitted or on order.",
+        ],
+      },
+      { type: "h2", text: "Bottom line" },
+      {
+        type: "p",
+        text: "Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -2174,7 +2477,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-27";
+export const contentUpdated = "2026-08-31";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -2358,16 +2661,84 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
   ],
   "control-your-mac-from-iphone-ipad": [
     {
-      q: "Can I control my Mac from my iPhone?",
-      a: "Yes. With an app like Servey you get your Mac's full screen, a real trackpad and keyboard, and a genuine terminal on your iPhone - on your home Wi-Fi or anywhere else.",
+      q: "How do I control my Mac from my iPhone?",
+      a: "Turn on Screen Sharing on the Mac first: System Settings, then General, then Sharing, then switch on Screen Sharing and note the .local address it shows you. Then install a VNC client on the iPhone from the App Store and connect to that address with your Mac account name and password. This is free and works on your own Wi-Fi. To reach the Mac from outside your home you need either a VPN back to your network or an app that handles the networking for you, such as Servey.",
+    },
+    {
+      q: "Can I control my Mac from my iPhone for free?",
+      a: "Yes, on your own network. macOS includes a VNC server, so switching on Screen Sharing plus a free or cheap VNC client on the iPhone costs nothing extra. What is not free is the away-from-home case: that needs either a VPN you set up and maintain, or a paid app that does NAT traversal for you.",
+    },
+    {
+      q: "Can I access my Mac from my iPhone when I am not at home?",
+      a: "Not with the built-in Screen Sharing on its own. It relies on .local addresses that only resolve on your own network, and your router will not accept unsolicited inbound connections from outside. The two working answers are a VPN or mesh VPN such as Tailscale back to your home network, or a purpose-built app like Servey that pairs your devices directly with no configuration.",
     },
     {
       q: "Do I need a VPN to control my Mac remotely?",
-      a: "No. Servey pairs your own devices when you sign in with Google on each, so there is no VPN, port forwarding, or IP addresses to manage.",
+      a: "Only if you are using the built-in tools. Screen Sharing and SSH both need you to solve the network problem yourself, and a VPN is the safe way to do that - far safer than forwarding ports, which exposes VNC or SSH to automated scanners. Apps that bring their own peer-to-peer or relay layer, including Servey, Screens, Jump Desktop and RustDesk, remove the need for a VPN entirely.",
+    },
+    {
+      q: "Why does my VNC connection work at home but not on mobile data?",
+      a: "Because the address you are connecting to only exists on your home network. A .local name is resolved by Bonjour, which does not cross the internet, and your home IP address is both changeable and usually behind a router that blocks inbound connections. Many broadband customers are also behind carrier-grade NAT, where there is no inbound path to open at all. This is a networking limitation rather than anything wrong with your Mac or your client app.",
+    },
+    {
+      q: "Can I use a real terminal on my Mac from my iPhone?",
+      a: "Yes. Enable Remote Login in the same Sharing settings panel and connect with any SSH client from the App Store. Note that Screen Sharing and Remote Login are separate services, so turning one on does not turn on the other. Servey includes a genuine shell in the same app as the screen, one tap apart, so you do not have to switch between two apps.",
     },
     {
       q: "Is controlling my Mac from my phone secure?",
-      a: "Yes. Servey only pairs your own devices under your account, and away from home your screen is end-to-end encrypted between your devices.",
+      a: "It depends entirely on how you connect. VNC over your own Wi-Fi is reasonable; VNC forwarded to the public internet is not, and should be avoided. A VPN or an app with end-to-end encryption between your own devices are both sound. Servey only pairs devices under your own account and encrypts the stream end to end between them when you are away from home.",
+    },
+  ],
+  "control-iphone-from-mac": [
+    {
+      q: "Can you control your iPhone from your Mac?",
+      a: "Yes, using iPhone Mirroring, which Apple added in macOS Sequoia. Your iPhone appears in a window on the Mac and you drive it with your mouse and keyboard. It requires macOS Sequoia 15 or later on a Mac with Apple silicon or the T2 chip, iOS 18 or later on the iPhone, both devices signed in to the same Apple Account with two-factor authentication, and Bluetooth and Wi-Fi on. Crucially, the iPhone must be locked and physically near the Mac.",
+    },
+    {
+      q: "Can I control my iPhone from my Mac remotely, over the internet?",
+      a: "No. iPhone Mirroring is a Continuity feature and works only between two devices that are near each other, and no third-party app can do it either. iOS does not let an app read the whole system screen or inject taps into other apps, and there is no API for it. The only thing that reaches a phone that is not in the room is mobile device management, which can push apps, apply policy or wipe a company device, but cannot show you the screen and let you tap around on it.",
+    },
+    {
+      q: "Why does iPhone Mirroring not work on my Mac?",
+      a: "Check the requirements one at a time, because all of them must be true. The Mac needs macOS Sequoia 15 or later and Apple silicon or a T2 chip; the iPhone needs iOS 18 or later and a passcode set; both must be on the same Apple Account with two-factor authentication; both need Bluetooth and Wi-Fi on; and the iPhone must be locked and nearby. It will also refuse to start if your Mac is sharing its internet connection or already using AirPlay or Sidecar. Availability has also varied by region.",
+    },
+    {
+      q: "Does my iPhone stay locked while I am mirroring it?",
+      a: "Yes, and that is deliberate. The phone remains locked for the whole session, so nobody nearby can see what you are doing on it or pick it up and use it while it is mirrored to your Mac. You can pair only one Mac with one iPhone at a time.",
+    },
+    {
+      q: "How can I see my iPhone screen on my Mac without iPhone Mirroring?",
+      a: "Connect the iPhone with a cable, open QuickTime Player, choose File then New Movie Recording, and select the iPhone as the camera source. You get the live screen and can record it, but you cannot control the phone - it is a mirror rather than a remote. This works on older versions of macOS that do not have iPhone Mirroring.",
+    },
+    {
+      q: "What if I actually want to control my Mac from my iPhone?",
+      a: "That direction is genuinely possible and much more useful, because the iPhone is the device you already have with you and the Mac is the one stuck somewhere else. On your own network, turn on Screen Sharing in System Settings under General then Sharing and use a VNC client on the phone, which is free. From outside your home you need a VPN or an app that handles the networking, such as Servey, which pairs your own devices and includes a real terminal alongside the screen.",
+    },
+  ],
+  "headless-mac-mini-setup": [
+    {
+      q: "How do I set up a Mac mini with no monitor?",
+      a: "Do everything while the monitor is still attached. Turn on both Screen Sharing and Remote Login in System Settings under General then Sharing, disable sleep with sudo pmset -a sleep 0 disksleep 0, enable automatic restart after a power failure with sudo pmset -a autorestart 1, decide what you are doing about FileVault, and fit a dummy HDMI plug so macOS reports a sensible resolution. Test your connection from another device before you unplug anything.",
+    },
+    {
+      q: "Why does my headless Mac mini stop responding after a while?",
+      a: "It is almost certainly going to sleep, and a sleeping Mac answers neither screen sharing nor SSH. Run sudo pmset -a sleep 0 disksleep 0 displaysleep 0 to stop it, and pmset -g to confirm the settings took. On Apple silicon a Mac mini idles at only a few watts, so leaving it permanently awake costs very little.",
+    },
+    {
+      q: "Why is the resolution wrong on a Mac with no display?",
+      a: "With nothing plugged into the video output, macOS has no display to describe and falls back to a default that is often small and the wrong shape. The reliable fix is a dummy HDMI plug, an inexpensive adapter that pretends to be a monitor so macOS offers real resolutions. Some remote clients can also negotiate a resolution themselves. Apple silicon Macs handle this better than Intel ones did, but the dummy plug is the answer that always works.",
+    },
+    {
+      q: "Should I turn off FileVault on a headless Mac?",
+      a: "It is a real trade-off rather than a setting with one correct answer. With FileVault on, a Mac that reboots stops at the unlock screen and stays off the network until somebody types the password, so it will not come back on its own after a power cut. With it off, and automatic login enabled, the machine returns unattended. For a build box with nothing sensitive on it, turning it off is reasonable; for a machine holding real data, keep FileVault on and accept the manual restart.",
+    },
+    {
+      q: "How do I access a headless Mac mini from outside my network?",
+      a: "Not by forwarding ports - exposing VNC or SSH directly to the internet gets them found by automated scanners within hours, and it does not work at all behind carrier-grade NAT. The two sound options are a mesh VPN such as Tailscale, which is free for personal use and solves the CGNAT problem, or an app that does NAT traversal for you. Servey does the latter for Apple devices and includes a real terminal, which is what most headless work actually needs.",
+    },
+    {
+      q: "Do I need both Screen Sharing and Remote Login turned on?",
+      a: "You want both, because they fail independently and each rescues the other. Screen Sharing gives you the graphical desktop over VNC. Remote Login gives you SSH, which keeps working when the window server is confused or the machine is under heavy load, and is far quicker when you only need to run one command. They are separate services, so switching on one does not switch on the other.",
     },
   ],
   "screens-jump-desktop-alternative-mac": [
