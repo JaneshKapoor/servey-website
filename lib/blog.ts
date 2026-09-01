@@ -51,6 +51,7 @@ export const posts: Post[] = [
       "iPhone Mac remote control",
       "remote desktop for Mac",
       "macOS Screen Sharing",
+      "connect to Mac behind CGNAT",
     ],
     readingMinutes: 7,
     lede:
@@ -944,6 +945,7 @@ export const posts: Post[] = [
     date: "2026-08-16",
     keywords: [
       "Screens 5 alternative",
+      "Screens vs Jump Desktop",
       "Screens alternative",
       "Screens 5 vs Jump Desktop",
       "best remote desktop for Mac",
@@ -2331,6 +2333,7 @@ export const posts: Post[] = [
       "Mac Mini home server",
       "headless Mac Mini remote control",
       "control Mac Mini from iPad",
+      "connect to Mac behind CGNAT",
     ],
     readingMinutes: 7,
     lede:

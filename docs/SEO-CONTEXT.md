@@ -50,15 +50,50 @@ specific term. Cluster click counts below are therefore floors, not totals.
 - **Google** - sitemap submitted, now **34 URLs**.
 - **Bing** - indexed; ChatGPT Search reads Bing's index, so that pipe is connected.
 
-### The core diagnosis
+### The core diagnosis - CORRECTED 1 Sep 2026
 
-Position 16.5 is page two, which takes roughly **1% of clicks** versus ~25% on
-page one. CTR of 2.5% is *above* par for that position, which means **titles and
-descriptions are working.** This is a **ranking problem, not a copywriting
-problem**, and the bottleneck is authority - we have effectively no backlinks.
+**The site is bimodal, and the 16.5 average is a meaningless midpoint between
+two populations that behave completely differently.** Per-query position data
+pulled 1 Sep (the metric was never enabled before, which is how this went
+unnoticed for three readings):
 
-**Do not respond to flat numbers by rewriting metadata again.** That lever is
-already pulled. The remaining levers are links, entity presence, and shipping.
+| Query | Position | Impressions | Clicks |
+|---|---|---|---|
+| `splashtop vs jump desktop` | **2.3** | 9 | 1 |
+| `jump desktop vs rustdesk` | **3.3** | 25 | 1 |
+| `jump desktop vs chrome remote desktop` | **3.3** | 19 | 1 |
+| `rustdesk vs jump desktop` | **3.8** | 17 | 4 |
+| `jump desktop vs splashtop` | **4.0** | 8 | 1 |
+| `servey` (brand) | 5.0 | 257 | 9 |
+| `screens vs jump desktop` | 7.0 | 27 | 3 |
+| `jump desktop vs screens 5` | 7.9 | 24 | 1 |
+| `screens 5 vs jump desktop` | 10.8 | 24 | 1 |
+| `remote control iphone from mac` | **44.6** | 23 | 0 |
+| `remote access mac from iphone` | **40.0** | 18 | 0 |
+
+**The comparison cluster is already on page one - top five for most of it.** The
+core product cluster is on **page four to five**. Averaging those two gives 16.5,
+a number that describes nothing real and that we have been reasoning from since
+14 August.
+
+**What this changes:**
+
+1. **"We are stuck on page two, it is an authority problem" was wrong as
+   stated.** We are on page one where we have topical depth (six Jump Desktop
+   comparisons) and on page four where we have one page. Authority is still the
+   binding constraint on the *core* cluster, but the comparison cluster proves
+   the site can rank when the topic is covered properly.
+2. **The §4 ruling against metadata work was based on the bad average and is now
+   partially lifted** - see that section. CTR at position 3 is not evaluated
+   against the same benchmark as CTR at position 16.
+3. **The core-cluster rebuild of 31 Aug cannot be judged on CTR.** At position
+   40 the page is not being seen, so a flat click count over the next fortnight
+   means nothing. Watch **position**, not clicks, for that page.
+
+**Index coverage (verified 1 Sep 2026):** 28 indexed, 3 not indexed (2 "Page
+with redirect", 1 "Discovered - not indexed"). **"Crawled - currently not
+indexed" is 0**, which is the bucket that carries a quality verdict. There is
+**no index bloat** and nothing has been rejected on quality grounds.
 
 ---
 
@@ -194,7 +229,7 @@ decision with a reason.
 | **Chase "termius alternative" broadly** | It would pull multi-host-SSH searchers who bounce, polluting waitlist quality pre-launch. The honest overlap is narrow: "run a terminal on your own Mac without SSH setup". |
 | **Compete on Termius's page axis** (SSH client × platform) | They hold #1 there. We copied their *template technique* onto a different axis - **task × device** - where they do not rank at all. |
 | **Add more pages targeting "control Mac from iPhone"** | That recreates the exact fragmentation `/control-mac-from-iphone` was built to fix. One pillar, many spokes. |
-| **Rewrite metadata again to chase CTR** | 2.6% is already above par for position 16.4, and held flat while impressions grew 2.3x. The lever is pulled. |
+| **Rewrite metadata sitewide to chase CTR** | Still ruled out as a *bulk* exercise. But the original reasoning ("above par for position 16.4") **used the misleading site average** and is void - see §1. Targeted work on the specific page-one comparison URLs is now allowed, and only those. |
 | **Build doorway pages per query variant** | The 10 phrasings get absorbed by one strong page, not 10 weak ones. |
 | **Do multilingual / translated SEO** | Considered 24 Aug and deliberately held. 19 posts x 7 locales is 133 URLs on a domain with **2 referring domains** already averaging position 16.3. Translations multiply pages, not authority, and scaled machine translation without human review is named in Google's spam policies. The tactic works for language-independent utility queries ("instagram photo downloads"); ours are niche Mac comparison queries whose product names, docs and buyers are all English. Revisit once referring domains are in double digits, then as a **one-language, 4-post pilot** chosen from GSC Countries data - never a 7-locale bulk translation. |
 | Chase `airplayuiagent` traffic | Accidental, off-intent, and converts nobody. |
@@ -348,6 +383,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-01 | **Audited against the eight durable SEO strategies; two real defects found and fixed, one standing diagnosis corrected.** (1) **Per-query position enabled for the first time** - the site is bimodal, comparison cluster at **2.3-7.9 (page one)** and core product cluster at **40-44.6 (page four)**. The 16.5 average we have reasoned from since 14 Aug is a midpoint between two unrelated populations. §1 core diagnosis rewritten; the §4 ban on CTR/metadata work is **partially lifted**, because it was justified with that bad average. (2) **Internal links: 2 true orphans.** Simulating `relatedPosts()` rather than counting raw keyword overlap showed `screens-vs-jump-desktop` - our **best non-brand page**, position 7.0 - receiving **zero inbound internal links**, because a top-3-by-overlap rule lets hubs crowd out mid-tier pages. Raising the count to 4 or 5 does not fix it and concentrates hubs further (max inbound 7 -> 10), so fixed at keyword level: `Screens vs Jump Desktop` added to `screens-5-alternatives` (30 Screens / 12 Jump Desktop mentions) and `connect to Mac behind CGNAT` to `headless-mac-mini-setup` (has a full section on CGNAT). **All 23 posts now have >= 1 inbound; min 1, max 7.** (3) **Index bloat: none.** 28 indexed, "Crawled - not indexed" **0**. (4) Keyword cannibalization: checked and **not present** - `keywords` drives `relatedPosts()` and inert `<meta keywords>`, so 9 posts sharing `best remote desktop for Mac` is a hub, not competition. Real cannibalization would be two pages targeting one query in title/H1, and the `/control-mac-from-iphone` vs `blog/control-your-mac-from-iphone-ipad` pair is deliberately split commercial/informational. |
 | 2026-09-01 | **Servey framing regression on the 31 Aug posts, caught by the owner.** The rule in §3 (first mention <=15% depth, density 4.0-6.0/1k) was written on 26 Aug in response to this exact complaint, and the two new posts broke it: `control-iphone-from-mac` **77% depth / 3.2 per 1k**, `headless-mac-mini-setup` **76% / 1.8** - less than half the density floor. The specific failure the owner quoted was the phrase pattern *"a VPN or an app that handles the networking, such as Servey"*: Servey demoted to a trailing example of a category, listed after the alternative, in a subordinate clause. **Cause worth remembering:** the §2 finding that day was that the old core page failed *because it pitched instead of answering*, so I over-applied "lead with the free built-in answer" and let it suppress Servey everywhere, including in FAQ answers where it does not apply at all. Leading with the honest free option is a rule about the *opening frame of an informational section*, not a licence to bury the product. Fixed to **6% / 5.2, 4% / 4.6, 3% / 5.2**, all passing. Every honesty caveat verified intact afterwards (Servey does not control iPhones; Tailscale genuinely good; Apple-only; cannot be self-hosted; Screen Sharing free and already installed). **Check depth and density before committing a post, not after.** |
 | 2026-08-31 | **Link-graph fix on arrival.** `headless-mac-mini-setup` shipped with **1 inbound post**, the same failure mode logged on 23 Aug. Added `headless Mac Mini remote control` as a 6th keyword to `real-terminal-on-your-mac-from-iphone` (4 headless mentions, genuinely about driving one from a shell) and `Mac Mini home server` to `who-is-servey-for-developers-home-labs` (4 Mac mini mentions). **Inbound 1 -> 3.** `control-iphone-from-mac` arrived with 3 and needed nothing. Reminder for future posts: check inbound overlap *before* committing, not after - keyword overlap is the entire internal link graph (§6). |
 | 2026-08-31 | **GSC query count went 39 -> 162, which exposed the real problem.** Pulled the full query list rather than the top 10 and clustered it (§2). The `control my Mac from my iPhone` family - Servey's exact job - was **~120 impressions across 55 phrasings, converting zero**, the largest cluster on the site. Cause was legible on the page: `control-your-mac-from-iphone-ipad` was a pitch, not a guide, and never named System Settings, Screen Sharing or VNC while the queries were overwhelmingly `how to ...`. **Rebuilt it as a genuine how-to** that leads with Apple's free built-in route, then places Servey against the away-from-home case it does not solve - the same shape that made `does-mac-screen-sharing-work-over-the-internet` convert. Added a 4-row approaches table, 7 FAQs replacing 3 pitch-only ones, `metaTitle`, and 7 keywords covering the actual phrasings. This page is the *informational* half of the pair; `/control-mac-from-iphone` stays the commercial half, so the rewrite reduces overlap rather than creating it. |
