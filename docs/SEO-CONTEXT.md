@@ -48,24 +48,39 @@ specific term. Cluster click counts below are therefore floors, not totals.
 
 **Index coverage (verified 31 Aug 2026):**
 - **Google** - sitemap submitted, now **34 URLs**.
-- **Bing** - **9 URLs indexed of 34. CORRECTED 1 Sep 2026** - the earlier note
-  here said "indexed... so that pipe is connected." That was wrong, and it was
-  never verified against Site Explorer. Bing has: `/`, `/?ref=producthunt`,
-  `/blog`, and 6 blog posts (`control-a-headless-mac-mini-remotely`,
-  `run-ai-agents-locally-on-your-mac`, `real-terminal-on-your-mac-from-iphone`,
-  `stay-in-control-of-ai-agents-from-anywhere`, `control-your-mac-from-iphone-ipad`,
-  `run-ai-agents-on-your-mac-remotely`).
-- **Not one comparison post is in Bing's index.** Every page that reaches page
-  one on Google - `screens-vs-jump-desktop`, `jump-desktop-vs-rustdesk`,
-  `splashtop-vs-jump-desktop`, `chrome-remote-desktop-vs-jump-desktop` - is
-  absent. Bing's index skews to the older AI-agent cluster, which is the part
-  of the site that does *not* rank on Google.
-- **Consequence: ChatGPT Search cannot see the pages that actually win.**
-  ChatGPT reads Bing's index, so the comparison cluster - our only page-one
-  asset - is invisible to the answer engine we most want it in. This is a
-  distribution gap, not a content gap, and it is fixable by crawling alone.
+- **Bing - the blocking status is `Discovered but not crawled`, not "not indexed".**
+  Two corrections landed here on 1 Sep, in this order:
+  1. The original note said "indexed... so that pipe is connected." Never
+     verified. Wrong.
+  2. The replacement said "9 URLs indexed of 34, not one comparison post among
+     them," taken from **Site Explorer**. **Also wrong** - Site Explorer
+     undercounts. `screens-vs-jump-desktop` returns **"Indexed successfully"**
+     under URL Inspection while being **entirely absent from Site Explorer**,
+     on both the `Indexed URLs` and `All URLs` filters.
+- **Site Explorer is not the index. Use URL Inspection** (left nav) for any
+  per-URL question. Site Explorer is a lagging, partial report and must not be
+  used to conclude a URL is missing.
+- **Verified per-URL status, 1 Sep:**
+
+  | URL | Bing status | Discovered |
+  |---|---|---|
+  | `blog/screens-vs-jump-desktop` | **Indexed successfully** | - |
+  | `blog/splashtop-vs-jump-desktop` | Discovered but not crawled | 19 Aug |
+  | `blog/jump-desktop-vs-rustdesk` | Discovered but not crawled | 31 Aug |
+  | `blog/headless-mac-mini-setup` | Discovered but not crawled | 31 Aug |
+
+- **`Discovered but not crawled` is the tractable bucket.** Bing knows the URL
+  and has not fetched it yet. This is *not* the equivalent of Google's
+  `Crawled - currently not indexed`, which is a quality verdict; it is a crawl
+  budget queue, and **Request indexing is the correct lever for it**. Bing's
+  own copy on the panel says so.
+- **Consequence still stands, with a smaller number:** ChatGPT Search reads
+  Bing's index, so every comparison post stuck in this bucket is invisible to
+  it. A distribution gap, not a content gap.
 - Bing's sitemap read was last crawled **19 Aug (29 URLs)**, 5 behind live.
-  IndexNow re-push of all 34 sent and accepted 1 Sep.
+  IndexNow re-push of all 34 sent and accepted 1 Sep - note this alone did
+  **not** move these URLs out of `Discovered but not crawled`, which is why
+  per-URL Request indexing is needed on top of it.
 
 ### The core diagnosis - CORRECTED 1 Sep 2026
 
@@ -383,13 +398,13 @@ be used for, and the shot list for recording it properly.
 1. **Record the YouTube demo.** Highest-leverage action available pre-launch,
    feeds YouTube + Reddit + the launch-day AlternativeTo submission, and is the
    only top-3 cited source reachable before shipping.
-2. **Close the Bing index gap (new, 1 Sep).** 9 URLs of 34 indexed, and **not one
-   comparison post is in there** - so the only cluster we rank on page one for is
-   invisible to ChatGPT Search, which reads Bing's index. Delete the 7 bogus
-   sitemap rows so the real row is visible, resubmit `sitemap.xml` (Bing's copy is
-   from 19 Aug, 29 URLs), and use **Request indexing** in Site Explorer on the
-   comparison posts. Costs nothing and needs no new content - the pages already
-   exist and already win on Google.
+2. **Close the Bing crawl gap (new, 1 Sep).** The comparison posts sit in
+   `Discovered but not crawled`, so ChatGPT Search - which reads Bing's index -
+   cannot see the only cluster we rank page one for. Fix via **URL Inspection ->
+   Request indexing**, one URL at a time. **Not** via Site Explorer, which only
+   lists URLs Bing already crawled and therefore cannot reach these. Also delete
+   the 7 bogus sitemap rows and resubmit `sitemap.xml` (Bing's copy is from
+   19 Aug, 29 URLs). Costs nothing and needs no new content.
 3. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
 4. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
    sends to existing waitlist members. Do not re-propose this.
@@ -408,6 +423,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-01 | **Correction to the same-day Bing entry below: Site Explorer undercounts, and "9 of 34 indexed" was wrong.** Checking individual URLs through **URL Inspection** shows `screens-vs-jump-desktop` **"Indexed successfully"** despite being absent from Site Explorer under both the `Indexed URLs` and `All URLs` filters. So the claim "not one comparison post is in Bing's index" was false, and it was drawn from a report that is not the index. **Rule: Site Explorer is a lagging partial report; use URL Inspection for any per-URL question, and never conclude a URL is missing from Site Explorer alone.** The real status of the uncrawled pages is **`Discovered but not crawled`** - Bing knows the URL and has not fetched it (`splashtop-vs-jump-desktop` discovered 19 Aug, `jump-desktop-vs-rustdesk` and `headless-mac-mini-setup` 31 Aug). This is **not** Google's `Crawled - currently not indexed`; it carries no quality verdict, it is a crawl queue, and **Request indexing is the right lever**. Two process notes: the IndexNow push earlier today did **not** clear these, so per-URL requests are needed on top of it; and the URL Inspection result panel **does not refresh when you type a new URL and press Enter** - it keeps showing the previous URL's verdict until you click **Inspect**, which briefly produced a false "Indexed successfully" for `headless-mac-mini-setup` here. Confirm the `urlToInspect` query parameter matches before believing a result. |
 | 2026-09-01 | **Bing Webmaster Tools reviewed. Its two "duplicate content" warnings are false positives; the real finding is underneath them.** Both "too many pages with identical titles/meta descriptions" resolve to **one cause**: Bing indexes `https://servey.in/?ref=producthunt` as a page separate from `https://servey.in/`. Same page, tracking param on an inbound link nobody on our side generates (`grep` for `ref=producthunt` across the repo: no hits; not in the sitemap). Both URLs serve `<link rel="canonical" href="https://servey.in"/>`, verified live - Bing's SEO linter simply does not consult canonical before running this report. **No code change; do not "fix" this by rewriting metadata or disallowing the param**, which would break the canonical consolidation that is already working. Verified independently that the site has **zero** genuine duplicates: all 36 prerendered pages have unique `<title>` and `<meta name="description">`, every title <= 60 chars, every description within 120-165 (script: build, then diff extracted tags). **The real finding: Bing has indexed 9 URLs of 34** - see §1. Also confirmed the 7 bogus "sitemap" rows are still present (page URLs submitted as sitemaps on 16 Jul, all Warning / 0 URLs discovered); they are inert, not harmful, but they hide the one real row. IndexNow re-push of all 34 URLs sent and accepted. |
 | 2026-09-01 | **Audited against the eight durable SEO strategies; two real defects found and fixed, one standing diagnosis corrected.** (1) **Per-query position enabled for the first time** - the site is bimodal, comparison cluster at **2.3-7.9 (page one)** and core product cluster at **40-44.6 (page four)**. The 16.5 average we have reasoned from since 14 Aug is a midpoint between two unrelated populations. §1 core diagnosis rewritten; the §4 ban on CTR/metadata work is **partially lifted**, because it was justified with that bad average. (2) **Internal links: 2 true orphans.** Simulating `relatedPosts()` rather than counting raw keyword overlap showed `screens-vs-jump-desktop` - our **best non-brand page**, position 7.0 - receiving **zero inbound internal links**, because a top-3-by-overlap rule lets hubs crowd out mid-tier pages. Raising the count to 4 or 5 does not fix it and concentrates hubs further (max inbound 7 -> 10), so fixed at keyword level: `Screens vs Jump Desktop` added to `screens-5-alternatives` (30 Screens / 12 Jump Desktop mentions) and `connect to Mac behind CGNAT` to `headless-mac-mini-setup` (has a full section on CGNAT). **All 23 posts now have >= 1 inbound; min 1, max 7.** (3) **Index bloat: none.** 28 indexed, "Crawled - not indexed" **0**. (4) Keyword cannibalization: checked and **not present** - `keywords` drives `relatedPosts()` and inert `<meta keywords>`, so 9 posts sharing `best remote desktop for Mac` is a hub, not competition. Real cannibalization would be two pages targeting one query in title/H1, and the `/control-mac-from-iphone` vs `blog/control-your-mac-from-iphone-ipad` pair is deliberately split commercial/informational. |
 | 2026-09-01 | **Servey framing regression on the 31 Aug posts, caught by the owner.** The rule in §3 (first mention <=15% depth, density 4.0-6.0/1k) was written on 26 Aug in response to this exact complaint, and the two new posts broke it: `control-iphone-from-mac` **77% depth / 3.2 per 1k**, `headless-mac-mini-setup` **76% / 1.8** - less than half the density floor. The specific failure the owner quoted was the phrase pattern *"a VPN or an app that handles the networking, such as Servey"*: Servey demoted to a trailing example of a category, listed after the alternative, in a subordinate clause. **Cause worth remembering:** the §2 finding that day was that the old core page failed *because it pitched instead of answering*, so I over-applied "lead with the free built-in answer" and let it suppress Servey everywhere, including in FAQ answers where it does not apply at all. Leading with the honest free option is a rule about the *opening frame of an informational section*, not a licence to bury the product. Fixed to **6% / 5.2, 4% / 4.6, 3% / 5.2**, all passing. Every honesty caveat verified intact afterwards (Servey does not control iPhones; Tailscale genuinely good; Apple-only; cannot be self-hosted; Screen Sharing free and already installed). **Check depth and density before committing a post, not after.** |
