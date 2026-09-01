@@ -592,7 +592,7 @@ the whole fix.
 - Decide the consent-banner question (§8)
 - Record the YouTube demo - highest-leverage channel available pre-launch
 - Reddit participation in r/macapps and r/homelab
-- Email the waitlist (never used)
+- ~~Email the waitlist~~ - **ruled out by the owner**; no bulk sends to waitlist members
 - Request GSC indexing for the 7 newest URLs; check **Indexing → Pages** for
   "Discovered – currently not indexed"; open the generative-AI features report
 - Delete the 7 bogus Bing "sitemap" rows; re-run the Ahrefs crawl
