@@ -54,7 +54,7 @@ export const posts: Post[] = [
     ],
     readingMinutes: 7,
     lede:
-      "There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and what to do about the part it cannot solve.",
+      "There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and why Servey - the app we make - exists to cover the part it cannot.",
     body: [
       {
         type: "p",
@@ -2230,7 +2230,7 @@ export const posts: Post[] = [
     ],
     readingMinutes: 6,
     lede:
-      "Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, read on, because the direction that genuinely works remotely is the opposite one.",
+      "Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, the direction that genuinely works remotely is the opposite one: your Mac, from your iPhone, anywhere. That is the job we built Servey to do, and it is covered in full below.",
     body: [
       {
         type: "table",
@@ -2267,7 +2267,7 @@ export const posts: Post[] = [
       { type: "h2", text: "The short answer" },
       {
         type: "p",
-        text: "You can control your iPhone from your Mac, and the tool is iPhone Mirroring, which Apple shipped in macOS Sequoia. Your phone appears in a window, you drive it with your mouse and keyboard, and notifications come through to the Mac. It is genuinely good. What it is not is remote access: the feature is built on Continuity, which means it works over Bluetooth and Wi-Fi between two devices in the same room. If your iPhone is at home and you are at the office, nothing on this list will let you reach it, and that is a deliberate design decision by Apple rather than a gap somebody is about to fill.",
+        text: "You can control your iPhone from your Mac, and the tool is iPhone Mirroring, which Apple shipped in macOS Sequoia. Your phone appears in a window, you drive it with your mouse and keyboard, and notifications come through to the Mac. It is genuinely good. What it is not is remote access: the feature is built on Continuity, which means it works over Bluetooth and Wi-Fi between two devices in the same room. If your iPhone is at home and you are at the office, nothing on this list will let you reach it, and that is a deliberate design decision by Apple rather than a gap somebody is about to fill. The remote problem that can be solved is the reverse one - reaching your Mac from the phone in your hand - and Servey, the app we make, is built specifically for it.",
       },
       { type: "h2", text: "What iPhone Mirroring needs" },
       {
@@ -2300,7 +2300,7 @@ export const posts: Post[] = [
       { type: "h2", text: "The direction that does work remotely" },
       {
         type: "p",
-        text: "It is worth checking which problem you are actually trying to solve, because a lot of people arrive at this question having got the two devices the wrong way round in their head. The reason you almost never need to reach an iPhone remotely is that the iPhone is the device you already have with you. The machine that is stuck somewhere else, with your files, your projects and your long-running jobs on it, is the Mac. And unlike the iPhone direction, that one is entirely possible.",
+        text: "It is worth checking which problem you are actually trying to solve, because a lot of people arrive at this question having got the two devices the wrong way round in their head. The reason you almost never need to reach an iPhone remotely is that the iPhone is the device you already have with you. The machine that is stuck somewhere else, with your files, your projects and your long-running jobs on it, is the Mac. Unlike the iPhone direction, that one is entirely possible, it works from anywhere, and Servey exists to do exactly it.",
       },
       {
         type: "p",
@@ -2313,7 +2313,7 @@ export const posts: Post[] = [
       { type: "h2", text: "Bottom line" },
       {
         type: "p",
-        text: "If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. And if the device you were really trying to reach is your Mac, that problem is solved - by Apple's own Screen Sharing on your local network, and by a purpose-built app like Servey everywhere else.",
+        text: "If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. But if the device you were really trying to reach is your Mac, you are in luck, because that is the direction that actually works from anywhere. Servey gives you your Mac on your iPhone or iPad - a sharp screen and a real terminal in one app, with no VPN and nothing to configure. It launches soon from $1.99 a month and the waitlist is open now.",
       },
     ],
   },
@@ -2334,7 +2334,7 @@ export const posts: Post[] = [
     ],
     readingMinutes: 7,
     lede:
-      "A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in.",
+      "A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in - and how to end up with the mini in your pocket, which is what we built Servey for.",
     body: [
       {
         type: "p",
@@ -2369,7 +2369,7 @@ export const posts: Post[] = [
           [
             "It works at home but not from outside",
             "Your router blocks inbound connections; your IP address changes",
-            "Use a tool that handles NAT traversal rather than forwarding ports",
+            "Use a tool that does NAT traversal for you, such as Servey - never forward a port",
           ],
         ],
       },
@@ -2430,7 +2430,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The traditional answers are port forwarding with dynamic DNS, or a VPN back to your home network. Port forwarding is the one to avoid: exposing VNC or SSH directly to the internet puts them in front of automated scanners within hours. A mesh VPN such as Tailscale is a genuinely good answer and worth knowing about - it is free for personal use, it solves the CGNAT problem, and once it is running your Mac mini is reachable by name from anywhere. The cost is that it is another service to install, keep updated and reason about on every device.",
+        text: "Port forwarding is the one to rule out immediately: exposing VNC or SSH directly to the internet puts them in front of automated scanners within hours, and it does not work behind CGNAT anyway. That leaves two real options. The first is to let an app solve the network for you, which is what Servey does - you sign in on both devices and the mini is reachable, with nothing open on your router and no dynamic DNS to maintain. The second is a mesh VPN such as Tailscale, which is genuinely good and worth knowing about: free for personal use, and it solves CGNAT properly. Its honest cost is that it is another service to install, keep updated and reason about on every device you own, and what it gives you is a network route rather than a usable screen and shell on a phone.",
       },
       { type: "h2", text: "Driving it from an iPhone or iPad" },
       {
@@ -2449,14 +2449,14 @@ export const posts: Post[] = [
           "pmset -g shows sleep and disksleep at 0.",
           "autorestart is enabled, and you have decided what you are doing about FileVault.",
           "The machine has a memorable name, and you know its .local address.",
-          "You have a way in from outside the house, and you have tested it from mobile data rather than assuming.",
+          "You have a way in from outside the house - Servey, a mesh VPN, something - and you have tested it from mobile data rather than assuming.",
           "A dummy HDMI plug is either fitted or on order.",
         ],
       },
       { type: "h2", text: "Bottom line" },
       {
         type: "p",
-        text: "Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one.",
+        text: "Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one. For the last step, Servey is the shortest path if your other device is an iPhone or iPad: the mini's screen and a real shell in one app, sharp enough to read, with nothing exposed on your router and nothing to maintain. It launches soon from $1.99 a month.",
       },
     ],
   },
@@ -2479,7 +2479,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-08-31";
+export const contentUpdated = "2026-09-01";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -2714,7 +2714,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "What if I actually want to control my Mac from my iPhone?",
-      a: "That direction is genuinely possible and much more useful, because the iPhone is the device you already have with you and the Mac is the one stuck somewhere else. On your own network, turn on Screen Sharing in System Settings under General then Sharing and use a VNC client on the phone, which is free. From outside your home you need a VPN or an app that handles the networking, such as Servey, which pairs your own devices and includes a real terminal alongside the screen.",
+      a: "That direction works, from anywhere, and it is what Servey is built for: your Mac's screen and a real terminal on your iPhone or iPad in one app, with no VPN, no port forwarding and nothing to configure - you sign in on both devices and your Mac is there. If you only ever need your Mac from inside your own home, macOS can do it for free: turn on Screen Sharing in System Settings under General then Sharing and use any VNC client on the phone. The moment you leave the house that stops working, and solving it without handing you a networking project is the part Servey exists for.",
     },
   ],
   "headless-mac-mini-setup": [
@@ -2736,7 +2736,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "How do I access a headless Mac mini from outside my network?",
-      a: "Not by forwarding ports - exposing VNC or SSH directly to the internet gets them found by automated scanners within hours, and it does not work at all behind carrier-grade NAT. The two sound options are a mesh VPN such as Tailscale, which is free for personal use and solves the CGNAT problem, or an app that does NAT traversal for you. Servey does the latter for Apple devices and includes a real terminal, which is what most headless work actually needs.",
+      a: "Not by forwarding ports - exposing VNC or SSH directly to the internet gets them found by automated scanners within hours, and it does not work at all behind carrier-grade NAT. If the device in your hand is an iPhone or iPad, Servey is the direct answer: it does the NAT traversal for you, needs nothing open on your router, and puts a real terminal next to the screen, which is what most headless work actually is. The alternative is a mesh VPN such as Tailscale - free for personal use and a sound solution to CGNAT - at the cost of running one more service on every device you own.",
     },
     {
       q: "Do I need both Screen Sharing and Remote Login turned on?",
