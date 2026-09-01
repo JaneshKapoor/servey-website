@@ -60,14 +60,37 @@ specific term. Cluster click counts below are therefore floors, not totals.
 - **Site Explorer is not the index. Use URL Inspection** (left nav) for any
   per-URL question. Site Explorer is a lagging, partial report and must not be
   used to conclude a URL is missing.
-- **Verified per-URL status, 1 Sep:**
+- **Full per-URL audit of the blog, 1 Sep.** Every post checked through URL
+  Inspection; **16 Request indexing submissions made** (quota went 99 -> 83,
+  confirming all 16 landed - the daily cap is **100**, not 10):
 
-  | URL | Bing status | Discovered |
-  |---|---|---|
-  | `blog/screens-vs-jump-desktop` | **Indexed successfully** | - |
-  | `blog/splashtop-vs-jump-desktop` | Discovered but not crawled | 19 Aug |
-  | `blog/jump-desktop-vs-rustdesk` | Discovered but not crawled | 31 Aug |
-  | `blog/headless-mac-mini-setup` | Discovered but not crawled | 31 Aug |
+  | URL | Status before | Discovered | Submitted |
+  |---|---|---|---|
+  | `blog/splashtop-vs-jump-desktop` | Discovered, not crawled | 19 Aug | yes |
+  | `blog/jump-desktop-vs-rustdesk` | Discovered, not crawled | 31 Aug | yes |
+  | `blog/chrome-remote-desktop-vs-jump-desktop` | Discovered, not crawled | 19 Aug | yes |
+  | `blog/jump-desktop-vs-teamviewer` | Discovered, not crawled | 31 Aug | yes |
+  | `blog/screens-5-alternatives` | Discovered, not crawled | 31 Aug | yes |
+  | `blog/control-iphone-from-mac` | Discovered, not crawled | 31 Aug | yes |
+  | `blog/headless-mac-mini-setup` | Discovered, not crawled | 31 Aug | yes |
+  | `blog/anydesk-vs-teamviewer` | Discovered, not crawled | (null) | yes |
+  | `blog/rustdesk-vs-anydesk` | Discovered, not crawled | 26 Aug | yes |
+  | `blog/termius-alternative-mac-terminal` | Discovered, not crawled | 16 Aug | yes |
+  | `blog/does-mac-screen-sharing-work-over-the-internet` | Discovered, not crawled | 24 Aug | yes |
+  | `blog/what-replaced-back-to-my-mac` | Discovered, not crawled | (null) | yes |
+  | `blog/control-your-mac-from-iphone-ipad` | **Indexed** (pre-rebuild copy) | - | yes, recrawl |
+  | `blog/screens-jump-desktop-alternative-mac` | **Indexed** | - | yes, recrawl |
+  | `blog/access-your-mac-remotely-over-cellular` | **Indexed** | - | yes, recrawl |
+  | `blog/who-is-servey-for-developers-home-labs` | **Indexed** | - | yes, recrawl |
+  | `blog/screens-vs-jump-desktop` | **Indexed** | - | no, unchanged |
+  | `blog/best-remote-desktop-for-mac` | **Indexed** | - | no, unchanged |
+
+- **So Bing's real coverage was better than Site Explorer implied but worse than
+  Google's:** roughly 6 of 18 posts indexed, the rest sitting uncrawled. Note
+  `control-your-mac-from-iphone-ipad` was indexed as the **old pitch version**,
+  pre-31-Aug rebuild - a recrawl was requested for exactly that reason.
+- Several rows report `Discovered on 01 Jan 2006`, which is a null placeholder,
+  not a real date. Do not read anything into it.
 
 - **`Discovered but not crawled` is the tractable bucket.** Bing knows the URL
   and has not fetched it yet. This is *not* the equivalent of Google's
@@ -423,6 +446,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-01 | **Bing crawl gap worked through: 16 URLs submitted for indexing.** Audited all 18 blog posts individually through URL Inspection and submitted every one that was either uncrawled or holding stale content. **12 were `Discovered but not crawled`** - Bing knew them and had never fetched them, including 5 of the 6 comparison posts that rank page one on Google. 4 more were indexed but stale and got a recrawl request, most importantly `control-your-mac-from-iphone-ipad`, which Bing was holding as the **pre-rebuild pitch version**. Only `screens-vs-jump-desktop` and `best-remote-desktop-for-mac` were left alone - indexed and unchanged. **Bing's daily quota is 100, not 10** (owner was right); it went 99 -> 83, which independently confirms all 16 submissions landed and is the check to use, since the success toast is easy to miss in a batch. Expect crawling over the following days; re-inspect a sample rather than assuming. |
 | 2026-09-01 | **Correction to the same-day Bing entry below: Site Explorer undercounts, and "9 of 34 indexed" was wrong.** Checking individual URLs through **URL Inspection** shows `screens-vs-jump-desktop` **"Indexed successfully"** despite being absent from Site Explorer under both the `Indexed URLs` and `All URLs` filters. So the claim "not one comparison post is in Bing's index" was false, and it was drawn from a report that is not the index. **Rule: Site Explorer is a lagging partial report; use URL Inspection for any per-URL question, and never conclude a URL is missing from Site Explorer alone.** The real status of the uncrawled pages is **`Discovered but not crawled`** - Bing knows the URL and has not fetched it (`splashtop-vs-jump-desktop` discovered 19 Aug, `jump-desktop-vs-rustdesk` and `headless-mac-mini-setup` 31 Aug). This is **not** Google's `Crawled - currently not indexed`; it carries no quality verdict, it is a crawl queue, and **Request indexing is the right lever**. Two process notes: the IndexNow push earlier today did **not** clear these, so per-URL requests are needed on top of it; and the URL Inspection result panel **does not refresh when you type a new URL and press Enter** - it keeps showing the previous URL's verdict until you click **Inspect**, which briefly produced a false "Indexed successfully" for `headless-mac-mini-setup` here. Confirm the `urlToInspect` query parameter matches before believing a result. |
 | 2026-09-01 | **Bing Webmaster Tools reviewed. Its two "duplicate content" warnings are false positives; the real finding is underneath them.** Both "too many pages with identical titles/meta descriptions" resolve to **one cause**: Bing indexes `https://servey.in/?ref=producthunt` as a page separate from `https://servey.in/`. Same page, tracking param on an inbound link nobody on our side generates (`grep` for `ref=producthunt` across the repo: no hits; not in the sitemap). Both URLs serve `<link rel="canonical" href="https://servey.in"/>`, verified live - Bing's SEO linter simply does not consult canonical before running this report. **No code change; do not "fix" this by rewriting metadata or disallowing the param**, which would break the canonical consolidation that is already working. Verified independently that the site has **zero** genuine duplicates: all 36 prerendered pages have unique `<title>` and `<meta name="description">`, every title <= 60 chars, every description within 120-165 (script: build, then diff extracted tags). **The real finding: Bing has indexed 9 URLs of 34** - see §1. Also confirmed the 7 bogus "sitemap" rows are still present (page URLs submitted as sitemaps on 16 Jul, all Warning / 0 URLs discovered); they are inert, not harmful, but they hide the one real row. IndexNow re-push of all 34 URLs sent and accepted. |
 | 2026-09-01 | **Audited against the eight durable SEO strategies; two real defects found and fixed, one standing diagnosis corrected.** (1) **Per-query position enabled for the first time** - the site is bimodal, comparison cluster at **2.3-7.9 (page one)** and core product cluster at **40-44.6 (page four)**. The 16.5 average we have reasoned from since 14 Aug is a midpoint between two unrelated populations. §1 core diagnosis rewritten; the §4 ban on CTR/metadata work is **partially lifted**, because it was justified with that bad average. (2) **Internal links: 2 true orphans.** Simulating `relatedPosts()` rather than counting raw keyword overlap showed `screens-vs-jump-desktop` - our **best non-brand page**, position 7.0 - receiving **zero inbound internal links**, because a top-3-by-overlap rule lets hubs crowd out mid-tier pages. Raising the count to 4 or 5 does not fix it and concentrates hubs further (max inbound 7 -> 10), so fixed at keyword level: `Screens vs Jump Desktop` added to `screens-5-alternatives` (30 Screens / 12 Jump Desktop mentions) and `connect to Mac behind CGNAT` to `headless-mac-mini-setup` (has a full section on CGNAT). **All 23 posts now have >= 1 inbound; min 1, max 7.** (3) **Index bloat: none.** 28 indexed, "Crawled - not indexed" **0**. (4) Keyword cannibalization: checked and **not present** - `keywords` drives `relatedPosts()` and inert `<meta keywords>`, so 9 posts sharing `best remote desktop for Mac` is a hub, not competition. Real cannibalization would be two pages targeting one query in title/H1, and the `/control-mac-from-iphone` vs `blog/control-your-mac-from-iphone-ipad` pair is deliberately split commercial/informational. |
