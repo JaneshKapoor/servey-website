@@ -97,12 +97,19 @@ export const screenshots = {
     ready: true,
   },
   "terminal-sessions": {
-    // Placeholder until a real capture of the Mac host's SESSIONS list exists.
-    // We ship styled placeholders rather than mocked-up UI.
-    frame: "mac",
-    ratio: 16 / 10,
+    // Like mac-host-ui, the capture already includes the macOS window chrome,
+    // so it renders in a plain crop frame rather than the synthetic MacWindow.
+    // Cropped to the opaque window bounds and flattened - the raw screenshot
+    // carried ~50px of transparent drop shadow, which read as a box inside
+    // CropFrame's own rounded border.
+    frame: "crop",
+    ratio: 939 / 652,
+    width: 939,
+    height: 652,
     hint: "Mac - terminal sessions",
-    alt: "Servey's session list on the Mac host - named terminal sessions that keep running after the app is closed, each one resumable from any device",
+    alt: "Servey's terminal on the Mac host showing a running session named solar-summit, with \u0022Leaving keeps it running\u0022 in the corner and the tmux status bar along the bottom",
+    src: "/screenshots/terminal-sessions.png",
+    ready: true,
   },
   "mac-host-ui": {
     // The capture already includes the macOS window chrome, so it renders in a
