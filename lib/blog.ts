@@ -12,7 +12,14 @@ export type Block =
   // Comparison tables are the structure answer engines extract most reliably
   // from a page, so head-to-head posts should lead with one.
   | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
-  | { type: "img"; src: string; alt: string; width: number; height: number; caption?: string };
+  | {
+      type: "img";
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+      caption?: string;
+    };
 
 export interface Post {
   slug: string;
@@ -54,8 +61,7 @@ export const posts: Post[] = [
       "connect to Mac behind CGNAT",
     ],
     readingMinutes: 7,
-    lede:
-      "There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and why Servey - the app we make - exists to cover the part it cannot.",
+    lede: "There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and why Servey - the app we make - exists to cover the part it cannot.",
     body: [
       {
         type: "p",
@@ -65,7 +71,13 @@ export const posts: Post[] = [
         type: "table",
         caption:
           "The three ways to reach a Mac from an iPhone or iPad, and where each one stops.",
-        headers: ["", "On your own Wi-Fi", "Away from home", "Terminal", "Cost"],
+        headers: [
+          "",
+          "On your own Wi-Fi",
+          "Away from home",
+          "Terminal",
+          "Cost",
+        ],
         rows: [
           [
             "macOS Screen Sharing plus a VNC app",
@@ -167,7 +179,8 @@ export const posts: Post[] = [
   {
     slug: "screens-jump-desktop-alternative-mac",
     metaTitle: "A Screens and Jump Desktop alternative for Mac",
-    title: "Choosing a Screens or Jump Desktop alternative for Mac remote control",
+    title:
+      "Choosing a Screens or Jump Desktop alternative for Mac remote control",
     description:
       "What to look for in a modern alternative to Screens, Jump Desktop, TeamViewer, and VNC for controlling a Mac from an iPhone or iPad.",
     date: "2026-07-09",
@@ -179,8 +192,7 @@ export const posts: Post[] = [
       "best remote desktop for Mac",
     ],
     readingMinutes: 4,
-    lede:
-      "If you have been using Screens, Jump Desktop, TeamViewer, or a VNC app to reach your Mac from your phone, here is an honest checklist for evaluating a modern alternative.",
+    lede: "If you have been using Screens, Jump Desktop, TeamViewer, or a VNC app to reach your Mac from your phone, here is an honest checklist for evaluating a modern alternative.",
     body: [
       {
         type: "p",
@@ -225,7 +237,8 @@ export const posts: Post[] = [
   {
     slug: "screens-vs-jump-desktop",
     metaTitle: "Screens vs Jump Desktop: which should you pick?",
-    title: "Screens vs Jump Desktop: which Mac remote control app is right for you?",
+    title:
+      "Screens vs Jump Desktop: which Mac remote control app is right for you?",
     description:
       "An honest head-to-head of Screens 5 and Jump Desktop for controlling a Mac - how they differ, who each one suits, and what to consider before picking.",
     date: "2026-08-02",
@@ -237,8 +250,7 @@ export const posts: Post[] = [
       "best Mac remote desktop app",
     ],
     readingMinutes: 6,
-    lede:
-      "Screens and Jump Desktop are the two names that come up most when people want to control a Mac from an iPhone or iPad. They are both genuinely good, and they are good at different things. Here is how to tell which one fits you.",
+    lede: "Screens and Jump Desktop are the two names that come up most when people want to control a Mac from an iPhone or iPad. They are both genuinely good, and they are good at different things. Here is how to tell which one fits you.",
     body: [
       { type: "h2", text: "The short answer" },
       {
@@ -327,8 +339,7 @@ export const posts: Post[] = [
       "Mac remote access on mobile data",
     ],
     readingMinutes: 4,
-    lede:
-      "Getting to your Mac over Wi-Fi is easy. Getting to it from your phone on mobile data, behind your carrier's network, is where most remote tools fall apart. Here is why - and how to do it without any router setup.",
+    lede: "Getting to your Mac over Wi-Fi is easy. Getting to it from your phone on mobile data, behind your carrier's network, is where most remote tools fall apart. Here is why - and how to do it without any router setup.",
     body: [
       {
         type: "p",
@@ -379,8 +390,7 @@ export const posts: Post[] = [
       "Mac Mini home server",
     ],
     readingMinutes: 4,
-    lede:
-      "A Mac Mini tucked on a shelf with no monitor makes a fantastic little always-on machine - a build box, a media server, an automation host. The catch is driving it. Here is how to run a headless Mac Mini from your iPhone or iPad.",
+    lede: "A Mac Mini tucked on a shelf with no monitor makes a fantastic little always-on machine - a build box, a media server, an automation host. The catch is driving it. Here is how to run a headless Mac Mini from your iPhone or iPad.",
     body: [
       {
         type: "p",
@@ -426,8 +436,7 @@ export const posts: Post[] = [
       "mobile shell for Mac",
     ],
     readingMinutes: 4,
-    lede:
-      "Sometimes you do not need your whole desktop - you just need a command line on your Mac. Here is how to get a real shell in your pocket, and why the quality of that terminal matters.",
+    lede: "Sometimes you do not need your whole desktop - you just need a command line on your Mac. Here is how to get a real shell in your pocket, and why the quality of that terminal matters.",
     body: [
       {
         type: "p",
@@ -474,8 +483,7 @@ export const posts: Post[] = [
       "control AI agent on Mac remotely",
     ],
     readingMinutes: 5,
-    lede:
-      "AI coding agents love to run for a long time - refactoring, testing, building - while you would rather not be chained to your desk. Here is how to start an agent on your Mac and keep an eye on it from your phone, wherever you are.",
+    lede: "AI coding agents love to run for a long time - refactoring, testing, building - while you would rather not be chained to your desk. Here is how to start an agent on your Mac and keep an eye on it from your phone, wherever you are.",
     body: [
       {
         type: "p",
@@ -515,7 +523,8 @@ export const posts: Post[] = [
   {
     slug: "who-is-servey-for-developers-home-labs",
     metaTitle: "Who Servey is for: developers and home labs",
-    title: "Who Servey is for: developers, home labs, and the endlessly curious",
+    title:
+      "Who Servey is for: developers, home labs, and the endlessly curious",
     description:
       "Who gets the most from Servey: developers, home-lab and Mac Mini owners, AI tinkerers, and anyone curious about reaching their Mac from a phone.",
     date: "2026-07-21",
@@ -528,8 +537,7 @@ export const posts: Post[] = [
       "who is remote Mac access for",
     ],
     readingMinutes: 4,
-    lede:
-      "Servey does one thing: it puts your Mac in your pocket. That is broadly useful, but a few kinds of people feel the difference immediately. Here is who Servey is really for.",
+    lede: "Servey does one thing: it puts your Mac in your pocket. That is broadly useful, but a few kinds of people feel the difference immediately. Here is who Servey is really for.",
     body: [
       {
         type: "p",
@@ -577,8 +585,7 @@ export const posts: Post[] = [
       "private local AI agent",
     ],
     readingMinutes: 5,
-    lede:
-      "You do not need a cloud VM to run a capable AI agent. Your Mac already is one - with your code, your tools, and real horsepower. Here is why local is the better default, and how to stay connected to your agent when you step away.",
+    lede: "You do not need a cloud VM to run a capable AI agent. Your Mac already is one - with your code, your tools, and real horsepower. Here is why local is the better default, and how to stay connected to your agent when you step away.",
     body: [
       {
         type: "p",
@@ -600,7 +607,8 @@ export const posts: Post[] = [
         alt: "An AI coding agent running in a terminal on a Mac, with razor-sharp, fully legible text.",
         width: 1280,
         height: 692,
-        caption: "An AI coding agent, running right in the terminal on your Mac.",
+        caption:
+          "An AI coding agent, running right in the terminal on your Mac.",
       },
       { type: "h2", text: "The one catch: you have to stay near the Mac" },
       {
@@ -626,7 +634,8 @@ export const posts: Post[] = [
   {
     slug: "stay-in-control-of-ai-agents-from-anywhere",
     metaTitle: "Stay in control of AI agents from anywhere",
-    title: "AI agents can use your computer now - here's how to stay in control from anywhere",
+    title:
+      "AI agents can use your computer now - here's how to stay in control from anywhere",
     description:
       "As AI agents increasingly drive your computer, watching, pausing, and steering them remotely matters. How to keep a human in the loop from anywhere.",
     date: "2026-07-21",
@@ -638,8 +647,7 @@ export const posts: Post[] = [
       "keep AI agent in check",
     ],
     readingMinutes: 4,
-    lede:
-      "AI agents are getting good at operating a real computer - editing files, running commands, clicking through apps. The more they can do on their own, the more it matters that you can watch and step in. Here is how to keep that oversight from anywhere.",
+    lede: "AI agents are getting good at operating a real computer - editing files, running commands, clicking through apps. The more they can do on their own, the more it matters that you can watch and step in. Here is how to keep that oversight from anywhere.",
     body: [
       {
         type: "p",
@@ -666,7 +674,8 @@ export const posts: Post[] = [
         alt: "A real Mac terminal open on an iPad, reaching a Mac Mini's shell to supervise what is running.",
         width: 2360,
         height: 1640,
-        caption: "Check in on - and take over - what's running on your Mac, from an iPad anywhere.",
+        caption:
+          "Check in on - and take over - what's running on your Mac, from an iPad anywhere.",
       },
       { type: "h2", text: "Keep a human in the loop from your pocket" },
       {
@@ -700,8 +709,7 @@ export const posts: Post[] = [
       "macOS Screen Sharing",
     ],
     readingMinutes: 9,
-    lede:
-      "There is no single best remote desktop app for the Mac, because people are solving different problems with the word remote. Here is an honest map of the options, what each is genuinely good at, and how to pick.",
+    lede: "There is no single best remote desktop app for the Mac, because people are solving different problems with the word remote. Here is an honest map of the options, what each is genuinely good at, and how to pick.",
     body: [
       { type: "h2", text: "Quick picks" },
       {
@@ -835,8 +843,7 @@ export const posts: Post[] = [
       "mobile ssh client",
       "mac terminal from iphone",
     ],
-    lede:
-      "Termius comes up whenever someone wants a terminal on their phone, so it is a fair thing to be compared against. But the two products are shaped differently, and pretending otherwise would waste your time.",
+    lede: "Termius comes up whenever someone wants a terminal on their phone, so it is a fair thing to be compared against. But the two products are shaped differently, and pretending otherwise would waste your time.",
     body: [
       { type: "h2", text: "The short answer" },
       {
@@ -860,20 +867,35 @@ export const posts: Post[] = [
       { type: "h2", text: "Side by side" },
       {
         type: "table",
-        caption:
-          "Where the two overlap, and where they genuinely do not.",
+        caption: "Where the two overlap, and where they genuinely do not.",
         headers: ["", "Termius", "Servey"],
         rows: [
-          ["Reaches", "Any SSH host you configure", "A Mac running its host app"],
-          ["Setup to get in from outside", "SSH, plus VPN, port forward or jump host", "Sign in on both devices"],
+          [
+            "Reaches",
+            "Any SSH host you configure",
+            "A Mac running its host app",
+          ],
+          [
+            "Setup to get in from outside",
+            "SSH, plus VPN, port forward or jump host",
+            "Sign in on both devices",
+          ],
           ["Screen / GUI control", "No", "Yes"],
           ["Multiple hosts", "Yes, unlimited", "No"],
           ["SFTP, Mosh, Telnet, serial", "Yes", "No"],
           ["Port forwarding, jump hosts", "Yes", "Not applicable"],
           ["Snippets, workspaces, autocomplete", "Yes", "No"],
           ["Team vaults, SSO, audit logs", "Yes", "No"],
-          ["Platforms", "macOS, Windows, Linux, iOS, iPadOS, Android", "macOS host; iPhone and iPad client"],
-          ["Track record", "Shipping since 2019, millions of users", "Pre-launch, no users"],
+          [
+            "Platforms",
+            "macOS, Windows, Linux, iOS, iPadOS, Android",
+            "macOS host; iPhone and iPad client",
+          ],
+          [
+            "Track record",
+            "Shipping since 2019, millions of users",
+            "Pre-launch, no users",
+          ],
         ],
       },
       { type: "h2", text: "The real difference: a client versus an agent" },
@@ -953,8 +975,7 @@ export const posts: Post[] = [
       "macOS Screen Sharing",
     ],
     readingMinutes: 7,
-    lede:
-      "Screens is a genuinely good app, so most people searching for an alternative have a specific reason: a platform it does not cover, a feature it does not have, or a licence change they did not want. Here is what to switch to for each reason - and when the honest answer is to stay put.",
+    lede: "Screens is a genuinely good app, so most people searching for an alternative have a specific reason: a platform it does not cover, a feature it does not have, or a licence change they did not want. Here is what to switch to for each reason - and when the honest answer is to stay put.",
     body: [
       {
         type: "table",
@@ -1024,7 +1045,10 @@ export const posts: Post[] = [
         type: "p",
         text: "In practice there are four reasons, and which one applies to you decides the answer. The first is platform: Screens is Apple-only by design, so the moment you need to reach a Windows PC or a Linux box it cannot help. The second is licensing - Screens has changed how it is sold across major versions, and some long-time users went looking after an upgrade rather than because of the app itself. The third is the connection story: reaching your Mac from outside your home network depends on the Screens Connect companion, which is one more moving part to keep running. The fourth is scope: Screens mirrors a screen, and if what you actually wanted was a command line, a screen-only tool means driving a GUI with a trackpad overlay to reach a shell. None of these are bugs. They are the edges of a deliberately narrow product.",
       },
-      { type: "h2", text: "What is the closest direct replacement for Screens 5?" },
+      {
+        type: "h2",
+        text: "What is the closest direct replacement for Screens 5?",
+      },
       {
         type: "p",
         text: "Jump Desktop is the closest like-for-like replacement, and it is the one most people end up on. It covers the same core job - see and drive a remote desktop from a Mac, iPhone or iPad - and then goes further in the direction Screens deliberately does not: it speaks RDP and VNC as well as its own Fluid protocol, and it runs on Windows and Android too. Jump Desktop Connect handles reaching a machine from outside your network without router configuration, which is the same problem Screens Connect solves. The trade-off is character rather than capability: Screens is the more focused, more Apple-feeling app, and people who chose it for that will notice Jump Desktop is built to serve a wider audience. If you want that comparison in detail, we have a separate head-to-head on Screens versus Jump Desktop.",
@@ -1042,7 +1066,10 @@ export const posts: Post[] = [
         type: "p",
         text: "Yes, three of them, and each is free for a different reason. macOS Screen Sharing is already on your Mac: turn it on in System Settings under Sharing and connect from any VNC client. It costs nothing and is perfectly good on your own Wi-Fi, but reaching it from outside means a VPN or port forwarding, which is exactly the work the paid apps exist to remove. Chrome Remote Desktop is free from Google and is by far the fastest thing to get working from anywhere - install, sign in, done - but it is basic by design, with touch input that was not built around iPad and no terminal. RustDesk is free and open source, cross-platform, and can be fully self-hosted if you would rather not trust anyone else's relay. The cost there is your time rather than your money.",
       },
-      { type: "h2", text: "What if you mostly need a command line, not a screen?" },
+      {
+        type: "h2",
+        text: "What if you mostly need a command line, not a screen?",
+      },
       {
         type: "p",
         text: "Then a remote desktop app is the wrong shape of tool, and you will be happier with a terminal. A large amount of what people use Screens for is restarting a service, tailing a log, re-running a build, or checking on a headless Mac Mini - all of which are faster typed than clicked. SSH from a phone works if you are willing to enable Remote Login and get a route in from outside, usually a VPN, a forwarded port or a jump host. A dedicated mobile SSH client such as Termius handles the fleet case well. What none of the screen-first apps in the table above give you is a genuine shell alongside the picture, so today you are generally choosing one or the other rather than getting both in one app.",
@@ -1061,7 +1088,10 @@ export const posts: Post[] = [
           "You need something proven today, from a vendor with years of shipping behind it.",
         ],
       },
-      { type: "h2", text: "Where Servey fits, and why it is the only Yes in that last column" },
+      {
+        type: "h2",
+        text: "Where Servey fits, and why it is the only Yes in that last column",
+      },
       {
         type: "p",
         text: "Servey is what we are building, so weigh this section accordingly - but look again at the last column of that table. Every other tool on this list answers No. Servey is aimed squarely at one job: your Mac, on your iPhone and iPad, with a genuine shell sitting beside the mirrored screen rather than behind it. Setup is signing in with Google on both devices - no VPN, no port forwarding, no companion service to keep running - and it chooses its own path. On the same Wi-Fi it streams a direct hardware-encoded HEVC feed, which is why the text stays razor-sharp enough to read and pinch-zoom into instead of going soft. Away from home it switches by itself to a private, end-to-end encrypted peer-to-peer connection between your own two devices, and that connection holds on strict carrier networks where a lot of tools simply give up. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately. It launches soon, from $1.99 a month, or ₹99 in India.",
@@ -1110,8 +1140,7 @@ export const posts: Post[] = [
       "control Mac remotely",
     ],
     readingMinutes: 7,
-    lede:
-      "Jump Desktop and TeamViewer both put a distant computer on your screen, which makes them look like competitors. They were built for different jobs - reaching your own machines versus supporting other people's - and that difference decides the answer more than any feature list does.",
+    lede: "Jump Desktop and TeamViewer both put a distant computer on your screen, which makes them look like competitors. They were built for different jobs - reaching your own machines versus supporting other people's - and that difference decides the answer more than any feature list does.",
     body: [
       {
         type: "table",
@@ -1154,12 +1183,7 @@ export const posts: Post[] = [
             "Yes, with a device management console",
             "Yes - your Mac is simply there when you open the app",
           ],
-          [
-            "File transfer",
-            "Yes",
-            "Yes",
-            "Not yet",
-          ],
+          ["File transfer", "Yes", "Yes", "Not yet"],
           [
             "Pricing model",
             "Paid app, bought per platform; separate team plans",
@@ -1178,12 +1202,7 @@ export const posts: Post[] = [
             "Commercial-use detection can flag personal users",
             "Apple-only, and still pre-launch",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes - a genuine shell, built in",
-          ],
+          ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
       },
       { type: "h2", text: "The short answer" },
@@ -1201,7 +1220,10 @@ export const posts: Post[] = [
         type: "p",
         text: "TeamViewer is a remote-support and device-management platform that happens to include remote desktop. Its defining feature is the attended session: someone reads you a code over the phone, you connect, and you fix their machine - no account, no network knowledge, no firewall rules on their end. Around that it has built unattended access, a management console, group and permission structures, session logging, file transfer, remote printing and support for platforms well beyond the consumer ones, including Linux, ChromeOS and embedded devices. It is free for genuine personal use and sold per seat for business use. Understanding it as support software rather than as a nicer VNC explains almost everything about how it behaves, including the parts individual users find heavy.",
       },
-      { type: "h2", text: "Where TeamViewer is genuinely better than Jump Desktop" },
+      {
+        type: "h2",
+        text: "Where TeamViewer is genuinely better than Jump Desktop",
+      },
       {
         type: "p",
         text: "TeamViewer wins clearly on reach and on helping other people, and it is not close. If any of the following describe you, Jump Desktop is the wrong tool and you should stop comparing:",
@@ -1217,12 +1239,18 @@ export const posts: Post[] = [
           "You need supporting features like remote printing, wake-on-LAN, or session recording for compliance.",
         ],
       },
-      { type: "h2", text: "Where Jump Desktop is genuinely better than TeamViewer" },
+      {
+        type: "h2",
+        text: "Where Jump Desktop is genuinely better than TeamViewer",
+      },
       {
         type: "p",
         text: "Jump Desktop wins on the individual-user experience and on cost predictability. Its touch input on iPad is better tuned than TeamViewer's, which matters enormously if the iPad is your main client rather than an occasional one. It can connect to standard RDP and VNC hosts with no agent installed, so it fits into setups you did not build for it. Its pricing is a paid app rather than an ongoing per-seat relationship, which suits a person with three machines far better than a subscription designed for a support desk. And it avoids TeamViewer's most-complained-about behaviour: automated commercial-use detection, which sometimes flags heavy personal users and interrupts sessions until they resolve it. If you are one person reaching your own computers, that difference alone often decides it.",
       },
-      { type: "h2", text: "Which is better for controlling a Mac from an iPad?" },
+      {
+        type: "h2",
+        text: "Which is better for controlling a Mac from an iPad?",
+      },
       {
         type: "p",
         text: "Jump Desktop, for most people, and the reason is input rather than picture quality. Driving a desktop operating system through a touchscreen is a hard interaction problem - you need a precise pointer, a right click that does not require a menu dive, modifier keys, and text selection that behaves. Jump Desktop has spent years on that specific problem and it shows. TeamViewer will do the job, and if you already run it for support work there is no reason to add a second app, but its touch layer reads as a port of a desktop interface rather than something designed for a tablet. If your workflow is genuinely iPad-first, that gap is felt within about five minutes of real use.",
@@ -1259,8 +1287,7 @@ export const posts: Post[] = [
       "Jump Desktop alternative Mac",
     ],
     readingMinutes: 6,
-    lede:
-      "This comparison is really a question about what you would rather spend: money or time. Jump Desktop is a paid app that works out of the box. RustDesk is free, open source, and can be run entirely on infrastructure you control - if you are willing to run it.",
+    lede: "This comparison is really a question about what you would rather spend: money or time. Jump Desktop is a paid app that works out of the box. RustDesk is free, open source, and can be run entirely on infrastructure you control - if you are willing to run it.",
     body: [
       {
         type: "table",
@@ -1327,12 +1354,7 @@ export const posts: Post[] = [
             "Community, with paid options",
             "Direct from the team building it",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes - a genuine shell, built in",
-          ],
+          ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
       },
       { type: "h2", text: "The short answer" },
@@ -1397,8 +1419,7 @@ export const posts: Post[] = [
       "remote desktop Mac subscription",
     ],
     readingMinutes: 7,
-    lede:
-      "These two are both good, and they are aimed at different people. Splashtop is a subscription built around streaming performance and managing a fleet. Jump Desktop is a one-time purchase built around one person reaching their own machines, with the best touch input in the category. The pricing model is not a detail here - it is the decision.",
+    lede: "These two are both good, and they are aimed at different people. Splashtop is a subscription built around streaming performance and managing a fleet. Jump Desktop is a one-time purchase built around one person reaching their own machines, with the best touch input in the category. The pricing model is not a detail here - it is the decision.",
     body: [
       {
         type: "table",
@@ -1447,12 +1468,7 @@ export const posts: Post[] = [
             "Jump Desktop Connect",
             "Automatic - it switches paths on its own",
           ],
-          [
-            "Remote sound",
-            "A long-standing strength",
-            "Supported",
-            "Not yet",
-          ],
+          ["Remote sound", "A long-standing strength", "Supported", "Not yet"],
           [
             "Multi-monitor",
             "Strong, including per-monitor selection",
@@ -1471,12 +1487,7 @@ export const posts: Post[] = [
             "A long-standing strength",
             "Purpose-built virtual trackpad, pinch-to-zoom",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes - a genuine shell, built in",
-          ],
+          ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
       },
       { type: "h2", text: "The short answer" },
@@ -1530,7 +1541,8 @@ export const posts: Post[] = [
   {
     slug: "anydesk-vs-teamviewer",
     metaTitle: "AnyDesk vs TeamViewer: an honest look",
-    title: "AnyDesk vs TeamViewer: which remote desktop should you actually use?",
+    title:
+      "AnyDesk vs TeamViewer: which remote desktop should you actually use?",
     description:
       "AnyDesk vs TeamViewer in 2026: a lean, fast, cheaper tool against the broadest feature set in the category. Where each genuinely wins, and the free-tier catch.",
     date: "2026-08-19",
@@ -1542,8 +1554,7 @@ export const posts: Post[] = [
       "best remote desktop for Mac",
     ],
     readingMinutes: 7,
-    lede:
-      "This is the most-searched pairing in remote desktop, and the honest summary is that AnyDesk is lighter, faster on bad connections and cheaper, while TeamViewer does far more and is far more widely deployed. The thing that decides it for most people is not a feature at all - it is how each company treats the free tier.",
+    lede: "This is the most-searched pairing in remote desktop, and the honest summary is that AnyDesk is lighter, faster on bad connections and cheaper, while TeamViewer does far more and is far more widely deployed. The thing that decides it for most people is not a feature at all - it is how each company treats the free tier.",
     body: [
       {
         type: "table",
@@ -1556,12 +1567,7 @@ export const posts: Post[] = [
             "Yes, but commercial use is actively detected",
             "No, but it starts at $1.99/month",
           ],
-          [
-            "Paid entry price",
-            "Lower",
-            "Higher",
-            "The lowest of the three",
-          ],
+          ["Paid entry price", "Lower", "Higher", "The lowest of the three"],
           [
             "Footprint",
             "Very small, runs without installing",
@@ -1586,36 +1592,21 @@ export const posts: Post[] = [
             "The most complete in the category",
             "None - it reaches your own Mac, not a fleet",
           ],
-          [
-            "Integrations and ecosystem",
-            "Fewer",
-            "Extensive",
-            "None",
-          ],
+          ["Integrations and ecosystem", "Fewer", "Extensive", "None"],
           [
             "Unattended access on free tier",
             "No",
             "Limited",
             "Included in every plan",
           ],
-          [
-            "Mac host support",
-            "Yes",
-            "Yes",
-            "The entire point of the product",
-          ],
+          ["Mac host support", "Yes", "Yes", "The entire point of the product"],
           [
             "Tuned for iPad touch input",
             "No",
             "No",
             "Yes - purpose-built trackpad and pinch-to-zoom",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes - a genuine shell, built in",
-          ],
+          ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
       },
       { type: "h2", text: "The short answer" },
@@ -1688,12 +1679,12 @@ export const posts: Post[] = [
       "macOS Screen Sharing",
     ],
     readingMinutes: 6,
-    lede:
-      "Chrome Remote Desktop is free, takes about five minutes to set up, and needs no router configuration. That is a genuinely strong offer and a lot of people never need more. This is an honest account of where it runs out, and whether the gap is worth paying to close.",
+    lede: "Chrome Remote Desktop is free, takes about five minutes to set up, and needs no router configuration. That is a genuinely strong offer and a lot of people never need more. This is an honest account of where it runs out, and whether the gap is worth paying to close.",
     body: [
       {
         type: "table",
-        caption: "Chrome Remote Desktop, Jump Desktop and Servey, side by side.",
+        caption:
+          "Chrome Remote Desktop, Jump Desktop and Servey, side by side.",
         headers: ["", "Chrome Remote Desktop", "Jump Desktop", "Servey"],
         rows: [
           [
@@ -1744,30 +1735,15 @@ export const posts: Post[] = [
             "Supported, and refined on iPad",
             "Not yet",
           ],
-          [
-            "Remote sound on a Mac",
-            "Limited",
-            "Supported",
-            "Not yet",
-          ],
-          [
-            "File transfer",
-            "Basic",
-            "Built in",
-            "Not yet",
-          ],
+          ["Remote sound on a Mac", "Limited", "Supported", "Not yet"],
+          ["File transfer", "Basic", "Built in", "Not yet"],
           [
             "Touch input on iPad",
             "Basic",
             "A long-standing strength",
             "Purpose-built virtual trackpad, pinch-to-zoom",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes - a genuine shell, built in",
-          ],
+          ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
       },
       { type: "h2", text: "The short answer" },
@@ -1834,8 +1810,7 @@ export const posts: Post[] = [
       "Back to My Mac replacement",
     ],
     readingMinutes: 6,
-    lede:
-      "Screen Sharing is already on your Mac, it is free, and it works beautifully - right up to the edge of your home network. Here is exactly where it stops, why Apple removed the feature that used to fix this, and what actually works instead.",
+    lede: "Screen Sharing is already on your Mac, it is free, and it works beautifully - right up to the edge of your home network. Here is exactly where it stops, why Apple removed the feature that used to fix this, and what actually works instead.",
     body: [
       {
         type: "p",
@@ -1884,7 +1859,8 @@ export const posts: Post[] = [
       { type: "h2", text: "The four ways to actually reach it from outside" },
       {
         type: "table",
-        caption: "Reaching a Mac's screen from outside your network, and what each approach costs.",
+        caption:
+          "Reaching a Mac's screen from outside your network, and what each approach costs.",
         headers: ["Approach", "Setup", "Works behind CGNAT", "The catch"],
         rows: [
           [
@@ -1954,8 +1930,7 @@ export const posts: Post[] = [
       "best remote desktop for Mac",
     ],
     readingMinutes: 6,
-    lede:
-      "For years, Back to My Mac was the answer to reaching your own Mac from anywhere: no ports, no VPN, no IP addresses. Apple removed it in 2018 and shipped nothing to take its place. Here is exactly what you lost and what genuinely fills the gap.",
+    lede: "For years, Back to My Mac was the answer to reaching your own Mac from anywhere: no ports, no VPN, no IP addresses. Apple removed it in 2018 and shipped nothing to take its place. Here is exactly what you lost and what genuinely fills the gap.",
     body: [
       {
         type: "p",
@@ -1964,7 +1939,7 @@ export const posts: Post[] = [
       { type: "h2", text: "The short answer" },
       {
         type: "p",
-        text: "Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross."
+        text: "Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross.",
       },
       {
         type: "p",
@@ -1991,8 +1966,14 @@ export const posts: Post[] = [
       { type: "h2", text: "What covers each part of the job now" },
       {
         type: "table",
-        caption: "The jobs Back to My Mac did, what covers each one today, and which of them Servey covers.",
-        headers: ["What it did", "Still built into macOS?", "What covers it now", "Servey"],
+        caption:
+          "The jobs Back to My Mac did, what covers each one today, and which of them Servey covers.",
+        headers: [
+          "What it did",
+          "Still built into macOS?",
+          "What covers it now",
+          "Servey",
+        ],
         rows: [
           [
             "Find your Mac from any network",
@@ -2082,8 +2063,7 @@ export const posts: Post[] = [
       "best Mac remote desktop app",
     ],
     readingMinutes: 7,
-    lede:
-      "RustDesk is usually described as the open-source AnyDesk, and the comparison is fair enough to be useful. But the two are making very different offers, and the one that suits you depends far more on how you feel about running a server than on any feature list.",
+    lede: "RustDesk is usually described as the open-source AnyDesk, and the comparison is fair enough to be useful. But the two are making very different offers, and the one that suits you depends far more on how you feel about running a server than on any feature list.",
     body: [
       {
         type: "p",
@@ -2099,12 +2079,7 @@ export const posts: Post[] = [
         caption: "RustDesk, AnyDesk and Servey, side by side.",
         headers: ["", "RustDesk", "AnyDesk", "Servey"],
         rows: [
-          [
-            "Licence",
-            "Open source, AGPL-3.0",
-            "Proprietary",
-            "Proprietary",
-          ],
+          ["Licence", "Open source, AGPL-3.0", "Proprietary", "Proprietary"],
           [
             "Cost",
             "Free, including self-hosting",
@@ -2147,12 +2122,7 @@ export const posts: Post[] = [
             "A vendor with a support contract",
             "A small team, pre-launch",
           ],
-          [
-            "Real terminal",
-            "No",
-            "No",
-            "Yes",
-          ],
+          ["Real terminal", "No", "No", "Yes"],
         ],
       },
       { type: "h2", text: "Where RustDesk genuinely wins" },
@@ -2219,9 +2189,10 @@ export const posts: Post[] = [
   {
     slug: "control-iphone-from-mac",
     metaTitle: "Control your iPhone from your Mac",
-    title: "How to control your iPhone from your Mac, and what Apple actually allows",
+    title:
+      "How to control your iPhone from your Mac, and what Apple actually allows",
     description:
-      "Can you control an iPhone from a Mac? Yes, with iPhone Mirroring in macOS Sequoia - but only when the phone is next to you. Here is what works and what does not.",
+      "Can you control an iPhone from a Mac? Yes, with iPhone Mirroring in macOS Sequoia - but only when the phone is nearby. Here is what works and what does not.",
     date: "2026-08-31",
     keywords: [
       "control iPhone from Mac",
@@ -2231,14 +2202,18 @@ export const posts: Post[] = [
       "access Mac remotely",
     ],
     readingMinutes: 6,
-    lede:
-      "Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, the direction that genuinely works remotely is the opposite one: your Mac, from your iPhone, anywhere. That is the job we built Servey to do, and it is covered in full below.",
+    lede: "Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, the direction that genuinely works remotely is the opposite one: your Mac, from your iPhone, anywhere. That is the job we built Servey to do, and it is covered in full below.",
     body: [
       {
         type: "table",
         caption:
           "The four ways to see or control an iPhone from a Mac, and what each one is actually for.",
-        headers: ["", "What it does", "Works when the iPhone is elsewhere?", "Cost"],
+        headers: [
+          "",
+          "What it does",
+          "Works when the iPhone is elsewhere?",
+          "Cost",
+        ],
         rows: [
           [
             "iPhone Mirroring",
@@ -2280,7 +2255,10 @@ export const posts: Post[] = [
         type: "p",
         text: "The requirement that matters most is the physical one. Your iPhone has to be locked and near your Mac - it can be face down on the desk or charging in StandBy, but it has to be there. The phone also stays locked for the whole session, which is a nice privacy property: nobody walking past can see what you are doing, and nobody can pick the phone up and use it while you are mirroring it.",
       },
-      { type: "h2", text: "Why you cannot control an iPhone over the internet" },
+      {
+        type: "h2",
+        text: "Why you cannot control an iPhone over the internet",
+      },
       {
         type: "p",
         text: "This surprises people who are used to Windows or Android, where remote control apps for phones have existed for years. On iOS, an app cannot read the screen of the whole system or inject taps into other apps. There is no API for it, and App Store review would not permit it if there were. Screen recording is possible with the user's explicit consent through ReplayKit, but recording is not control, and it stops the moment the app is backgrounded. So the tools that do exist for reaching an iPhone remotely are management tools rather than remote desktops: mobile device management can push apps, apply policy, lock or wipe a company phone from anywhere, but it cannot show an administrator the screen and let them tap around on it.",
@@ -2336,8 +2314,7 @@ export const posts: Post[] = [
       "connect to Mac behind CGNAT",
     ],
     readingMinutes: 7,
-    lede:
-      "A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in - and how to end up with the mini in your pocket, which is what we built Servey for.",
+    lede: "A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in - and how to end up with the mini in your pocket, which is what we built Servey for.",
     body: [
       {
         type: "p",
@@ -2463,6 +2440,485 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "keep-terminal-session-running-after-disconnect",
+    metaTitle: "Keep a terminal running after you disconnect",
+    title: "How to keep a terminal session running after you disconnect",
+    description:
+      "Why your shell dies when you close the app, what tmux actually fixes, and how to leave a build running on your Mac while you get on a train.",
+    date: "2026-09-05",
+    keywords: [
+      "keep ssh session running after disconnect",
+      "persistent terminal session",
+      "terminal on iphone",
+      "ssh to mac from iphone",
+      "run terminal on mac remotely",
+      "mobile shell for mac",
+      "access mac remotely",
+      "control mac remotely",
+    ],
+    readingMinutes: 8,
+    lede: "The build takes forty minutes. Your train leaves in ten. If the shell running that build lives inside the app you are about to close, the build dies with it - and this is the most common way remote work on a Mac goes wrong. The fix is older than most of the tools people reach for, and it is the thing Servey turns on by default. Here is what actually kills a session, what survives, and how to get persistence whether you use Servey or not.",
+    body: [
+      {
+        type: "p",
+        text: 'Two very different problems hide behind the sentence "my session dropped". One is the network: the connection between your phone and your Mac broke. The other is the process: the program you were running was killed. The first is annoying and recoverable. The second loses forty minutes of work. Almost every tool on the market solves the first and quietly ignores the second, which is why people learn the difference the hard way.',
+      },
+      {
+        type: "table",
+        caption:
+          "What actually survives when you close the app or lose signal.",
+        headers: [
+          "What you are running the command in",
+          "Survives closing the app",
+          "Survives losing signal",
+          "Rejoin from another device",
+        ],
+        rows: [
+          [
+            "A Terminal window inside a mirrored desktop",
+            "Yes - it is a window on the Mac",
+            "Yes",
+            "Only by mirroring that Mac again",
+          ],
+          [
+            "A plain SSH connection",
+            "No - the shell is killed with the connection",
+            "No",
+            "No",
+          ],
+          [
+            "SSH plus tmux or screen",
+            "Yes",
+            "Yes",
+            "Yes, with the attach command",
+          ],
+          [
+            "Servey's terminal",
+            "Yes - sessions are named and live on the Mac",
+            "Yes",
+            "Yes, from any device or a plain Terminal",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The table has a useful surprise in it. Screen mirroring, which people often dismiss as the slow and heavy option, is accidentally good at persistence: a Terminal window inside the mirrored desktop is just a window on the Mac, so nothing about your connection can kill it. Plain SSH, which people reach for because it is light and fast, is the one that loses the work. If you have ever wondered why an experienced admin SSHes in and then immediately types a second command before doing anything, this is why.",
+      },
+      { type: "h2", text: "Why does my SSH session die when I close the app?" },
+      {
+        type: "p",
+        text: "Because the shell is a child of the connection, and when the connection goes the operating system tells everything under it to stop. Concretely: SSH gives you a pseudo-terminal, your shell runs attached to it, and the commands you type run as children of that shell. When the connection drops, the kernel sends a hangup signal, SIGHUP, down that tree. The default response to SIGHUP is to terminate. Your build gets the signal, does not handle it, and stops. The word is a literal holdover from modems physically hanging up, and the behaviour has never changed.",
+      },
+      {
+        type: "p",
+        text: "This is also why the half-fixes are half-fixes. Running a command with nohup, or backgrounding it with an ampersand and disown, does stop SIGHUP from killing it. But you have now given up the thing you actually wanted: you cannot see the output any more, you cannot answer a prompt, and you cannot get back in front of it. It is fine for a job that runs unattended and writes to a log. It is useless for a build that might ask a question, or an AI coding agent that stops halfway to confirm something.",
+      },
+      { type: "h2", text: "What tmux actually does" },
+      {
+        type: "p",
+        text: "tmux moves your shell out from under the connection. Instead of your shell being a child of SSH, tmux runs as its own long-lived process on the Mac, and your shell is a child of tmux. SSH then just attaches a view onto it. Kill the connection and you have killed a viewer, not the work. Reconnect later, attach again, and you are looking at the same session with the same scrollback and the same half-finished prompt waiting for an answer.",
+      },
+      {
+        type: "ul",
+        items: [
+          "tmux new -s build - start a named session called build.",
+          "Ctrl-b then d - detach, leaving everything running.",
+          "tmux ls - list the sessions currently alive on the machine.",
+          "tmux attach -t build - reattach to it, from anywhere, later.",
+          "tmux kill-session -t build - end it deliberately when you are done.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Name your sessions. The default names are numbers, and a list of numbers tells you nothing three days later. The other detail worth knowing is that tmux allows several clients to watch one session at once, which is what makes it possible to start something on an iPad and then walk to your desk and carry on from the Mac with the same output in front of you.",
+      },
+      {
+        type: "p",
+        text: "GNU screen does much the same job and is often already installed. tmux is the better choice for new setups - it is actively maintained, its splitting and scripting are cleaner, and it is what almost every guide written in the last decade assumes. If your muscle memory is screen, there is no urgent reason to switch.",
+      },
+      { type: "h2", text: "Why this is harder from an iPhone than it looks" },
+      {
+        type: "p",
+        text: "Everything above assumes you can already reach the Mac and already have a working SSH setup. From a phone that is three separate problems, and each one has its own way of going wrong. You need an SSH client on iOS. You need your keys on the phone, which means either generating a key there and adding it to the Mac or moving a private key onto a device you carry in public. And you need the Mac to be reachable at all from outside your home network, which most people discover is the hard one.",
+      },
+      {
+        type: "p",
+        text: "That last problem is not really about SSH. A home router does not accept unsolicited inbound connections, your address changes, and a growing number of home connections sit behind carrier-grade NAT where no amount of port forwarding will help because you do not have a public address to forward from. The usual answers are a VPN back to your own network, a mesh VPN such as Tailscale, or a tool that does NAT traversal for you. What none of those answers do is give you the persistence in the first place - you still have to set up tmux yourself once you get there.",
+      },
+      {
+        type: "p",
+        text: "There is also a plain ergonomic problem. Ctrl-b is the tmux prefix, and an iPhone keyboard has no Control key. Good iOS terminal apps add one to an accessory row, but you are now typing a two-key chord on a soft keyboard on a train, and it is the single most common reason people give up on tmux from a phone specifically.",
+      },
+      { type: "h2", text: "How Servey handles it" },
+      {
+        type: "p",
+        text: "Servey makes persistence the default rather than something you opt into. Every terminal session you open is a named session that lives on the Mac, so there is no separate step to remember and nothing to configure. Close the app, lose signal, put the phone in your pocket, get on a plane: the work carries on. Open Servey again and the session list shows what is still running, so you pick one and rejoin exactly where it got to. You can have the same session open on the Mac and the iPad at once, which is genuinely useful when you start something on the sofa and finish it at the desk.",
+      },
+      {
+        type: "p",
+        text: "The part worth knowing about, because it is unusual for a paid app to volunteer it, is that these are ordinary tmux sessions on your own machine. Servey shows you the attach command for each one, so you can paste it into Terminal.app, iTerm, Ghostty or an SSH connection and land in the same live session with the app not running at all. If you stop paying, or stop using it, or simply prefer a laptop that day, nothing you started is trapped. That also means the tmux knowledge above is not wasted if you later move on.",
+      },
+      {
+        type: "p",
+        text: "Reachability is handled in the same app: Servey connects on your local network directly, and from outside it establishes a private peer-to-peer connection between your own devices, including on carrier-grade NAT, with no VPN and no port forwarding. And because a terminal sits one tap from the mirrored screen, the case that defeats a pure SSH setup - a dialog box only the GUI can dismiss - does not strand you.",
+      },
+      {
+        type: "p",
+        text: "The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a working setup this afternoon, do not wait for us.",
+      },
+      { type: "h2", text: "What to use if you need this working today" },
+      {
+        type: "p",
+        text: "Install tmux on the Mac with Homebrew, then pick an iOS terminal app - Termius and Blink Shell are both good, and Blink in particular has a well-designed key row that makes the Ctrl-b prefix bearable. Add Tailscale on both ends if you cannot reach the Mac from outside. That combination gives you the persistence and the reachability today, for the price of setting up three things instead of one, and it is what we would tell a friend to do this week.",
+      },
+      {
+        type: "p",
+        text: "One last habit that costs nothing: get into the reflex of typing tmux new -s something the moment you connect, before you run anything long. Persistence you remembered to turn on after the build started is not persistence.",
+      },
+    ],
+  },
+  {
+    slug: "blank-mac-screen-during-remote-access",
+    metaTitle: "Blank your Mac's screen during remote access",
+    title: "How to blank your Mac's screen while you work on it remotely",
+    description:
+      "Anyone next to your Mac can watch your remote session on its monitor. Here is why privacy screens are unreliable on macOS, and what actually works.",
+    date: "2026-09-05",
+    keywords: [
+      "blank screen remote desktop mac",
+      "privacy mode remote access",
+      "hide mac screen remote session",
+      "teamviewer black screen mac",
+      "access mac remotely",
+      "control mac from iphone",
+      "macos screen sharing",
+      "best remote desktop for mac",
+    ],
+    readingMinutes: 7,
+    lede: "There is a detail about remote access that most people only think about once: while you are working on your Mac from somewhere else, its monitor is still on, still showing your desktop, and still visible to whoever is in the room. In an office, a shared flat or a home with visitors, that is a real problem - and on macOS specifically it is the feature most remote tools handle worst. Here is why it is hard, what the options actually do, and how Servey does it differently.",
+    body: [
+      {
+        type: "p",
+        text: "The scenario is easy to picture. You connect to your work Mac from a laptop at home and start going through payroll, or you reach your home Mac from the office and open something personal. At the other end, the machine's display is showing every keystroke to an open-plan room, a housemate, or a colleague who wandered over to borrow a charger. Nothing about the connection being encrypted helps: the leak is at the monitor, not on the wire.",
+      },
+      {
+        type: "table",
+        caption:
+          "The four ways of hiding the screen at the other end, and how each one fails.",
+        headers: ["Approach", "How it works", "Where it falls down"],
+        rows: [
+          [
+            "Lock the Mac before leaving",
+            "The login window covers the desktop",
+            "Your remote session unlocks it again, and then everyone can see it",
+          ],
+          [
+            "Vendor privacy screen (TeamViewer, AnyDesk)",
+            "Installs a display driver that blanks the monitor",
+            "Needs a kernel or system extension, and on modern macOS it is unreliable or unsupported",
+          ],
+          [
+            "Unplug or power off the monitor",
+            "Nothing to see",
+            "Only works if you are there to do it, and not at all on a laptop",
+          ],
+          [
+            "Blank the display after the capture point",
+            "The monitor gets black, the stream keeps the real desktop",
+            "Only possible if the tool is built for it",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "That last row is what Servey does, and it is worth understanding why it is the approach that holds up on a Mac, because the reason is specific to how macOS draws things.",
+      },
+      { type: "h2", text: "Why do privacy screens keep breaking on macOS?" },
+      {
+        type: "p",
+        text: "Because the classic implementation depends on a piece of macOS that Apple has spent years closing off. The traditional way to blank a monitor during a remote session is to install a virtual display driver: the tool adds a fake display, moves your desktop onto it, and leaves the real monitor showing nothing. On Windows that is a well-trodden path. On macOS it needs a kernel extension or, more recently, a DriverKit system extension, and both require the user to approve them in Privacy and Security and reboot. Kernel extensions on Apple silicon additionally need the machine put into reduced security mode.",
+      },
+      {
+        type: "p",
+        text: "The result is a feature that either does not appear on macOS, appears but greys out, or works until an OS update. This is not incompetence on the vendors' part. It is a design decision by Apple, and it is the reason the black screen feature people know from Windows support work is one of the most common things missing when the same tool is pointed at a Mac.",
+      },
+      {
+        type: "p",
+        text: "There is a second, subtler failure that matters more than it sounds. A privacy screen that works by drawing a black window over your desktop can be defeated: a full-screen app, a Mission Control gesture or a second monitor can end up outside it, and the cursor usually still moves in plain view. Worse, it is captured. If the black cover is drawn into the same framebuffer that the remote tool records, you end up looking at your own black screen instead of your desktop, which is exactly backwards.",
+      },
+      { type: "h2", text: "What does Servey do instead?" },
+      {
+        type: "p",
+        text: "Servey's Privacy Mode forces the gamma transfer table of every active display to zero. That sounds obscure, so here is the part that matters: gamma is applied by the display pipeline at scan-out, which happens after the framebuffer that screen capture reads. The monitor is fed the adjusted signal and shows pure black. The capture is taken from before that point and shows the real desktop, completely unaffected. It is the same layer that tools like Night Shift work at, which is why their colour tint never turns up in a screenshot.",
+      },
+      {
+        type: "p",
+        text: "Doing it there rather than with an overlay window fixes the failure modes above in one go. Because nothing is drawn on screen, there is nothing for a full-screen app or another space to appear on top of. It covers every app, every space and every connected monitor at once. The cursor is blacked out too, so an observer cannot even follow where you are pointing. And no black window exists to be accidentally captured, so what you see on your iPad stays the live desktop.",
+      },
+      {
+        type: "p",
+        text: "The obvious worry with any technique that blacks out a display is being left with a Mac you cannot see and cannot fix. Servey restores gamma on every stop and disconnect path, and the window server restores it automatically if the app exits for any reason, including a crash. A dropped connection cannot strand the machine on black. This matters more than the feature itself: a privacy screen you do not fully trust is one you will never switch on.",
+      },
+      {
+        type: "p",
+        text: "It is worth being clear about what this is not. Privacy Mode hides the picture; it does not physically disable the Mac's own keyboard and mouse, so someone sitting at the machine can still interfere with it even though they cannot see what they are doing. If your threat model is a person with hands on the keyboard rather than eyes on the monitor, this is the wrong control and you want the Mac locked or in another room.",
+      },
+      {
+        type: "h2",
+        text: "What can you do today, with the tools you already have?",
+      },
+      {
+        type: "p",
+        text: "If you use macOS Screen Sharing on your own network, there is a genuinely useful option most people miss. In the Screen Sharing app, choosing to connect to a virtual display rather than the Mac's own display gives you a separate desktop that the physical monitor never shows. It needs a Mac with Apple silicon on both ends and recent versions of macOS, and it is a different workspace rather than your existing one, but if you meet those conditions it solves the problem completely and costs nothing.",
+      },
+      {
+        type: "p",
+        text: "The low-technology answers are also better than their reputation. A Mac mini on a shelf with no monitor attached has no privacy problem at all, which is one of the quiet advantages of running a headless machine. For a desktop Mac you can switch the monitor's input to another source, and for a laptop being used remotely you can simply close the lid - though on a MacBook that normally puts the machine to sleep unless something is deliberately keeping it awake.",
+      },
+      {
+        type: "p",
+        text: "If you are shopping specifically for this feature, do not take the marketing page at face value. Check that the vendor documents the privacy screen for macOS rather than for Windows, and check it against your macOS version and your chip. This is the single most common gap between what a remote tool advertises and what it does when you point it at a Mac.",
+      },
+      { type: "h2", text: "Where Servey fits, and where it does not" },
+      {
+        type: "p",
+        text: "Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 15.3 and iOS or iPadOS 18.5, it cannot reach a Windows or Linux machine, and it launches soon rather than today. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.",
+      },
+    ],
+  },
+  {
+    slug: "macbook-closed-lid-remote-access",
+    metaTitle: "Run a MacBook with the lid closed",
+    title: "How to use a MacBook with the lid closed and no external display",
+    description:
+      "Closing a MacBook's lid normally sleeps it. Here is how clamshell mode really works, why the dummy HDMI trick exists, and how to skip it entirely.",
+    date: "2026-09-05",
+    keywords: [
+      "macbook closed lid no external display",
+      "clamshell mode without monitor",
+      "headless macbook",
+      "mac mini no monitor",
+      "headless mac mini remote control",
+      "control mac from ipad",
+      "access mac remotely",
+      "home lab remote control",
+    ],
+    readingMinutes: 7,
+    lede: "An old MacBook is the cheapest always-on Mac most people already own. The problem is that closing the lid puts it to sleep, and Apple's official way round that needs an external display you do not want to buy, plug in or find desk space for. Here is what is actually happening, the three ways round it ranked by how much you will regret them, and how Servey removes the problem instead of working around it.",
+    body: [
+      {
+        type: "p",
+        text: "The behaviour is deliberate. macOS treats a closed lid as a signal that you have finished, and it sleeps the machine unless it can see a reason not to. Historically the only reason it accepted was clamshell mode: an external display, plus power, plus a keyboard or mouse. That made sense when a closed MacBook on a desk meant a docked workstation. It makes much less sense when you want the machine on a shelf answering requests, which is what people actually want from a spare laptop today.",
+      },
+      {
+        type: "table",
+        caption: "Four ways to keep a MacBook running with the lid shut.",
+        headers: ["Method", "What it needs", "Honest verdict"],
+        rows: [
+          [
+            "Official clamshell mode",
+            "External display, power, and a keyboard or mouse",
+            "Reliable, but you are buying and powering a monitor you never look at",
+          ],
+          [
+            "Dummy HDMI plug",
+            "A cheap headless display emulator, plus power",
+            "Works, costs a few pounds, and fixes the resolution problem too",
+          ],
+          [
+            "pmset disablesleep 1",
+            "Admin rights, a Terminal command, and remembering to undo it",
+            "Free and effective, but it is system-wide and easy to leave on by mistake",
+          ],
+          [
+            "A remote tool that manages it for you",
+            "Servey, on macOS 15.3 or later",
+            "Opt-in, authorised once, and reverted automatically when you go offline",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The plain command is the one most guides land on, so it is worth understanding what it really does before you paste it into a Terminal.",
+      },
+      { type: "h2", text: "What does pmset disablesleep actually change?" },
+      {
+        type: "p",
+        text: "It turns off the machine's ability to sleep entirely, for every reason, until something turns it back on. Running sudo pmset disablesleep 1 is not a lid setting - it is a global override that also stops idle sleep, and it persists across reboots. That is exactly what you want on a machine living on a shelf, and exactly what you do not want on the laptop you carry, because a MacBook that cannot sleep will run its battery flat in a bag and get warm doing it.",
+      },
+      {
+        type: "ul",
+        items: [
+          "sudo pmset -g - print the current settings, so you can see what you changed.",
+          "sudo pmset disablesleep 1 - stop the machine sleeping at all, lid included.",
+          "sudo pmset disablesleep 0 - put it back to normal behaviour.",
+          "sudo pmset -a disksleep 0 - keep the disks awake too, which matters if the machine serves files.",
+          "sudo pmset -a autorestart 1 - power back on by itself after a power cut.",
+        ],
+      },
+      {
+        type: "p",
+        text: "There is a second, quieter reason people end up buying a dummy HDMI plug even after this works. With no display attached at all, macOS falls back to a default resolution that is often a strange shape, so your remote desktop arrives tiny or letterboxed. A headless display emulator costs very little and presents a normal display to the system, which fixes both the sleep behaviour and the resolution in one go. If you are going to run a MacBook on a shelf for years, it is a reasonable few pounds to spend.",
+      },
+      {
+        type: "p",
+        text: "Two things to be aware of before you commit to a permanently awake laptop. Heat and battery: a MacBook running with the lid shut has its main vent partially blocked, so give it airflow and do not stack anything on it, and expect a battery kept permanently at full charge to age faster. And FileVault: if the disk is encrypted, an unattended reboot stops at the unlock screen and the machine is unreachable until someone types a password. That is a genuine security trade-off rather than a bug, and it is worth making the decision deliberately rather than discovering it after a power cut.",
+      },
+      { type: "h2", text: "How does Servey handle the lid?" },
+      {
+        type: "p",
+        text: "Servey has a closed-lid mode that manages the same system setting for you, and the design of it is mostly about not leaving a mess behind. It is opt-in, so nothing changes unless you ask. It asks for administrator authorisation at the point the Mac goes online rather than silently changing a system-wide power setting behind your back. And it records what your settings were beforehand and restores them when Servey goes offline or quits, so your laptop goes back to sleeping normally the moment you stop using it as a server.",
+      },
+      {
+        type: "p",
+        text: "That last part is the difference between this and the Terminal command, and it is the whole reason the feature exists. The failure mode of pmset disablesleep is not that it does not work - it works fine. It is that six weeks later you take the machine to a cafe, it never sleeps in your bag, and you have long since forgotten you typed it. A setting that undoes itself when it is no longer needed is the same capability without the trap.",
+      },
+      {
+        type: "p",
+        text: "No external display and no dummy plug are required for the lid part. Servey streams the Mac's screen to your iPhone or iPad directly, so the machine can sit closed on a shelf while you use it from the sofa. It connects on your local network directly and, from outside, over a private peer-to-peer connection between your own devices, including on carrier-grade NAT, without a VPN or port forwarding. There is also a real terminal one tap away, which on a headless machine is usually what you wanted anyway.",
+      },
+      {
+        type: "h2",
+        text: "Is a MacBook or a Mac mini the better always-on Mac?",
+      },
+      {
+        type: "p",
+        text: "A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so every problem in this article simply does not arise; it is the right thing to buy if you are buying. The argument for the laptop is that you already own it, and it comes with a built-in uninterruptible power supply, which is genuinely useful in a home lab. A brief power cut that would drop a mini does not interrupt a MacBook at all.",
+      },
+      {
+        type: "p",
+        text: "If you are setting up a mini instead, the ordering of the steps matters more than anything else, and we have written that up separately - turn on the services you need while a monitor is still attached, because two of the steps are close to impossible without one.",
+      },
+      {
+        type: "p",
+        text: "The honest limits on Servey: it is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.",
+      },
+    ],
+  },
+  {
+    slug: "who-connected-to-my-mac-remotely",
+    metaTitle: "Check who connected to your Mac remotely",
+    title: "How to check whether someone has connected to your Mac remotely",
+    description:
+      "The log commands that show remote logins and screen sharing sessions on macOS, what each one proves, and why most remote tools keep no record at all.",
+    date: "2026-09-05",
+    keywords: [
+      "check who connected to my mac",
+      "mac remote login history",
+      "is someone accessing my mac remotely",
+      "macos screen sharing",
+      "mac security remote access",
+      "access mac remotely",
+      "control mac remotely",
+      "best remote desktop for mac",
+    ],
+    readingMinutes: 7,
+    lede: "If you have ever wondered whether someone else has been on your Mac, the honest answer is that macOS makes it harder to check than it should be. The records exist, but they are spread across three different systems, two of them expire quickly, and none of them cover the remote access app you probably installed. Here is what you can actually find out, in the order worth trying - and why Servey keeps its own log instead.",
+    body: [
+      {
+        type: "p",
+        text: "First, a distinction that decides which of these commands is useful to you. macOS has two completely separate doors: Remote Login, which is SSH and gives someone a command line, and Screen Sharing, which is VNC and gives them your desktop. They are recorded in different places, so a check that clears one tells you nothing about the other. On top of both sits whatever third-party remote tool you installed, which keeps its own records or, more often, does not.",
+      },
+      {
+        type: "table",
+        caption: "Where to look, and what each source actually proves.",
+        headers: ["Source", "What it shows", "How far back", "Blind spots"],
+        rows: [
+          [
+            "last",
+            "Login sessions, including SSH, with source addresses",
+            "Weeks to months",
+            "Says nothing about screen sharing",
+          ],
+          [
+            "log show",
+            "Screen sharing and authentication events in the unified log",
+            "Days, sometimes hours",
+            "Rolls over fast and is hard to read",
+          ],
+          [
+            "System Settings, Sharing",
+            "Which doors are currently open",
+            "Right now only",
+            "No history at all",
+          ],
+          [
+            "Your remote access app",
+            "Depends entirely on the vendor",
+            "Varies",
+            "Most consumer tools keep no user-visible log",
+          ],
+          [
+            "Servey's activity log",
+            "Connections, approvals, refusals and sessions, in plain language",
+            "Recent history, on the Mac",
+            "Only covers Servey",
+          ],
+        ],
+      },
+      { type: "h2", text: "Which commands should I run first?" },
+      {
+        type: "p",
+        text: "Start with last, because it is the one with real history behind it and the output is readable without any special knowledge. Typing last in Terminal prints login sessions newest first, and a remote SSH login shows the source address in the third column. A local login at the keyboard shows a console entry instead. If you see an address you do not recognise, that is a genuine finding rather than noise, and it is worth acting on.",
+      },
+      {
+        type: "ul",
+        items: [
+          "last - every recorded login session, newest first.",
+          "last -20 - just the most recent twenty, which is usually enough.",
+          "who - who is logged in right now, this second.",
+          "sudo lsof -i -n -P | grep ESTABLISHED - live network connections, including an active screen sharing session.",
+          "log show --predicate 'process == \"screensharingd\"' --last 24h - screen sharing activity in the last day.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The last of those is the one people are usually looking for, and it is also the one that disappoints. The unified log is where macOS records screen sharing, but it is a rolling buffer sized for debugging rather than for auditing. On a busy Mac it can roll over in hours. If something happened last month, that record is gone, and no amount of cleverness with predicates will bring it back.",
+      },
+      {
+        type: "p",
+        text: "Then check what is currently switched on, because that is the part you can change straight away. In System Settings, under General and then Sharing, look at Screen Sharing and Remote Login. Turn off anything you are not deliberately using, and if Remote Management is on and you did not turn it on, that is worth investigating on its own - it is the Apple Remote Desktop agent and is not something a home user usually enables by accident. While you are there, check the list of users each service is allowed for, because an access list that says all users is a much bigger door than one naming yourself.",
+      },
+      {
+        type: "h2",
+        text: "Why does none of this cover the app I actually use?",
+      },
+      {
+        type: "p",
+        text: "Because a third-party remote tool does not go through Remote Login or Screen Sharing at all. It runs its own agent with its own connection, so it appears in none of the commands above. Whether there is any record of a session depends entirely on whether that vendor decided to keep one and show it to you. Business tiers of the big tools usually do, because auditing is something companies pay for. The consumer tiers most people run frequently do not, or keep it on the vendor's servers rather than yours.",
+      },
+      {
+        type: "p",
+        text: "This is a strange gap when you think about it. The software with the deepest access to your machine is the software least likely to tell you when it was used. It is also the reason the sensible advice about unused remote access tools is to remove them rather than leave them installed and switched off - an agent you never check is an agent you would not notice being used.",
+      },
+      { type: "h2", text: "What Servey records, and where it keeps it" },
+      {
+        type: "p",
+        text: "Servey keeps its own activity log on the Mac, written for a person reading it afterwards rather than for debugging. It records the things that actually happened: the Mac coming online, which device connected and over which path, every incorrect master password attempt and any resulting lockout, every device approval and removal, when the screen was being shared, when Privacy Mode was on, and every session opened, resumed, ended or timed out. Heartbeats, polling and retries are deliberately left out, because a log nobody can read at a glance is a wall rather than an audit trail.",
+      },
+      {
+        type: "p",
+        text: "Two properties matter more than the list itself. It lives on your Mac and is never uploaded to us, so it is a record you hold rather than one you request from a vendor. And it is the counterpart to the controls above it: The app asks for a master password set on the Mac and makes you approve each new device on the Mac itself, and this is what answers the question those controls raise but cannot answer on their own - who connected, when, and what did they do.",
+      },
+      {
+        type: "p",
+        text: "It is a record of Servey, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 15.3 and iOS or iPadOS 18.5, and launches soon rather than today.",
+      },
+      {
+        type: "h2",
+        text: "What should I do if I find something I did not expect?",
+      },
+      {
+        type: "p",
+        text: "Take the machine off the network first, before you investigate further, because everything else is easier when nothing can change underneath you. Then turn off Screen Sharing, Remote Login and Remote Management in Sharing, and change your Apple Account password and your Mac's login password from a different device that you trust. Check Users and Groups for an account you did not create, and check Login Items and Background Items for anything set to start on its own.",
+      },
+      {
+        type: "p",
+        text: "Two things worth knowing before you panic. A remote login from an address you do not recognise is a real signal. An entry in the unified log mentioning screensharingd is often not, because macOS uses parts of that machinery for its own features, and plenty of people have alarmed themselves reading a normal log. If you are unsure, the sequence above costs you an hour and closes every door regardless of what was actually happening, which is a better use of the time than trying to become a forensics expert in an afternoon.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -2482,7 +2938,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-09-01";
+export const contentUpdated = "2026-09-05";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -2962,6 +3418,94 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Is there an option that gives you a terminal as well as the screen?",
       a: "Yes, and neither of these does. Chrome Remote Desktop and Jump Desktop both mirror the desktop, so reaching a command line means aiming a cursor at the Terminal window inside the mirrored picture. Servey treats the shell as a first-class thing: a real terminal on your Mac sits one tap from the mirrored screen, so you type commands when typing is right and drive the GUI when clicking is right. It is Apple-only and pre-launch, so if you need a working tool today or need to reach a non-Mac host, Jump Desktop is the better answer.",
+    },
+  ],
+  "keep-terminal-session-running-after-disconnect": [
+    {
+      q: "How do I keep a command running after I close the terminal?",
+      a: "Run it inside a tmux session. Type tmux new -s work before you start anything long, then press Ctrl-b followed by d to detach. The command keeps running on the machine because it is a child of tmux rather than a child of your connection, so closing the app or losing signal cannot send it a hangup signal. Come back later and type tmux attach -t work to rejoin it with the scrollback and any waiting prompt intact. Servey opens every terminal session this way by default, so there is nothing to remember.",
+    },
+    {
+      q: "Why does my SSH session die when I lose signal?",
+      a: "Because your shell is a child of the SSH connection. When the connection drops, the kernel sends SIGHUP down the process tree and the default response to that signal is to terminate, so your shell and everything it started stop. This is a deliberate design going back to modems physically hanging up. Using nohup or disown prevents the kill but also takes away your ability to see output or answer a prompt, which is why a terminal multiplexer is the better answer.",
+    },
+    {
+      q: "Is tmux or screen better?",
+      a: "tmux, for a new setup. Both do the same core job of keeping your shell alive independently of your connection, but tmux is actively maintained, has cleaner splitting and scripting, and is what almost every guide written in the last decade assumes. GNU screen is often already installed and is perfectly usable, so if it is what your fingers know there is no urgent reason to switch.",
+    },
+    {
+      q: "Can I rejoin the same session from a different device?",
+      a: "Yes. tmux allows several clients to attach to one session at the same time, so you can start something on an iPad and carry on from your Mac with the same output in front of you. This is what makes it possible to begin a job on a phone and finish it at a desk. Servey exposes this directly: a session started from the iPad can be opened on the Mac, on a second device, or in any terminal app using the attach command it gives you.",
+    },
+    {
+      q: "Does Servey lock my sessions into its own app?",
+      a: "No. Servey runs your sessions as ordinary tmux sessions on your own Mac and shows you the attach command for each one. Paste that into Terminal.app, iTerm, Ghostty or an SSH connection and you are in the same live session with Servey uninstalled. Nothing you start is stored in a format only Servey can open, so the persistence you get is yours rather than ours.",
+    },
+  ],
+  "blank-mac-screen-during-remote-access": [
+    {
+      q: "Can I blank my Mac's screen while using it remotely?",
+      a: "Yes, but how well it works depends entirely on the tool. The approach that holds up on macOS is to blank the display after the point where the screen is captured, so the monitor goes black while the remote stream keeps showing the real desktop. Servey's Privacy Mode does this by forcing the display gamma to zero, which covers every app, every space, every connected monitor and the cursor. The older approach of installing a virtual display driver needs a kernel or system extension and is unreliable on modern macOS.",
+    },
+    {
+      q: "Why does TeamViewer's black screen not work on my Mac?",
+      a: "Because the feature depends on a display driver that macOS increasingly does not allow. The traditional privacy screen adds a virtual display and moves your desktop to it, which on macOS requires a kernel extension or a DriverKit system extension. Both need approval in Privacy and Security and a reboot, and kernel extensions on Apple silicon also require reduced security mode. The result is a feature that is often missing, greyed out, or broken by an OS update. This is an Apple design decision rather than a vendor failing.",
+    },
+    {
+      q: "Does blanking the screen stop someone using the Mac?",
+      a: "No, and this is an important limit. Blanking hides the picture; it does not disable the Mac's own keyboard, trackpad or mouse. Someone sitting at the machine can still type and click, even though they cannot see what they are doing. If your concern is a person with their hands on the keyboard rather than their eyes on the monitor, lock the Mac or put it somewhere else - a privacy screen is the wrong control for that.",
+    },
+    {
+      q: "Can I get a black screen with macOS Screen Sharing?",
+      a: "Effectively yes, using virtual displays. In the Screen Sharing app you can connect to a virtual display instead of the Mac's own display, which gives you a separate desktop the physical monitor never shows. It needs Apple silicon on both ends and recent versions of macOS, and it is a new workspace rather than the session already on screen. Within those conditions it solves the problem completely and costs nothing.",
+    },
+    {
+      q: "Is it safe if the connection drops while the screen is blanked?",
+      a: "With Servey, yes. Privacy Mode is restored on every stop and disconnect path, and macOS restores the display gamma automatically if the app exits for any reason including a crash, so a dropped connection cannot leave the Mac stuck on black. This matters more than the feature itself, because a privacy screen you do not fully trust is one you will never actually switch on.",
+    },
+  ],
+  "macbook-closed-lid-remote-access": [
+    {
+      q: "Can I use a MacBook with the lid closed and no external monitor?",
+      a: "Yes, but not with default settings, because macOS sleeps the machine when the lid closes unless it sees an external display, power and an input device. The three ways round it are a dummy HDMI plug that pretends to be a monitor, the command sudo pmset disablesleep 1 which turns off sleep entirely, or a remote tool that manages the setting for you. Servey has an opt-in closed-lid mode that asks for authorisation when the Mac goes online and restores your original power settings when it goes offline.",
+    },
+    {
+      q: "What does sudo pmset disablesleep 1 do?",
+      a: "It stops the Mac sleeping at all, for any reason, until you set it back to 0. It is not a lid-specific setting: it is a system-wide override that also disables idle sleep and persists across reboots. That is right for a machine living on a shelf and wrong for a laptop you carry, because a MacBook that cannot sleep will flatten its battery in a bag. The usual mistake is not that the command fails but that people forget they ran it.",
+    },
+    {
+      q: "Do I need a dummy HDMI plug?",
+      a: "Not for the sleep behaviour if you use pmset or a tool that manages it, but it solves a second problem worth knowing about. With no display attached at all, macOS falls back to a default resolution that is often an awkward shape, so your remote desktop arrives small or letterboxed. A headless display emulator costs very little and presents a normal display to the system, fixing both issues at once. Servey streams the Mac's screen to an iPhone or iPad directly, so no external display is needed for the lid part.",
+    },
+    {
+      q: "Is it bad for a MacBook to run with the lid closed all the time?",
+      a: "There are two real trade-offs rather than a hard no. Heat, because a closed lid partially blocks the main vent, so give the machine airflow and do not stack anything on top of it. And battery, because a cell held permanently at full charge ages faster than one that cycles. Neither is dangerous, but both argue for a Mac mini if you are actually buying a machine rather than repurposing one you already own.",
+    },
+    {
+      q: "Should I use a spare MacBook or buy a Mac mini for an always-on Mac?",
+      a: "A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so none of the problems in this article arise. The argument for the laptop is that you already own it and it has a built-in uninterruptible power supply, so a brief power cut that would drop a mini does not interrupt it at all.",
+    },
+  ],
+  "who-connected-to-my-mac-remotely": [
+    {
+      q: "How do I check if someone has connected to my Mac remotely?",
+      a: "Start with the last command in Terminal, which lists login sessions newest first and shows the source address for a remote SSH login. Then check screen sharing separately with log show --predicate 'process == \"screensharingd\"' --last 24h, because macOS records the two in different places. Finally open System Settings, General, Sharing and see which services are actually switched on. An address you do not recognise in last is a genuine finding worth acting on.",
+    },
+    {
+      q: "Does macOS keep a history of screen sharing sessions?",
+      a: "Only briefly. Screen sharing activity goes to the unified log, which is a rolling buffer sized for debugging rather than auditing, and on a busy Mac it can roll over within hours. If something happened last month the record is gone. Login sessions recorded by last last considerably longer, which is why that is the better place to start, and it is also why a tool that keeps its own durable log is more useful than it sounds.",
+    },
+    {
+      q: "Will these commands show sessions from TeamViewer or AnyDesk?",
+      a: "No. A third-party remote tool runs its own agent and its own connection rather than going through Remote Login or Screen Sharing, so it appears in none of the built-in logs. Whether any record exists depends on the vendor, and consumer tiers often keep none that you can read. This is why the standard advice for a remote access tool you no longer use is to uninstall it rather than leave it installed and switched off.",
+    },
+    {
+      q: "Does Servey keep a record of who connected?",
+      a: "Yes, and it stays on your Mac. Servey writes a plain-language activity log covering the Mac coming online, which device connected and over which path, every incorrect master password attempt and any lockout, every device approval and removal, and every session opened, resumed, ended or timed out. It is never uploaded to us, so it is a record you hold rather than one you ask a vendor for. It covers Servey only, so the built-in commands are still the right tools for SSH and Screen Sharing.",
+    },
+    {
+      q: "What should I do if I find a remote login I did not make?",
+      a: "Disconnect the Mac from the network first, so nothing can change while you look. Then switch off Screen Sharing, Remote Login and Remote Management in System Settings under Sharing, and change your Apple Account password and your Mac login password from a different device you trust. Check Users and Groups for an account you did not create, and Login Items for anything set to start on its own. The whole sequence takes about an hour and closes every door regardless of what was really happening.",
     },
   ],
 };

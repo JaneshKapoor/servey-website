@@ -31,29 +31,37 @@ export const audiences: Audience[] = [
   {
     icon: "Code2",
     who: "Developers",
-    before: "A build is running on the Mac at your desk, and you are not at your desk.",
-    after: "Tail the log, restart the job, or open a simulator from your phone - in your real environment, with your toolchain and credentials already in place.",
+    before:
+      "A build is running on the Mac at your desk, and you are not at your desk.",
+    after:
+      "Tail the log, restart the job, or open a simulator from your phone - in your real environment, with your toolchain and credentials already in place.",
     slug: "mac-for-developers",
   },
   {
     icon: "Bot",
     who: "Anyone running AI agents",
-    before: "Your coding agent has been working for forty minutes and has stopped to ask a yes-or-no question.",
-    after: "See what it is doing, answer the prompt, and let it carry on - without walking back to the desk to press one key.",
+    before:
+      "Your coding agent has been working for forty minutes and has stopped to ask a yes-or-no question.",
+    after:
+      "See what it is doing, answer the prompt, and let it carry on - without walking back to the desk to press one key.",
     slug: "remote-mac-for-ai-agents",
   },
   {
     icon: "Server",
     who: "Headless Mac and home lab owners",
-    before: "The Mac mini has no monitor, no keyboard, and lives on a shelf behind the router.",
-    after: "Its screen and its shell on your iPad, through the login screen and back after a reboot, with nothing exposed to the internet. A MacBook counts too - Servey can drive one with the lid shut, no dummy HDMI plug required.",
+    before:
+      "The Mac mini has no monitor, no keyboard, and lives on a shelf behind the router.",
+    after:
+      "Its screen and its shell on your iPad, through the login screen and back after a reboot, with nothing exposed to the internet. A MacBook counts too - Servey can drive one with the lid shut, no dummy HDMI plug required.",
     slug: "headless-mac-mini",
   },
   {
     icon: "Smartphone",
     who: "Everyone else with a Mac",
-    before: "The file, the screenshot, the one click you need is on a Mac you left at home.",
-    after: "Your whole desktop on your iPhone, aspect-correct and sharp enough to actually read - so you just do it and move on.",
+    before:
+      "The file, the screenshot, the one click you need is on a Mac you left at home.",
+    after:
+      "Your whole desktop on your iPhone, aspect-correct and sharp enough to actually read - so you just do it and move on.",
     slug: "control-mac-from-iphone",
   },
 ];
@@ -78,7 +86,11 @@ export const features: Feature[] = [
     eyebrow: "Screen mirroring",
     title: "Crystal-clear screen mirroring.",
     body: "On your network, Servey streams a custom hardware-HEVC feed of your Mac - razor-sharp text at a high frame rate with minimal latency. Pinch to zoom in and inspect the smallest detail.",
-    bullets: ["Full-HD+, aspect-correct", "Hardware HEVC via VideoToolbox", "Pinch-to-zoom inspection"],
+    bullets: [
+      "Full-HD+, aspect-correct",
+      "Hardware HEVC via VideoToolbox",
+      "Pinch-to-zoom inspection",
+    ],
     screenshot: "mirroring-ipad",
   },
   {
@@ -86,7 +98,11 @@ export const features: Feature[] = [
     eyebrow: "Input",
     title: "Real mouse, keyboard & trackpad.",
     body: "A purpose-built on-screen trackpad reaches every edge of your screen, with left/right click and a scroll control. The full keyboard is here too - including ⌘C, ⌘V, Esc, Tab, Return and Backspace.",
-    bullets: ["Relative-move virtual trackpad", "L/R click, drag & scroll", "Shortcuts: ⌘C · ⌘V · Esc · Tab"],
+    bullets: [
+      "Relative-move virtual trackpad",
+      "L/R click, drag & scroll",
+      "Shortcuts: ⌘C · ⌘V · Esc · Tab",
+    ],
     screenshot: "iphone-controls",
   },
   {
@@ -94,7 +110,11 @@ export const features: Feature[] = [
     eyebrow: "Terminal",
     title: "A real terminal, in your pocket.",
     body: "Not a toy - a genuine shell on your Mac, available over either connection path. Fix a build from the couch, tail a log on the train, or drive a headless Mac Mini from anywhere. And what you start does not stop when you put the phone down.",
-    bullets: ["Full shell access", "Works on LAN and remote", "Native, not a web console"],
+    bullets: [
+      "Full shell access",
+      "Works on LAN and remote",
+      "Native, not a web console",
+    ],
     screenshot: "terminal",
   },
   {
@@ -139,7 +159,11 @@ export const features: Feature[] = [
     eyebrow: "Quality",
     title: "Adaptive quality, full frame.",
     body: "Servey continuously tunes resolution and bitrate to the live network path - direct or relayed - so the picture stays smooth without ever cropping or degrading your screen.",
-    bullets: ["Path-aware bitrate", "No cropping, ever", "Smooth on weak connections"],
+    bullets: [
+      "Path-aware bitrate",
+      "No cropping, ever",
+      "Smooth on weak connections",
+    ],
     screenshot: "quality-closeup",
   },
 ];
@@ -185,7 +209,8 @@ export const comparison = {
     {
       theme: "Privacy",
       traditional: "Video often relayed through a vendor cloud",
-      servey: "P2P first; when your network won't allow it, our own relay - not a vendor's cloud",
+      servey:
+        "P2P first; when your network won't allow it, our own relay - not a vendor's cloud",
     },
     {
       theme: "Terminal",
@@ -195,7 +220,8 @@ export const comparison = {
     {
       theme: "Persistence",
       traditional: "Close the client and the session dies with it",
-      servey: "Named sessions keep running on the Mac; reattach from any device",
+      servey:
+        "Named sessions keep running on the Mac; reattach from any device",
     },
     {
       theme: "Touch UX",
@@ -209,7 +235,8 @@ export const comparison = {
     },
     {
       theme: "Cost to try",
-      traditional: "Countdown trial, or a free tier that polices commercial use",
+      traditional:
+        "Countdown trial, or a free tier that polices commercial use",
       servey: "Free tier, no card: five-minute sessions, five a day",
     },
   ],
