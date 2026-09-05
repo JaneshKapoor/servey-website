@@ -1,11 +1,11 @@
 import { Lock, ShieldCheck, KeyRound, ServerOff } from "lucide-react";
 
-/** Static illustration for the "Private by design" feature (05). */
+/** Static illustration for the "Two locks, not one" feature (06). */
 export function PrivacyIllustration() {
   const points = [
-    { icon: KeyRound, label: "Google sign-in on both devices" },
-    { icon: ShieldCheck, label: "Only your Mac pairs with your devices" },
-    { icon: ServerOff, label: "Remote video hardly touches our servers" },
+    { icon: KeyRound, label: "A master password, set on your Mac" },
+    { icon: ShieldCheck, label: "Every new device approved by you" },
+    { icon: ServerOff, label: "P2P first, our own relay - never a vendor's" },
   ];
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border-strong bg-surface p-7 shadow-xl shadow-black/30">

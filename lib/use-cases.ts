@@ -684,7 +684,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Does my code leave my Mac?",
-        a: "The work stays on your Mac. On the remote path the session video is end-to-end encrypted between your own devices and hardly touches our servers.",
+        a: "The work stays on your Mac. On the remote path the session video is end-to-end encrypted between your own devices, and it goes direct rather than through a vendor's cloud.",
       },
       {
         q: "Is it available yet?",

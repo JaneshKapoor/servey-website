@@ -136,7 +136,7 @@ export function DualPathDiagram() {
           <Node icon={Smartphone} label="iPhone / iPad" />
         </div>
         <p className="mt-3 text-center text-[11px] text-muted">
-          End-to-end encrypted · your screen video hardly touches our servers
+          End-to-end encrypted · direct between your devices whenever your network allows it
         </p>
       </div>
     </div>

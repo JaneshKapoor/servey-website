@@ -65,7 +65,7 @@ It switches automatically. You never choose a mode, toggle a setting, or find ou
 
 Your screen is not our business model.
 
-Servey pairs only your Mac with your own iPhone or iPad, scoped to your own account, with explicit device registration and approval. On the remote path, your screen video travels peer-to-peer and end-to-end encrypted between your two devices - it hardly touches our servers at all. Our cloud brokers the initial handshake and then gets out of the way.
+Servey pairs only your Mac with your own iPhone or iPad, scoped to your own account. On top of that you set a master password on the Mac that every device must produce, each new device waits for you to approve it on the Mac itself, and you can revoke any device at any time. On the remote path, your screen video travels peer-to-peer and end-to-end encrypted between your two devices, and our cloud only brokers the initial handshake. When a network refuses to allow a direct connection, the encrypted stream is relayed through our own server rather than a third party's cloud.
 
 That is a deliberate architectural choice with a real cost to us, and we made it because "your desktop is relayed through a vendor's datacentre" is a sentence that should make anyone uncomfortable.
 
