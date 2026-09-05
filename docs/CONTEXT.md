@@ -67,10 +67,20 @@ constraint drives most of the growth decisions in §9.
 
 | Plan | India | International | Includes |
 |---|---|---|---|
-| **Terminal** | ₹99/mo | $1.99/mo | Real terminal, local + remote, shortcuts |
+| **Free** | ₹0 | $0 | Everything, capped at **5-minute sessions, 5 a day**, reset at local midnight. No card. |
+| **Terminal** | ₹99/mo | $1.99/mo | Unlimited terminal time; persistent named sessions; reattach from any device |
 | **Full access** *(featured)* | ₹299/mo | $4.49/mo | Everything above + screen mirroring, mouse/keyboard/trackpad, adaptive quality |
 
-Monthly subscription, cancel anytime, **not charged until launch**.
+Monthly subscription, cancel anytime, **not charged until launch**. The free
+tier is enforced client-side by `SessionLimitManager` in the iOS app
+(`freeSessionSeconds = 5 * 60`, `freeSessionsPerDay = 5`) - what a paid plan
+buys is **time, not a longer feature list**, which is why the pricing copy
+says so explicitly.
+
+**System requirements: macOS 15.3+ on the host, iOS/iPadOS 18.5+ on the
+client.** A genuinely narrow window that excludes some visitors - stated on
+the page deliberately, because finding out after joining a waitlist is worse
+than finding out before.
 
 ### Brand
 
@@ -170,8 +180,8 @@ Site-wide constants. `site.url` is the canonical origin - change it here and
 sitemap, robots, JSON-LD and every canonical tag follow.
 
 ### `lib/content.ts`
-Homepage sections: `trustItems`, `features` (6), `steps` (3), `comparison`
-(7 rows), `faqs` (6), `pricing` (2 plans × 2 regions).
+Homepage sections: `trustItems`, `features` (7), `steps` (3), `comparison`
+(9 rows), `faqs` (10), `pricing` (3 plans × 2 regions).
 `features` also feeds `SoftwareApplication.featureList` and `faqs` feeds the
 homepage `FAQPage` - so editing copy here updates the structured data.
 
@@ -261,7 +271,7 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**34 URLs in `sitemap.xml`**, priority-ordered:
+**38 URLs in `sitemap.xml`**, priority-ordered:
 
 | Priority | URLs |
 |---|---|

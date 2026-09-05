@@ -47,7 +47,7 @@ clicks**. GSC anonymises rare queries, so ~31 clicks are unattributable to a
 specific term. Cluster click counts below are therefore floors, not totals.
 
 **Index coverage (verified 31 Aug 2026):**
-- **Google** - sitemap submitted, now **34 URLs**.
+- **Google** - sitemap submitted, now **38 URLs**.
 - **Bing - the blocking status is `Discovered but not crawled`, not "not indexed".**
   Two corrections landed here on 1 Sep, in this order:
   1. The original note said "indexed... so that pipe is connected." Never
@@ -245,7 +245,10 @@ queries are overwhelmingly `how to ...` and the page answered nothing. Rebuilt
 - **`sizes` on every responsive image**, matched to its real rendered width.
 - **IndexNow** after every content deploy (`npm run indexnow`) - fastest route
   into Bing, and therefore into ChatGPT Search.
-- **`npm run seo:audit`** before/after deploys. Currently **32/32 pass**.
+- **`npm run seo:audit`** before/after deploys. Currently **38/38 pass**
+  (run it against a local build with `--base=http://localhost:PORT` to cover
+  pages that are not on the live sitemap yet - the default base is production,
+  so new posts are silently skipped on the run that matters most).
 
 ### Answer engines (AEO / GEO)
 - **Self-contained passages of ~130–170 words** that still make sense quoted in
@@ -430,14 +433,24 @@ be used for, and the shot list for recording it properly.
    resubmitted by the owner - 1 known sitemap, 0 warnings, 34 URLs discovered,
    crawled 1 Sep.** What remains is waiting for Bing to actually crawl: re-inspect
    a sample in ~a week, starting with `splashtop-vs-jump-desktop` and
-   `control-your-mac-from-iphone-ipad`.
-3. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
-4. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
+   `control-your-mac-from-iphone-ipad`. **5 Sep: sitemap is now 38 URLs, so the
+   4 new posts need submitting too** once the deploy is live.
+3. **Capture the Mac host's SESSIONS screen (new, 5 Sep).** The persistent-
+   sessions feature card ships a styled placeholder, because the standing rule
+   is placeholders and never mocked-up UI. It is now the most important feature
+   on the page with no picture, and it is the one a visitor is least likely to
+   believe without seeing. One screenshot from the owner closes it -
+   `public/screenshots/terminal-sessions.png`, then flip `ready` to `true` in
+   `lib/screenshots.ts`. **Check the desktop for personal data before sending**
+   (see the `hero-devices.png` and `Servey_Live_Demo.mov` precedents in
+   `docs/CONTEXT.md`).
+4. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
+5. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
    sends to existing waitlist members. Do not re-propose this.
-5. **BetaList / Peerlist / Uneed** submissions.
-6. **Add `VideoObject` schema** once the demo exists.
-7. Re-test AI citation on **comparison** queries in ~2 weeks.
-8. At launch: App Store listing, AlternativeTo submission, Show HN.
+6. **BetaList / Peerlist / Uneed** submissions.
+7. **Add `VideoObject` schema** once the demo exists.
+8. Re-test AI citation on **comparison** queries in ~2 weeks.
+9. At launch: App Store listing, AlternativeTo submission, Show HN.
 
 **Explicitly not on this list:** more landing pages, more metadata rewrites,
 more schema. On-site SEO has reached sharply diminishing returns. What is missing
@@ -449,6 +462,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-05 | **Site brought up to date with the app; 34 -> 38 URLs.** The site described the product as of roughly mid-July while four things had shipped since, so the copy work came before the content work. **Added:** a 7th feature card for **persistent sessions** (named tmux sessions on the Mac that outlive the app - the biggest change to the product and the one that converts the AI-agent persona already written into the page, which until now implied you had to sit and watch); a **Free column** in pricing (5-minute sessions, 5 a day, no card - the entire top of the funnel, previously invisible); the **second lock** in the privacy card and policy (master password set on the Mac, per-device approval, revocation - the page said only "device registration & approval"); and the **activity log** in the privacy policy. **Corrected: "video hardly touches our servers" was an overclaim** and appeared in **8 places**. True on LAN and for direct P2P, false on a strict NAT where the stream relays - which the Networking card admitted two sections earlier. Replaced everywhere with "P2P first; our own relay if your network insists", which is *stronger* now the relay is ours (`turn.servey.in`) rather than a vendor's. Also: launch FAQ no longer reads as less certain than the pricing section three scrolls above it; **macOS 15.3 / iOS 18.5 stated plainly** (narrow, excludes visitors, better learned before joining a waitlist than after); Terminal plan bullets rewritten (oldest copy on the page, and it undersold what the tier became). **Four posts**, each aimed at existing demand rather than at a feature name: `keep-terminal-session-running-after-disconnect` (SIGHUP, tmux, and why it is harder from a phone - no Control key for the prefix), `blank-mac-screen-during-remote-access` (why vendor privacy screens keep breaking on macOS - kernel/DriverKit extensions - and why the gamma-after-capture approach avoids every overlay failure mode; targets `teamviewer black screen mac`), `macbook-closed-lid-remote-access` (clamshell, dummy HDMI, what `pmset disablesleep` really changes), `who-connected-to-my-mac-remotely` (`last` vs `log show`, and the honest point that the unified log rolls over in hours). Depth 3.6-6.2%, density 5.4-6.0/1k, all measured **before** committing per the 1 Sep rule. **Every feature claim was verified against the app repo at `894c87f`, not against a changelog** - free-tier numbers read out of `SessionLimitManager`, deployment targets out of the pbxproj, relay host out of the ICE config. The audit that started this is an artifact the owner commissioned; treating its claims as requirements rather than facts was the right instinct, because two of them needed the source to confirm. Fixed `control-iphone-from-mac` at 161 chars, the one failing audit check. **Local audit 38/38, zero duplicate titles or descriptions across 40 rendered pages.** |
 | 2026-09-01 | **Bing sitemap cleaned by the owner.** The 7 bogus rows (page URLs submitted as sitemaps on 16 Jul) deleted and `sitemap.xml` resubmitted. Bing now reports **1 known sitemap, 0 errors, 0 warnings, 34 URLs discovered, last crawl 1 Sep** - matching the live sitemap exactly and replacing the stale 19 Aug read at 29 URLs. Both remaining Bing inputs (sitemap freshness and per-URL crawl requests) are now clean; the only open Bing item is waiting for the crawl itself. |
 | 2026-09-01 | **Bing crawl gap worked through: 16 URLs submitted for indexing.** Audited all 18 blog posts individually through URL Inspection and submitted every one that was either uncrawled or holding stale content. **12 were `Discovered but not crawled`** - Bing knew them and had never fetched them, including 5 of the 6 comparison posts that rank page one on Google. 4 more were indexed but stale and got a recrawl request, most importantly `control-your-mac-from-iphone-ipad`, which Bing was holding as the **pre-rebuild pitch version**. Only `screens-vs-jump-desktop` and `best-remote-desktop-for-mac` were left alone - indexed and unchanged. **Bing's daily quota is 100, not 10** (owner was right); it went 99 -> 83, which independently confirms all 16 submissions landed and is the check to use, since the success toast is easy to miss in a batch. Expect crawling over the following days; re-inspect a sample rather than assuming. |
 | 2026-09-01 | **Correction to the same-day Bing entry below: Site Explorer undercounts, and "9 of 34 indexed" was wrong.** Checking individual URLs through **URL Inspection** shows `screens-vs-jump-desktop` **"Indexed successfully"** despite being absent from Site Explorer under both the `Indexed URLs` and `All URLs` filters. So the claim "not one comparison post is in Bing's index" was false, and it was drawn from a report that is not the index. **Rule: Site Explorer is a lagging partial report; use URL Inspection for any per-URL question, and never conclude a URL is missing from Site Explorer alone.** The real status of the uncrawled pages is **`Discovered but not crawled`** - Bing knows the URL and has not fetched it (`splashtop-vs-jump-desktop` discovered 19 Aug, `jump-desktop-vs-rustdesk` and `headless-mac-mini-setup` 31 Aug). This is **not** Google's `Crawled - currently not indexed`; it carries no quality verdict, it is a crawl queue, and **Request indexing is the right lever**. Two process notes: the IndexNow push earlier today did **not** clear these, so per-URL requests are needed on top of it; and the URL Inspection result panel **does not refresh when you type a new URL and press Enter** - it keeps showing the previous URL's verdict until you click **Inspect**, which briefly produced a false "Indexed successfully" for `headless-mac-mini-setup` here. Confirm the `urlToInspect` query parameter matches before believing a result. |
