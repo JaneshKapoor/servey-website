@@ -19,7 +19,7 @@ export function Pricing() {
         <SectionHeading
           label="Pricing"
           title="Simple pricing. Pick your plan."
-          intro="Start with a real terminal, or unlock the full experience with screen mirroring. One flat monthly price - no add-ons, no surprises."
+          intro="Start free with no card at all, add unlimited terminal time, or unlock the full experience with screen mirroring. One flat monthly price - no add-ons, no surprises."
         />
 
         {/* Region toggle */}
@@ -52,7 +52,7 @@ export function Pricing() {
           </div>
         </Reveal>
 
-        <RevealGroup className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+        <RevealGroup className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-3">
           {pricing.plans.map((plan) => {
             const symbol = region === "inr" ? "₹" : "$";
             const amount = plan.price[region];

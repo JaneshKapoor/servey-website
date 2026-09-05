@@ -116,13 +116,22 @@ const jsonLd = {
       "@id": `${site.url}/#app`,
       name: site.name,
       applicationCategory: "UtilitiesApplication",
-      operatingSystem: "macOS, iOS, iPadOS",
+      operatingSystem: "macOS 15.3 or later, iOS 18.5 or later, iPadOS 18.5 or later",
       description: site.description,
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       featureList: features.map((f) => f.title.replace(/\.$/, "")),
       screenshot: productScreenshots.map((s) => ({ "@id": s["@id"] })),
       offers: [
+        {
+          "@type": "Offer",
+          name: "Free",
+          price: "0",
+          priceCurrency: "USD",
+          description:
+            "Five-minute sessions, five a day, no card. Every Servey feature included.",
+          availability: "https://schema.org/PreOrder",
+        },
         {
           "@type": "Offer",
           name: "Terminal",

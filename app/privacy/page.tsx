@@ -72,9 +72,29 @@ export default function PrivacyPage() {
       <p>
         Servey is <strong>private by design</strong>. You sign in with Google on both
         your Mac and your iPhone or iPad, and Servey only ever pairs your own devices,
-        scoped to your account. On the remote path, your screen video travels{" "}
-        <strong>peer-to-peer and end-to-end encrypted</strong> - it hardly touches our
-        servers. Our cloud is used only to broker the initial connection handshake.
+        scoped to your account. On top of that you set a{" "}
+        <strong>master password</strong> on your Mac. We never receive it: your Mac
+        stores only a key derived from it, in the macOS Keychain, and there is
+        deliberately no remote reset. Every device must prove it knows that password,
+        every new device waits for you to approve it on the Mac itself, and you can
+        revoke any device at any time.
+      </p>
+      <p>
+        On the remote path your screen video travels{" "}
+        <strong>peer-to-peer and end-to-end encrypted</strong> between your own
+        devices, and our cloud is used only to broker the initial connection
+        handshake. Some networks - strict NATs and certain mobile carriers - refuse to
+        allow a direct connection. When that happens the encrypted stream is relayed,
+        and it is relayed through <strong>our own server</strong> rather than a
+        third-party vendor&apos;s cloud.
+      </p>
+      <p>
+        Your Mac also keeps an <strong>activity log</strong> of what happened to it:
+        when it came online, which device connected and over which path, incorrect
+        master password attempts, approvals and removals, and sessions opened and
+        ended. That log is written to your Mac and{" "}
+        <strong>is never uploaded to us</strong>. It exists so you can answer
+        &quot;who connected to my Mac, and when&quot; without asking anyone.
       </p>
 
       <h2>How we use your email</h2>

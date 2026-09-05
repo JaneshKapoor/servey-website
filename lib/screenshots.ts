@@ -96,6 +96,14 @@ export const screenshots = {
     src: "/screenshots/quality-closeup.png",
     ready: true,
   },
+  "terminal-sessions": {
+    // Placeholder until a real capture of the Mac host's SESSIONS list exists.
+    // We ship styled placeholders rather than mocked-up UI.
+    frame: "mac",
+    ratio: 16 / 10,
+    hint: "Mac - terminal sessions",
+    alt: "Servey's session list on the Mac host - named terminal sessions that keep running after the app is closed, each one resumable from any device",
+  },
   "mac-host-ui": {
     // The capture already includes the macOS window chrome, so it renders in a
     // plain crop frame (not the synthetic MacWindow) to avoid double title bars.

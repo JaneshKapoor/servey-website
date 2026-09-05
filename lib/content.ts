@@ -46,7 +46,7 @@ export const audiences: Audience[] = [
     icon: "Server",
     who: "Headless Mac and home lab owners",
     before: "The Mac mini has no monitor, no keyboard, and lives on a shelf behind the router.",
-    after: "Its screen and its shell on your iPad, through the login screen and back after a reboot, with nothing exposed to the internet.",
+    after: "Its screen and its shell on your iPad, through the login screen and back after a reboot, with nothing exposed to the internet. A MacBook counts too - Servey can drive one with the lid shut, no dummy HDMI plug required.",
     slug: "headless-mac-mini",
   },
   {
@@ -66,9 +66,9 @@ export interface Feature {
   body: string;
   bullets?: string[];
   screenshot?: ScreenshotKey;
-  /** feature 04 renders the animated dual-path diagram instead of a screenshot */
+  /** feature 05 renders the animated dual-path diagram instead of a screenshot */
   diagram?: boolean;
-  /** feature 05 renders the privacy illustration instead of a screenshot */
+  /** feature 06 renders the privacy illustration instead of a screenshot */
   privacy?: boolean;
 }
 
@@ -93,28 +93,49 @@ export const features: Feature[] = [
     index: "03",
     eyebrow: "Terminal",
     title: "A real terminal, in your pocket.",
-    body: "Not a toy - a genuine shell on your Mac, available over either connection path. Fix a build from the couch, tail a log on the train, or drive a headless Mac Mini from anywhere.",
+    body: "Not a toy - a genuine shell on your Mac, available over either connection path. Fix a build from the couch, tail a log on the train, or drive a headless Mac Mini from anywhere. And what you start does not stop when you put the phone down.",
     bullets: ["Full shell access", "Works on LAN and remote", "Native, not a web console"],
     screenshot: "terminal",
   },
   {
     index: "04",
-    eyebrow: "Networking",
-    title: "Two paths, zero thought.",
-    body: "Same Wi-Fi? Servey uses a direct hardware-HEVC stream - no cloud in the middle. Different networks? It falls back to a private peer-to-peer WebRTC connection. It switches automatically; you never choose.",
-    bullets: ["LAN: direct hardware HEVC", "Remote: P2P WebRTC (H.264)", "STUN/TURN traversal, even on CGNAT"],
-    diagram: true,
+    eyebrow: "Sessions",
+    title: "Your work keeps running.",
+    body: "Every terminal session is a named session that lives on the Mac, not inside the app. Start a long build from the iPad, close Servey, lose signal, get on a plane - it is still going when you come back. Pick it up from the iPad, from the Mac, from a second device at the same time, or from a plain Terminal window with tmux attach and no Servey involved at all.",
+    bullets: [
+      "Named sessions that outlive the app",
+      "Drop off, come back, still there",
+      "Resume on Mac, iPad, or plain Terminal",
+    ],
+    screenshot: "terminal-sessions",
   },
   {
     index: "05",
-    eyebrow: "Privacy",
-    title: "Private by design.",
-    body: "Sign in with Google on both devices; Servey only ever pairs your Mac with your iPhone or iPad. On the remote path your screen video is peer-to-peer and end-to-end encrypted - it hardly touches our servers. The cloud only brokers the initial handshake.",
-    bullets: ["Account-scoped device pairing", "Video hardly touches our servers", "Device registration & approval"],
-    privacy: true,
+    eyebrow: "Networking",
+    title: "Two paths, zero thought.",
+    body: "Same Wi-Fi? Servey uses a direct hardware-HEVC stream - no cloud in the middle. Different networks? It falls back to a private peer-to-peer WebRTC connection. It switches automatically, and if you walk out of the door and drop onto cellular mid-session it renegotiates the connection instead of dropping you.",
+    bullets: [
+      "LAN: direct hardware HEVC",
+      "Remote: P2P WebRTC (H.264)",
+      "STUN/TURN traversal, even on CGNAT",
+      "Survives a Wi-Fi to cellular handover",
+    ],
+    diagram: true,
   },
   {
     index: "06",
+    eyebrow: "Privacy",
+    title: "Two locks, not one.",
+    body: "Sign in with Google on both devices, then set a master password on your Mac that every device has to produce before it can connect. New devices wait for you to approve them on the Mac itself, and you can revoke any of them at any time. Your screen video travels peer-to-peer and end-to-end encrypted; when a network refuses to allow that, it relays through our own server rather than a third party's cloud.",
+    bullets: [
+      "A master password, set on your Mac",
+      "Every new device approved by you",
+      "P2P first, our own relay if your network insists",
+    ],
+    privacy: true,
+  },
+  {
+    index: "07",
     eyebrow: "Quality",
     title: "Adaptive quality, full frame.",
     body: "Servey continuously tunes resolution and bitrate to the live network path - direct or relayed - so the picture stays smooth without ever cropping or degrading your screen.",
@@ -164,12 +185,17 @@ export const comparison = {
     {
       theme: "Privacy",
       traditional: "Video often relayed through a vendor cloud",
-      servey: "P2P - video hardly touches our servers; cloud only brokers the handshake",
+      servey: "P2P first; when your network won't allow it, our own relay - not a vendor's cloud",
     },
     {
       theme: "Terminal",
       traditional: "Add-on or absent",
       servey: "Real terminal built in, over both paths",
+    },
+    {
+      theme: "Persistence",
+      traditional: "Close the client and the session dies with it",
+      servey: "Named sessions keep running on the Mac; reattach from any device",
     },
     {
       theme: "Touch UX",
@@ -180,6 +206,11 @@ export const comparison = {
       theme: "Adaptivity",
       traditional: "Fixed or clumsy quality",
       servey: "Path-aware adaptive quality, no cropping",
+    },
+    {
+      theme: "Cost to try",
+      traditional: "Countdown trial, or a free tier that polices commercial use",
+      servey: "Free tier, no card: five-minute sessions, five a day",
     },
   ],
 } as const;
@@ -192,7 +223,19 @@ export const faqs = [
   },
   {
     q: "Is it secure and private?",
-    a: "Yes. Servey pairs only your Mac with your own iPhone or iPad, scoped to your account. On the remote path your screen stays private and end-to-end encrypted between your devices - it hardly touches our servers.",
+    a: "Yes, and there are two locks rather than one. Signing in with Google pairs only your own devices, scoped to your account. On top of that you set a master password on your Mac that every device must produce before it can connect, each new device waits for you to approve it on the Mac itself, and you can revoke any device at any time. Your screen video travels end-to-end encrypted peer-to-peer between your devices; if your network will not allow a direct connection, it relays through our own server rather than a third party's cloud.",
+  },
+  {
+    q: "What happens to my terminal session if I disconnect?",
+    a: "It keeps running. Every terminal session in Servey is a named session that lives on your Mac rather than inside the app, so closing Servey, losing signal or putting the phone in your pocket does not stop the work. Start a long build from the iPad, come back an hour later, and you rejoin it exactly where it got to. You can also open the same live session on your Mac and your iPad at once.",
+  },
+  {
+    q: "Can I hide what I am doing from people near my Mac?",
+    a: "Yes. Privacy Mode blacks out every monitor physically attached to your Mac while the stream you are watching keeps showing the real desktop. It covers every app, every space and every connected display, including the cursor, and nothing is overlaid on screen. If Servey quits or the connection drops, macOS restores the displays on its own, so it cannot leave the Mac stuck on black.",
+  },
+  {
+    q: "What if I stop using Servey - am I locked in?",
+    a: "No. Servey runs your terminal sessions in tmux on your own Mac, and the app shows you the attach command for each one. Paste it into Terminal.app, iTerm, Ghostty or an SSH connection and you are in the same live session with Servey uninstalled. Nothing you start in Servey is trapped in a format only Servey can open.",
   },
   {
     q: "Does it work over cellular?",
@@ -200,15 +243,19 @@ export const faqs = [
   },
   {
     q: "Which devices are supported?",
-    a: "A Mac as the host, controlled from an iPhone or iPad. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.",
+    a: "A Mac as the host, controlled from an iPhone or iPad. Servey needs macOS 15.3 or later on the Mac and iOS or iPadOS 18.5 or later on the device you control it from, so it is worth checking your versions before you join the waitlist. Any Mac that runs macOS 15.3 works, Apple silicon or Intel, and a MacBook can be driven with the lid shut. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.",
   },
   {
     q: "Do I need a VPN or port forwarding?",
     a: "No. There's no VPN to configure and no ports to forward. Sign in with Google on both devices and your Mac appears - that's the entire setup.",
   },
   {
+    q: "Is there a free version?",
+    a: "Yes. Servey has a free tier with no card and no countdown: five-minute sessions, five sessions a day, and your daily allowance resets at local midnight. Everything Servey does is in it - screen mirroring, input and the terminal - so what you are paying for on a paid plan is time, not a longer feature list.",
+  },
+  {
     q: "When is it launching and how much will it cost?",
-    a: "Servey is a simple monthly subscription. The Terminal plan is $1.99/month, or ₹99/month in India; Full access - screen mirroring plus terminal - is $4.49/month, or ₹299/month in India. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
+    a: "Servey is in pre-submission hardening now, and the waitlist is how you get in first. Pricing is already set: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
   },
 ] as const;
 
@@ -223,23 +270,36 @@ export const faqs = [
  * Pre-launch: cards drive to the waitlist, not checkout.
  */
 export const pricing = {
-  note: "Simple monthly pricing. Cancel anytime. You won't be charged until Servey launches.",
+  note: "Start free, no card required. Paid plans are simple monthly pricing, cancel anytime, and you won't be charged until Servey launches.",
   regions: [
     { id: "intl", label: "International", symbol: "$", key: "usd" },
     { id: "in", label: "India", symbol: "₹", key: "inr" },
   ],
   plans: [
     {
+      id: "free",
+      name: "Free",
+      tagline: "Try everything Servey does. No card, no countdown.",
+      price: { inr: "0", usd: "0" },
+      featured: false,
+      features: [
+        "Everything Servey does, five minutes at a time",
+        "Five sessions a day, reset at local midnight",
+        "No card and no trial that expires on you",
+        "Upgrade the day you want longer sessions",
+      ],
+    },
+    {
       id: "terminal",
       name: "Terminal",
-      tagline: "A genuine shell on your Mac, in your pocket.",
+      tagline: "A shell on your Mac that keeps running without you.",
       price: { inr: "99", usd: "1.99" },
       featured: false,
       features: [
-        "A real terminal - a genuine shell on your Mac, not a web console",
+        "Unlimited terminal time - no five-minute cap",
+        "Named sessions that keep running after you disconnect",
+        "Reattach from your iPad, your Mac, or any terminal app",
         "Works on your local network and remotely, automatically",
-        "Handy shortcuts: Copy, Paste, Esc, Tab, and more",
-        "Private by design, scoped to your own devices",
       ],
     },
     {
