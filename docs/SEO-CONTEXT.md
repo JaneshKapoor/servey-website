@@ -472,15 +472,10 @@ be used for, and the shot list for recording it properly.
      check whether the *post* is right before changing the number.
      `splashtop-vs-jump-desktop` (6.7) and
      `chrome-remote-desktop-vs-jump-desktop` (6.5) are marginal.
-4. **Capture the Mac host's SESSIONS screen (new, 5 Sep).** The persistent-
-   sessions feature card ships a styled placeholder, because the standing rule
-   is placeholders and never mocked-up UI. It is now the most important feature
-   on the page with no picture, and it is the one a visitor is least likely to
-   believe without seeing. One screenshot from the owner closes it -
-   `public/screenshots/terminal-sessions.png`, then flip `ready` to `true` in
-   `lib/screenshots.ts`. **Check the desktop for personal data before sending**
-   (see the `hero-devices.png` and `Servey_Live_Demo.mov` precedents in
-   `docs/CONTEXT.md`).
+4. ~~Capture the Mac host's SESSIONS screen.~~ **Done 5 Sep** - owner
+   supplied it, cropped to the window bounds and shipped as
+   `public/screenshots/terminal-sessions.png`. The persistent-sessions card
+   now has a real capture, and no feature card ships a placeholder any more.
 5. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
 6. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
    sends to existing waitlist members. Do not re-propose this.
