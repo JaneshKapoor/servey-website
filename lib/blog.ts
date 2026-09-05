@@ -2457,7 +2457,7 @@ export const posts: Post[] = [
       "access mac remotely",
       "control mac remotely",
     ],
-    readingMinutes: 8,
+    readingMinutes: 7,
     lede: "The build takes forty minutes. Your train leaves in ten. If the shell running that build lives inside the app you are about to close, the build dies with it - and this is the most common way remote work on a Mac goes wrong. The fix is older than most of the tools people reach for, and it is the thing Servey turns on by default. Here is what actually kills a session, what survives, and how to get persistence whether you use Servey or not.",
     body: [
       {
@@ -2503,7 +2503,11 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The table has a useful surprise in it. Screen mirroring, which people often dismiss as the slow and heavy option, is accidentally good at persistence: a Terminal window inside the mirrored desktop is just a window on the Mac, so nothing about your connection can kill it. Plain SSH, which people reach for because it is light and fast, is the one that loses the work. If you have ever wondered why an experienced admin SSHes in and then immediately types a second command before doing anything, this is why.",
+        text: "The short answer, if you only read this far: run your long jobs inside tmux, which keeps your shell alive on the Mac independently of whatever you are connecting from. If you already have SSH working, install tmux and type tmux new -s work before anything else. If you are doing this from an iPhone or iPad, Servey - the app we make - opens every terminal session that way by default, so there is no second thing to remember and nothing to configure to reach the Mac in the first place.",
+      },
+      {
+        type: "p",
+        text: "The table also has a useful surprise in it. Screen mirroring, often dismissed as the slow and heavy option, is accidentally good at persistence: a Terminal window inside a mirrored desktop is just a window on the Mac, so nothing about your connection can kill it. Plain SSH, which people reach for because it is light and fast, is the one that loses the work.",
       },
       { type: "h2", text: "Why does my SSH session die when I close the app?" },
       {
@@ -2533,10 +2537,6 @@ export const posts: Post[] = [
         type: "p",
         text: "Name your sessions. The default names are numbers, and a list of numbers tells you nothing three days later. The other detail worth knowing is that tmux allows several clients to watch one session at once, which is what makes it possible to start something on an iPad and then walk to your desk and carry on from the Mac with the same output in front of you.",
       },
-      {
-        type: "p",
-        text: "GNU screen does much the same job and is often already installed. tmux is the better choice for new setups - it is actively maintained, its splitting and scripting are cleaner, and it is what almost every guide written in the last decade assumes. If your muscle memory is screen, there is no urgent reason to switch.",
-      },
       { type: "h2", text: "Why this is harder from an iPhone than it looks" },
       {
         type: "p",
@@ -2544,16 +2544,12 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "That last problem is not really about SSH. A home router does not accept unsolicited inbound connections, your address changes, and a growing number of home connections sit behind carrier-grade NAT where no amount of port forwarding will help because you do not have a public address to forward from. The usual answers are a VPN back to your own network, a mesh VPN such as Tailscale, or a tool that does NAT traversal for you. What none of those answers do is give you the persistence in the first place - you still have to set up tmux yourself once you get there.",
-      },
-      {
-        type: "p",
-        text: "There is also a plain ergonomic problem. Ctrl-b is the tmux prefix, and an iPhone keyboard has no Control key. Good iOS terminal apps add one to an accessory row, but you are now typing a two-key chord on a soft keyboard on a train, and it is the single most common reason people give up on tmux from a phone specifically.",
+        text: "That last problem is not really about SSH. A home router does not accept unsolicited inbound connections, your address changes, and a growing number of home connections sit behind carrier-grade NAT where no amount of port forwarding will help. The usual answers are a VPN, a mesh VPN such as Tailscale, or a tool that does NAT traversal for you - and none of them give you the persistence, which you still have to set up yourself once you arrive. There is an ergonomic problem too: Ctrl-b is the tmux prefix and an iPhone keyboard has no Control key, which is the most common reason people give up on tmux from a phone. Both halves are what we built around, and they are why persistent sessions are the default rather than a setting.",
       },
       { type: "h2", text: "How Servey handles it" },
       {
         type: "p",
-        text: "Servey makes persistence the default rather than something you opt into. Every terminal session you open is a named session that lives on the Mac, so there is no separate step to remember and nothing to configure. Close the app, lose signal, put the phone in your pocket, get on a plane: the work carries on. Open Servey again and the session list shows what is still running, so you pick one and rejoin exactly where it got to. You can have the same session open on the Mac and the iPad at once, which is genuinely useful when you start something on the sofa and finish it at the desk.",
+        text: "Servey makes persistence the default rather than something you opt into. Every terminal session you open is a named session that lives on the Mac, so there is no separate step to remember and nothing to configure. Close the app, lose signal, put the phone in your pocket, get on a plane: the work carries on. Open the app again and the session list shows what is still running, so you pick one and rejoin exactly where it got to. You can have the same session open on the Mac and the iPad at once, which is genuinely useful when you start something on the sofa and finish it at the desk.",
       },
       {
         type: "p",
@@ -2595,7 +2591,7 @@ export const posts: Post[] = [
       "macos screen sharing",
       "best remote desktop for mac",
     ],
-    readingMinutes: 7,
+    readingMinutes: 6,
     lede: "There is a detail about remote access that most people only think about once: while you are working on your Mac from somewhere else, its monitor is still on, still showing your desktop, and still visible to whoever is in the room. In an office, a shared flat or a home with visitors, that is a real problem - and on macOS specifically it is the feature most remote tools handle worst. Here is why it is hard, what the options actually do, and how Servey does it differently.",
     body: [
       {
@@ -2624,15 +2620,15 @@ export const posts: Post[] = [
             "Only works if you are there to do it, and not at all on a laptop",
           ],
           [
-            "Blank the display after the capture point",
-            "The monitor gets black, the stream keeps the real desktop",
+            "Blank the display after the capture point (Servey)",
+            "The monitor goes black, the stream keeps the real desktop",
             "Only possible if the tool is built for it",
           ],
         ],
       },
       {
         type: "p",
-        text: "That last row is what Servey does, and it is worth understanding why it is the approach that holds up on a Mac, because the reason is specific to how macOS draws things.",
+        text: "The short answer: on macOS the only approach that reliably holds up is the last one, and almost nothing implements it. Servey - the app we make - is built around it, and if you want a free route today, macOS Screen Sharing's virtual display option gets you most of the way on Apple silicon. It is worth understanding why the popular option is the one that keeps breaking, because the reason is specific to how macOS draws things.",
       },
       { type: "h2", text: "Why do privacy screens keep breaking on macOS?" },
       {
@@ -2641,7 +2637,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The result is a feature that either does not appear on macOS, appears but greys out, or works until an OS update. This is not incompetence on the vendors' part. It is a design decision by Apple, and it is the reason the black screen feature people know from Windows support work is one of the most common things missing when the same tool is pointed at a Mac.",
+        text: "The result is a feature that either does not appear on macOS, greys out, or works until an OS update. That is Apple's design decision rather than the vendors' incompetence, and it is why the black screen people know from Windows support work is one of the most common things missing when the same tool is pointed at a Mac.",
       },
       {
         type: "p",
@@ -2676,10 +2672,6 @@ export const posts: Post[] = [
         type: "p",
         text: "The low-technology answers are also better than their reputation. A Mac mini on a shelf with no monitor attached has no privacy problem at all, which is one of the quiet advantages of running a headless machine. For a desktop Mac you can switch the monitor's input to another source, and for a laptop being used remotely you can simply close the lid - though on a MacBook that normally puts the machine to sleep unless something is deliberately keeping it awake.",
       },
-      {
-        type: "p",
-        text: "If you are shopping specifically for this feature, do not take the marketing page at face value. Check that the vendor documents the privacy screen for macOS rather than for Windows, and check it against your macOS version and your chip. This is the single most common gap between what a remote tool advertises and what it does when you point it at a Mac.",
-      },
       { type: "h2", text: "Where Servey fits, and where it does not" },
       {
         type: "p",
@@ -2704,7 +2696,7 @@ export const posts: Post[] = [
       "access mac remotely",
       "home lab remote control",
     ],
-    readingMinutes: 7,
+    readingMinutes: 4,
     lede: "An old MacBook is the cheapest always-on Mac most people already own. The problem is that closing the lid puts it to sleep, and Apple's official way round that needs an external display you do not want to buy, plug in or find desk space for. Here is what is actually happening, the three ways round it ranked by how much you will regret them, and how Servey removes the problem instead of working around it.",
     body: [
       {
@@ -2740,7 +2732,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The plain command is the one most guides land on, so it is worth understanding what it really does before you paste it into a Terminal.",
+        text: "The short answer: if the machine is staying on a shelf, sudo pmset disablesleep 1 with a cheap dummy HDMI plug is the free route and it works. If you want the lid handled without a permanent system-wide override you will forget about, Servey - the app we make - does it as an opt-in mode and puts the Mac's screen and shell on your iPhone or iPad at the same time. Either way it is worth understanding what that command really does before you paste it into a Terminal.",
       },
       { type: "h2", text: "What does pmset disablesleep actually change?" },
       {
@@ -2750,25 +2742,15 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "sudo pmset -g - print the current settings, so you can see what you changed.",
           "sudo pmset disablesleep 1 - stop the machine sleeping at all, lid included.",
           "sudo pmset disablesleep 0 - put it back to normal behaviour.",
-          "sudo pmset -a disksleep 0 - keep the disks awake too, which matters if the machine serves files.",
-          "sudo pmset -a autorestart 1 - power back on by itself after a power cut.",
+          "sudo pmset -g - check which of these is currently set.",
         ],
-      },
-      {
-        type: "p",
-        text: "There is a second, quieter reason people end up buying a dummy HDMI plug even after this works. With no display attached at all, macOS falls back to a default resolution that is often a strange shape, so your remote desktop arrives tiny or letterboxed. A headless display emulator costs very little and presents a normal display to the system, which fixes both the sleep behaviour and the resolution in one go. If you are going to run a MacBook on a shelf for years, it is a reasonable few pounds to spend.",
-      },
-      {
-        type: "p",
-        text: "Two things to be aware of before you commit to a permanently awake laptop. Heat and battery: a MacBook running with the lid shut has its main vent partially blocked, so give it airflow and do not stack anything on it, and expect a battery kept permanently at full charge to age faster. And FileVault: if the disk is encrypted, an unattended reboot stops at the unlock screen and the machine is unreachable until someone types a password. That is a genuine security trade-off rather than a bug, and it is worth making the decision deliberately rather than discovering it after a power cut.",
       },
       { type: "h2", text: "How does Servey handle the lid?" },
       {
         type: "p",
-        text: "Servey has a closed-lid mode that manages the same system setting for you, and the design of it is mostly about not leaving a mess behind. It is opt-in, so nothing changes unless you ask. It asks for administrator authorisation at the point the Mac goes online rather than silently changing a system-wide power setting behind your back. And it records what your settings were beforehand and restores them when Servey goes offline or quits, so your laptop goes back to sleeping normally the moment you stop using it as a server.",
+        text: "Servey has a closed-lid mode that manages the same system setting for you, and the design of it is mostly about not leaving a mess behind. It is opt-in, so nothing changes unless you ask. It asks for administrator authorisation at the point the Mac goes online rather than silently changing a system-wide power setting behind your back. And it records what your settings were beforehand and restores them when it goes offline or quits, so your laptop goes back to sleeping normally the moment you stop using it as a server.",
       },
       {
         type: "p",
@@ -2776,7 +2758,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "No external display and no dummy plug are required for the lid part. Servey streams the Mac's screen to your iPhone or iPad directly, so the machine can sit closed on a shelf while you use it from the sofa. It connects on your local network directly and, from outside, over a private peer-to-peer connection between your own devices, including on carrier-grade NAT, without a VPN or port forwarding. There is also a real terminal one tap away, which on a headless machine is usually what you wanted anyway.",
+        text: "No external display and no dummy plug are required for the lid part: the Mac's screen goes straight to your iPhone or iPad, so the machine can sit closed on a shelf while you use it from the sofa. It connects on your local network directly and, from outside, over a private peer-to-peer connection between your own devices, including on carrier-grade NAT, without a VPN or port forwarding. There is also a real terminal one tap away, which on a headless machine is usually what you wanted anyway.",
       },
       {
         type: "h2",
@@ -2784,11 +2766,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so every problem in this article simply does not arise; it is the right thing to buy if you are buying. The argument for the laptop is that you already own it, and it comes with a built-in uninterruptible power supply, which is genuinely useful in a home lab. A brief power cut that would drop a mini does not interrupt a MacBook at all.",
-      },
-      {
-        type: "p",
-        text: "If you are setting up a mini instead, the ordering of the steps matters more than anything else, and we have written that up separately - turn on the services you need while a monitor is still attached, because two of the steps are close to impossible without one.",
+        text: "A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so none of this arises. The argument for the laptop is that you already own it, and it has a built-in uninterruptible power supply, so a brief power cut that would drop a mini does not interrupt it. Either way it is the same app on both, and if you are setting up a mini we have written that up separately.",
       },
       {
         type: "p",
@@ -2813,7 +2791,7 @@ export const posts: Post[] = [
       "control mac remotely",
       "best remote desktop for mac",
     ],
-    readingMinutes: 7,
+    readingMinutes: 5,
     lede: "If you have ever wondered whether someone else has been on your Mac, the honest answer is that macOS makes it harder to check than it should be. The records exist, but they are spread across three different systems, two of them expire quickly, and none of them cover the remote access app you probably installed. Here is what you can actually find out, in the order worth trying - and why Servey keeps its own log instead.",
     body: [
       {
@@ -2857,6 +2835,10 @@ export const posts: Post[] = [
           ],
         ],
       },
+      {
+        type: "p",
+        text: "The short answer: last and log show will tell you about SSH and Screen Sharing, and nothing built into macOS will tell you about a third-party remote tool, which is the gap most people are actually worried about. That is a deliberate design choice on our part - Servey, the app we make, keeps its own readable activity log on your Mac and never uploads it - but the built-in commands come first, because they cover the doors that are open on every Mac whether you installed anything or not.",
+      },
       { type: "h2", text: "Which commands should I run first?" },
       {
         type: "p",
@@ -2865,10 +2847,8 @@ export const posts: Post[] = [
       {
         type: "ul",
         items: [
-          "last - every recorded login session, newest first.",
-          "last -20 - just the most recent twenty, which is usually enough.",
+          "last -20 - the most recent login sessions, with a source address for remote ones.",
           "who - who is logged in right now, this second.",
-          "sudo lsof -i -n -P | grep ESTABLISHED - live network connections, including an active screen sharing session.",
           "log show --predicate 'process == \"screensharingd\"' --last 24h - screen sharing activity in the last day.",
         ],
       },
@@ -2878,7 +2858,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Then check what is currently switched on, because that is the part you can change straight away. In System Settings, under General and then Sharing, look at Screen Sharing and Remote Login. Turn off anything you are not deliberately using, and if Remote Management is on and you did not turn it on, that is worth investigating on its own - it is the Apple Remote Desktop agent and is not something a home user usually enables by accident. While you are there, check the list of users each service is allowed for, because an access list that says all users is a much bigger door than one naming yourself.",
+        text: "Then check what is currently switched on, in System Settings under General and then Sharing. Turn off anything you are not deliberately using, and treat Remote Management being on as worth investigating on its own - it is the Apple Remote Desktop agent and is not something a home user enables by accident.",
       },
       {
         type: "h2",
@@ -2903,7 +2883,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "It is a record of Servey, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 15.3 and iOS or iPadOS 18.5, and launches soon rather than today.",
+        text: "It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 15.3 and iOS or iPadOS 18.5, and launches soon rather than today.",
       },
       {
         type: "h2",
@@ -2911,11 +2891,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "Take the machine off the network first, before you investigate further, because everything else is easier when nothing can change underneath you. Then turn off Screen Sharing, Remote Login and Remote Management in Sharing, and change your Apple Account password and your Mac's login password from a different device that you trust. Check Users and Groups for an account you did not create, and check Login Items and Background Items for anything set to start on its own.",
-      },
-      {
-        type: "p",
-        text: "Two things worth knowing before you panic. A remote login from an address you do not recognise is a real signal. An entry in the unified log mentioning screensharingd is often not, because macOS uses parts of that machinery for its own features, and plenty of people have alarmed themselves reading a normal log. If you are unsure, the sequence above costs you an hour and closes every door regardless of what was actually happening, which is a better use of the time than trying to become a forensics expert in an afternoon.",
+        text: "Take the machine off the network first, then turn off Screen Sharing, Remote Login and Remote Management, and change your Apple Account and Mac login passwords from a device you trust. The full sequence is in the FAQ below. One thing worth knowing before you panic: a remote login from an unfamiliar address is a real signal, but an entry mentioning screensharingd often is not, because macOS uses that machinery for its own features and plenty of people have alarmed themselves reading a normal log.",
       },
     ],
   },
