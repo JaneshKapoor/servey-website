@@ -213,10 +213,27 @@ queries are overwhelmingly `how to ...` and the page answered nothing. Rebuilt
   established product if they need one today.
 - **One commercial pillar per intent**, with informational blog posts as spokes
   pointing at it (`/control-mac-from-iphone` ← `control-your-mac-from-iphone-ipad`).
-- **Name Servey in the first ~15% of the article, and measure it.** Two metrics,
-  both easy to check by stripping tags and counting character offsets:
-  **first-mention depth ≤15%** and **density 4.0-6.0 per 1k words** (a short post
-  will run a little over on density; depth is the one that matters). The
+- **Name Servey in the first ~15% of the article, and measure it with
+  `npm run build && npm run seo:framing`** (`scripts/servey-depth.mjs`), which
+  runs against rendered HTML because reading order is the thing being measured.
+  **Three** metrics, not two:
+  - **first-mention depth ≤15%** - where the word first appears.
+  - **substance ≤35%** *(added 5 Sep)* - where the first real paragraph (≥25
+    words) or `<h2>` naming Servey starts, **excluding the lede**. Depth alone
+    is satisfiable by a table cell and *was* satisfied on all four 5 Sep posts,
+    which the owner still read as burying Servey: depth 4.9-9.0% while the
+    first Servey-bearing section sat at 49-69%. **Depth says the word is
+    early; substance says the reader is.**
+  - **density 4.0-6.0 per 1k words** (posts under 700 words are allowed up to
+    9.0 - a short post runs over mechanically).
+  These apply to **informational** posts. **Comparison and roundup posts are
+  exempt from depth and substance by design** - §3 says keep Servey out of the
+  hero slot there - so the script classifies by slug and only reports those two
+  for them. Do not "fix" a comparison post's late Servey section.
+  The fix when substance is deep is **a short-answer paragraph after the
+  opening table** that answers the question and names Servey in it with an
+  explicit "the app we make" disclosure - not more mentions. Trimming words
+  while keeping mentions pushes density up and reads as an advert. The
   informational posts both drifted to 56% and 63% because they had no reason to
   name Servey until the dedicated section - a reader on a phone scrolls a long
   way before learning a product exists. The fix that works is **structural, not a
@@ -435,7 +452,24 @@ be used for, and the shot list for recording it properly.
    a sample in ~a week, starting with `splashtop-vs-jump-desktop` and
    `control-your-mac-from-iphone-ipad`. **5 Sep: sitemap is now 38 URLs, so the
    4 new posts need submitting too** once the deploy is live.
-3. **Capture the Mac host's SESSIONS screen (new, 5 Sep).** The persistent-
+3. **Fix the 13 posts `seo:framing` flags (new, 5 Sep, not yet done).** The
+   new script surfaced pre-existing failures; **none were touched**, because
+   rewriting 13 posts was not what was asked. Worth doing in priority order:
+   - **`control-your-mac-from-iphone-ipad` (substance 70%) and
+     `headless-mac-mini-setup` (65%).** Both were explicitly "fixed" on 31 Aug
+     for *depth* - 4% and 3% - and both still bury Servey. Same blind spot,
+     same posts, which is the strongest evidence the new metric was needed.
+   - **6 short posts at 69-79% depth**: `real-terminal-on-your-mac-from-iphone`,
+     `access-your-mac-remotely-over-cellular`,
+     `control-a-headless-mac-mini-remotely`, `run-ai-agents-on-your-mac-remotely`,
+     `run-ai-agents-locally-on-your-mac`, `stay-in-control-of-ai-agents-from-anywhere`.
+     All 360-575 words, all naming Servey only in a closing section.
+   - **Density too high**: `who-is-servey-for-developers-home-labs` (16.6) and
+     `termius-alternative-mac-terminal` (16.4) are Servey-centric by design, so
+     check whether the *post* is right before changing the number.
+     `splashtop-vs-jump-desktop` (6.7) and
+     `chrome-remote-desktop-vs-jump-desktop` (6.5) are marginal.
+4. **Capture the Mac host's SESSIONS screen (new, 5 Sep).** The persistent-
    sessions feature card ships a styled placeholder, because the standing rule
    is placeholders and never mocked-up UI. It is now the most important feature
    on the page with no picture, and it is the one a visitor is least likely to
@@ -444,13 +478,13 @@ be used for, and the shot list for recording it properly.
    `lib/screenshots.ts`. **Check the desktop for personal data before sending**
    (see the `hero-devices.png` and `Servey_Live_Demo.mov` precedents in
    `docs/CONTEXT.md`).
-4. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
-5. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
+5. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
+6. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
    sends to existing waitlist members. Do not re-propose this.
-6. **BetaList / Peerlist / Uneed** submissions.
-7. **Add `VideoObject` schema** once the demo exists.
-8. Re-test AI citation on **comparison** queries in ~2 weeks.
-9. At launch: App Store listing, AlternativeTo submission, Show HN.
+7. **BetaList / Peerlist / Uneed** submissions.
+8. **Add `VideoObject` schema** once the demo exists.
+9. Re-test AI citation on **comparison** queries in ~2 weeks.
+10. At launch: App Store listing, AlternativeTo submission, Show HN.
 
 **Explicitly not on this list:** more landing pages, more metadata rewrites,
 more schema. On-site SEO has reached sharply diminishing returns. What is missing
@@ -462,6 +496,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-05 | **Owner: the new posts over-served the free how-to and buried Servey. Both true; the depth metric could not see the second one.** Depth measures the first *mention*, which a table cell or the lede satisfies - all four posts read 4.9-9.0% while the first paragraph that actually says what Servey does sat at **49%, 51%, 65% and 69%**. A reader on a phone scrolled past ~700 words of free tutorial first. This is the **31 Aug regression in a new costume**, and the rule written to stop it was satisfiable by a token, so a third metric now exists: **substance** (first ≥25-word paragraph or `<h2>` naming Servey, lede excluded) with a ≤35% ceiling, in `scripts/servey-depth.mjs` / `npm run seo:framing`. **Fixed structurally, per the 26 Aug precedent:** a short-answer paragraph after each opening table giving the real answer and naming Servey with a "the app we make" disclosure, plus naming Servey in the privacy-screen table's approach row (the only one of the four tables that did not). **Cut**, because the owner was right it was surplus and it was what pushed Servey down: pmset list 5→3 commands, the dummy-HDMI and heat/battery/FileVault paragraphs, the screen-vs-tmux paragraph, the shopping advice, the remediation walkthrough, `lsof` and two log commands - **every one of them duplicated a table row or its own FAQ answer verbatim.** Then removed 7 repeated Servey mentions, because trimming words while holding mentions took the closed-lid post to **9.3/1k**, which reads as an advert on exactly the pages the broken-link outreach points at. Final: depth 4.9-9.0%, substance 18-32%, density 5.8-6.2. `readingMinutes` corrected (closed-lid claimed 7 min for 971 words against a ~235 wpm site convention). **The script found pre-existing failures I have not touched - see §11.** |
 | 2026-09-05 | **Site brought up to date with the app; 34 -> 38 URLs.** The site described the product as of roughly mid-July while four things had shipped since, so the copy work came before the content work. **Added:** a 7th feature card for **persistent sessions** (named tmux sessions on the Mac that outlive the app - the biggest change to the product and the one that converts the AI-agent persona already written into the page, which until now implied you had to sit and watch); a **Free column** in pricing (5-minute sessions, 5 a day, no card - the entire top of the funnel, previously invisible); the **second lock** in the privacy card and policy (master password set on the Mac, per-device approval, revocation - the page said only "device registration & approval"); and the **activity log** in the privacy policy. **Corrected: "video hardly touches our servers" was an overclaim** and appeared in **8 places**. True on LAN and for direct P2P, false on a strict NAT where the stream relays - which the Networking card admitted two sections earlier. Replaced everywhere with "P2P first; our own relay if your network insists", which is *stronger* now the relay is ours (`turn.servey.in`) rather than a vendor's. Also: launch FAQ no longer reads as less certain than the pricing section three scrolls above it; **macOS 15.3 / iOS 18.5 stated plainly** (narrow, excludes visitors, better learned before joining a waitlist than after); Terminal plan bullets rewritten (oldest copy on the page, and it undersold what the tier became). **Four posts**, each aimed at existing demand rather than at a feature name: `keep-terminal-session-running-after-disconnect` (SIGHUP, tmux, and why it is harder from a phone - no Control key for the prefix), `blank-mac-screen-during-remote-access` (why vendor privacy screens keep breaking on macOS - kernel/DriverKit extensions - and why the gamma-after-capture approach avoids every overlay failure mode; targets `teamviewer black screen mac`), `macbook-closed-lid-remote-access` (clamshell, dummy HDMI, what `pmset disablesleep` really changes), `who-connected-to-my-mac-remotely` (`last` vs `log show`, and the honest point that the unified log rolls over in hours). Depth 3.6-6.2%, density 5.4-6.0/1k, all measured **before** committing per the 1 Sep rule. **Every feature claim was verified against the app repo at `894c87f`, not against a changelog** - free-tier numbers read out of `SessionLimitManager`, deployment targets out of the pbxproj, relay host out of the ICE config. The audit that started this is an artifact the owner commissioned; treating its claims as requirements rather than facts was the right instinct, because two of them needed the source to confirm. Fixed `control-iphone-from-mac` at 161 chars, the one failing audit check. **Local audit 38/38, zero duplicate titles or descriptions across 40 rendered pages.** |
 | 2026-09-01 | **Bing sitemap cleaned by the owner.** The 7 bogus rows (page URLs submitted as sitemaps on 16 Jul) deleted and `sitemap.xml` resubmitted. Bing now reports **1 known sitemap, 0 errors, 0 warnings, 34 URLs discovered, last crawl 1 Sep** - matching the live sitemap exactly and replacing the stale 19 Aug read at 29 URLs. Both remaining Bing inputs (sitemap freshness and per-URL crawl requests) are now clean; the only open Bing item is waiting for the crawl itself. |
 | 2026-09-01 | **Bing crawl gap worked through: 16 URLs submitted for indexing.** Audited all 18 blog posts individually through URL Inspection and submitted every one that was either uncrawled or holding stale content. **12 were `Discovered but not crawled`** - Bing knew them and had never fetched them, including 5 of the 6 comparison posts that rank page one on Google. 4 more were indexed but stale and got a recrawl request, most importantly `control-your-mac-from-iphone-ipad`, which Bing was holding as the **pre-rebuild pitch version**. Only `screens-vs-jump-desktop` and `best-remote-desktop-for-mac` were left alone - indexed and unchanged. **Bing's daily quota is 100, not 10** (owner was right); it went 99 -> 83, which independently confirms all 16 submissions landed and is the check to use, since the success toast is easy to miss in a batch. Expect crawling over the following days; re-inspect a sample rather than assuming. |

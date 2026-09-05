@@ -9,6 +9,7 @@
     "lint": "eslint",
     "indexnow": "node scripts/indexnow.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:framing": "node scripts/servey-depth.mjs",
     "context:pdf": "node scripts/build-context-pdf.mjs"
   },
   "dependencies": {
