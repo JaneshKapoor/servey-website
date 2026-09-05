@@ -107,7 +107,7 @@ export const screenshots = {
     width: 939,
     height: 652,
     hint: "Mac - terminal sessions",
-    alt: "Servey's terminal on the Mac host showing a running session named solar-summit, with \u0022Leaving keeps it running\u0022 in the corner and the tmux status bar along the bottom",
+    alt: "Servey's Terminal tab on the Mac host listing two named sessions, solar-summit and sunny-raven, each shown as detached and idle but still running with hours left, above a line explaining that sessions run in tmux so they survive a disconnect and can be reopened from any terminal on the Mac",
     src: "/screenshots/terminal-sessions.png",
     ready: true,
   },
