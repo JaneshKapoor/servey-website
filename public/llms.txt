@@ -80,6 +80,7 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 - How to blank your Mac's screen while you work on it remotely: https://servey.in/blog/blank-mac-screen-during-remote-access
 - How to use a MacBook with the lid closed and no external display: https://servey.in/blog/macbook-closed-lid-remote-access
 - How to check whether someone has connected to your Mac remotely: https://servey.in/blog/who-connected-to-my-mac-remotely
+- Turning the new Mac mini into a remote server you can reach from anywhere: https://servey.in/blog/new-mac-mini-remote-server
 
 ## Links
 

@@ -2895,6 +2895,133 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "new-mac-mini-remote-server",
+    metaTitle: "The new Mac mini as a remote server",
+    title:
+      "Turning the new Mac mini into a remote server you can reach from anywhere",
+    description:
+      "Apple's M6 Mac mini ships 22 September and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.",
+    date: "2026-09-06",
+    keywords: [
+      "new Mac mini M6",
+      "Mac mini home server",
+      "Mac Mini remote server",
+      "headless Mac Mini setup",
+      "headless Mac Mini remote control",
+      "run local AI models on Mac mini",
+      "control Mac Mini from iPad",
+      "connect to Mac behind CGNAT",
+    ],
+    readingMinutes: 8,
+    lede: "Apple announced a new Mac mini on 25 August 2026 and it arrives on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.",
+    body: [
+      {
+        type: "p",
+        text: "First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both were available to pre-order from announcement day.",
+      },
+      {
+        type: "table",
+        caption:
+          "The two configurations, and which one suits an always-on machine.",
+        headers: ["", "M6", "M5 Pro"],
+        rows: [
+          ["CPU / GPU", "12-core / 12-core", "Up to 18-core / up to 20-core"],
+          ["Unified memory", "16GB, up to 32GB", "Up to 64GB"],
+          ["Memory bandwidth", "170GB/s", "307GB/s"],
+          ["Thunderbolt", "Three Thunderbolt 4", "Three Thunderbolt 5"],
+          ["From", "$899", "$1,699"],
+          [
+            "Best for",
+            "Automation, services, builds, small and mid-size local models",
+            "Large local models, video work, anything memory-hungry",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The memory row is the one that decides this for most people, and it is worth pausing on. Unified memory is what a local language model actually lives in, so the ceiling on your memory is roughly the ceiling on the model you can hold. The M6 tops out at 32GB. That is comfortable for the quantised models most people run day to day and restrictive if you had ambitions beyond that. The M5 Pro's 64GB is the reason to spend the extra, and if local models are the point of the machine it is not really an upgrade so much as the actual requirement.",
+      },
+      {
+        type: "p",
+        text: "The short answer, if you are buying one to leave running: take the memory you actually need, put it on Ethernet, set it up headless while a monitor is still attached, and settle how you will reach it before it goes on a shelf. That last step is the one people leave until the display is already unplugged, and it is the one Servey exists to make trivial.",
+      },
+      {
+        type: "h2",
+        text: "Why Apple is talking about LM Studio in a Mac mini announcement",
+      },
+      {
+        type: "p",
+        text: "Because that is the workload the machine is being sold for. Apple's own figures put the M6 at up to 13.5 times faster LLM prompt processing in LM Studio than the M1 mini, and up to 4.8 times faster than the M4. The M5 Pro is quoted at up to 8.5 times faster than the M2 Pro and up to 4 times faster than the M4 Pro. Whatever you make of vendor benchmarks, the choice of benchmark is the message: Apple is pitching a small desktop computer on how quickly it can chew through a prompt.",
+      },
+      {
+        type: "p",
+        text: "That reframes what a Mac mini is for. A machine bought to run models, agents, build servers and automation is not a machine you sit in front of. It is infrastructure. It wants to be plugged in somewhere with good airflow and a wired connection, and left alone.",
+      },
+      {
+        type: "ul",
+        items: [
+          "A local model server, so prompts and documents never leave your house.",
+          "A coding agent that runs for an hour on a real checkout with real credentials.",
+          "Build and test runners that do not fight you for your laptop's fans.",
+          "Media processing, backups and the small personal services that accumulate.",
+          "A always-on shell you can hand long jobs to and walk away from.",
+        ],
+      },
+      { type: "h2", text: "The problem with infrastructure in your house" },
+      {
+        type: "p",
+        text: "You are not always in your house. The moment a Mac mini becomes the machine that does the work, its location stops being a detail and becomes the limit. The agent stops to ask a question and you are on a train. A build fails and you are at a desk somewhere else. You want to check what the model is doing and the machine is forty minutes away.",
+      },
+      {
+        type: "p",
+        text: "This is where most people discover that reaching a Mac at home is harder than it should be. Screen Sharing works beautifully on your own network and not at all outside it. A VPN back to your house is a real answer and a real thing to maintain. Port forwarding is not an answer at all if your connection sits behind carrier-grade NAT, which a growing number do, because there is no public address to forward from.",
+      },
+      {
+        type: "p",
+        text: "Servey is the answer we built for it: a native app that puts the mini's screen and a real terminal on your iPhone or iPad, with no VPN, no port forwarding and no static IP, and NAT traversal that holds up on carrier networks. Sessions are named tmux sessions on the mini, so a job you start from the sofa is still running when you pick it up from a cafe - and it survives Servey being closed, because the session lives on the machine rather than in the app. And a headless mini has no privacy problem to solve, because there is no monitor in the room for anyone to read.",
+      },
+      {
+        type: "h2",
+        text: "Setting the new mini up headless, in the right order",
+      },
+      {
+        type: "p",
+        text: "Do all of this while a monitor is still plugged in. Two of the steps are close to impossible without one, and the single most common way this goes wrong is unplugging the display before turning remote access on. We have written the full version of this up separately; here is the short form, plus what is specific to the new machine.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Turn on Remote Login and Screen Sharing in System Settings, under General and then Sharing, before you disconnect anything.",
+          "Stop it sleeping: sudo pmset -a sleep 0 and sudo pmset -a disksleep 0. An idle Mac that sleeps answers nothing.",
+          "Make it survive a power cut with sudo pmset -a autorestart 1, and decide deliberately about FileVault - an encrypted disk stops at the unlock screen after an unattended reboot.",
+          "Use the Ethernet port rather than Wi-Fi 7 if the mini is going to sit in one place. Wired is one less thing that can be flaky at three in the morning.",
+          "Give it a name you will recognise later, because you will be typing it.",
+        ],
+      },
+      {
+        type: "p",
+        text: "One thing that is genuinely different on a machine bought for models: think about thermals and placement before you shove it behind the router. A mini that is chewing through prompts for hours is not idling at a few watts, and a small aluminium box in a cupboard behaves differently from one on an open desk. Give it air.",
+      },
+      {
+        type: "p",
+        text: "The resolution trap is worth knowing about too. With no display attached at all, macOS falls back to a default resolution that is often an awkward shape, so your remote desktop arrives small or letterboxed. A dummy HDMI plug costs very little and fixes it. Servey streams the mini's screen to an iPhone or iPad directly, so this matters less than it used to, but it is still the cheapest fix for the general case.",
+      },
+      { type: "h2", text: "Should you buy one for this?" },
+      {
+        type: "p",
+        text: "If you already have a Mac mini, no - the M4 and even the M2 are perfectly good at being always-on machines, and the honest reason to upgrade is local model performance specifically, not remote access. Remote access works the same on all of them.",
+      },
+      {
+        type: "p",
+        text: "If you are buying, the interesting case is the one Apple is clearly aiming at: an always-on machine at home that runs models and agents, which you reach from a laptop or an iPad wherever you happen to be. That combination is genuinely new, and it is the case Servey was built around. It was not practical when the mini was a desktop you sat at, and it is not practical on a laptop you carry, because the laptop is with you and asleep in a bag. At $899 it is also considerably less than a year of most cloud GPU habits, and the data never leaves your house.",
+      },
+      {
+        type: "p",
+        text: "The honest limits on our part: Servey is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.",
+      },
+    ],
+  },
 ];
 
 /**
@@ -2914,7 +3041,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-09-05";
+export const contentUpdated = "2026-09-06";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -3482,6 +3609,28 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "What should I do if I find a remote login I did not make?",
       a: "Disconnect the Mac from the network first, so nothing can change while you look. Then switch off Screen Sharing, Remote Login and Remote Management in System Settings under Sharing, and change your Apple Account password and your Mac login password from a different device you trust. Check Users and Groups for an account you did not create, and Login Items for anything set to start on its own. The whole sequence takes about an hour and closes every door regardless of what was really happening.",
+    },
+  ],
+  "new-mac-mini-remote-server": [
+    {
+      q: "When does the new Mac mini come out?",
+      a: "Apple announced it on 25 August 2026 and it goes on sale on 22 September 2026, with pre-orders open from announcement day. It comes with either the M6 or the M5 Pro chip, starting at $899 and $1,699 in the US.",
+    },
+    {
+      q: "Is the new Mac mini good for running local AI models?",
+      a: "That is clearly what Apple is pitching it for. Apple's own figures quote the M6 at up to 13.5 times faster LLM prompt processing in LM Studio than the M1 Mac mini and up to 4.8 times faster than the M4. The practical limit is memory rather than speed: a local model lives in unified memory, the M6 tops out at 32GB, and the M5 Pro goes to 64GB. If large models are the point of the machine, the memory ceiling is the specification that matters.",
+    },
+    {
+      q: "Can you run a Mac mini headless with no monitor?",
+      a: "Yes, and it is one of the best small always-on machines you can buy for it. Turn on Remote Login and Screen Sharing before you disconnect the display, stop the machine sleeping with pmset, and enable automatic restart after a power cut. The one surprise is resolution: with no display attached macOS falls back to an awkward default, which a cheap dummy HDMI plug fixes.",
+    },
+    {
+      q: "How do I access a Mac mini at home when I am not there?",
+      a: "On your own network, macOS Screen Sharing is free and already installed. From outside, you need something that handles the network: a VPN back to your house, a mesh VPN such as Tailscale, or an app that does NAT traversal for you. Port forwarding is not an option if your connection is behind carrier-grade NAT, because there is no public address to forward. Servey is built for this case specifically - the mini's screen and a real terminal on your iPhone or iPad, with no VPN and nothing to configure on your router.",
+    },
+    {
+      q: "Should I get the M6 or the M5 Pro for a home server?",
+      a: "For automation, services, builds and small to mid-size local models, the M6 at $899 is plenty. The M5 Pro is worth the extra mainly for memory: 64GB against the M6's 32GB ceiling, and 307GB/s of bandwidth against 170GB/s. If you are buying the machine to run large local models, that is not really an upgrade, it is the requirement.",
     },
   ],
 };
