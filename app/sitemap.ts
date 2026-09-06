@@ -24,6 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // which gets the signal discounted. Tie it to the content instead.
     { url: site.url, lastModified: updated, changeFrequency: "weekly", priority: 1 },
     ...useCaseEntries,
+    // /mac is hardcoded in the iOS app's onboarding as the only route to the
+    // host app, so it is a real destination rather than a marketing page.
+    { url: `${site.url}/mac`, lastModified: updated, changeFrequency: "weekly", priority: 0.9 },
     { url: `${site.url}/blog`, lastModified: updated, changeFrequency: "weekly", priority: 0.8 },
     ...postEntries,
     { url: `${site.url}/privacy`, lastModified: updated, changeFrequency: "yearly", priority: 0.3 },

@@ -5,9 +5,11 @@
 Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) - not an Electron or Java port. Setup is just signing in with Google on both devices; no VPN, no port forwarding. On the same Wi-Fi it uses a direct high-performance stream; on different networks it automatically switches to a private, encrypted connection between your own devices. It connects reliably even on strict mobile and carrier networks, and tunes quality to the connection automatically.
 
 - Website: https://servey.in
-- Status: Pre-launch. Join the waitlist at https://servey.in
-- Platforms: macOS (host), iOS and iPadOS (client)
-- Pricing: Monthly subscription. Terminal plan ₹99/month in India, $1.99/month internationally. Full access (screen mirroring + terminal) ₹299/month in India, $4.49/month internationally. Free to join the waitlist; not charged until launch.
+- Mac host app: https://servey.in/mac
+- Status: Pre-launch, in pre-submission hardening. Join the waitlist at https://servey.in
+- Platforms: macOS 15.3 or later (host), iOS and iPadOS 18.5 or later (client). Apple silicon or Intel.
+- Two apps, not one: the iPhone/iPad app is the remote and ships through the App Store; the Mac app is the host and is downloaded from https://servey.in/mac as a signed .dmg.
+- Pricing: There is a free tier - five-minute sessions, five a day, no card, with every feature included. Paid plans are monthly: Terminal ₹99/month in India, $1.99/month internationally. Full access (screen mirroring + terminal) ₹299/month in India, $4.49/month internationally. What a paid plan buys is time, not a longer feature list. Not charged until launch.
 
 ## Key features
 
@@ -15,16 +17,24 @@ Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) 
 - Real mouse, keyboard, and a purpose-built on-screen trackpad, including shortcuts like Copy, Paste, Esc, Tab.
 - A real terminal (a genuine shell on your Mac), available over both local and remote connections - not a web console.
 - Two connection paths with zero configuration: direct on your local network, private peer-to-peer when you are away. It switches automatically.
-- Private by design: Servey only pairs your Mac with your own iPhone or iPad, scoped to your account. On the remote path your screen video is end-to-end encrypted between your devices and hardly touches Servey's servers.
+- Sessions that outlive the app: every terminal session is a named tmux session on the Mac, so closing the app or losing signal does not stop the work. Reattach later from the iPad, the Mac, a second device at the same time, or a plain Terminal with `tmux attach` and no Servey involved.
+- Two locks, not one: a Google sign-in pairs only your own devices, and on top of that a master password set on the Mac must be produced by every device, each new device is approved on the Mac itself, and any device can be revoked.
+- Private by design: on the remote path your screen video is end-to-end encrypted peer-to-peer between your own devices. When a network will not allow a direct connection, the encrypted stream is relayed through Servey's own server rather than a third-party vendor's cloud.
+- A local activity log on the Mac recording connections, approvals, refused passwords and sessions. It is never uploaded.
+- Privacy Mode blanks every monitor attached to the Mac while the remote stream keeps showing the real desktop.
+- Closed-lid mode drives a MacBook with the lid shut, with no external display and no dummy HDMI plug.
 - Adaptive quality that stays smooth without cropping or degrading your screen.
 
 ## Common questions
 
 - Do I need to be on the same network? No. It works on the same Wi-Fi (direct, sharpest picture) and across different networks (private connection between your devices), automatically.
-- Is it secure and private? Yes. It pairs only your own devices, scoped to your account, and your remote screen is end-to-end encrypted between your devices.
+- Is it secure and private? Yes, with two locks. A Google sign-in pairs only your own devices, and a master password set on the Mac must be produced by every device before it can connect. New devices are approved on the Mac itself and can be revoked at any time. Your remote screen is end-to-end encrypted between your devices.
+- Is there a free version? Yes - five-minute sessions, five a day, no card, with every feature included.
+- What happens to a terminal session if I disconnect? It keeps running. Sessions are named tmux sessions on the Mac, so they survive closing the app or losing signal, and can be rejoined later or reattached from any terminal.
 - Does it work over cellular? Yes. It is built to connect reliably even on strict mobile and carrier networks, and adapts quality automatically.
-- Which devices are supported? A Mac as the host, controlled from an iPhone or iPad.
-- Do I need a VPN or port forwarding? No. Sign in with Google on both devices and your Mac appears.
+- Which devices are supported? A Mac running macOS 15.3 or later as the host, controlled from an iPhone or iPad running iOS or iPadOS 18.5 or later.
+- Do I need a VPN or port forwarding? No - no VPN, no ports, no static IP, and nothing to change on your router. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.
+- Where do I get the Mac app? From https://servey.in/mac. Only the iPhone and iPad client ships through the App Store.
 - When is it launching and how much will it cost? It's a monthly subscription: Terminal is ₹99/month in India ($1.99 internationally), and Full access (screen mirroring + terminal) is ₹299/month in India ($4.49 internationally). Join the waitlist to be notified before launch; you're not charged until then.
 
 ## Good alternatives / comparison context
@@ -43,25 +53,38 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 
 ## Guides
 
-- Is Servey a Termius alternative? An honest comparison: https://servey.in/blog/termius-alternative-mac-terminal
 - How to control your Mac from your iPhone or iPad: https://servey.in/blog/control-your-mac-from-iphone-ipad
 - Choosing a Screens or Jump Desktop alternative for Mac remote control: https://servey.in/blog/screens-jump-desktop-alternative-mac
-- Screens vs Jump Desktop - which Mac remote control app is right for you: https://servey.in/blog/screens-vs-jump-desktop
-- Screens 5 alternatives - what to use instead, and when: https://servey.in/blog/screens-5-alternatives
-- Jump Desktop vs TeamViewer - which remote desktop should you use: https://servey.in/blog/jump-desktop-vs-teamviewer
-- Jump Desktop vs RustDesk - paid polish or free and open source: https://servey.in/blog/jump-desktop-vs-rustdesk
-- The best remote desktop apps for Mac in 2026 (honest roundup): https://servey.in/blog/best-remote-desktop-for-mac
-- Run a real terminal on your Mac from your iPhone: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
+- Screens vs Jump Desktop: which Mac remote control app is right for you?: https://servey.in/blog/screens-vs-jump-desktop
 - How to access your Mac remotely over cellular: https://servey.in/blog/access-your-mac-remotely-over-cellular
 - Control a headless Mac Mini remotely from your iPhone or iPad: https://servey.in/blog/control-a-headless-mac-mini-remotely
+- Run a real terminal on your Mac from your iPhone: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
 - How to run and monitor AI agents on your Mac from anywhere: https://servey.in/blog/run-ai-agents-on-your-mac-remotely
-- Who Servey is for (developers, home labs, and the curious): https://servey.in/blog/who-is-servey-for-developers-home-labs
-- Run AI agents locally on your Mac and reach them from anywhere: https://servey.in/blog/run-ai-agents-locally-on-your-mac
-- AI agents can use your computer - how to stay in control from anywhere: https://servey.in/blog/stay-in-control-of-ai-agents-from-anywhere
+- Who Servey is for: developers, home labs, and the endlessly curious: https://servey.in/blog/who-is-servey-for-developers-home-labs
+- Run AI agents locally on your Mac - and reach them from anywhere: https://servey.in/blog/run-ai-agents-locally-on-your-mac
+- AI agents can use your computer now - here's how to stay in control from anywhere: https://servey.in/blog/stay-in-control-of-ai-agents-from-anywhere
+- The best remote desktop apps for Mac in 2026: https://servey.in/blog/best-remote-desktop-for-mac
+- Is Servey a Termius alternative? Honestly, only for one job: https://servey.in/blog/termius-alternative-mac-terminal
+- Screens 5 alternatives: what to use instead, and when: https://servey.in/blog/screens-5-alternatives
+- Jump Desktop vs TeamViewer: which remote desktop should you use?: https://servey.in/blog/jump-desktop-vs-teamviewer
+- Jump Desktop vs RustDesk: paid polish or free and open source?: https://servey.in/blog/jump-desktop-vs-rustdesk
+- Splashtop vs Jump Desktop: subscription or buy it once?: https://servey.in/blog/splashtop-vs-jump-desktop
+- AnyDesk vs TeamViewer: which remote desktop should you actually use?: https://servey.in/blog/anydesk-vs-teamviewer
+- Chrome Remote Desktop vs Jump Desktop: is free good enough?: https://servey.in/blog/chrome-remote-desktop-vs-jump-desktop
+- Does macOS Screen Sharing work over the internet?: https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet
+- Back to My Mac is gone: what actually replaced it: https://servey.in/blog/what-replaced-back-to-my-mac
+- RustDesk vs AnyDesk: open source or the better codec?: https://servey.in/blog/rustdesk-vs-anydesk
+- How to control your iPhone from your Mac, and what Apple actually allows: https://servey.in/blog/control-iphone-from-mac
+- How to set up a headless Mac mini that stays reachable: https://servey.in/blog/headless-mac-mini-setup
+- How to keep a terminal session running after you disconnect: https://servey.in/blog/keep-terminal-session-running-after-disconnect
+- How to blank your Mac's screen while you work on it remotely: https://servey.in/blog/blank-mac-screen-during-remote-access
+- How to use a MacBook with the lid closed and no external display: https://servey.in/blog/macbook-closed-lid-remote-access
+- How to check whether someone has connected to your Mac remotely: https://servey.in/blog/who-connected-to-my-mac-remotely
 
 ## Links
 
 - Home and waitlist: https://servey.in
+- Mac host app (download page): https://servey.in/mac
 - Blog: https://servey.in/blog
 - Privacy: https://servey.in/privacy
 - Terms: https://servey.in/terms
