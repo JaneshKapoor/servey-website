@@ -77,7 +77,11 @@ export const viewport: Viewport = {
  * dimensions come from the registry so schema can never disagree with the file.
  */
 const screenshotSlots: ScreenshotSlot[] = Object.values(screenshots);
-const productScreenshots = screenshotSlots
+// Dedupe by src: two slots may legitimately point at one file, and @id is
+// derived from src, so without this the graph carries duplicate @id nodes and
+// SoftwareApplication.screenshot lists the same image twice.
+const uniqueBySrc = [...new Map(screenshotSlots.map((s) => [s.src, s])).values()];
+const productScreenshots = uniqueBySrc
   .filter((s) => s.ready && s.src && s.width && s.height)
   .map((s) => ({
     "@type": "ImageObject",

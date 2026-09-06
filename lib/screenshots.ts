@@ -43,13 +43,14 @@ export const screenshots = {
   },
   "device-picker": {
     frame: "iphone",
-    // Real file is 640x1640; the nominal 9/19.5 phone ratio cropped it.
-    ratio: 640 / 1640,
-    width: 640,
-    height: 1640,
+    // The @3x simulator capture (1206x2622) rather than the 381x828 web copy:
+    // next/image downscales, so the larger source gives it more to work with.
+    ratio: 1206 / 2622,
+    width: 1206,
+    height: 2622,
     hint: "iPhone - your Macs",
-    alt: "Servey on iPhone listing the user's Macs - one on the local network and one remote on the same account, each tappable to connect",
-    src: "/screenshots/ipad-macs-showcase.png",
+    alt: "Servey on iPhone - the Macs screen listing Janesh's Mac mini and a MacBook Pro 16, both online and reachable on this network with a Connect action, above the free plan's remaining sessions for the day",
+    src: "/screenshots/iphone-home.png",
     ready: true,
   },
   "mirroring-ipad": {
@@ -63,12 +64,18 @@ export const screenshots = {
     ready: true,
   },
   "iphone-controls": {
+    // NOTE: this is the Macs list, not the trackpad, so it does not depict what
+    // feature 02's copy describes. Placed here at the owner's direction until a
+    // real capture of the on-screen trackpad and keyboard exists - swap the src
+    // and the alt together when it does.
     frame: "iphone",
-    ratio: 9 / 19.5,
-    hint: "iPhone - controls",
-    alt: "Servey's on-screen trackpad, click buttons, and control dock on an iPhone",
-    src: "/screenshots/iphone-controls.png",
-    ready: false,
+    ratio: 1206 / 2622,
+    width: 1206,
+    height: 2622,
+    hint: "iPhone - your Macs",
+    alt: "Servey on iPhone - the Macs screen listing Janesh's Mac mini and a MacBook Pro 16, both online and reachable on this network with a Connect action, above the free plan's remaining sessions for the day",
+    src: "/screenshots/iphone-home.png",
+    ready: true,
   },
   terminal: {
     frame: "ipad",
