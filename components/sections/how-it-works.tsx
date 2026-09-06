@@ -10,8 +10,8 @@ export function HowItWorks() {
       <div className="container-page">
         <SectionHeading
           label="How it works"
-          title="Up and running in three taps."
-          intro="No VPN. No port forwarding. No vendor accounts to manage. Just sign in and go."
+          title="Up and running in three steps."
+          intro="No VPN. No port forwarding. No vendor accounts to manage. Nothing exposed to the internet, and nothing to configure on your router."
         />
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -44,7 +44,8 @@ export function HowItWorks() {
               />
             </Tilt>
             <p className="mt-4 text-center text-xs text-muted">
-              The Servey host on your Mac - online and discoverable, ready for your devices.
+              The Servey host on your Mac. Permissions granted, one button from going
+              online - and private until you press it.
             </p>
           </Reveal>
         </div>

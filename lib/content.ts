@@ -172,18 +172,18 @@ export const features: Feature[] = [
 export const steps = [
   {
     n: "1",
-    title: "Sign in on both devices",
-    body: "Install Servey on your Mac and your iPhone or iPad, then sign in with Google on each. That's the whole setup - no VPN, no port forwarding.",
+    title: "Sign in, then set a master password",
+    body: "Install Servey on your Mac and your iPhone or iPad and sign in with Google on each. On the Mac you then set a master password. Every device has to produce it before it can connect, and there is deliberately no way to skip it.",
   },
   {
     n: "2",
-    title: "Your Mac appears",
-    body: "Servey registers your Mac to your account and it shows up on your iPhone or iPad automatically, ready and waiting - near or far.",
+    title: "Grant two permissions, go online",
+    body: "macOS asks for Screen Recording and Accessibility, because mirroring your screen and moving your cursor are exactly what those two govern. Switch your Mac online and it is reachable by your own devices - still no VPN, no port forwarding, no static IP.",
   },
   {
     n: "3",
-    title: "Tap to connect & control",
-    body: "Tap your Mac to open a live, crystal-clear window. Move the mouse, type, run the terminal - Servey picks the best path for you.",
+    title: "Approve the device, then connect",
+    body: "Your Mac appears on your iPhone or iPad by itself. The first time a new device asks, you approve it on the Mac. After that, tap to open a live window and take the screen or the terminal - Servey picks the best path for you.",
   },
 ] as const;
 
@@ -274,7 +274,7 @@ export const faqs = [
   },
   {
     q: "Do I need a VPN or port forwarding?",
-    a: "No. There's no VPN to configure and no ports to forward. Sign in with Google on both devices and your Mac appears - that's the entire setup.",
+    a: "No. There's no VPN to configure, no ports to forward, no static IP and nothing to change on your router - Servey handles NAT traversal itself, including on carrier-grade NAT. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.",
   },
   {
     q: "Is there a free version?",

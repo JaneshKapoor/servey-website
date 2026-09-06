@@ -115,12 +115,12 @@ export const screenshots = {
     // The capture already includes the macOS window chrome, so it renders in a
     // plain crop frame (not the synthetic MacWindow) to avoid double title bars.
     frame: "crop",
-    ratio: 881 / 625,
-    width: 881,
-    height: 625,
+    ratio: 939 / 652,
+    width: 939,
+    height: 652,
     hint: "Mac host app",
-    alt: "Servey's Mac host app on macOS - a dark, neon-green connect screen showing the Mac online and discoverable on the local network",
-    src: "/screenshots/servey-landing-page.png",
+    alt: "Servey's Mac host app on macOS - the Connect screen showing the Mac offline with a Go Online button, Screen Recording and Accessibility granted, Keep Mac Awake on, and Closed-Lid Mode ready to enable",
+    src: "/screenshots/mac-connect.png",
     ready: true,
   },
 } as const satisfies Record<string, ScreenshotSlot>;
