@@ -83,29 +83,13 @@ export default function MacPage() {
               </span>
             </div>
           ) : (
-            <div className="mt-8 rounded-2xl border border-border-strong bg-surface p-6 sm:p-7">
-              <h2 className="text-lg font-semibold tracking-tight text-fg">
-                It is not downloadable yet
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                We would rather say that plainly than leave you clicking a button that
-                does nothing. The Mac app is built and in pre-submission hardening. It
-                ships as a signed <strong className="text-fg">.dmg</strong> from this
-                page, and this page is where it will appear - the address does not
-                change, so the link you were given still works later.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                Leave us an email and we will tell you the day it is here. That is the
-                only thing we use it for.
-              </p>
-              <div className="mt-6">
-                <WaitlistDialog source="mac-page">
-                  <Button size="lg">
-                    Tell me when the Mac app is ready
-                    <ArrowRight className="size-4" />
-                  </Button>
-                </WaitlistDialog>
-              </div>
+            <div className="mt-8">
+              <WaitlistDialog source="mac-page">
+                <Button size="lg">
+                  Tell me when the Mac app is ready
+                  <ArrowRight className="size-4" />
+                </Button>
+              </WaitlistDialog>
             </div>
           )}
 
