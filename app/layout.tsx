@@ -100,6 +100,14 @@ const jsonLd = {
       url: site.url,
       logo: `${site.url}/icon.png`,
       description: site.description,
+      email: site.email,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: site.email,
+        url: `${site.url}/#contact`,
+        availableLanguage: ["English"],
+      },
       sameAs: ["https://x.com/KapoorJanesh", "https://x.com/dwivediishivam"],
     },
     {

@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { site } from "@/lib/site";
 import { ContactForm } from "@/components/contact-form";
 
 /** Contact-us capture in a modal. Stores messages to Firestore via /api/contact. */
@@ -23,7 +24,14 @@ export function ContactDialog({ children }: { children: React.ReactNode }) {
           <DialogTitle>Get in touch</DialogTitle>
           <DialogDescription>
             Questions, feedback, or partnership ideas? Send us a message and we&rsquo;ll
-            reply by email.
+            reply by email - or write to{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="text-accent-strong underline underline-offset-2"
+            >
+              {site.email}
+            </a>{" "}
+            directly.
           </DialogDescription>
         </DialogHeader>
         <ContactForm />

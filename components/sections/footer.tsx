@@ -99,6 +99,12 @@ export function Footer() {
                   Contact us
                 </button>
               </ContactDialog>
+              <a
+                href={`mailto:${site.email}`}
+                className="w-fit text-sm text-muted transition-colors hover:text-fg"
+              >
+                {site.email}
+              </a>
             </nav>
           </div>
         </div>
