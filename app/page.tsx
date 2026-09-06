@@ -1,6 +1,7 @@
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
+import { Situations } from "@/components/sections/situations";
 import { Features } from "@/components/sections/features";
 import { Statement } from "@/components/sections/statement";
 import { Audience } from "@/components/sections/audience";
@@ -17,6 +18,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <TrustStrip />
+        <Situations />
         <Features />
         <Statement />
         <Audience />

@@ -33,7 +33,7 @@ export function Hero() {
           >
             <Badge className="border-accent/30 bg-accent-deep/60">
               <span className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(34,220,110,0.9)]" />
-              Native remote access for Mac · Waitlist open
+              Native Apple app · Waitlist open
             </Badge>
           </motion.div>
 
@@ -45,7 +45,7 @@ export function Hero() {
           >
             Your Mac.
             <br />
-            In your <span className="text-sweep">pocket.</span>
+            <span className="text-sweep">Wherever you are.</span>
           </motion.h1>
 
           <motion.p
@@ -54,9 +54,9 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Servey mirrors your Mac to your iPhone and iPad with full mouse, keyboard,
-            and a real terminal - hardware-accelerated on your network, private
-            peer-to-peer anywhere else.
+            Leave the Mac where it lives. Its screen and a real terminal come with you
+            on your iPhone or iPad - and the work you start on it keeps running after
+            you close the app.
           </motion.p>
 
           <motion.div

@@ -3,10 +3,10 @@ export const site = {
   name: "Servey",
   domain: "servey.in",
   url: "https://servey.in",
-  tagline: "Your Mac. In your pocket.",
+  tagline: "Your Mac, wherever you are.",
   // Kept under 160 chars so Google does not truncate it in results.
   description:
-    "Servey mirrors your Mac to your iPhone and iPad with full mouse, keyboard, and a real terminal - sharp on your network, private anywhere else.",
+    "Your Mac, wherever you are. Servey puts its screen and a real terminal on your iPhone or iPad, and the work you start keeps running after you close it.",
   email: "hello@servey.in",
   accent: "#22dc6e",
 } as const;

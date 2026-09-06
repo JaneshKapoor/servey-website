@@ -66,6 +66,63 @@ export const audiences: Audience[] = [
   },
 ];
 
+/**
+ * The situations, not the category.
+ *
+ * "Remote desktop for Mac" is a crowded shelf and a weak frame - it describes a
+ * tool rather than a moment, and every competitor is already on that shelf. These
+ * are the moments people actually recognise, written as a `when` and a `then` so a
+ * visitor finds their own case in the first few seconds rather than decoding a
+ * feature list.
+ *
+ * Order is deliberate: the two most universally understood first, then the two
+ * nobody else can serve (a session that outlived the app, and an agent waiting on
+ * a human), which is where the real wedge is.
+ */
+export interface Situation {
+  icon: string;
+  when: string;
+  then: string;
+}
+
+export const situations: Situation[] = [
+  {
+    icon: "Sofa",
+    when: "The MacBook is upstairs and you are on the couch.",
+    then: "Open it on the iPad without getting up. The same desktop, the same apps, already signed in to everything.",
+  },
+  {
+    icon: "Coffee",
+    when: "The Mac mini is at home and you are at a cafe.",
+    then: "It has no monitor and does not need one. It sits on a shelf doing its job, and you reach it anyway.",
+  },
+  {
+    icon: "Hammer",
+    when: "A build was running when you had to leave.",
+    then: "It kept going without you. Rejoin the same session and read the log from exactly where it got to.",
+  },
+  {
+    icon: "Bot",
+    when: "Your coding agent has stopped to ask a question.",
+    then: "Answer it from your phone and let the agent carry on, instead of losing the forty minutes it was mid-way through.",
+  },
+  {
+    icon: "FileText",
+    when: "The file is on your Mac, not in a cloud folder.",
+    then: "Go and get it. Open the app that made it, export what you need, and send it on from there.",
+  },
+  {
+    icon: "Plane",
+    when: "You are travelling and need one Mac-only app.",
+    then: "Xcode, Logic, Final Cut. Use the real one on the real machine rather than hunting for a substitute.",
+  },
+  {
+    icon: "Backpack",
+    when: "You would rather not carry the thing.",
+    then: "Leave the Mac where it lives and take the iPad. A lighter bag, and the same work waiting when you open it.",
+  },
+];
+
 /* Numbered feature sections (alternating left/right). */
 export interface Feature {
   index: string;

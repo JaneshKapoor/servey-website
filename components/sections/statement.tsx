@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Aurora } from "@/components/aurora";
 
-const line = "Control your Mac from anywhere - crystal clear.";
+const line = "Leave your desk. Not your Mac.";
 const words = line.split(" ");
 
 const container: Variants = {
@@ -37,7 +37,7 @@ export function Statement() {
           aria-label={line}
         >
           {words.map((w, i) => {
-            const highlight = w.startsWith("crystal") || w.startsWith("clear");
+            const highlight = w.startsWith("Mac");
             return (
               <motion.span
                 key={`${w}-${i}`}
@@ -57,8 +57,8 @@ export function Statement() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mx-auto mt-6 max-w-md text-pretty text-base text-muted sm:text-lg"
         >
-          The couch, the café, the train - your whole desktop and terminal, wherever
-          you are.
+          The couch, the café, the departure gate - your whole desktop and a real
+          terminal, still running, wherever you happen to be.
         </motion.p>
       </div>
     </section>
