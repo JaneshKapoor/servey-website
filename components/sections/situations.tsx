@@ -1,26 +1,9 @@
-import {
-  Backpack,
-  Bot,
-  Coffee,
-  FileText,
-  Hammer,
-  Plane,
-  Sofa,
-  type LucideIcon,
-} from "lucide-react";
+import { Bot, Coffee, FileText, Hammer, Plane, Sofa, type LucideIcon } from "lucide-react";
 import { SectionHeading } from "@/components/section";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { situations } from "@/lib/content";
 
-const icons: Record<string, LucideIcon> = {
-  Sofa,
-  Coffee,
-  Hammer,
-  Bot,
-  FileText,
-  Plane,
-  Backpack,
-};
+const icons: Record<string, LucideIcon> = { Sofa, Coffee, Hammer, Bot, FileText, Plane };
 
 /**
  * The situations section - positioning, not features.
@@ -42,6 +25,8 @@ export function Situations() {
           intro="That gap is the whole product. Here is what it looks like on an ordinary day."
         />
 
+        {/* 2 cols at sm, 3 at lg - so `situations` must stay a multiple of six
+            or the last row is short. See the note in lib/content.ts. */}
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {situations.map((s) => {
             const Icon = icons[s.icon];

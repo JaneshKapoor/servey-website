@@ -78,6 +78,10 @@ export const audiences: Audience[] = [
  * Order is deliberate: the two most universally understood first, then the two
  * nobody else can serve (a session that outlived the app, and an agent waiting on
  * a human), which is where the real wedge is.
+ *
+ * KEEP THE COUNT A MULTIPLE OF SIX. The section renders 2 columns at `sm` and 3
+ * at `lg`, so only a multiple of both fills every row. This shipped with seven
+ * and left one card stranded on a row of its own.
  */
 export interface Situation {
   icon: string;
@@ -115,11 +119,6 @@ export const situations: Situation[] = [
     icon: "Plane",
     when: "You are travelling and need one Mac-only app.",
     then: "Xcode, Logic, Final Cut. Use the real one on the real machine rather than hunting for a substitute.",
-  },
-  {
-    icon: "Backpack",
-    when: "You would rather not carry the thing.",
-    then: "Leave the Mac where it lives and take the iPad. A lighter bag, and the same work waiting when you open it.",
   },
 ];
 
