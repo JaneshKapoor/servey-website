@@ -1,5 +1,7 @@
 # Servey - website
 
+SEO Updates
+
 The premium marketing/landing site for **Servey** - a native app that puts your
 Mac in your pocket: full screen mirroring, mouse, keyboard, and a real terminal
 on your iPhone and iPad, hardware-accelerated on your network and private
