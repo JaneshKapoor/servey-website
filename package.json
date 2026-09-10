@@ -10,6 +10,7 @@
     "indexnow": "node scripts/indexnow.mjs",
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:framing": "node scripts/servey-depth.mjs",
+    "seo:meta": "node scripts/meta-audit.mjs",
     "context:pdf": "node scripts/build-context-pdf.mjs"
   },
   "dependencies": {

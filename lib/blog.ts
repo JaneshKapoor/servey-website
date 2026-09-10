@@ -236,11 +236,11 @@ export const posts: Post[] = [
   },
   {
     slug: "screens-vs-jump-desktop",
-    metaTitle: "Screens vs Jump Desktop: which should you pick?",
+    metaTitle: "Screens vs Jump Desktop: subscription or once?",
     title:
       "Screens vs Jump Desktop: which Mac remote control app is right for you?",
     description:
-      "An honest head-to-head of Screens 5 and Jump Desktop for controlling a Mac - how they differ, who each one suits, and what to consider before picking.",
+      "Jump Desktop is bought once; Screens is a subscription, and that is usually the decision. An honest head-to-head, including where each one genuinely loses.",
     date: "2026-08-02",
     keywords: [
       "Screens vs Jump Desktop",
@@ -960,10 +960,10 @@ export const posts: Post[] = [
   },
   {
     slug: "screens-5-alternatives",
-    metaTitle: "Screens 5 alternatives for Mac and iPad",
+    metaTitle: "Screens 5 alternatives for Mac and iPad, compared",
     title: "Screens 5 alternatives: what to use instead, and when",
     description:
-      "Honest Screens 5 alternatives for controlling a Mac from an iPhone or iPad - Jump Desktop, RustDesk, Chrome Remote Desktop, Screen Sharing and more.",
+      "Jump Desktop, RustDesk, Chrome Remote Desktop and macOS Screen Sharing, compared honestly against Screens 5 - including where Screens still wins.",
     date: "2026-08-16",
     keywords: [
       "Screens 5 alternative",
@@ -1274,10 +1274,10 @@ export const posts: Post[] = [
   },
   {
     slug: "jump-desktop-vs-rustdesk",
-    metaTitle: "Jump Desktop vs RustDesk: an honest look",
+    metaTitle: "Jump Desktop vs RustDesk: is free good enough?",
     title: "Jump Desktop vs RustDesk: paid polish or free and open source?",
     description:
-      "Jump Desktop vs RustDesk for Mac remote access - a paid, polished app against a free open-source one you can self-host. Where each genuinely wins.",
+      "Often yes - RustDesk is free, open source and self-hostable. Where Jump Desktop still earns its price for a Mac, and the trade you make by not paying it.",
     date: "2026-08-16",
     keywords: [
       "Jump Desktop vs RustDesk",
@@ -1406,10 +1406,10 @@ export const posts: Post[] = [
   },
   {
     slug: "splashtop-vs-jump-desktop",
-    metaTitle: "Splashtop vs Jump Desktop for Mac",
+    metaTitle: "Splashtop vs Jump Desktop: the real difference",
     title: "Splashtop vs Jump Desktop: subscription or buy it once?",
     description:
-      "Splashtop vs Jump Desktop for Mac remote access. One is a subscription tuned for performance and teams, the other a one-time purchase with the best iPad input.",
+      "Splashtop is a subscription tuned for frame rate and teams; Jump Desktop is a one-time purchase with better iPad input. Which one fits your Mac, and why.",
     date: "2026-08-19",
     keywords: [
       "Splashtop vs Jump Desktop",
@@ -1796,10 +1796,10 @@ export const posts: Post[] = [
   },
   {
     slug: "does-mac-screen-sharing-work-over-the-internet",
-    metaTitle: "Does Mac Screen Sharing work over the internet?",
+    metaTitle: "Mac Screen Sharing over the internet: 4 fixes",
     title: "Does macOS Screen Sharing work over the internet?",
     description:
-      "Not on its own - macOS Screen Sharing stops at your router. Here is why, and the four realistic ways to reach your Mac's screen from outside your network.",
+      "No - it stops at your router, and port forwarding cannot save you on CGNAT. The four routes that actually reach your Mac from outside, and when each is worth it",
     date: "2026-08-23",
     keywords: [
       "does Mac Screen Sharing work over the internet",

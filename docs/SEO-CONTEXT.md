@@ -455,7 +455,14 @@ be used for, and the shot list for recording it properly.
    confirms all 12 landed.** Two things still owed: the 1 Sep batch has now had
    4 days, so re-inspect that sample; and GSC Request Indexing for the 8 tier-1
    and tier-2 URLs is **the owner's to do** - Bing is done, Google is not.
-3. **Add in-app account deletion (new, 6 Sep) - App Store blocker.** Guideline
+3. **Add CI (new, 10 Sep). There is none - no `.github` directory at all.**
+   Every guard this repo has (`tsc`, `next build`, `npm run seo:audit`,
+   `npm run seo:framing`, the duplicate-title check) is run by hand, which is
+   why several regressions this month were caught by eye rather than by a
+   gate: the overclaim surviving in `public/llms.txt`, the seven-card grid, a
+   post shipping at 2.9 density. A GitHub Action running those four on push
+   costs nothing and would have blocked all three.
+4. **Add in-app account deletion (new, 6 Sep) - App Store blocker.** Guideline
    5.1.1(v) has required apps that support account creation to offer account
    deletion *inside the app* since 30 June 2022. Servey has none: there is no
    delete path in either app, and `firestore.rules` sets `allow delete: if
@@ -464,7 +471,7 @@ be used for, and the shot list for recording it properly.
    and it is cheaper to build now than during review. The privacy policy
    currently documents deletion by emailing `hello@servey.in`, which is honest
    and legally sufficient but is **not** what Apple checks for.
-4. **Fix the 13 posts `seo:framing` flags (new, 5 Sep, not yet done).** The
+5. **Fix the 13 posts `seo:framing` flags (new, 5 Sep, not yet done).** The
    new script surfaced pre-existing failures; **none were touched**, because
    rewriting 13 posts was not what was asked. Worth doing in priority order:
    - **`control-your-mac-from-iphone-ipad` (substance 70%) and
@@ -481,17 +488,17 @@ be used for, and the shot list for recording it properly.
      check whether the *post* is right before changing the number.
      `splashtop-vs-jump-desktop` (6.7) and
      `chrome-remote-desktop-vs-jump-desktop` (6.5) are marginal.
-5. ~~Capture the Mac host's SESSIONS screen.~~ **Done 5 Sep** - owner
+6. ~~Capture the Mac host's SESSIONS screen.~~ **Done 5 Sep** - owner
    supplied it, cropped to the window bounds and shipped as
    `public/screenshots/terminal-sessions.png`. The persistent-sessions card
    now has a real capture, and no feature card ships a placeholder any more.
-6. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
-7. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
+7. **Reddit participation** in r/macapps and r/homelab - genuine, not promotional.
+8. ~~Email the waitlist.~~ **Ruled out by the owner** - no bulk or broadcast
    sends to existing waitlist members. Do not re-propose this.
-8. **BetaList / Peerlist / Uneed** submissions.
-9. **Add `VideoObject` schema** once the demo exists.
-10. Re-test AI citation on **comparison** queries in ~2 weeks.
-11. At launch: App Store listing, AlternativeTo submission, Show HN.
+9. **BetaList / Peerlist / Uneed** submissions.
+10. **Add `VideoObject` schema** once the demo exists.
+11. Re-test AI citation on **comparison** queries in ~2 weeks.
+12. At launch: App Store listing, AlternativeTo submission, Show HN.
 
 **Explicitly not on this list:** more landing pages, more metadata rewrites,
 more schema. On-site SEO has reached sharply diminishing returns. What is missing
@@ -503,6 +510,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-10 | **GSC pulled properly for the first time since 1 Sep: two findings that change what to work on.** **(1) The `servey` query is not brand demand - it is people misspelling "survey".** 347 impressions, **position 4.9**, and **2.9% CTR**. A brand term at position 5 converts at 15-30%; 2.9% means 337 people saw us and did not want us. It is **8% of all site impressions**, it is the single largest query, and it is what drags the headline "2% average CTR" down. **Do not optimise for it, do not read the sitewide CTR as a health metric, and do not treat rising impressions as rising interest until this is subtracted.** **(2) The real opportunity is CTR on page-one comparison pages, and it is large.** Per-page, 3 months: `does-mac-screen-sharing-work-over-the-internet` **394 impressions (2nd highest on the site), position 9.7, 1.0% CTR**; `screens-vs-jump-desktop` 365 / 6.2 / 3.8%; `jump-desktop-vs-rustdesk` 284 / 7.2 / 3.9%; `screens-5-alternatives` 241 / 7.0 / 2.9%; `splashtop-vs-jump-desktop` 200 / 6.9 / 2.0%. These already rank page one. Positions 6-10 should return 5-8%; we are getting 1-4%. Lifting the five to a normal band is roughly **+60 clicks a quarter against a current total of 87** - a near-doubling with no new ranking and no new posts. **This is the evidence §4 was waiting for**: the CTR ban was justified by a blended 16.5 average position that mixed two unrelated populations, and per-page data at known positions is the thing that was missing. Acted on it: rewrote `metaTitle` and `description` for all five, keeping the head keyword in every title so rankings are not put at risk, and replacing "which should you pick" style restatements of the query with the actual deciding axis (bought once vs subscription; is free good enough; the four fixes). **(3) The core cluster is still stranded**: `remote control iphone from mac` position **42.5**, `remote access mac from iphone` **38.7**, both **0 clicks** on 57 impressions. Page four earns nothing, and no metadata work reaches it - that needs links, which is unchanged. **(4) Trend is genuinely up**: 4.28K impressions over 3 months, 328 on 7 Sep alone, against a near-flat July. **Method note:** GSC defaults to clicks-only columns; enable Average CTR and Average position or the per-page diagnosis is impossible. Sorting by impressions rather than clicks is what surfaced both findings. |
 | 2026-09-06 | **Privacy Policy and Terms rewritten for real; both had opened by calling themselves placeholders.** Every factual claim in the privacy policy was read out of the **app repo**, not assumed - the same discipline used on the feature claims. Findings worth keeping: the apps carry **no analytics SDK and no crash reporter at all** (Firebase Auth + Firestore, Supabase, Google Sign-In, StoreKit, and nothing else), billing is **Apple-only** so card data never reaches us, and the WebRTC signaling exchange **contains IP addresses** - undisclosed anywhere until now, and now its own subsection, stated as ephemeral because the code deletes the session doc. Supabase holds session **counts and total seconds**, so the policy says counts rather than "usage data", which invites a reader to assume content. The `users` table has a `phone` column nothing writes to, so we do **not** claim to collect phone numbers. Structure follows `macky.dev/privacy` where it fits plus what **DPDP 2023** requires of a notice (purposes, categories, retention, withdrawal, rights procedure, grievance route, 90-day resolution) and GDPR/UK GDPR rights. Ownership and discontinuation are in **both** documents at the owner's request: privacy covers what happens to data if the service ends, terms carry the enforceable version. Terms also gained acceptable use, Apple-handled refunds, limitation of liability and Indian governing law - it had none. **Blocker found, not fixed: the app has no account deletion** (`allow delete: if false` on `users`, and no delete path in either app). App Store Review Guideline 5.1.1(v) has required in-app account deletion since 30 June 2022, so this is a submission rejection waiting to happen; the policy currently documents deletion by email, which is honest but is not what Apple asks for. See §11. |
 | 2026-09-05 | **Bing: 12 URLs submitted and sitemap resubmitted.** Worked out what actually changed rather than resubmitting everything - **4 new** (the new posts), **4 substantially rewritten** (`/`, `/blog`, `/privacy`, `/remote-mac-for-ai-agents`), **4 one-sentence edits** (the 3 posts carrying the retired overclaim, plus `control-iphone-from-mac`'s description fix). Method note: diffing `lib/blog.ts` naively reported **14** changed posts, all false - prettier had reflowed the file. The reliable check is to grep for the *specific replacement strings* and map each hit back to its slug, or compare rendered HTML; never trust a source diff after a formatter has run. **All 4 new posts were `Discovered but not crawled`, discovered 05 Sept** - that is IndexNow working (it got them into Bing's queue within hours) and simultaneously *not* working (queued is not crawled), which is the same split logged on 1 Sep. `/` was **`Indexed successfully`** but holding the pre-rebuild page - 6 features, 2 plans, no free tier, and the overclaim - so the recrawl request matters more there than anywhere else. **Quota went 100 -> 88, exactly 12**, which is the check to use; the success toast is easy to miss when batching. Sitemap re-submitted: last submit 9/5, status Processing, still 1 known sitemap / 0 errors / 0 warnings, and it will move 34 -> 38 once processed. **GSC left to the owner.** Advice given: spend GSC's ~10-12/day Request Indexing quota on the 8 in tiers 1-2 only and skip the 4 one-sentence edits, which Google will pick up unaided. |
 | 2026-09-05 | **Owner: the new posts over-served the free how-to and buried Servey. Both true; the depth metric could not see the second one.** Depth measures the first *mention*, which a table cell or the lede satisfies - all four posts read 4.9-9.0% while the first paragraph that actually says what Servey does sat at **49%, 51%, 65% and 69%**. A reader on a phone scrolled past ~700 words of free tutorial first. This is the **31 Aug regression in a new costume**, and the rule written to stop it was satisfiable by a token, so a third metric now exists: **substance** (first ≥25-word paragraph or `<h2>` naming Servey, lede excluded) with a ≤35% ceiling, in `scripts/servey-depth.mjs` / `npm run seo:framing`. **Fixed structurally, per the 26 Aug precedent:** a short-answer paragraph after each opening table giving the real answer and naming Servey with a "the app we make" disclosure, plus naming Servey in the privacy-screen table's approach row (the only one of the four tables that did not). **Cut**, because the owner was right it was surplus and it was what pushed Servey down: pmset list 5→3 commands, the dummy-HDMI and heat/battery/FileVault paragraphs, the screen-vs-tmux paragraph, the shopping advice, the remediation walkthrough, `lsof` and two log commands - **every one of them duplicated a table row or its own FAQ answer verbatim.** Then removed 7 repeated Servey mentions, because trimming words while holding mentions took the closed-lid post to **9.3/1k**, which reads as an advert on exactly the pages the broken-link outreach points at. Final: depth 4.9-9.0%, substance 18-32%, density 5.8-6.2. `readingMinutes` corrected (closed-lid claimed 7 min for 971 words against a ~235 wpm site convention). **The script found pre-existing failures I have not touched - see §11.** |

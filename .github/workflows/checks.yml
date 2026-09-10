@@ -1,0 +1,50 @@
+# The guards this repo already has, run automatically instead of by eye.
+#
+# Every one of these existed as an npm script before this workflow did, and
+# every one of them was run by hand. Three regressions in September got through
+# because a hand-run check was skipped: the retired "hardly touches our
+# servers" claim surviving in public/llms.txt, a seven-card grid that could not
+# fill a six-slot row, and a post shipping below the density floor.
+#
+# seo:framing is advisory (continue-on-error) because 13 pre-existing posts
+# fail it and fixing them is tracked separately in SEO-CONTEXT §11. Flip it to
+# blocking once that backlog is clear.
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # Needs the build: both read the prerendered HTML in .next, because the
+      # rendered page is the only thing that proves what actually shipped.
+      - name: Metadata - uniqueness and length
+        run: npm run seo:meta
+
+      - name: Servey framing - depth, substance, density
+        run: npm run seo:framing
+        continue-on-error: true

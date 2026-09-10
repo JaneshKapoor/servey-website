@@ -812,6 +812,6 @@ export function getUseCase(slug: string) {
  * which Google does index well, into the commercial pages, which it did not
  * index at all.
  */
-export function useCasesForPost(postSlug: string): UseCase[] {
+export function getUseCasesForPost(postSlug: string): UseCase[] {
   return useCases.filter((u) => u.relatedSlug === postSlug);
 }

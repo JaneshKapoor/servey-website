@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
 import { ContactDialog } from "@/components/contact-dialog";
 import { site, ogImage } from "@/lib/site";
@@ -136,7 +137,7 @@ export default function TermsPage() {
       <p>
         You can stop using Servey at any time, cancel your subscription through Apple,
         and ask us to delete your data as described in our{" "}
-        <a href="/privacy">Privacy Policy</a>.
+        <Link href="/privacy">Privacy Policy</Link>.
       </p>
       <p>
         We may suspend or terminate your access if you breach these terms, if your

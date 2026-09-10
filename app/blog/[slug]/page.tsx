@@ -15,7 +15,7 @@ import {
   posts,
   relatedPosts,
 } from "@/lib/blog";
-import { useCasesForPost } from "@/lib/use-cases";
+import { getUseCasesForPost } from "@/lib/use-cases";
 import { site, ogImage } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -121,7 +121,7 @@ export default async function BlogPostPage({
   };
 
   const others = relatedPosts(post.slug, 3);
-  const relatedUseCases = useCasesForPost(post.slug);
+  const relatedUseCases = getUseCasesForPost(post.slug);
 
   return (
     <>
