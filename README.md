@@ -7,7 +7,7 @@ Mac in your pocket: full screen mirroring, mouse, keyboard, and a real terminal
 on your iPhone and iPad, hardware-accelerated on your network and private
 peer-to-peer anywhere else.
 
-Built to deploy on **Vercel** at **[servey.in](https://servey.in)**.
+Built to deploy on **Vercel** and available at **[servey.in](https://servey.in)**.
 
 > **Start here: [`docs/CONTEXT.md`](docs/CONTEXT.md)** - the full context primer for
 > this project (product, content system, SEO architecture, analytics, growth
