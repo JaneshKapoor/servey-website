@@ -1,0 +1,2514 @@
+# Servey - full content
+
+> Every article on https://servey.in in full, so an answer engine can read the site without crawling it page by page. Generated from the same registry the website renders, so it cannot disagree with the live pages.
+
+Site: https://servey.in
+Generated from: lib/blog.ts, lib/use-cases.ts, lib/content.ts
+Articles: 28
+
+---
+
+# How to control your Mac from your iPhone or iPad
+
+URL: https://servey.in/blog/control-your-mac-from-iphone-ipad
+Summary: How to control your Mac from an iPhone or iPad - the free option built into macOS, why it stops working when you leave the house, and what to use instead.
+
+There is a free way to do this that is already on both of your devices, and it works well right up until you leave the house. Here is how to set it up, exactly where it breaks, and why Servey - the app we make - exists to cover the part it cannot.
+
+There are plenty of moments when you want your Mac but only have your phone: a build broke while you were on the couch, a render needs babysitting, or a file lives on your desktop and you are on a train. The good news is that macOS has shipped the core of this for years and you do not have to buy anything to try it. The catch is that the built-in route was designed for a local network, and most of the times you actually want your Mac are the times you are not on it.
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+,
+        ],
+        rows: [
+          [
+            
+
+No, not without a VPN or port forwarding
+
+,
+          ],
+          [
+            
+
+Yes, once it is set up and running everywhere
+
+,
+          ],
+          [
+            
+
+Yes, with no network configuration
+
+,
+          ],
+          [
+            
+
+Yes - hardware-encoded HEVC
+
+Yes - automatic, encrypted peer-to-peer
+
+Yes - a real shell, built in
+
+,
+          ],
+        ],
+      },
+      { type: 
+
+The free way, step by step
+
+Every Mac has a VNC server built into it, and turning it on takes about thirty seconds. On the Mac, open System Settings, go to General and then Sharing, and switch on Screen Sharing. Click the small info button next to it and note the address it shows you - it will look like a name ending in .local, and that is what you will connect to. While you are there, switch on Remote Login as well if you want SSH, because the two are separate services and turning on one does not turn on the other.
+
+On the iPhone or iPad you need a VNC client, because iOS does not have one built in. There are several on the App Store at a range of prices. Point it at the .local address from the previous step, sign in with your Mac account name and password, and your desktop appears. On the same Wi-Fi this works well and costs nothing beyond the client app.
+
+Two things commonly go wrong here. If the connection is refused, check that both devices really are on the same network - a phone that has silently dropped to mobile data will fail with a confusing error. And if you have a Mac mini or any Mac with no display attached, the desktop may arrive at an odd, cramped resolution, which is a headless-specific problem rather than anything to do with your phone.
+
+Why it stops working when you leave the house
+
+This is the wall almost everyone hits. Screen Sharing is designed for a local network, and .local addresses only mean anything on the network you are standing in. The moment you are on mobile data or someone else's Wi-Fi, there is no route to your Mac at all. Your home router does not accept unsolicited inbound connections, your home IP address changes when your provider feels like it, and a large number of people are behind carrier-grade NAT, which means there is no inbound path to open even if you wanted one.
+
+The traditional fixes are port forwarding with dynamic DNS, or a VPN back to your home network. Port forwarding is the one to avoid: putting VNC or SSH directly on the public internet gets them found by automated scanners within hours, and it does not work at all behind CGNAT. A VPN is the sound version of this idea, and a mesh VPN such as Tailscale is genuinely good - free for personal use, and it solves the CGNAT problem properly. The honest cost is that it is one more service to install, update and reason about on every device you own, and it gets you a network connection rather than a good experience on a touchscreen.
+
+What actually makes this pleasant on a phone
+
+Getting a picture is only half of it. Most remote desktop tools were built for cross-platform IT support, where somebody sits at a desk with a mouse and fixes a colleague's Windows machine. Driving a Mac from a five-inch touchscreen is a different problem, and the things that separate a tool you keep using from one you uninstall are fairly specific:
+
+,
+        items: [
+          
+
+Real input: a precise on-screen trackpad with left and right click, plus a full keyboard including Esc, Tab, and the modifier keys.
+
+Low latency, so the cursor tracks your finger instead of lagging behind it.
+
+A connection that works away from home without you configuring anything.
+
+A real terminal, because a lot of what you want your Mac for is one command rather than a whole desktop.
+
+That last point is the one people underestimate. Restarting a service, tailing a log, checking why a job stalled or kicking off a rebuild are all faster typed than they are done by dragging a mouse pointer around with your thumb. A tool that makes you install a separate SSH app and switch between the two is solving half the problem.
+
+ },
+      {
+        type: 
+
+Servey is built for exactly this one job: your Mac, in your pocket, on your own iPhone or iPad. Screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - live in the same native app, one tap apart. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp enough to read and you can pinch to zoom into it. Away from home it switches automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on the strict mobile networks where most tools give up. Setup is signing in with Google on both devices: no VPN, no ports, no dynamic DNS, no relay server to choose.
+
+Where it is honestly not the right answer: Servey is Apple-only, with the Mac as host and the iPhone or iPad as the client, so if you need to reach a Windows box or a Linux server it is the wrong tool and something like RustDesk or Jump Desktop will serve you better. It also cannot be self-hosted, which for some people is the entire point of the mesh VPN approach. And if you only ever need your Mac while sitting in the same house as it, macOS Screen Sharing is free and already installed, and there is no reason to pay for anything.
+
+ },
+      {
+        type: 
+
+,
+        items: [
+          
+
+You need it from anywhere and enjoy running infrastructure: a mesh VPN such as Tailscale.
+
+You need to reach Windows or Linux machines too: a cross-platform tool like Jump Desktop or RustDesk.
+
+You want your own Mac from your own iPhone with nothing to configure, and a terminal in the same app: Servey.
+
+ },
+      {
+        type: 
+
+Turn on Screen Sharing in System Settings and grab a VNC client, and you can control your Mac from your iPhone on your own Wi-Fi today for free. The part that is genuinely hard is everywhere else, and it is hard because of NAT and changing IP addresses rather than because of anything on your Mac. Either adopt a VPN and maintain it, or use an app that handles the networking for you. Servey is built to be the second of those for Apple devices specifically, with a real terminal alongside the screen. It launches soon; the waitlist is open now.
+
+---
+
+# Choosing a Screens or Jump Desktop alternative for Mac remote control
+
+URL: https://servey.in/blog/screens-jump-desktop-alternative-mac
+Summary: What actually separates the modern alternatives to Screens, Jump Desktop, TeamViewer and VNC when the job is reaching your own Mac from an iPhone or iPad.
+
+If you have been using Screens, Jump Desktop, TeamViewer, or a VNC app to reach your Mac from your phone, here is an honest checklist for evaluating a modern alternative.
+
+Remote-desktop tools for the Mac fall into a few camps. VNC-based apps are open and flexible but often blurry and fiddly to secure. Cross-platform suites like TeamViewer are powerful but heavy and built primarily for IT support. Native Apple-focused apps like Screens and Jump Desktop are much nicer to use, and set the bar for what a good experience looks like. So what should you compare when choosing among them - or when looking for something new?
+
+A practical comparison checklist
+
+,
+        items: [
+          
+
+Setup: does it require a VPN, port forwarding, or IP addresses - or do you just sign in on both devices?
+
+Away-from-home connectivity: does it connect reliably over cellular and behind strict carrier networks, and switch paths automatically?
+
+Input quality: a genuine trackpad and full keyboard with shortcuts, not a clumsy tap-to-click overlay.
+
+Terminal: can you run a real shell on your Mac, or is it screen-only?
+
+Privacy: is your session end-to-end encrypted and scoped to your own account, or relayed through third-party infrastructure?
+
+Native feel: is it built for Apple platforms, or an Electron or Java port that feels foreign on iOS?
+
+ },
+      {
+        type: 
+
+Servey is a new, native alternative built specifically for controlling a Mac from an iPhone or iPad. It aims at the parts of this checklist that matter most day to day:
+
+,
+        items: [
+          
+
+Zero-config setup: sign in with Google on both devices, no VPN and no port forwarding.
+
+Automatic path switching - direct on your network, private peer-to-peer when you are away - reliable even on strict mobile networks.
+
+A real terminal on your Mac, over either connection path.
+
+Private by design: sessions are scoped to your own account and end-to-end encrypted on the remote path.
+
+Built natively for the Apple ecosystem - not an Electron or Java port.
+
+ },
+      {
+        type: 
+
+Screens and Jump Desktop are excellent and well established. If you specifically want a native, zero-configuration tool with sharp mirroring and a real terminal - and you are happy to be an early adopter - Servey is worth watching. It is launching soon; join the waitlist to try it.
+
+---
+
+# Screens vs Jump Desktop: which Mac remote control app is right for you?
+
+URL: https://servey.in/blog/screens-vs-jump-desktop
+Summary: Jump Desktop is bought once; Screens is a subscription, and that is usually the decision. An honest head-to-head, including where each one genuinely loses.
+
+Screens and Jump Desktop are the two names that come up most when people want to control a Mac from an iPhone or iPad. They are both genuinely good, and they are good at different things. Here is how to tell which one fits you.
+
+ },
+      {
+        type: 
+
+Pick Screens if you live entirely in the Apple ecosystem and want the most polished, native-feeling Mac-to-iPhone experience. Pick Jump Desktop if you also need to reach Windows machines, or if you want the widest protocol support in one app. If your priority is a real terminal and setup with no network configuration at all, neither is built primarily around that - and that is the gap newer tools like Servey are aimed at.
+
+ },
+      {
+        type: 
+
+Screens is made by Edovia and is unapologetically Apple-first. Its strength is polish: it looks and feels like a Mac and iOS app should, and the interface stays out of your way. For someone whose devices are all Apple and who mainly wants to see and drive their Mac's desktop from an iPad or iPhone, it is a very comfortable choice.
+
+,
+        items: [
+          
+
+Straightforward for the common case: reach my own Mac, see my desktop, click things.
+
+A companion tool to help reach your Mac when you are away from your home network.
+
+What Jump Desktop is good at
+
+Jump Desktop's strength is reach. It supports multiple remote-desktop protocols, including RDP and VNC, alongside its own higher-performance protocol, and it runs across more platforms. If your life is not purely Apple - a Windows desktop at work, a Linux box somewhere - Jump Desktop handles that variety in one app better than an Apple-only tool can.
+
+,
+        items: [
+          
+
+Cross-platform: useful if you are not exclusively on Apple hardware.
+
+A strong reputation for responsiveness on its own optimised protocol.
+
+How to actually choose between them
+
+The honest framing is that this is not a question of which app is better, but which problem you have. Ask yourself three things:
+
+,
+        items: [
+          
+
+How much network setup am I willing to do? Reaching a machine from outside your home network is where remote-desktop tools differ most, and where people most often give up.
+
+Do I need a command line, or just a screen? If a lot of your work is restarting services, tailing logs, or kicking off builds, a screen-only tool makes you drive a GUI to reach a shell.
+
+Because both apps are actively developed, check each one's current feature list and pricing directly before you buy - details change, and you should not take a blog post's word for what a product does today.
+
+Where a newer option like Servey fits
+
+Servey is not trying to be a broader Jump Desktop or a more polished Screens. It is built around a narrower question: what if controlling your Mac from your iPhone required no network setup at all, and came with a real terminal?
+
+,
+        items: [
+          
+
+It picks its own path: a direct high-quality stream when both devices are on the same Wi-Fi, and a private end-to-end encrypted connection between your own devices when you are away - including on strict mobile and carrier networks.
+
+A genuine shell on your Mac sits alongside the screen, so command-line work does not mean driving a GUI with a trackpad overlay.
+
+It is native to the Apple ecosystem rather than a cross-platform port.
+
+The honest trade-off: Servey is Apple-only and it is still pre-launch, so it has none of the track record that Screens and Jump Desktop have earned over years. If you need something battle-tested today, buy one of those. If the zero-setup plus real-terminal combination is what you have been missing, Servey is worth a look.
+
+ },
+      {
+        type: 
+
+Screens wins on Apple-native polish. Jump Desktop wins on breadth and protocol support. Both are solid, established products and you will not regret either. The thing neither is built around is zero-configuration networking paired with a genuine terminal - which is exactly what Servey is being built for. It launches soon; join the waitlist to be notified.
+
+---
+
+# How to access your Mac remotely over cellular
+
+URL: https://servey.in/blog/access-your-mac-remotely-over-cellular
+Summary: Reach your Mac from your iPhone on 4G or 5G - no VPN or port forwarding - even behind strict carrier networks and CGNAT. Here is how it works.
+
+Getting to your Mac over Wi-Fi is easy. Getting to it from your phone on mobile data, behind your carrier's network, is where most remote tools fall apart. Here is why - and how to do it without any router setup.
+
+You are out with just your phone on 5G, and you need something from your Mac at home. In theory this is simple; in practice, carrier networks make it hard. Understanding why helps you pick a tool that actually connects.
+
+Why cellular is the hard case
+
+Most mobile carriers put you behind carrier-grade NAT (CGNAT), which means your phone does not have a public address that your Mac can call back to. The same is true for most home networks behind a router. Two devices that both sit behind NAT cannot simply open a direct connection - which is why traditional remote access asks you to set up a VPN, forward ports, or use a jump server.
+
+The modern approach: no router setup at all
+
+Rather than making you configure the network, a well-built app coordinates the connection for you. A lightweight signaling step helps your two devices discover each other, then they establish a private, direct link. When a fully direct path is not possible, traffic is securely relayed so the session still works - all without you touching a router.
+
+,
+        items: [
+          
+
+No port forwarding or firewall rules on your home router.
+
+No public IP address or dynamic-DNS setup.
+
+Works from mobile data, cafe Wi-Fi, or a hotel network.
+
+How Servey connects over cellular
+
+Servey is designed for exactly this situation. When you are away, it establishes a private, end-to-end encrypted connection between your own devices, using NAT traversal so it connects even on strict mobile and CGNAT networks. If a direct path is not available, it securely relays instead of failing. You never configure any of it - you sign in with Google on both devices and connect.
+
+It also adapts quality to your connection automatically, so the picture stays smooth on a weaker mobile signal instead of freezing. Servey is launching soon - join the waitlist to try it.
+
+---
+
+# Control a headless Mac Mini remotely from your iPhone or iPad
+
+URL: https://servey.in/blog/control-a-headless-mac-mini-remotely
+Summary: The mini has no monitor and you are not at home. How to get its screen, a keyboard and a real terminal on the phone in your pocket, on any network.
+
+A Mac Mini tucked on a shelf with no monitor makes a fantastic little always-on machine - a build box, a media server, an automation host. The catch is driving it. Here is how to run a headless Mac Mini from your iPhone or iPad.
+
+The Mac Mini is popular as a headless machine: small, quiet, efficient, and powerful enough to be a home server, CI runner, or automation host. But 'headless' means no keyboard, mouse, or monitor attached - so you need a reliable way to reach it, both for the occasional GUI task and for everyday command-line work.
+
+You need two things: a screen and a shell
+
+Most headless work is command-line: check a service, pull code, run a job, read a log. For that you want a real terminal. But now and then you need the actual desktop - to click through a GUI installer, approve a permission dialog, or use an app that has no command-line equivalent. A good remote tool gives you both from the same place.
+
+,
+        items: [
+          
+
+Full screen mirroring with mouse and keyboard for the occasional GUI task.
+
+Access from your local network at home and remotely when you are out.
+
+Setup that does not require plugging in a monitor just to get started.
+
+Driving a Mac Mini with Servey
+
+Servey turns your iPhone or iPad into the head for your headless Mac Mini. You get crystal-clear screen mirroring with real mouse and keyboard when you need the desktop, plus a real terminal for everything else - both available on your local network and remotely. Because setup is just signing in with Google on each device, you do not need to attach a display to configure it.
+
+Whether the Mini is a build box, a home server, or an automation host, you can check on it and control it from your pocket. Servey is launching soon - join the waitlist to be notified before release.
+
+---
+
+# Run a real terminal on your Mac from your iPhone
+
+URL: https://servey.in/blog/real-terminal-on-your-mac-from-iphone
+Summary: How to get a genuine macOS shell on your iPhone or iPad - tail logs, fix builds, and drive a headless Mac from anywhere, not through a limited web console.
+
+Sometimes you do not need your whole desktop - you just need a command line on your Mac. Here is how to get a real shell in your pocket, and why the quality of that terminal matters.
+
+A surprising amount of Mac work is command-line work: restart a stuck service, tail a log during an incident, re-run a failed build, pull the latest changes, or drive a headless Mac Mini sitting in a closet. For all of that, a full mirrored desktop is overkill - what you want is a fast, honest terminal.
+
+ },
+      {
+        type: 
+
+SSH from a phone works, but getting there is the hard part: you need your Mac reachable from the internet, which usually means a VPN, port forwarding, or a jump host, plus key management on a device with a touch keyboard. That is a lot of setup for a quick command. A purpose-built app can give you the same shell without any of the network plumbing.
+
+What makes a mobile terminal actually usable
+
+,
+        items: [
+          
+
+The keys you actually need on a touch keyboard: Esc, Tab, Ctrl, arrows, and pipe, ready without hunting through menus.
+
+It works both on your local network and remotely, so the same terminal is there whether you are home or out.
+
+No VPN or port forwarding to reach your machine.
+
+ },
+      {
+        type: 
+
+Servey includes a real terminal as a first-class feature, right next to screen mirroring. It is a genuine shell on your Mac, available over both the direct local connection and the private remote path, so you can fix a build from the couch or check a process on a headless Mac from a train. Setup is just signing in with Google on both devices - no VPN, no ports.
+
+If a real terminal in your pocket sounds useful, Servey is launching soon. Join the waitlist and we will let you know the moment it is ready.
+
+---
+
+# How to run and monitor AI agents on your Mac from anywhere
+
+URL: https://servey.in/blog/run-ai-agents-on-your-mac-remotely
+Summary: Start long-running AI coding agents on your Mac, then watch, approve, and steer them from your iPhone or iPad - with a real terminal, from anywhere.
+
+AI coding agents love to run for a long time - refactoring, testing, building - while you would rather not be chained to your desk. Here is how to start an agent on your Mac and keep an eye on it from your phone, wherever you are.
+
+AI agents have changed how a lot of people work: you hand one a task, it churns for minutes or hours, and it stops now and then to ask a question or show you what it did. That is fantastic - right up until you need to leave your desk while it is still running. The agent lives on your Mac, with your code, your tools, and your compute. The trick is staying connected to that Mac from whatever device is actually in your hand.
+
+Why the agent should run on your Mac
+
+An agent is only as capable as the machine it runs on. Your Mac has your real project checkout, your installed toolchain, your credentials, and the horsepower to actually do the work. Running the agent there - rather than on a phone-sized substitute - keeps everything local, fast, and private. The only thing missing when you walk away is a window back to it, and that is exactly the gap a good remote tool fills.
+
+What you need to babysit an agent remotely
+
+,
+        items: [
+          
+
+Screen mirroring for the moments an agent's work spills into a browser, an app, or a GUI approval dialog.
+
+A connection that survives you leaving the house, switching from Wi-Fi to cellular, with no VPN or port forwarding.
+
+Low enough latency that a quick 'yes, continue', a Ctrl-C, or a one-line correction feels immediate.
+
+A simple remote-agent workflow
+
+Start the agent in a terminal on your Mac before you head out. Once you are away, open the same terminal from your phone to watch it work in real time. When it stops to ask whether it should proceed, type your answer right there. If it kicks off something visual - opening a browser, running an app, or surfacing a permission dialog - switch to full screen mirroring, handle it, and switch back. Your Mac never stops being the one doing the work; your phone is simply the remote control.
+
+ },
+      {
+        type: 
+
+Servey gives you a genuine shell on your Mac plus crystal-clear screen mirroring, both on your local network and remotely. Kick off a coding agent or a long build at your desk, walk away, and check in from your iPhone or iPad - read the log, approve the next step, nudge it in a new direction, or stop it. Because Servey also mirrors the full desktop with real mouse and keyboard, you are covered for the moments an agent needs a browser tab or a GUI click, not just the command line.
+
+Setup is just signing in with Google on both devices - no VPN, no port forwarding. On the remote path your session is private and end-to-end encrypted between your own devices, and quality adapts automatically so it stays smooth even on cellular. Servey is launching soon; join the waitlist to be first to run your agents from anywhere.
+
+---
+
+# Who Servey is for: developers, home labs, and the endlessly curious
+
+URL: https://servey.in/blog/who-is-servey-for-developers-home-labs
+Summary: Who gets the most from Servey: developers, home-lab and Mac Mini owners, AI tinkerers, and anyone curious about reaching their Mac from a phone.
+
+Servey does one thing: it puts your Mac in your pocket. That is broadly useful, but a few kinds of people feel the difference immediately. Here is who Servey is really for.
+
+Plenty of tools claim to be for everyone, which usually means they are sharply useful to no one. Servey is deliberately focused: it lets you control your Mac from your iPhone or iPad, with sharp screen mirroring and a real terminal, on your network or anywhere. A handful of people run into that need constantly - and for them, it is the difference between being stuck and getting on with it.
+
+Developers who don't want to be chained to a desk
+
+Builds break, deploys need babysitting, and incidents never wait until you are back at your keyboard. With a real terminal on your Mac in your pocket, you can restart a service, tail a log, re-run a failed build, or pull the latest changes from the couch or a train - and when a task needs the actual desktop, screen mirroring is right there. Your development machine stays your development machine; you just reach it from wherever you are.
+
+Home-lab and Mac Mini owners
+
+A Mac Mini on a shelf with no monitor makes a superb little always-on machine: a build box, a media or home server, an automation host. The catch is driving something headless. Servey becomes the head for it - a real shell for everyday maintenance, full screen mirroring with mouse and keyboard for the occasional GUI task, and no need to plug in a display just to get started.
+
+People running AI agents and long jobs
+
+If you set an AI coding agent, a render, or a long training or build job running and then step away, you want to keep an eye on it. Servey lets you check progress from your phone, answer the prompts an agent stops on, and stop or redirect it if it goes sideways - without racing home to your desk.
+
+ },
+      {
+        type: 
+
+You do not need a job title to want your Mac in your hand. A file sitting on your desktop while you are out, an app that only runs on the Mac, or just checking on something at home - anyone who wants their Mac's full power available from the device they already carry gets it from Servey.
+
+ },
+      {
+        type: 
+
+Every one of these people wants their real Mac - not a stripped-down mobile stand-in - without paying a networking tax to reach it. That is what Servey is built for: native to the Apple ecosystem, zero-config setup, sharp mirroring, a genuine terminal, and private by design. It is launching soon; join the waitlist to try it.
+
+---
+
+# Run AI agents locally on your Mac - and reach them from anywhere
+
+URL: https://servey.in/blog/run-ai-agents-locally-on-your-mac
+Summary: Why running AI coding agents locally on your Mac beats the cloud - privacy, your real environment, no metered bills - and how to supervise them remotely.
+
+You do not need a cloud VM to run a capable AI agent. Your Mac already is one - with your code, your tools, and real horsepower. Here is why local is the better default, and how to stay connected to your agent when you step away.
+
+The default assumption is that AI agents live in the cloud. But for a lot of real work, the most capable place to run an agent is the machine you already own. Your Mac has your actual project checkout, your configured toolchain, your credentials, and enough power to do serious work - and running the agent there keeps your code and data on your own hardware.
+
+Why local beats the cloud for a lot of agent work
+
+,
+        items: [
+          
+
+Your real environment: the agent works against your actual repo, dependencies, and config - not a blank sandbox you rebuild every time.
+
+No metered surprises: no per-hour VM you forgot to shut down, no cloud egress bills for shuffling your own data around.
+
+Speed: the agent reads and writes on a local SSD and uses your Mac's CPU and GPU directly.
+
+/screenshots/quality-closeup.png
+
+An AI coding agent running in a terminal on a Mac, with razor-sharp, fully legible text.
+
+An AI coding agent, running right in the terminal on your Mac.
+
+The one catch: you have to stay near the Mac
+
+The trade-off of local is physical. A cloud agent you can poke from a browser anywhere; a local one lives on a machine at your desk. The moment you walk away - to lunch, to bed, out the door - you lose your window into it, which is right when a long run is most likely to stop and ask you something.
+
+Keep your window open from your phone
+
+The fix is not to move the agent to the cloud; it is to carry a remote control for your Mac. With a real terminal on your Mac available from your iPhone or iPad, you can read the agent's live output, answer the prompts it pauses on, and stop or redirect it - all while it keeps running locally. When it does something visual, screen mirroring covers the rest.
+
+ },
+      {
+        type: 
+
+Servey keeps a local-first agent practical. Run the agent on your Mac for all the reasons above, then use Servey to reach that Mac from your pocket: a genuine terminal plus crystal-clear screen mirroring, on your local network and remotely. Sign in with Google on both devices - no VPN, no port forwarding - and your remote session stays private and end-to-end encrypted between your own devices.
+
+If running agents on your own machine appeals to you, Servey is launching soon. Join the waitlist to be first to run them locally and steer them from anywhere.
+
+---
+
+# AI agents can use your computer now - here's how to stay in control from anywhere
+
+URL: https://servey.in/blog/stay-in-control-of-ai-agents-from-anywhere
+Summary: As AI agents increasingly drive your computer, watching, pausing, and steering them remotely matters. How to keep a human in the loop from anywhere.
+
+AI agents are getting good at operating a real computer - editing files, running commands, clicking through apps. The more they can do on their own, the more it matters that you can watch and step in. Here is how to keep that oversight from anywhere.
+
+A new class of AI agent does not just answer questions - it acts. It runs commands in your terminal, edits your files, opens apps, and clicks through interfaces on a real machine. That is powerful, and it is exactly why oversight matters: an agent working unattended for an hour can do a lot of good, or wander somewhere you did not intend.
+
+Autonomy is great - until it isn't
+
+The point of an agent is that you can leave it alone. But 'leave it alone' and 'have no idea what it is doing' are different things. The healthy middle is supervised autonomy: the agent works on its own, and you can glance in at any time to see progress, approve a risky step, or pull the brakes. The catch is that the agent runs on your computer, and you are not always sitting at it.
+
+What staying in control actually requires
+
+,
+        items: [
+          
+
+A pause button: answer a confirmation or send an interrupt the instant the agent stops to ask.
+
+The full picture: not just the terminal, but the actual screen, for when the work moves into a browser or an app.
+
+No friction to check in: reaching your machine should not need a VPN, a jump host, or setup you will not bother with at 11pm.
+
+/screenshots/terminal.png
+
+A real Mac terminal open on an iPad, reaching a Mac Mini's shell to supervise what is running.
+
+Check in on - and take over - what's running on your Mac, from an iPad anywhere.
+
+Keep a human in the loop from your pocket
+
+You do not need to sit at your desk to stay in control. With a real terminal and full screen mirroring of your Mac on your iPhone or iPad, you can supervise an agent from anywhere: watch what it is doing, respond when it pauses for permission, take over the desktop if it needs a human decision, or stop it outright. The agent keeps its autonomy; you keep the final say.
+
+ },
+      {
+        type: 
+
+Servey is built for exactly this kind of oversight. It puts a genuine shell and crystal-clear screen mirroring of your Mac in your pocket, on your network and remotely, so an agent running on your machine is never more than a glance away. Setup is signing in with Google on both devices - no VPN or ports - and the remote path is private and end-to-end encrypted between your own devices.
+
+If you want to hand more work to agents without handing over control, Servey is launching soon. Join the waitlist to keep a human in the loop from anywhere.
+
+---
+
+# The best remote desktop apps for Mac in 2026
+
+URL: https://servey.in/blog/best-remote-desktop-for-mac
+Summary: An honest roundup of the ways to control a Mac remotely - Jump Desktop, Screens, Splashtop, RustDesk, Chrome Remote Desktop, Screen Sharing, and Servey.
+
+There is no single best remote desktop app for the Mac, because people are solving different problems with the word remote. Here is an honest map of the options, what each is genuinely good at, and how to pick.
+
+ },
+      {
+        type: 
+
+,
+        items: [
+          
+
+Best Apple-native polish for straightforward Mac-to-iPad control: Screens.
+
+Best free and open source: RustDesk.
+
+Easiest free setup that works from anywhere: Chrome Remote Desktop.
+
+Free and already installed, if you only need it on your own Wi-Fi: macOS Screen Sharing.
+
+If you want zero network setup plus a genuine terminal on iPhone or iPad: Servey (pre-launch).
+
+Details and pricing change, so check each product's own site before buying. What follows is about approach and fit rather than a feature-by-feature scorecard that would be out of date in a month.
+
+First, decide which problem you actually have
+
+A lot of confusion in this category comes from three genuinely different needs getting the same label. Sorting yours first eliminates most of the list:
+
+,
+        items: [
+          
+
+Second screen: you want your iPad to become an extra display for a Mac sitting right next to you. That is Duet Display, Astropad, and Apple's own Sidecar - a different product category, not a weaker remote desktop.
+
+Command line only: you just need a shell to restart a service or check a build. SSH or a tool with a real terminal solves this without any video at all.
+
+macOS Screen Sharing (built in, free)
+
+Every Mac already includes Screen Sharing, which is VNC under the hood. Turn it on in System Settings, Sharing, and connect from a VNC client. On your own network it is free, low latency, and completely adequate for occasional use.
+
+The limits show up when you leave the house. Reaching it from outside your network means a VPN, port forwarding, or some other tunnel, and VNC is not the sharpest protocol for text-heavy screens. Good starting point, rarely the final answer.
+
+ },
+      {
+        type: 
+
+The most common recommendation in this category, and deservedly so. It supports RDP and VNC alongside its own higher-performance protocol, runs across more platforms than the Apple-only tools, and has a long reputation for responsive input on iPad.
+
+Pick it if you need to reach more than just Macs, or if you want the safest well-tested choice. It is paid, and its breadth is the reason to choose it.
+
+ },
+      {
+        type: 
+
+Apple-first and unapologetic about it. Screens is the most polished option if your devices are all Apple and you mainly want to see your Mac's desktop from an iPad or iPhone. It is VNC-based with its own companion service for reaching your Mac when you are away.
+
+Pick it for the native feel. Skip it if you also need Windows or Linux machines.
+
+ },
+      {
+        type: 
+
+Widely used, cross-platform, and strong on streaming performance, which is why it comes up for graphics-heavy work. It leans more commercial and IT-oriented than the Apple-focused apps, and its plans are worth reading carefully to find the one that matches personal versus business use.
+
+ },
+      {
+        type: 
+
+Open source, free, cross-platform, and self-hostable. If you are comfortable running your own relay server, RustDesk gives you remote access without trusting anyone else's infrastructure, which is a genuinely strong privacy story.
+
+The trade-off is effort. Self-hosting is work, and the polish on iOS is not at the level of the paid Apple-focused apps. Excellent if you want control and do not mind the setup.
+
+ },
+      {
+        type: 
+
+Free, from Google, and by far the easiest thing to get working from anywhere: install it, sign in, done. No router configuration. For basic access to your desktop from another machine it is hard to argue with the price or the setup time.
+
+It is basic by design, though. Input on a touchscreen is not built around iPad the way the native apps are, there is no real terminal, and the picture is not tuned for reading fine text.
+
+ },
+      {
+        type: 
+
+Servey is what we build, so treat this section with the appropriate scepticism - but here is the case. Every other tool on this list is a screen tool that treats the command line as somebody else's problem. Servey gives you both on your iPhone and iPad: crystal-clear screen mirroring of your Mac and a genuine shell on it, in one app, one tap apart. On your own Wi-Fi it streams a direct hardware-encoded HEVC feed, so your Mac's text stays razor-sharp rather than soft, and pinch-to-zoom lets you read the smallest detail on screen. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it and keeps working on strict carrier networks. Nothing is configured at any point - no VPN, no port forwarding, no static IP, no companion app to leave running. You sign in with Google on both devices and your Mac is simply there. The limits are real and deliberate: Servey is Apple-only, it reaches a Mac running its host app rather than any machine anywhere, and it is pre-launch, so there is nothing to download today. It arrives soon at ₹99 or $1.99 a month for the terminal, and ₹299 or $4.49 for full access.
+
+,
+        items: [
+          
+
+It chooses its own path: a direct stream when both devices are on the same Wi-Fi, and a private end-to-end encrypted connection between your own devices when you are away, including on strict carrier networks.
+
+A real terminal on your Mac, not a web console, over both connection paths.
+
+Built natively for Apple platforms rather than wrapped from a generic app.
+
+The honest caveats: it is Apple-only, and it is pre-launch, so it has none of the track record the established names have earned. If you need something proven today, buy one of those instead.
+
+How to choose in one minute
+
+,
+        items: [
+          
+
+Need Windows or Linux too? Jump Desktop.
+
+All Apple, want the most polished established app? Screens.
+
+Want free and open source, and happy to self-host? RustDesk.
+
+Want the fastest possible setup for free? Chrome Remote Desktop.
+
+Want your iPad as an extra monitor rather than remote control? Sidecar, Duet, or Astropad - different category.
+
+Want zero configuration plus a real terminal from your phone? Servey, once it launches.
+
+ },
+      {
+        type: 
+
+Most people asking for the best remote desktop for Mac will be well served by Jump Desktop or Screens, and by built-in Screen Sharing if they never leave their own network. The gap we kept running into - and the reason we are building Servey - is that almost none of these treat the command line as a first-class thing, and most still make you think about networking. If that is your gap too, join the waitlist.
+
+---
+
+# Is Servey a Termius alternative? Honestly, only for one job
+
+URL: https://servey.in/blog/termius-alternative-mac-terminal
+Summary: Termius is an SSH client for many servers. Servey is a zero-setup agent for one Mac, with a terminal and screen mirroring. An honest comparison.
+
+Termius comes up whenever someone wants a terminal on their phone, so it is a fair thing to be compared against. But the two products are shaped differently, and pretending otherwise would waste your time.
+
+ },
+      {
+        type: 
+
+Termius is an SSH client: you bring the servers, configure the connections, and it reaches all of them from any platform. Servey is a host agent for a single machine - your Mac - that you reach from an iPhone or iPad with no SSH setup at all, and it also mirrors the screen. If you manage more than one machine, Termius is the right tool and Servey is not a replacement for it.
+
+ },
+      {
+        type: 
+
+Termius is a mature, cross-platform SSH client that runs on macOS, Windows, Linux, iOS, iPadOS and Android. Alongside SSH it handles SFTP, Mosh, Telnet and serial connections, plus port forwarding, jump hosts and proxies. It stores credentials in encrypted vaults, supports hardware keys and biometrics, and adds team features such as shared vaults, SSO and session logging. It has been shipping since 2019 and has a very large user base.
+
+In other words it is built to manage a fleet. That is a genuinely hard problem and Termius solves it well.
+
+ },
+      {
+        type: 
+
+Servey installs a host app on your Mac. You sign in on the Mac and on your iPhone or iPad, and the Mac appears in a list. Tapping it opens a session: a real shell on that Mac, and optionally its mirrored screen with a trackpad and keyboard. There is no sshd to enable, no key to manage on a phone, no port to forward and no VPN. It reaches exactly one kind of target, and nothing else.
+
+ },
+      {
+        type: 
+
+Where the two overlap, and where they genuinely do not.
+
+],
+        rows: [
+          [
+            
+
+Any SSH host you configure
+
+A Mac running its host app
+
+Setup to get in from outside
+
+SSH, plus VPN, port forward or jump host
+
+,
+          ],
+          [
+
+SFTP, Mosh, Telnet, serial
+
+Port forwarding, jump hosts
+
+Snippets, workspaces, autocomplete
+
+Team vaults, SSO, audit logs
+
+],
+          [
+            
+
+macOS, Windows, Linux, iOS, iPadOS, Android
+
+macOS host; iPhone and iPad client
+
+Shipping since 2019, millions of users
+
+,
+          ],
+        ],
+      },
+      { type: 
+
+The real difference: a client versus an agent
+
+This is the distinction that matters, and it explains every row in that table. Termius is a client. It speaks SSH to something that is already listening, which means the target has to be reachable: sshd running, and a route in from wherever you are. On your own network that is easy. From a cafe it means a VPN, a forwarded port, or an overlay network - and if your ISP uses CGNAT, forwarding a port may not be possible at all.
+
+Servey is an agent. The Mac runs software that registers itself to your account and establishes the connection outward, so nothing needs to accept inbound traffic and nothing is exposed on a public address. That is why there is no configuration step. It is also why Servey cannot reach a machine you have not installed it on, which is a real limitation rather than an oversight.
+
+When Termius is the better choice
+
+Most of the time, if you are the kind of person who already uses Termius. Specifically:
+
+,
+        items: [
+          
+
+You need SFTP, Mosh, Telnet, serial, port forwarding or jump hosts.
+
+You work from Windows, Linux or Android.
+
+You need team vaults, credential sharing, SSO or audit-grade session logs.
+
+You want snippets, workspaces and a terminal refined over several years.
+
+You want a tool with a long track record, which Servey does not have.
+
+When Servey makes more sense
+
+,
+        items: [
+          
+
+You do not want to enable Remote Login or expose anything to the internet.
+
+You have tried the SSH-from-a-phone route and abandoned it over setup.
+
+You sometimes need to see the screen, not just type at a prompt.
+
+ },
+      {
+        type: 
+
+Termius has a free tier that is generous on protocol features but keeps sync between devices on the paid plan, with Pro around $10 per month billed annually and team tiers above that. Servey's Terminal plan is Rs 99 per month in India or $1.99 internationally, and Full access - screen mirroring plus terminal - is Rs 299 or $4.49.
+
+That comparison is not as favourable as the numbers make it look. Servey costs less because it does far less: one machine, no SFTP, no fleet management, no team features. It is a lower price for a much narrower job, not a discount on the same thing.
+
+What Servey does not have
+
+Worth stating plainly, because a comparison that only lists strengths is not a comparison. Servey has no SFTP, no multi-host support, no snippets or workspaces, no team or compliance features, and no Windows, Linux or Android client. Its terminal is a version one and does not have the refinements Termius has accumulated. And Servey is pre-launch: no users, no App Store reviews, nothing independent to check.
+
+If a proven track record is what you are buying, that is Termius today, and that is a perfectly good reason to pick it.
+
+ },
+      {
+        type: 
+
+These two products share a keyboard and not much else. Termius is for infrastructure you run. Servey is for the one Mac you own, when getting to it should not require a VPN. If that second description is the one that fits, join the waitlist.
+
+---
+
+# Screens 5 alternatives: what to use instead, and when
+
+URL: https://servey.in/blog/screens-5-alternatives
+Summary: Jump Desktop, RustDesk, Chrome Remote Desktop and macOS Screen Sharing, compared honestly against Screens 5 - including where Screens still wins.
+
+Screens is a genuinely good app, so most people searching for an alternative have a specific reason: a platform it does not cover, a feature it does not have, or a licence change they did not want. Here is what to switch to for each reason - and when the honest answer is to stay put.
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+Access from outside your network
+
+,
+        ],
+        rows: [
+          [
+            
+
+The most polished Apple-only experience
+
+Screens Connect companion app
+
+,
+          ],
+          [
+            
+
+Windows and Linux machines too
+
+macOS, iOS, iPadOS, Windows, Android
+
+Jump Desktop Connect, or your own RDP/VNC route
+
+,
+          ],
+          [
+            
+
+Free, open source, self-hosting
+
+macOS, Windows, Linux, iOS, Android
+
+Project relay by default, or a relay you host
+
+,
+          ],
+          [
+            
+
+Browser, plus iOS and Android apps
+
+Works anywhere through your Google account
+
+,
+          ],
+          [
+            
+
+Free, already on your Mac
+
+macOS host, VNC clients elsewhere
+
+,
+          ],
+          [
+            
+
+Streaming-heavy and graphics work
+
+macOS, Windows, Linux, iOS, Android
+
+Works anywhere through your account
+
+,
+          ],
+          [
+            
+
+One Mac, from an iPhone or iPad
+
+macOS host; iPhone and iPad client
+
+Automatic after signing in on both devices
+
+,
+          ],
+        ],
+      },
+      { type: 
+
+Why do people look for a Screens 5 alternative?
+
+In practice there are four reasons, and which one applies to you decides the answer. The first is platform: Screens is Apple-only by design, so the moment you need to reach a Windows PC or a Linux box it cannot help. The second is licensing - Screens has changed how it is sold across major versions, and some long-time users went looking after an upgrade rather than because of the app itself. The third is the connection story: reaching your Mac from outside your home network depends on the Screens Connect companion, which is one more moving part to keep running. The fourth is scope: Screens mirrors a screen, and if what you actually wanted was a command line, a screen-only tool means driving a GUI with a trackpad overlay to reach a shell. None of these are bugs. They are the edges of a deliberately narrow product.
+
+What is the closest direct replacement for Screens 5?
+
+Jump Desktop is the closest like-for-like replacement, and it is the one most people end up on. It covers the same core job - see and drive a remote desktop from a Mac, iPhone or iPad - and then goes further in the direction Screens deliberately does not: it speaks RDP and VNC as well as its own Fluid protocol, and it runs on Windows and Android too. Jump Desktop Connect handles reaching a machine from outside your network without router configuration, which is the same problem Screens Connect solves. The trade-off is character rather than capability: Screens is the more focused, more Apple-feeling app, and people who chose it for that will notice Jump Desktop is built to serve a wider audience. If you want that comparison in detail, we have a separate head-to-head on Screens versus Jump Desktop.
+
+,
+        items: [
+          
+
+Pick Jump Desktop if you want an established, actively developed app with a long track record on iPad.
+
+Stay with Screens if Apple-native polish was the reason you bought it in the first place.
+
+Is there a free alternative to Screens 5?
+
+Yes, three of them, and each is free for a different reason. macOS Screen Sharing is already on your Mac: turn it on in System Settings under Sharing and connect from any VNC client. It costs nothing and is perfectly good on your own Wi-Fi, but reaching it from outside means a VPN or port forwarding, which is exactly the work the paid apps exist to remove. Chrome Remote Desktop is free from Google and is by far the fastest thing to get working from anywhere - install, sign in, done - but it is basic by design, with touch input that was not built around iPad and no terminal. RustDesk is free and open source, cross-platform, and can be fully self-hosted if you would rather not trust anyone else's relay. The cost there is your time rather than your money.
+
+What if you mostly need a command line, not a screen?
+
+Then a remote desktop app is the wrong shape of tool, and you will be happier with a terminal. A large amount of what people use Screens for is restarting a service, tailing a log, re-running a build, or checking on a headless Mac Mini - all of which are faster typed than clicked. SSH from a phone works if you are willing to enable Remote Login and get a route in from outside, usually a VPN, a forwarded port or a jump host. A dedicated mobile SSH client such as Termius handles the fleet case well. What none of the screen-first apps in the table above give you is a genuine shell alongside the picture, so today you are generally choosing one or the other rather than getting both in one app.
+
+When Screens 5 is still the right answer
+
+Stay with Screens if your setup is entirely Apple and the app already works for you. It is a mature, well-designed product from Edovia, it feels like a Mac and iOS app should, and switching costs you a paid licence and a working configuration in exchange for problems you may not have. Specifically, Screens is still the better choice when:
+
+,
+        items: [
+          
+
+Native design and a quiet interface matter more to you than protocol breadth.
+
+Screens Connect already works on your network and you have no reason to touch it.
+
+You need something proven today, from a vendor with years of shipping behind it.
+
+Where Servey fits, and why it is the only Yes in that last column
+
+Servey is what we are building, so weigh this section accordingly - but look again at the last column of that table. Every other tool on this list answers No. Servey is aimed squarely at one job: your Mac, on your iPhone and iPad, with a genuine shell sitting beside the mirrored screen rather than behind it. Setup is signing in with Google on both devices - no VPN, no port forwarding, no companion service to keep running - and it chooses its own path. On the same Wi-Fi it streams a direct hardware-encoded HEVC feed, which is why the text stays razor-sharp enough to read and pinch-zoom into instead of going soft. Away from home it switches by itself to a private, end-to-end encrypted peer-to-peer connection between your own two devices, and that connection holds on strict carrier networks where a lot of tools simply give up. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately. It launches soon, from $1.99 a month, or ₹99 in India.
+
+The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is pre-launch and waitlist-only: there is nothing to download today, no users, and no independent reviews to check. If you need a working alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.
+
+How to choose in one minute
+
+,
+        items: [
+          
+
+Want free, and never leave your own Wi-Fi? macOS Screen Sharing.
+
+Want free and working from anywhere with zero effort? Chrome Remote Desktop.
+
+Want free, open source, and happy to run your own server? RustDesk.
+
+Want your iPad as a second monitor rather than a remote control? Sidecar, Duet or Astropad - a different category entirely.
+
+Mostly typing commands? A terminal or SSH client, not a remote desktop.
+
+Want zero configuration plus a genuine terminal on one Mac? Servey, once it launches.
+
+ },
+      {
+        type: 
+
+Pricing in this category moves, and licence models have changed more than once, so check each vendor's own page before you buy rather than trusting any comparison article - including this one. What is stable enough to plan around is the shape of each model: the built-in and open-source options cost nothing up front, the Apple-focused apps are commercial products, and the business-oriented tools bill per seat. Match the model to how you actually use the thing, not to the headline number.
+
+ },
+      {
+        type: 
+
+If you are leaving Screens 5 because you need more platforms, Jump Desktop is the answer. If you are leaving over cost, Screen Sharing, Chrome Remote Desktop and RustDesk all do the core job for free with different trade-offs. If you are leaving because you wanted a terminal, no screen-first app on this list will fix that - and that is the gap Servey is being built into. If none of those describe you, staying with Screens is a perfectly good decision.
+
+---
+
+# Jump Desktop vs TeamViewer: which remote desktop should you use?
+
+URL: https://servey.in/blog/jump-desktop-vs-teamviewer
+Summary: An honest head-to-head of Jump Desktop and TeamViewer for Mac - what each one is really built for, where each genuinely wins, and how to choose.
+
+Jump Desktop and TeamViewer both put a distant computer on your screen, which makes them look like competitors. They were built for different jobs - reaching your own machines versus supporting other people's - and that difference decides the answer more than any feature list does.
+
+Jump Desktop, TeamViewer and Servey at a glance.
+
+],
+        rows: [
+          [
+            
+
+Reaching machines you own
+
+IT support and managed fleets
+
+Reaching your own Mac from your iPhone or iPad
+
+macOS, iOS, iPadOS, Windows, Android
+
+Windows, macOS, Linux, iOS, Android, ChromeOS and more
+
+iPhone and iPad, with a Mac as the host
+
+RDP and VNC, plus its own Fluid protocol
+
+Its own proprietary protocol
+
+Hardware HEVC on your network, encrypted peer-to-peer away from it
+
+Connect with nothing installed on the host
+
+No, TeamViewer must be on both ends
+
+No, your Mac runs the Servey host app
+
+Helping someone else, live
+
+Yes - session codes, chat, remote reboot
+
+,
+          ],
+          [
+            
+
+Yes, with a device management console
+
+Yes - your Mac is simply there when you open the app
+
+],
+          [
+            
+
+Paid app, bought per platform; separate team plans
+
+Free for genuine personal use; per-seat subscription for business
+
+From $1.99/month, or ₹99 in India
+
+Workable, but not the design centre
+
+Purpose-built virtual trackpad, pinch-to-zoom
+
+No Linux client of its own
+
+Commercial-use detection can flag personal users
+
+Apple-only, and still pre-launch
+
+Yes - a genuine shell, built in
+
+ },
+      {
+        type: 
+
+Choose Jump Desktop if you are reaching your own computers, especially from an iPad or iPhone, and you want the best input feel for the money. Choose TeamViewer if you need to support machines other people are sitting at, cover platforms beyond Apple and Windows, or manage many devices from one console with logging and access control. The two overlap on the narrow case of unattended access to your own desktop, and that is the only case where the choice is genuinely close. For everything else, one of them is clearly the wrong shape and the decision is easy once you name your actual job.
+
+What is Jump Desktop actually for?
+
+Jump Desktop is a personal remote-control app for machines you own. It speaks RDP and VNC, which means it can connect to a Mac with Screen Sharing enabled or a Windows PC with Remote Desktop turned on without installing anything extra on the host, and it adds its own Fluid protocol for a faster, more responsive session when you do install its companion. Jump Desktop Connect handles the away-from-home case so you are not forwarding ports. Its reputation on iPad is the thing people mention most: the trackpad, keyboard and gesture handling were clearly designed by someone who uses them daily, rather than bolted onto a desktop app. It is a paid product with no free tier, and that is the trade you are making - you pay once instead of maintaining a licence relationship.
+
+What is TeamViewer actually for?
+
+TeamViewer is a remote-support and device-management platform that happens to include remote desktop. Its defining feature is the attended session: someone reads you a code over the phone, you connect, and you fix their machine - no account, no network knowledge, no firewall rules on their end. Around that it has built unattended access, a management console, group and permission structures, session logging, file transfer, remote printing and support for platforms well beyond the consumer ones, including Linux, ChromeOS and embedded devices. It is free for genuine personal use and sold per seat for business use. Understanding it as support software rather than as a nicer VNC explains almost everything about how it behaves, including the parts individual users find heavy.
+
+Where TeamViewer is genuinely better than Jump Desktop
+
+TeamViewer wins clearly on reach and on helping other people, and it is not close. If any of the following describe you, Jump Desktop is the wrong tool and you should stop comparing:
+
+,
+        items: [
+          
+
+You need Linux, ChromeOS or less common platforms as first-class clients, not just as things you connect to.
+
+You manage more than a handful of devices and want a console, groups, permissions, and session logs.
+
+You need it to work through a corporate firewall you do not control, which TeamViewer is unusually good at.
+
+You want a capable free option for personal use, which Jump Desktop does not offer at all.
+
+You need supporting features like remote printing, wake-on-LAN, or session recording for compliance.
+
+Where Jump Desktop is genuinely better than TeamViewer
+
+Jump Desktop wins on the individual-user experience and on cost predictability. Its touch input on iPad is better tuned than TeamViewer's, which matters enormously if the iPad is your main client rather than an occasional one. It can connect to standard RDP and VNC hosts with no agent installed, so it fits into setups you did not build for it. Its pricing is a paid app rather than an ongoing per-seat relationship, which suits a person with three machines far better than a subscription designed for a support desk. And it avoids TeamViewer's most-complained-about behaviour: automated commercial-use detection, which sometimes flags heavy personal users and interrupts sessions until they resolve it. If you are one person reaching your own computers, that difference alone often decides it.
+
+Which is better for controlling a Mac from an iPad?
+
+Jump Desktop, for most people, and the reason is input rather than picture quality. Driving a desktop operating system through a touchscreen is a hard interaction problem - you need a precise pointer, a right click that does not require a menu dive, modifier keys, and text selection that behaves. Jump Desktop has spent years on that specific problem and it shows. TeamViewer will do the job, and if you already run it for support work there is no reason to add a second app, but its touch layer reads as a port of a desktop interface rather than something designed for a tablet. If your workflow is genuinely iPad-first, that gap is felt within about five minutes of real use.
+
+ },
+      {
+        type: 
+
+Compare the models rather than the numbers, because the numbers change and both vendors restructure their plans periodically. Jump Desktop is a paid app you buy for the platforms you use, with separate plans aimed at teams. TeamViewer is free for genuine personal use and sold as a per-seat subscription for business, with tiers based on concurrent users and managed devices. That means a single person with a few of their own machines usually pays less overall with Jump Desktop, while an organisation supporting many endpoints gets far more for its money from TeamViewer. Check both vendors' current pricing pages before you commit - and if you will use a tool for anything that could count as work, read TeamViewer's commercial-use terms first rather than after.
+
+What Servey does that neither of these does
+
+There is one row in that table where both of these tools say no, and it is the row we built Servey around. Servey puts your Mac on your iPhone and iPad with crystal-clear screen mirroring and a genuine shell on the Mac - not a bolted-on web console - and you move between the two with a single tap. On your own network it streams hardware-encoded HEVC, so your Mac's text stays razor-sharp instead of turning into the soft grey smear software encoders produce, and you can pinch to zoom right into the detail. Step outside and it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it - and it keeps working on strict carrier networks where plenty of tools give up. There is no VPN, no port forwarding and no IP address to remember: you sign in with Google on both devices and your Mac is simply there. That focus costs us breadth, and we took the trade on purpose - Servey is Apple-only and it reaches your Mac, not a fleet of other people's machines. It launches soon from $1.99 a month, and the waitlist is open now.
+
+ },
+      {
+        type: 
+
+Jump Desktop is the better personal remote-control app, particularly from an iPad, and the better value for one person with their own machines. TeamViewer is the better support and fleet-management platform, covers far more platforms, and is the only one of the two that solves the problem of helping someone else with their computer. Neither is a compromise choice - they are different products that share a screenshot. Name the job first and the answer follows. And if the job is your own Mac, reached from your own iPhone or iPad, with a real terminal sitting in the same app as the screen - that is the one Servey is built for, and it launches soon.
+
+---
+
+# Jump Desktop vs RustDesk: paid polish or free and open source?
+
+URL: https://servey.in/blog/jump-desktop-vs-rustdesk
+Summary: Often yes - RustDesk is free, open source and self-hostable. Where Jump Desktop still earns its price for a Mac, and the trade you make by not paying it.
+
+This comparison is really a question about what you would rather spend: money or time. Jump Desktop is a paid app that works out of the box. RustDesk is free, open source, and can be run entirely on infrastructure you control - if you are willing to run it.
+
+Jump Desktop, RustDesk and Servey, side by side.
+
+],
+        rows: [
+          [
+            
+
+Commercial, closed source
+
+Commercial, closed source
+
+Paid app, bought per platform
+
+Free; a paid self-hosted server edition exists
+
+Subscription from $1.99/month, or ₹99 in India
+
+macOS, iOS, iPadOS, Windows, Android
+
+macOS, Windows, Linux, iOS, Android, web
+
+Mac as the host; iPhone and iPad as clients
+
+RDP and VNC, plus its own Fluid protocol
+
+Hardware HEVC on your network, encrypted peer-to-peer away from it
+
+Connect to a host with nothing extra installed
+
+No, RustDesk needed on both ends
+
+No, your Mac runs the Servey host app
+
+Project-run relay by default, or your own
+
+Automatic - no relay to pick, no setup at all
+
+Yes - run your own ID and relay servers
+
+,
+          ],
+          [
+            
+
+First-class client and host
+
+,
+          ],
+          [
+            
+
+Purpose-built virtual trackpad, pinch-to-zoom
+
+Community, with paid options
+
+Direct from the team building it
+
+Yes - a genuine shell, built in
+
+ },
+      {
+        type: 
+
+Choose Jump Desktop if you want remote access to work well immediately and the input experience on an iPad matters to you. Choose RustDesk if you want to pay nothing, keep the source auditable, or run the whole thing on servers you control so no third party sits between your devices. The honest framing is that these are not competing on quality so much as on posture: one is a product you buy and stop thinking about, the other is infrastructure you adopt. People who are happy with RustDesk are usually people who enjoy running their own services. People who are happy with Jump Desktop usually wanted the problem to go away.
+
+What RustDesk is genuinely better at
+
+RustDesk wins outright on cost, transparency and control, and those are real advantages rather than consolation prizes. It is free, so there is no licence to buy for each platform and no per-device maths as your machine count grows. It is open source under the AGPL, so the code can be inspected by anyone - a meaningfully stronger position than trusting a vendor's description of its own encryption. Most importantly it can be fully self-hosted: run your own ID and relay servers and no third-party infrastructure is involved in your sessions at all, which is something none of the commercial options in this category can offer. It also treats Linux as a first-class platform on both ends, where Jump Desktop can only connect to Linux over VNC.
+
+What Jump Desktop is genuinely better at
+
+Jump Desktop wins on polish, on protocol flexibility, and on the specific experience of driving a desktop from a touchscreen. Its iPad input handling - pointer precision, right click, modifier keys, text selection - has had years of attention and is noticeably ahead of RustDesk's mobile clients, which are functional but clearly secondary to the desktop experience. It also speaks RDP and VNC, so it can connect to a Mac with Screen Sharing on or a Windows box with Remote Desktop enabled without installing anything on the host at all, while RustDesk requires its own software on both ends. And there is a vendor to hold responsible when something breaks, versus a community issue tracker.
+
+ },
+      {
+        type: 
+
+The code is open and auditable, which is a genuine security advantage, but the default configuration deserves a clear-eyed look. Out of the box, RustDesk routes connection setup through relay servers run by the project rather than by you. Sessions are encrypted, but you are still trusting infrastructure operated by a third party, and if that is not acceptable then self-hosting is the answer - it is supported, documented, and the main reason people choose RustDesk in the first place. Worth stating separately: remote-access tools of every brand are a favourite of phone scammers, so never install any of them because someone who called you asked you to. That warning applies equally to RustDesk, TeamViewer and everything else in the category, and it is about the caller, not the software.
+
+Which should you pick for a Mac?
+
+If your client is an iPhone or iPad, Jump Desktop is the more comfortable choice, and the gap is in input rather than picture. If your client is another desktop and you value self-hosting, RustDesk is excellent and costs nothing. A reasonable middle path that a lot of people land on: use macOS Screen Sharing on your own Wi-Fi where it is already free and installed, and add one of these two for the away-from-home case. Both handle that case without router configuration - Jump Desktop through Jump Desktop Connect, RustDesk through a relay you either borrow or host - which is the part people most often give up on when they try to solve it themselves.
+
+,
+        items: [
+          
+
+Cost is the deciding factor: RustDesk.
+
+You want nobody else's servers involved at all: RustDesk, self-hosted.
+
+You need Linux on both ends: RustDesk.
+
+You need to reach plain RDP or VNC hosts with no agent: Jump Desktop.
+
+Where Servey wins for one specific job
+
+Both of these are built to reach anything from anything. Servey is built to do one thing extremely well: put your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart. On your own Wi-Fi it streams hardware-encoded HEVC for razor-sharp text you can pinch to zoom into; away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on mobile networks that defeat most tools. Setup is signing in with Google on both devices: no relay server to choose, no ports to forward, no infrastructure to maintain. If running your own infrastructure is the point, that is exactly what RustDesk is for and it does it well. Servey is Apple-only and cannot be self-hosted, both deliberately, because the whole design goal was that you never think about the network at all. It launches soon from $1.99 a month; the waitlist is open now.
+
+ },
+      {
+        type: 
+
+RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most from it. Jump Desktop is the better answer if you want a finished product, the best touch input in the category, and the ability to connect to machines that were never set up for it. Both are legitimate choices, and the deciding question is not which is better software but whether you would rather spend money or time. If your honest answer is that you would rather spend neither, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your own Mac from your own iPhone or iPad. It launches soon.
+
+---
+
+# Splashtop vs Jump Desktop: subscription or buy it once?
+
+URL: https://servey.in/blog/splashtop-vs-jump-desktop
+Summary: Splashtop is a subscription tuned for frame rate and teams; Jump Desktop is a one-time purchase with better iPad input. Which one fits your Mac, and why.
+
+These two are both good, and they are aimed at different people. Splashtop is a subscription built around streaming performance and managing a fleet. Jump Desktop is a one-time purchase built around one person reaching their own machines, with the best touch input in the category. The pricing model is not a detail here - it is the decision.
+
+Splashtop, Jump Desktop and Servey, side by side.
+
+],
+        rows: [
+          [
+            
+
+Subscription, per user or per computer
+
+One-time purchase per platform
+
+Subscription from $1.99/month, or ₹99 in India
+
+Jump Desktop for Teams, sold separately
+
+No - built for your own devices, not a fleet
+
+macOS, Windows, plus any RDP or VNC host
+
+,
+          ],
+          [
+            
+
+macOS, Windows, Linux, iOS, Android, browser
+
+macOS, iOS, iPadOS, Windows, Android
+
+,
+          ],
+          [
+            
+
+RDP and VNC, plus its own Fluid protocol
+
+Hardware HEVC on your network, encrypted peer-to-peer away from it
+
+Connect to a host with nothing extra installed
+
+No, your Mac runs the Servey host app
+
+Automatic - it switches paths on its own
+
+],
+          [
+            
+
+Strong, including per-monitor selection
+
+Supported, and can split monitors across iPad displays
+
+,
+          ],
+          [
+            
+
+No - nothing about your session is recorded
+
+Purpose-built virtual trackpad, pinch-to-zoom
+
+Yes - a genuine shell, built in
+
+ },
+      {
+        type: 
+
+Choose Splashtop if you are supporting machines that are not yours, if more than a couple of people need access, or if the work is visually demanding enough that frame rate and colour matter. Choose Jump Desktop if you are one person reaching your own small number of machines, you would rather pay once than monthly, and your client is an iPad. The uncomfortable truth about this comparison is that a lot of people pick on features and then regret it on billing, or pick on price and then find the tool was not built for the job they actually have. Work out which of those two people you are first, because it settles the question faster than any feature table.
+
+What Splashtop is genuinely better at
+
+Splashtop is built for sustained, demanding streaming and it shows. Its high frame-rate modes hold up on work where a laggy or washed-out picture is not merely annoying but disqualifying - video editing, colour work, CAD, anything where you are judging what is on screen rather than just clicking through it. Remote audio has been a priority for years rather than an afterthought. Multi-monitor handling is more mature, including picking a single monitor out of several. It also treats Linux as a real host platform, and it can be reached from a plain browser, which matters when you are on a machine you cannot install software on. And once you are past one user it has the management layer that individuals never think about until they need it: session recording, role-based permissions, audit trails, deployment at scale. Jump Desktop only reaches for that with its separate Teams product.
+
+What Jump Desktop is genuinely better at
+
+Jump Desktop wins on economics for individuals and on the specific experience of driving a Mac from an iPad. Buying it once per platform, with no recurring bill, is unusual in a category that has moved almost entirely to subscriptions, and over a few years the difference is not small. Its iPad input handling - pointer precision, right click, modifier keys, text selection, Apple Pencil, splitting monitors across external displays with Stage Manager - has had years of attention and is the reason people stay with it. It also speaks RDP and VNC, so it can reach a Mac with Screen Sharing already enabled, or a Windows machine with Remote Desktop turned on, without installing anything on the host at all. Splashtop always needs its own software on both ends.
+
+ },
+      {
+        type: 
+
+Splashtop sells subscriptions, with an inexpensive personal-scale tier covering a small number of computers and business tiers priced per user that climb as you add features like session recording and unattended support. Jump Desktop is bought once on each platform you use, so a Mac and an iPad is two purchases and then nothing, with Jump Desktop Connect available as a small monthly charge per computer if you want the simplified away-from-home path, and Teams as a separate subscription if you outgrow single-user use. Both companies change prices, so treat any specific figure you read anywhere - including here - as a starting point to verify rather than a quote. The stable part is the shape: recurring versus up front, and which of those two you would rather explain to yourself in three years.
+
+Which should you pick for a Mac?
+
+For a single person reaching their own Mac from an iPad, Jump Desktop is the more comfortable tool and the cheaper one over any reasonable time horizon. For anyone whose remote access is really remote support - other people's machines, unattended, with a record of what happened - Splashtop is built for that and Jump Desktop is not, and no amount of saving on licences makes up for missing management features when you need them. A detail worth knowing before you commit either way: on your own Wi-Fi, macOS Screen Sharing is already installed and free, and it is genuinely good. Both of these products earn their money mainly on the away-from-home case, where they save you from port forwarding and VPN configuration.
+
+,
+        items: [
+          
+
+Supporting machines that are not yours: Splashtop.
+
+Video, design or colour-critical work: Splashtop.
+
+You would rather not have another subscription: Jump Desktop.
+
+You need to reach a host with nothing installed on it: Jump Desktop, over RDP or VNC.
+
+You need Linux hosts or browser-only clients: Splashtop.
+
+What Servey offers that neither of these does
+
+Look at the last row of that table. Neither of these ships a real terminal, and for anyone who works on a Mac that is the gap that bites. Servey closes it: crystal-clear screen mirroring and a genuine shell on your Mac in the same app, a tap apart, so when the fix turns out to be a permission dialog rather than a command, you are already looking at the screen that can dismiss it. On your network Servey uses hardware HEVC, which is why remote text stays sharp enough to read comfortably and pinch-to-zoom is actually worth using. Away from it, Servey switches on its own to a private peer-to-peer connection, end-to-end encrypted between your two devices, that goes direct whenever your network allows it - and when it will not, through our own relay rather than a vendor's cloud, with nothing about your session recorded. Setup is a Google sign-in on both devices, a master password on the Mac, and the two macOS permissions any screen-sharing tool needs. Servey is Apple-only, with no fleet management and no Linux, because it is built for your own Mac rather than someone else's estate. Launching soon from $1.99 a month, and the waitlist is open.
+
+ },
+      {
+        type: 
+
+Splashtop is the better answer when remote access is a job you do for other people or on demanding visual work, and when the management layer around the session matters as much as the session. Jump Desktop is the better answer when it is your own Mac, your own iPad, and you resent monthly bills for software you use occasionally. Neither is a compromise, and the honest deciding question is not which is better but whether you are running a fleet or running your own life. And if you are running your own life - one Mac, your iPhone, your iPad, and a terminal you keep wishing were there - Servey was built for precisely that, from $1.99 a month.
+
+---
+
+# AnyDesk vs TeamViewer: which remote desktop should you actually use?
+
+URL: https://servey.in/blog/anydesk-vs-teamviewer
+Summary: AnyDesk is leaner, faster on poor connections and cheaper. TeamViewer does far more. Where each genuinely wins on a Mac, and the free-tier catch that bites.
+
+This is the most-searched pairing in remote desktop, and the honest summary is that AnyDesk is lighter, faster on bad connections and cheaper, while TeamViewer does far more and is far more widely deployed. The thing that decides it for most people is not a feature at all - it is how each company treats the free tier.
+
+AnyDesk, TeamViewer and Servey, side by side.
+
+],
+        rows: [
+          [
+            
+
+Yes, with features held back
+
+Yes, but commercial use is actively detected
+
+No, but it starts at $1.99/month
+
+],
+          [
+            
+
+Very small, runs without installing
+
+Native Swift, small and quiet
+
+Performance on poor connections
+
+Adapts quality automatically, and never crops
+
+Broader, including mobile device control and IoT
+
+,
+          ],
+          [
+            
+
+The most complete in the category
+
+None - it reaches your own Mac, not a fleet
+
+Integrations and ecosystem
+
+],
+          [
+            
+
+,
+          ],
+          [
+
+The entire point of the product
+
+Tuned for iPad touch input
+
+Yes - purpose-built trackpad and pinch-to-zoom
+
+Yes - a genuine shell, built in
+
+ },
+      {
+        type: 
+
+Choose AnyDesk if you want something lean that connects quickly, performs well when the network is poor, and costs less when you do start paying. Choose TeamViewer if you need breadth - more platforms, mobile device control, integrations, compliance features - or if you are working somewhere that already standardised on it. For strictly personal use both are free, and the practical difference is that TeamViewer's commercial-use detection is aggressive enough that ordinary people using it for genuinely personal reasons sometimes get flagged and have sessions cut short. That single behaviour drives more switching than any feature comparison.
+
+The free tier is the real difference
+
+Both products are free for personal, non-commercial use, and both mean it. TeamViewer enforces the boundary with automated detection, and when it decides a session looks commercial it cuts the connection after a few minutes and asks you to buy a licence. Appeals are possible but the process is tedious, and being wrongly flagged while helping a relative is a well-worn complaint rather than a rare edge case. AnyDesk takes a quieter approach: the free tier simply omits the things a business would need, such as unattended access and the address book, so there is less to police. If you are a genuine home user, that difference in posture matters more day to day than any of the technical comparisons below.
+
+What AnyDesk is genuinely better at
+
+AnyDesk is lighter and it feels it. The client is small and can be run without a full installation, which is genuinely useful when you are on a machine you would rather not modify. Its codec was designed around responsiveness, and on constrained or high-latency connections - hotel Wi-Fi, tethered phones, connections to another continent - it tends to stay usable where heavier tools become unpleasant. Paid tiers start meaningfully cheaper than TeamViewer's, and the gap widens as you add seats. The interface is simpler, which cuts both ways but is a real advantage if all you want is to connect to a machine and do something.
+
+What TeamViewer is genuinely better at
+
+TeamViewer does more, and for many organisations that is decisive rather than merely nice. It reaches a wider range of devices, including remote control of mobile devices and industrial and IoT endpoints that AnyDesk does not target. It has a far larger integration ecosystem, so it slots into existing ticketing and management stacks without custom work. Its compliance, auditing and device-management story is the most developed in the category, which matters if you have to answer to an auditor rather than only to yourself. And ubiquity is itself a feature: if you support non-technical people, there is a reasonable chance they have already heard of it, already have it installed, or can be talked through installing it over the phone.
+
+A warning that applies to both
+
+Remote access tools of every brand are the favourite instrument of phone scammers, and AnyDesk and TeamViewer are both named constantly in those scams because they are the best known. Never install either one because somebody who called you asked you to, no matter who they claim to be - not your bank, not Microsoft, not your internet provider. This is not a criticism of either product. It is a property of the category: software that lets someone else drive your computer is exactly as dangerous as the person you give it to, and the failure is always in the phone call rather than the code.
+
+Which should you pick for a Mac?
+
+Neither is Mac-first, and it is worth saying plainly. Both work on macOS, both require you to grant Screen Recording and Accessibility permissions before they can do anything useful, and both are built around a Windows-centric idea of remote support rather than around Apple hardware. Neither is tuned for touch, so driving a Mac from an iPad with either is workable rather than pleasant. If your job is supporting a mixed fleet from a desk, that is fine and one of these two is probably right. If your job is reaching your own Mac from your own iPad, the Mac-focused tools - Screens, Jump Desktop, or macOS Screen Sharing on your own network - are a better fit than either of these, and you should read a comparison aimed at that instead.
+
+,
+        items: [
+          
+
+Poor or high-latency connections: AnyDesk.
+
+Lowest cost once you start paying: AnyDesk.
+
+Mixed fleet, integrations, compliance: TeamViewer.
+
+Remote control of mobile or IoT devices: TeamViewer.
+
+Supporting non-technical people who may already have it: TeamViewer.
+
+Reaching your own Mac from an iPad: neither, look at Mac-focused tools.
+
+Where Servey is the better answer for a Mac
+
+Both of these are cross-platform tools built largely so you can fix someone else's computer, and it shows the moment you try to use one on your own Mac from an iPad. Servey is built for exactly that job instead. It puts your Mac on your iPhone and iPad with sharp screen mirroring and a genuine shell - a real terminal, not a web console - and a purpose-built on-screen trackpad rather than a mouse pointer bolted onto a touchscreen. It is written natively in Swift, so it launches instantly and stays quiet, and on your own network its hardware-HEVC stream keeps your Mac's text properly legible instead of soft. Away from home the connection is private peer-to-peer and end-to-end encrypted between your own two devices, so your screen is not relayed through a vendor's datacentre - and there is no commercial-use detection waiting to lock you out, because there is no free tier to police. Servey does none of the fleet, compliance or IoT work these two are known for, and it is Apple-only. It launches soon from $1.99 a month, well under either of them, and the waitlist is open now.
+
+ },
+      {
+        type: 
+
+AnyDesk is the better answer for individuals and small teams who want speed, a low bill and to be left alone by licensing enforcement. TeamViewer is the better answer for organisations that need breadth, integrations and an auditable trail, and that would rather have one tool covering everything than the fastest one covering most things. Both are mature and both are safe when you are the one initiating the session. The deciding question is whether you are supporting a business or supporting yourself. If the answer is yourself, and the machine is a Mac, neither of these was designed for you. Servey was, it adds the real terminal both of them lack, and it launches soon at a fraction of either price.
+
+---
+
+# Chrome Remote Desktop vs Jump Desktop: is free good enough?
+
+URL: https://servey.in/blog/chrome-remote-desktop-vs-jump-desktop
+Summary: Chrome Remote Desktop is free and sets up in minutes. Jump Desktop costs money and is better in daily use. Here is where the gap shows on a Mac.
+
+Chrome Remote Desktop is free, takes about five minutes to set up, and needs no router configuration. That is a genuinely strong offer and a lot of people never need more. This is an honest account of where it runs out, and whether the gap is worth paying to close.
+
+,
+        caption:
+          
+
+],
+        rows: [
+          [
+            
+
+One-time purchase per platform
+
+From $1.99/month, or ₹99 in India
+
+A Google account on both ends
+
+A Google sign-in on both devices
+
+Very low - sign in and your Mac appears
+
+Built in, no port forwarding
+
+Built in, no port forwarding, holds up on cellular
+
+RDP and VNC, plus its own Fluid protocol
+
+Hardware HEVC on your network, encrypted peer-to-peer away from it
+
+Connect to a host with nothing extra installed
+
+No, your Mac runs the Servey host app
+
+Client on a machine you cannot install to
+
+No, it needs the iPhone or iPad app
+
+Supported, and refined on iPad
+
+,
+          ],
+          [
+
+],
+          [
+            
+
+Purpose-built virtual trackpad, pinch-to-zoom
+
+Yes - a genuine shell, built in
+
+ },
+      {
+        type: 
+
+Use Chrome Remote Desktop if you need to reach your Mac occasionally, from wherever you happen to be, and you mostly want to grab a file, restart something or check that a job finished. Buy Jump Desktop if you are driving that Mac for real - regularly, for stretches at a time, especially from an iPad. The gap between them is not about whether the connection works. Both connect. The gap is entirely in how it feels after the first ten minutes, and whether that matters depends on how long your sessions actually are.
+
+What Chrome Remote Desktop is genuinely better at
+
+It is free, permanently, with no tier to outgrow and no licence to track, and that is not a small thing when the alternative is paying per platform. Setup is the easiest in the category: install the host package, sign in with the Google account you already have, and you can reach the machine from anywhere without touching your router. And it has one capability none of the paid apps can match - you can sit down at any computer in the world with Chrome on it, sign in, and be on your Mac in under a minute with nothing installed. If you travel and use machines that are not yours, that is a real advantage rather than a consolation. For occasional access it is genuinely sufficient, and people who tell you it is not are usually describing a heavier use case than yours.
+
+What Jump Desktop is genuinely better at
+
+Jump Desktop is better at everything that becomes noticeable during a long session. Its Fluid protocol is more responsive and holds up better as conditions get worse. Input on an iPad is the clearest difference: pointer precision, right click, modifier keys, text selection and Apple Pencil support have all had years of attention, where Chrome Remote Desktop's mobile clients are functional but plainly secondary to the browser experience. It handles multiple monitors properly rather than as an afterthought. It speaks RDP and VNC, so it can reach machines that were never set up for it. And it does not tie your access to a Google account on both ends, which some people care about a great deal and others not at all.
+
+ },
+      {
+        type: 
+
+Ask how long your typical session is. Under about ten minutes and Chrome Remote Desktop's rough edges never really surface - you connect, you do the thing, you leave, and the money you did not spend is the whole story. Over about half an hour and the same rough edges become the entire experience: imprecise pointing, awkward modifier keys, a picture that softens when the connection dips. Almost nobody regrets starting with the free option, because it costs nothing to find out which of those two you are. The mistake is staying on it out of inertia long after your sessions got longer.
+
+,
+        items: [
+          
+
+You often use computers that are not yours: Chrome Remote Desktop.
+
+Cost is the deciding factor: Chrome Remote Desktop.
+
+Long sessions from an iPad: Jump Desktop.
+
+You need to reach a host with nothing installed on it: Jump Desktop.
+
+You would rather your remote access not depend on a Google account: Jump Desktop.
+
+What neither of them does
+
+Neither gives you a real terminal. That sounds like a narrow complaint until you notice how much of what people actually do remotely is command line work: checking a build, restarting a service, tailing a log, killing a process that has hung. Doing that through a mirrored screen means pointing at a tiny Terminal window with a laggy cursor, which works but is miserable. The usual workaround is a separate SSH client alongside the remote desktop app, which means two tools, two connections and two sets of credentials to keep straight.
+
+Where Servey fits between free and full-featured
+
+Chrome Remote Desktop wins on price, Jump Desktop wins on polish, and the row they both lose is the last one. Servey gives you a genuine shell on your Mac alongside crystal-clear screen mirroring, in one app, a tap apart - which matters, because a lot of what you actually need to do remotely is a command, and a lot of the rest is a dialog box only the GUI can dismiss. Getting started is as easy as Chrome Remote Desktop: sign in with Google on both devices and your Mac appears. No ports, no VPN, no IP address. The difference is what happens next - on your own network Servey streams hardware-encoded HEVC, so text stays sharp rather than mushy, and away from home it switches automatically to a private, end-to-end encrypted peer-to-peer connection that keeps working over cellular. Servey is Apple-only, there is no browser client, and file transfer and multi-monitor are not there yet. It launches soon from $1.99 a month, or ₹99 in India - the waitlist is open.
+
+ },
+      {
+        type: 
+
+Chrome Remote Desktop is the right starting point for almost everyone, because it is free, it is fast to set up, and it answers the question of whether you need anything better. Jump Desktop is what you buy once that question has been answered - when you know your sessions are long, your client is an iPad, and the friction has stopped being tolerable. Start free, upgrade on evidence rather than on a review, and do not let anyone tell you the paid option is mandatory when your sessions last four minutes. And if what keeps sending you back to your desk is a command rather than a click, neither of these will fix it - that is exactly the gap Servey closes, with a genuine shell beside the mirrored screen. Launching soon.
+
+---
+
+# Does macOS Screen Sharing work over the internet?
+
+URL: https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet
+Summary: No - it stops at your router, and port forwarding cannot save you on CGNAT. The four routes that actually reach your Mac from outside, and when each is worth it
+
+Screen Sharing is already on your Mac, it is free, and it works beautifully - right up to the edge of your home network. Here is exactly where it stops, why Apple removed the feature that used to fix this, and what actually works instead.
+
+You turned on Screen Sharing in System Settings, connected to your Mac from another room, and it was perfect. Then you tried the same thing from a cafe, and nothing happened at all. This is the single most common point of confusion about Apple's built-in remote access, and the answer is more useful than a plain yes or no.
+
+ },
+      {
+        type: 
+
+No. macOS Screen Sharing does not work over the internet on its own. It is designed for your local network, and outside that network it will not find your Mac at all. It is not broken and you have not misconfigured it - reaching across the internet is simply not something it does by itself. Everything below is about the four ways people bridge that gap, and what each one costs you.
+
+Those four are: forwarding a port on your router, running a VPN back home, a mesh VPN such as Tailscale, or an app that traverses NAT for you - Screens, Jump Desktop, RustDesk or Servey, which is the app we make. Three of the four are worth your time and one of them is not, and the comparison below says plainly which is which.
+
+Why it stops at your router
+
+Two separate things have to happen for a screen sharing session to start: your device has to find your Mac, and then it has to open a connection to it. Screen Sharing fails at both once you leave the house.
+
+Discovery uses Bonjour, Apple's local network service discovery. It is what makes your Mac appear in the Finder sidebar automatically, and it is deliberately confined to the local network - Bonjour announcements do not cross a router. Once you are on a different network, there is nothing to discover.
+
+The connection itself runs over VNC on port 5900. On your own Wi-Fi that is a direct hop. From outside, your Mac is sitting behind your router's NAT with no public address of its own, so an incoming connection has nowhere to land. If you are on mobile data, your phone is usually behind carrier-grade NAT too, which means neither end has a reachable address. That is the whole problem, and it is a networking problem rather than an Apple one.
+
+Apple used to solve this, then removed it
+
+If you remember this working years ago, you are not misremembering. Back to My Mac did exactly this job: it used your iCloud account to find and reach your Mac from anywhere, with no router configuration. Apple discontinued it in macOS Mojave in 2018 and pointed users toward third-party alternatives. Nothing built into macOS has replaced it since, which is why this question keeps being asked.
+
+One thing that does still work over the internet is asking to share screens through Messages with another Apple ID. That is built for helping another person with their Mac, and it needs someone at the other end to accept the request - so it is no use for reaching your own machine while you are out.
+
+Does Apple Remote Desktop fix it?
+
+No, and this catches people out because the name sounds like it should. Apple Remote Desktop is a paid admin tool on the Mac App Store, built for managing a room full of Macs - software distribution, reporting, running commands across many machines at once. It speaks the same underlying protocol and hits the same NAT wall. Buying it does not give you internet access to your Mac; it gives you fleet management on a network you can already reach.
+
+The third name in this family is Remote Management, the separate checkbox in Sharing settings. That is the toggle Apple Remote Desktop uses. It is not a different way of reaching your Mac from outside either.
+
+The four ways to actually reach it from outside
+
+,
+        caption:
+          
+
+],
+        rows: [
+          [
+            
+
+Router config, plus a static IP or dynamic DNS
+
+Exposes a screen sharing port to the open internet. Widely scanned. Not worth doing.
+
+VPN back to your home network
+
+Run and maintain a VPN server
+
+Secure and legitimate, but it is infrastructure you now own and keep running.
+
+A mesh VPN such as Tailscale
+
+Install on both devices, sign in
+
+Genuinely good. Still a second product to run alongside the thing you actually wanted.
+
+A remote access app that traverses NAT itself (Screens, Jump Desktop, RustDesk, Servey)
+
+You are trusting the app's connection handling and privacy model, so check both.
+
+,
+        items: [
+          
+
+Comfortable running infrastructure: a VPN or Tailscale, then Screen Sharing over it.
+
+You want it to just work from a phone: a purpose-built remote access app, and if you need one working today rather than soon, buy Screens or Jump Desktop.
+
+Never: forwarding port 5900 to the internet.
+
+ },
+      {
+        type: 
+
+Servey was built for precisely the gap Back to My Mac left behind. There is no router configuration at any point - no port forwarding, no VPN to maintain, no dynamic DNS, no static IP. You sign in with Google on your Mac and on your iPhone or iPad, and your Mac is simply there. It works out which path to use on its own: on your own Wi-Fi it streams a direct hardware-encoded HEVC feed, which is sharper than the VNC picture Screen Sharing gives you and stays legible when you pinch to zoom into small text. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it - and its NAT traversal is built to hold up on strict carrier networks and CGNAT, exactly where port forwarding cannot help you.
+
+The other thing Screen Sharing cannot do is give you a shell. Servey puts a genuine terminal on your Mac one tap away from the mirrored screen, so when the answer is a command you type it, and when the answer is a dialog box only the GUI can dismiss, you are already looking at it. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately.
+
+ },
+      {
+        type: 
+
+macOS Screen Sharing is excellent software with one hard boundary: your local network. Apple has not shipped a built-in way across that boundary since 2018, so every solution is either infrastructure you run yourself or an app that handles it for you. If you are happy maintaining a VPN, Screen Sharing over Tailscale is a perfectly good answer. If you would rather sign in once and have your Mac appear on your phone - with a real terminal beside the screen - that is what Servey is for, and it launches soon from $1.99 a month, or ₹99 in India.
+
+---
+
+# Back to My Mac is gone: what actually replaced it
+
+URL: https://servey.in/blog/what-replaced-back-to-my-mac
+Summary: Apple removed Back to My Mac in macOS Mojave and never replaced it. Here is what it really did, and what covers each part of the job today.
+
+For years, Back to My Mac was the answer to reaching your own Mac from anywhere: no ports, no VPN, no IP addresses. Apple removed it in 2018 and shipped nothing to take its place. Here is exactly what you lost and what genuinely fills the gap.
+
+If you set up a Mac before 2018, there is a good chance you used Back to My Mac without ever thinking about how it worked. You ticked a box in iCloud preferences, and your Mac at home simply appeared in the Finder sidebar of your Mac at work. Then one year it was not there any more, and the replacement never arrived. This is what it did, why it went, and what actually covers the job now.
+
+ },
+      {
+        type: 
+
+Nothing built into macOS replaced Back to My Mac. Apple deprecated it in macOS Mojave in 2018, switched the service off entirely on 1 July 2019, and pointed people at third-party alternatives rather than shipping a successor. Everything that fills the gap today is either infrastructure you run yourself, such as a VPN back to your home network, or an app from someone other than Apple. The built-in tools that remain - Screen Sharing, File Sharing, Apple Remote Desktop - all stop at the edge of your local network, which is precisely the boundary Back to My Mac existed to cross.
+
+In practice that leaves four options, and the rest of this page walks through each one: a VPN back to your home network, a mesh VPN such as Tailscale, port forwarding on your router, or a remote access app that handles the networking for you. That last group includes Screens, Jump Desktop, RustDesk, AnyDesk and Servey, which is the app we make and which exists specifically because Apple left this gap open. We have tried to be straight about where each of the others is the better answer.
+
+What Back to My Mac actually did
+
+It solved three separate problems at once, which is why losing it hurt more than it first appeared. The first was discovery: it used your iCloud account to make your Macs findable from any network, effectively extending Bonjour beyond the local network it is normally confined to. The second was connectivity: it opened an encrypted tunnel between your machines, negotiating its way through home routers automatically rather than asking you to forward ports or hold a static IP. The third was that it carried both Screen Sharing and File Sharing over that tunnel, so a Mac hundreds of miles away behaved almost exactly like a Mac in the next room.
+
+The part people remember most fondly is what it did not ask of you. There was no router configuration, no dynamic DNS account, no VPN to maintain, no address to memorise. You signed in to the same iCloud account on both machines and the rest was handled. That expectation is the real thing Apple removed, and it is why every replacement feels like more work than it should.
+
+ },
+      {
+        type: 
+
+Apple never published a detailed reason. The deprecation notice in Mojave simply recommended alternatives for each of the three jobs: iCloud Drive for reaching files, Screen Sharing for reaching a screen, and Apple Remote Desktop for managing machines. That advice was widely criticised at the time, because two of those three only work on your local network and the third is a paid administration tool, so none of them actually does the thing Back to My Mac was valued for.
+
+The reasonable guess is maintenance cost against usage. The feature relied on a fairly involved combination of wide-area Bonjour, IPv6 and IPsec tunnelling, plus router negotiation that had to keep working against a moving target of consumer hardware. It was almost certainly used by a small, technical minority of Mac owners. Apple's own dead documentation is the clearest evidence of how completely it was retired: the support page that announced the shutdown now returns a 404.
+
+What covers each part of the job now
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+,
+        ],
+        rows: [
+          [
+            
+
+A VPN back to your home network, a mesh VPN such as Tailscale, or an app that handles NAT traversal for you
+
+Yes - sign in on both devices and your Mac is there
+
+Show your Mac's screen from anywhere
+
+Screen Sharing tunnelled over a VPN, or a third-party remote access app
+
+Yes - hardware-encoded HEVC, sharper than the VNC picture
+
+Reach your Mac's files from anywhere
+
+iCloud Drive for files you chose in advance, or SMB File Sharing over a VPN for the whole disk
+
+No - not as a disk mounted in the Finder
+
+Require no router configuration
+
+Only tools that bring their own relay or peer-to-peer layer
+
+,
+          ],
+          [
+            
+
+SSH, if you set it up and can reach the host
+
+Yes - a real terminal, one tap from the screen
+
+Is Screen Sharing a replacement?
+
+Only on your own Wi-Fi. macOS Screen Sharing is genuinely good software and it is free on every Mac, but it depends on Bonjour to find your Mac and Bonjour announcements do not cross a router. From a cafe or a mobile connection there is nothing for it to discover, and even if you knew the address, your Mac sits behind your router's NAT with no reachable public address of its own. If you are on mobile data you are usually behind carrier-grade NAT as well, so neither end can be reached directly. This is a networking limitation rather than an Apple one, and it is exactly the limitation Back to My Mac used to paper over.
+
+Screen sharing through Messages does work over the internet, but it is built for helping another person with their Mac and needs someone at the other end to accept the request. That makes it useless for reaching your own machine while you are out, which is the case that matters here.
+
+Does Apple Remote Desktop replace it?
+
+No, and the name is genuinely misleading. Apple Remote Desktop is a paid administration tool on the Mac App Store, designed for managing a room full of Macs: software distribution, reporting, running commands across many machines at once. It speaks the same underlying protocol as Screen Sharing and runs into the same NAT wall. Buying it does not give you access to your Mac from outside your network; it gives you fleet management on a network you can already reach. It was listed in Apple's own deprecation advice, which is part of why that advice landed so badly.
+
+The four realistic replacements
+
+,
+        items: [
+          
+
+A mesh VPN such as Tailscale. Far easier than a traditional VPN, handles NAT traversal for you, and puts your devices on a private network wherever they are. This is what most technical Mac owners moved to, and it pairs well with Screen Sharing.
+
+Port forwarding on your router. Technically works, and worth ruling out. It exposes port 5900 to the open internet, where it is scanned constantly, and it fails entirely behind carrier-grade NAT.
+
+A remote access app that handles the network itself. Screens, Jump Desktop, RustDesk, AnyDesk and Servey all bring their own relay or peer-to-peer layer, so there is nothing to configure. This is the option that most resembles the old experience of it simply working, and if you want it working today rather than soon, buy one of the established ones.
+
+ },
+      {
+        type: 
+
+Servey was built for exactly the gap Back to My Mac left. There is no router configuration at any point: no port forwarding, no VPN to maintain, no dynamic DNS, no static IP. You sign in with Google on your Mac and on your iPhone or iPad, and your Mac is simply there - which is the same bargain iCloud used to offer. It chooses its own path: on your own Wi-Fi it streams a direct hardware-encoded HEVC feed, sharper than the VNC picture Screen Sharing gives you and still legible when you pinch to zoom into small text. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, with NAT traversal built to survive strict carrier networks and CGNAT.
+
+It also adds the thing Back to My Mac never had: a genuine terminal on your Mac, one tap from the mirrored screen, so when the answer is a command you type it rather than driving a keyboard through a video feed. The honest limits are worth stating. Servey is Apple-only, it reaches your own Mac rather than any machine anywhere, and it does not mount your Mac's disk in the Finder the way Back to My Mac's File Sharing did. If whole-disk file access from afar is the part you miss most, a mesh VPN with File Sharing is the closer match.
+
+ },
+      {
+        type: 
+
+Back to My Mac was quietly one of the best things about owning two Macs, and Apple has not replaced it in the seven years since it was switched off. The advice Apple gave on the way out does not survive contact with the actual problem, because Screen Sharing and File Sharing both stop at your router. The two honest answers today are a mesh VPN if you enjoy running your own infrastructure, or an app that handles the network for you if you do not. If what you want back is the specific feeling of your Mac just being there on the device in your hand, with a real shell alongside it, that is what Servey is for. It launches soon from $1.99 a month, or ₹99 in India.
+
+---
+
+# RustDesk vs AnyDesk: open source or the better codec?
+
+URL: https://servey.in/blog/rustdesk-vs-anydesk
+Summary: RustDesk is free and self-hostable; AnyDesk is proprietary and hard to beat on a bad connection. Which trade is the right one for a Mac, and where each loses.
+
+RustDesk is usually described as the open-source AnyDesk, and the comparison is fair enough to be useful. But the two are making very different offers, and the one that suits you depends far more on how you feel about running a server than on any feature list.
+
+These two get compared constantly, and for good reason: they look alike, they work alike, and RustDesk has openly positioned itself as the open-source answer to tools like AnyDesk. The interesting differences are not in the feature grid. They are in who operates the infrastructure your session runs through, what happens when something breaks, and what each one costs you in time rather than money.
+
+ },
+      {
+        type: 
+
+Choose RustDesk if you want to pay nothing, want the code to be auditable, or want to run the whole system on servers you control so that no third party is involved in your sessions at all. Choose AnyDesk if you want something that connects immediately, stays usable on a genuinely bad connection, and comes with a company to hold responsible. For most people the deciding question is not which is better software. It is whether self-hosting sounds like a benefit or a chore. If it sounds like a benefit, RustDesk is one of the best things in this category. If it sounds like a chore, AnyDesk will make you happier.
+
+RustDesk, AnyDesk and Servey, side by side.
+
+],
+        rows: [
+          [
+
+],
+          [
+            
+
+Free, including self-hosting
+
+Free for personal use, paid for commercial
+
+From $1.99/month, no free tier
+
+Yes, and it is the main reason to choose it
+
+,
+          ],
+          [
+            
+
+The project by default, or you
+
+Nobody, it is peer-to-peer between your devices
+
+Performance on a poor connection
+
+Excellent, its strongest claim
+
+Good, and tuned for carrier networks and CGNAT
+
+macOS, Windows, Linux, iOS, Android, web
+
+macOS, Windows, Linux, iOS, Android, ChromeOS
+
+macOS host, iPhone and iPad clients only
+
+Touch input quality on iPad
+
+Functional, clearly secondary
+
+Functional, clearly secondary
+
+The thing it was designed around
+
+A vendor with a support contract
+
+,
+          ],
+          [
+
+],
+        ],
+      },
+      { type: 
+
+Where RustDesk genuinely wins
+
+Cost, transparency and control, and all three are real advantages rather than consolation prizes. It is free with no per-device arithmetic as your machine count grows, which matters more than it sounds once you have a laptop, a desktop and a Mac mini. It is open source under the AGPL, so the code can be inspected by anyone, which is a meaningfully stronger position than trusting a vendor's description of its own encryption. Most importantly it can be fully self-hosted: run your own ID and relay servers and no third-party infrastructure touches your sessions at all. No proprietary tool in this category can offer that, and for anyone with a home lab it is often the whole argument. It also treats Linux as a first-class platform on both ends.
+
+Where AnyDesk genuinely wins
+
+Responsiveness on bad networks, and it is not close. AnyDesk's codec was designed around latency rather than image fidelity, and on hotel Wi-Fi, a tethered phone, or a connection across an ocean it tends to stay usable where other tools become unpleasant to drive. This is its central engineering claim and it holds up in practice. The client is also small and can be run without a full installation, which is genuinely useful on a machine you would rather not modify. Beyond performance, it offers the things an unpaid project structurally cannot: a support contract, a company accountable for uptime, an address book and unattended access that work without you standing up any infrastructure, and an installer your less technical colleagues will not be frightened of.
+
+Security: two different bargains
+
+Neither option is simply safer than the other, and it is worth being precise about what you are actually trading. RustDesk's advantage is that the code is open and the infrastructure can be yours. Its default configuration deserves a clear-eyed look though: out of the box, connection setup is routed through relay servers operated by the project rather than by you. Sessions are encrypted, but you are trusting infrastructure that somebody else runs, and if that is not acceptable then self-hosting is the answer. Open source also does not mean audited. It means auditable, which is only worth something if someone with the right expertise actually looks.
+
+AnyDesk's bargain is the ordinary one you make with any commercial vendor: you cannot inspect the code, so you are trusting the company's engineering and its disclosure practices. On that second point there is a specific event worth knowing about. In early 2024 AnyDesk disclosed a security incident affecting its production systems. It revoked and replaced its code-signing certificates and invalidated passwords for its web portal, advising customers to change them, and stated that it had found no evidence that end-user devices were affected. The disclosure and the certificate rotation were the right responses. It is still a reasonable data point if your reason for reading this comparison is that you would rather not depend on a vendor at all.
+
+One warning applies equally to both and to everything else in this category. Remote access tools are the favourite instrument of phone scammers, and AnyDesk in particular is named constantly in those scams because it is well known and installs quickly. Never install any remote access tool because somebody who called you asked you to, whoever they claim to be. That is a property of the category rather than a criticism of either product, and the failure is always in the phone call rather than the code.
+
+ },
+      {
+        type: 
+
+Neither is Mac-first, and both make you feel it during setup. Each needs Screen Recording and Accessibility permissions granted in System Settings before it can do anything useful, and each is built around a broadly Windows-shaped idea of remote support rather than around Apple hardware. RustDesk's macOS build has historically been the fussier of the two to get permissions working on, though it has improved. Neither is tuned for touch, so driving a Mac from an iPad with either is workable rather than pleasant: you get a mouse pointer bolted onto a touchscreen rather than an input model designed for fingers.
+
+If your actual job is supporting a mixed fleet of machines from a desk, that is fine and one of these two is probably right for you. If your job is reaching your own Mac from your own iPad, the Mac-focused tools are a better fit than either, and it is worth reading a comparison aimed at that instead.
+
+ },
+      {
+        type: 
+
+,
+        items: [
+          
+
+You want a bill of zero and do not mind the public relays: RustDesk as it ships.
+
+Your connection is the problem, not your budget: AnyDesk.
+
+You need unattended access and an address book without running a server: AnyDesk.
+
+You support non-technical people who need to install something quickly: AnyDesk.
+
+You are a Linux household: RustDesk, comfortably.
+
+You mainly want your own Mac on your own iPhone or iPad: neither was designed for that.
+
+ },
+      {
+        type: 
+
+Both of these are general-purpose tools built to reach anything from anything, and it shows the moment you try to drive your own Mac from an iPad. Servey does one thing instead: it puts your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart, with an on-screen trackpad designed for fingers rather than a pointer borrowed from a desktop. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp when you pinch to zoom. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, holding up on the mobile networks and CGNAT that defeat most tools.
+
+Setup is signing in with Google on both devices: no relay to choose, no ports to forward, no infrastructure to maintain. The trades are deliberate and worth stating plainly. Servey is Apple-only, it cannot be self-hosted, and it reaches your own Mac rather than any machine anywhere. If running your own infrastructure is the entire point for you, that is what RustDesk is for and it does it well. If you need to fix a relative's Windows laptop over a terrible connection, that is AnyDesk. Servey launches soon from $1.99 a month, or ₹99 in India, and the waitlist is open now.
+
+ },
+      {
+        type: 
+
+RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most out of it. AnyDesk is the better answer if you want a finished product that connects fast, survives a bad network, and comes with somebody to call. Both are legitimate, and the deciding question is not which is better software but whether infrastructure is something you enjoy owning. If your honest answer is that you would rather own none of it, and the machine you actually want to reach is your own Mac, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your iPhone or iPad. It launches soon.
+
+---
+
+# How to control your iPhone from your Mac, and what Apple actually allows
+
+URL: https://servey.in/blog/control-iphone-from-mac
+Summary: Can you control an iPhone from a Mac? Yes, with iPhone Mirroring in macOS Sequoia - but only when the phone is nearby. Here is what works and what does not.
+
+Since macOS Sequoia there is a real, Apple-built answer to this: iPhone Mirroring. It works well, and it has one limitation that catches almost everybody out - your iPhone has to be sitting next to your Mac. If what you actually wanted was to reach a machine that is somewhere else, the direction that genuinely works remotely is the opposite one: your Mac, from your iPhone, anywhere. That is the job we built Servey to do, and it is covered in full below.
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+Works when the iPhone is elsewhere?
+
+,
+        ],
+        rows: [
+          [
+            
+
+Full interactive control of your iPhone in a window on your Mac
+
+No - the phone must be locked and near your Mac
+
+Free, built into macOS Sequoia
+
+Shows and records the iPhone screen; you cannot control the phone
+
+No - requires a USB cable
+
+,
+          ],
+          [
+            
+
+Bulk configuration, app installs and restores for managed devices
+
+No - USB, and it is a provisioning tool rather than a screen
+
+,
+          ],
+          [
+            
+
+Policy, apps and remote wipe across a fleet of company phones
+
+Yes, for management actions - but it is not remote control
+
+,
+          ],
+        ],
+      },
+      { type: 
+
+ },
+      {
+        type: 
+
+You can control your iPhone from your Mac, and the tool is iPhone Mirroring, which Apple shipped in macOS Sequoia. Your phone appears in a window, you drive it with your mouse and keyboard, and notifications come through to the Mac. It is genuinely good. What it is not is remote access: the feature is built on Continuity, which means it works over Bluetooth and Wi-Fi between two devices in the same room. If your iPhone is at home and you are at the office, nothing on this list will let you reach it, and that is a deliberate design decision by Apple rather than a gap somebody is about to fill. The remote problem that can be solved is the reverse one - reaching your Mac from the phone in your hand - and Servey, the app we make, is built specifically for it.
+
+What iPhone Mirroring needs
+
+Apple is specific about the requirements, and every one of them has to be true or the feature simply will not appear. Your Mac needs macOS Sequoia 15 or later and either Apple silicon or the Apple T2 Security Chip. Your iPhone needs iOS 18 or later and must have a passcode set. Both devices have to be signed in to the same Apple Account with two-factor authentication turned on, and both need Bluetooth and Wi-Fi enabled. Your Mac must not be sharing its internet connection or using AirPlay or Sidecar at the time. You can pair only one Mac with one iPhone at a time.
+
+The requirement that matters most is the physical one. Your iPhone has to be locked and near your Mac - it can be face down on the desk or charging in StandBy, but it has to be there. The phone also stays locked for the whole session, which is a nice privacy property: nobody walking past can see what you are doing, and nobody can pick the phone up and use it while you are mirroring it.
+
+Why you cannot control an iPhone over the internet
+
+This surprises people who are used to Windows or Android, where remote control apps for phones have existed for years. On iOS, an app cannot read the screen of the whole system or inject taps into other apps. There is no API for it, and App Store review would not permit it if there were. Screen recording is possible with the user's explicit consent through ReplayKit, but recording is not control, and it stops the moment the app is backgrounded. So the tools that do exist for reaching an iPhone remotely are management tools rather than remote desktops: mobile device management can push apps, apply policy, lock or wipe a company phone from anywhere, but it cannot show an administrator the screen and let them tap around on it.
+
+Anything advertising full remote control of an iPhone from across the internet is worth treating with real suspicion. Either it requires the phone to be supervised and enrolled through a business MDM, or it depends on the phone being jailbroken, or it is simply describing screen recording. This is one of the areas where Apple's restrictions genuinely protect you, and the honest answer is that the feature does not exist for consumer devices.
+
+The other options, briefly
+
+,
+        items: [
+          
+
+Apple Configurator: free from the App Store and built for deploying devices in bulk. Useful for restores, app installs and supervision, useless as a screen.
+
+Switch Control: an Accessibility feature that lets you drive an iPhone or iPad using another Apple device on the same network. It is designed for people with motor impairments and it is slow for general use, but it is a real answer for accessibility needs.
+
+Mobile device management: the only option that reaches a phone that is not in the room, and it is aimed at company fleets rather than your own phone.
+
+The direction that does work remotely
+
+It is worth checking which problem you are actually trying to solve, because a lot of people arrive at this question having got the two devices the wrong way round in their head. The reason you almost never need to reach an iPhone remotely is that the iPhone is the device you already have with you. The machine that is stuck somewhere else, with your files, your projects and your long-running jobs on it, is the Mac. Unlike the iPhone direction, that one is entirely possible, it works from anywhere, and Servey exists to do exactly it.
+
+That is the job Servey is built for. It puts your Mac on your iPhone or iPad: crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - one tap apart in a single native app. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp enough to read and you can pinch to zoom into it. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on the strict mobile networks that defeat most tools. There is no VPN to configure, no ports to forward and no relay server to choose: you sign in with Google on both devices and your Mac shows up.
+
+To be clear about what Servey does not do, since this page is about the opposite direction: it does not control your iPhone, and no third-party app can. Servey is Mac-as-host and iPhone or iPad-as-client, deliberately, because that is the direction where the remote problem is real and worth solving. It launches soon from $1.99 a month, and the waitlist is open now.
+
+ },
+      {
+        type: 
+
+If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. But if the device you were really trying to reach is your Mac, you are in luck, because that is the direction that actually works from anywhere. Servey gives you your Mac on your iPhone or iPad - a sharp screen and a real terminal in one app, with no VPN and nothing to configure. It launches soon from $1.99 a month and the waitlist is open now.
+
+---
+
+# How to set up a headless Mac mini that stays reachable
+
+URL: https://servey.in/blog/headless-mac-mini-setup
+Summary: Do it while the monitor is still attached - two of the steps are near impossible without one. Services, sleep, power cuts and the resolution trap, in order.
+
+A Mac mini with no monitor is one of the best small always-on machines you can buy. The trap is that macOS was never designed to run without a person sitting in front of it, and the ways it fails are all discovered after you have already put the machine on a shelf. Here is the order to do things in - and how to end up with the mini in your pocket, which is what we built Servey for.
+
+Do all of this while the monitor is still plugged in. Every step below is far easier with a screen attached, and two of them are close to impossible without one. The single most common way this goes wrong is unplugging the display first and then discovering that remote login was never switched on.
+
+,
+        caption:
+          
+
+],
+        rows: [
+          [
+            
+
+Screen Sharing and Remote Login are both off by default
+
+Turn both on before you disconnect anything
+
+The machine disappears after a while
+
+macOS sleeps on idle, and a sleeping Mac answers nothing
+
+Disable system and disk sleep with pmset
+
+It never comes back after a power cut
+
+It stays powered off, or stops at the FileVault unlock screen
+
+Enable automatic restart; understand the FileVault trade-off
+
+The desktop is tiny or a strange shape
+
+With no display attached, macOS falls back to a default resolution
+
+A dummy HDMI plug, or set the resolution in your client
+
+It works at home but not from outside
+
+Your router blocks inbound connections; your IP address changes
+
+Use a tool that does NAT traversal for you, such as Servey - never forward a port
+
+Step 1: turn on the two services you will need
+
+There are two separate doors into a Mac and you want both, because they fail independently and each rescues the other. Screen Sharing gives you the graphical desktop over VNC. Remote Login gives you SSH, which keeps working when the window server is confused, the machine is under heavy load, or you simply want to run one command without waiting for a picture to arrive. Open System Settings, go to General and then Sharing, and switch on both Screen Sharing and Remote Login. You can do the same from the command line, which is worth knowing because it is how you will fix things later:
+
+,
+        items: [
+          
+
+sudo systemsetup -getremotelogin - confirms it took.
+
+scutil --get LocalHostName - shows the .local name you will use to reach the machine on your own network.
+
+While you are in Sharing, give the machine a name you will actually recognise. A Mac called something like mini-server is much easier to live with than the default, which tends to be your full name with an apostrophe in it that then has to be escaped every time you type it.
+
+Step 2: stop it going to sleep
+
+This is the step people skip, and it produces the most confusing symptom: the machine works perfectly for an hour and then stops answering, apparently at random. A sleeping Mac does not respond to screen sharing or SSH. The pmset command controls all of this, and the -a flag applies the setting to every power source:
+
+,
+        items: [
+          
+
+sudo pmset -a disksleep 0 - keep the disks spinning, which matters if the machine serves files.
+
+sudo pmset -a displaysleep 0 - there is no display, but leaving this on can still confuse some remote clients.
+
+sudo pmset -a womp 1 - wake the machine when it receives a network packet, as a safety net.
+
+pmset -g - print the current settings so you can check your work.
+
+One caveat worth knowing: on Apple silicon a Mac mini idles at a few watts, so leaving it awake permanently costs very little in electricity. This is much less of a trade-off than it was on Intel machines, and it is the right default for a server.
+
+Step 3: make it survive a power cut
+
+A machine on a shelf will eventually lose power, and the question is whether it comes back on its own or waits for you to walk over and press the button. Run sudo pmset -a autorestart 1 so the Mac powers itself back on after a power failure. In System Settings under Energy you will find the equivalent switch if you prefer clicking.
+
+Then there is FileVault, and this is a genuine trade-off rather than a setting with a correct answer. With FileVault on, a Mac that reboots stops at the unlock screen and waits for a password before it finishes booting, which means no network, no SSH and no screen sharing until somebody types it. With FileVault off, the machine boots all the way to the login window or straight into the desktop if you have enabled automatic login, and comes back on its own. For a machine holding real data in a home you share with other people, keeping FileVault on and accepting the manual restart is the defensible choice. For a build box on a shelf with nothing sensitive on the disk, turning it off and enabling automatic login in Users and Groups is reasonable. Decide deliberately, because the failure mode only shows up weeks later during a power cut you are not home for.
+
+Step 4: fix the resolution problem
+
+With no display connected, macOS has no display to describe, so it falls back to a default that is often small and the wrong shape. You connect from your iPad expecting a desktop and get a cramped little rectangle in the corner. There are two ways out. The cheap and reliable one is a dummy HDMI plug - a two-pound adapter that pretends to be a monitor, so macOS sees a real display and offers real resolutions. The other is to use a remote tool that negotiates the resolution itself rather than inheriting whatever the Mac decided on its own. Apple silicon Macs handle the headless case better than Intel ones did, but the dummy plug is still the answer that always works, and it is worth buying one before you need it.
+
+Step 5: reaching it from outside your network
+
+Everything so far works on your own Wi-Fi. The moment you leave the house, both Screen Sharing and SSH stop being reachable, because your router does not accept unsolicited inbound connections and your home IP address changes when your provider feels like it. Many people are also behind carrier-grade NAT, which means there is no inbound path to forward even if you want one.
+
+Port forwarding is the one to rule out immediately: exposing VNC or SSH directly to the internet puts them in front of automated scanners within hours, and it does not work behind CGNAT anyway. That leaves two real options. The first is to let an app solve the network for you, which is what Servey does - you sign in on both devices and the mini is reachable, with nothing open on your router and no dynamic DNS to maintain. The second is a mesh VPN such as Tailscale, which is genuinely good and worth knowing about: free for personal use, and it solves CGNAT properly. Its honest cost is that it is another service to install, keep updated and reason about on every device you own, and what it gives you is a network route rather than a usable screen and shell on a phone.
+
+Driving it from an iPhone or iPad
+
+The other approach is a tool that does the network part for you, and if the device in your hand is an iPhone or iPad this is where Servey fits. You install it on the Mac mini and on your phone or tablet, sign in with Google on both, and the mini appears - no VPN to maintain, no ports open, no dynamic DNS. On your own Wi-Fi it streams hardware-encoded HEVC, so the terminal text on a headless build box is sharp enough to read and you can pinch to zoom into it. Away from home it switches automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds up on mobile networks that defeat most tools.
+
+The part that matters most for a headless machine is that Servey ships a real terminal next to the screen, one tap away. Most of what you do to a Mac mini on a shelf is command-line work - restart a service, tail a log, check why a job stalled, kick off a rebuild - and for that you do not want to wait for a desktop to render and then drive a mouse pointer with your thumb. Where it is honestly not the right fit: Servey is Apple-only, so if half your machines run Linux you want something else, and it cannot be self-hosted, which is the whole point of the mesh VPN approach for some people. It launches soon from $1.99 a month.
+
+A sanity check before you unplug the monitor
+
+,
+        items: [
+          
+
+pmset -g shows sleep and disksleep at 0.
+
+autorestart is enabled, and you have decided what you are doing about FileVault.
+
+The machine has a memorable name, and you know its .local address.
+
+You have a way in from outside the house - Servey, a mesh VPN, something - and you have tested it from mobile data rather than assuming.
+
+A dummy HDMI plug is either fitted or on order.
+
+ },
+      {
+        type: 
+
+Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one. For the last step, Servey is the shortest path if your other device is an iPhone or iPad: the mini's screen and a real shell in one app, sharp enough to read, with nothing exposed on your router and nothing to maintain. It launches soon from $1.99 a month.
+
+---
+
+# How to keep a terminal session running after you disconnect
+
+URL: https://servey.in/blog/keep-terminal-session-running-after-disconnect
+Summary: Why your shell dies when you close the app, what tmux actually fixes, and how to leave a build running on your Mac while you get on a train.
+
+The build takes forty minutes. Your train leaves in ten. If the shell running that build lives inside the app you are about to close, the build dies with it - and this is the most common way remote work on a Mac goes wrong. The fix is older than most of the tools people reach for, and it is the thing Servey turns on by default. Here is what actually kills a session, what survives, and how to get persistence whether you use Servey or not.
+
+,
+        text: 'Two very different problems hide behind the sentence 
+
+. One is the network: the connection between your phone and your Mac broke. The other is the process: the program you were running was killed. The first is annoying and recoverable. The second loses forty minutes of work. Almost every tool on the market solves the first and quietly ignores the second, which is why people learn the difference the hard way.',
+      },
+      {
+        type: 
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+Rejoin from another device
+
+A Terminal window inside a mirrored desktop
+
+Yes - it is a window on the Mac
+
+Only by mirroring that Mac again
+
+No - the shell is killed with the connection
+
+,
+          ],
+          [
+            
+
+Yes, with the attach command
+
+Yes - sessions are named and live on the Mac
+
+Yes, from any device or a plain Terminal
+
+The short answer, if you only read this far: run your long jobs inside tmux, which keeps your shell alive on the Mac independently of whatever you are connecting from. If you already have SSH working, install tmux and type tmux new -s work before anything else. If you are doing this from an iPhone or iPad, Servey - the app we make - opens every terminal session that way by default, so there is no second thing to remember and nothing to configure to reach the Mac in the first place.
+
+The table also has a useful surprise in it. Screen mirroring, often dismissed as the slow and heavy option, is accidentally good at persistence: a Terminal window inside a mirrored desktop is just a window on the Mac, so nothing about your connection can kill it. Plain SSH, which people reach for because it is light and fast, is the one that loses the work.
+
+Why does my SSH session die when I close the app?
+
+Because the shell is a child of the connection, and when the connection goes the operating system tells everything under it to stop. Concretely: SSH gives you a pseudo-terminal, your shell runs attached to it, and the commands you type run as children of that shell. When the connection drops, the kernel sends a hangup signal, SIGHUP, down that tree. The default response to SIGHUP is to terminate. Your build gets the signal, does not handle it, and stops. The word is a literal holdover from modems physically hanging up, and the behaviour has never changed.
+
+This is also why the half-fixes are half-fixes. Running a command with nohup, or backgrounding it with an ampersand and disown, does stop SIGHUP from killing it. But you have now given up the thing you actually wanted: you cannot see the output any more, you cannot answer a prompt, and you cannot get back in front of it. It is fine for a job that runs unattended and writes to a log. It is useless for a build that might ask a question, or an AI coding agent that stops halfway to confirm something.
+
+ },
+      {
+        type: 
+
+tmux moves your shell out from under the connection. Instead of your shell being a child of SSH, tmux runs as its own long-lived process on the Mac, and your shell is a child of tmux. SSH then just attaches a view onto it. Kill the connection and you have killed a viewer, not the work. Reconnect later, attach again, and you are looking at the same session with the same scrollback and the same half-finished prompt waiting for an answer.
+
+,
+        items: [
+          
+
+Ctrl-b then d - detach, leaving everything running.
+
+tmux ls - list the sessions currently alive on the machine.
+
+tmux attach -t build - reattach to it, from anywhere, later.
+
+tmux kill-session -t build - end it deliberately when you are done.
+
+Name your sessions. The default names are numbers, and a list of numbers tells you nothing three days later. The other detail worth knowing is that tmux allows several clients to watch one session at once, which is what makes it possible to start something on an iPad and then walk to your desk and carry on from the Mac with the same output in front of you.
+
+Why this is harder from an iPhone than it looks
+
+Everything above assumes you can already reach the Mac and already have a working SSH setup. From a phone that is three separate problems, and each one has its own way of going wrong. You need an SSH client on iOS. You need your keys on the phone, which means either generating a key there and adding it to the Mac or moving a private key onto a device you carry in public. And you need the Mac to be reachable at all from outside your home network, which most people discover is the hard one.
+
+That last problem is not really about SSH. A home router does not accept unsolicited inbound connections, your address changes, and a growing number of home connections sit behind carrier-grade NAT where no amount of port forwarding will help. The usual answers are a VPN, a mesh VPN such as Tailscale, or a tool that does NAT traversal for you - and none of them give you the persistence, which you still have to set up yourself once you arrive. There is an ergonomic problem too: Ctrl-b is the tmux prefix and an iPhone keyboard has no Control key, which is the most common reason people give up on tmux from a phone. Both halves are what we built around, and they are why persistent sessions are the default rather than a setting.
+
+ },
+      {
+        type: 
+
+Servey makes persistence the default rather than something you opt into. Every terminal session you open is a named session that lives on the Mac, so there is no separate step to remember and nothing to configure. Close the app, lose signal, put the phone in your pocket, get on a plane: the work carries on. Open the app again and the session list shows what is still running, so you pick one and rejoin exactly where it got to. You can have the same session open on the Mac and the iPad at once, which is genuinely useful when you start something on the sofa and finish it at the desk.
+
+The part worth knowing about, because it is unusual for a paid app to volunteer it, is that these are ordinary tmux sessions on your own machine. Servey shows you the attach command for each one, so you can paste it into Terminal.app, iTerm, Ghostty or an SSH connection and land in the same live session with the app not running at all. If you stop paying, or stop using it, or simply prefer a laptop that day, nothing you started is trapped. That also means the tmux knowledge above is not wasted if you later move on.
+
+Reachability is handled in the same app: Servey connects on your local network directly, and from outside it establishes a private peer-to-peer connection between your own devices, including on carrier-grade NAT, with no VPN and no port forwarding. And because a terminal sits one tap from the mirrored screen, the case that defeats a pure SSH setup - a dialog box only the GUI can dismiss - does not strand you.
+
+The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a working setup this afternoon, do not wait for us.
+
+What to use if you need this working today
+
+Install tmux on the Mac with Homebrew, then pick an iOS terminal app - Termius and Blink Shell are both good, and Blink in particular has a well-designed key row that makes the Ctrl-b prefix bearable. Add Tailscale on both ends if you cannot reach the Mac from outside. That combination gives you the persistence and the reachability today, for the price of setting up three things instead of one, and it is what we would tell a friend to do this week.
+
+One last habit that costs nothing: get into the reflex of typing tmux new -s something the moment you connect, before you run anything long. Persistence you remembered to turn on after the build started is not persistence.
+
+---
+
+# How to blank your Mac's screen while you work on it remotely
+
+URL: https://servey.in/blog/blank-mac-screen-during-remote-access
+Summary: Anyone next to your Mac can watch your remote session on its monitor. Here is why privacy screens are unreliable on macOS, and what actually works.
+
+There is a detail about remote access that most people only think about once: while you are working on your Mac from somewhere else, its monitor is still on, still showing your desktop, and still visible to whoever is in the room. In an office, a shared flat or a home with visitors, that is a real problem - and on macOS specifically it is the feature most remote tools handle worst. Here is why it is hard, what the options actually do, and how Servey does it differently.
+
+The scenario is easy to picture. You connect to your work Mac from a laptop at home and start going through payroll, or you reach your home Mac from the office and open something personal. At the other end, the machine's display is showing every keystroke to an open-plan room, a housemate, or a colleague who wandered over to borrow a charger. Nothing about the connection being encrypted helps: the leak is at the monitor, not on the wire.
+
+,
+        caption:
+          
+
+],
+        rows: [
+          [
+            
+
+The login window covers the desktop
+
+Your remote session unlocks it again, and then everyone can see it
+
+Vendor privacy screen (TeamViewer, AnyDesk)
+
+Installs a display driver that blanks the monitor
+
+Needs a kernel or system extension, and on modern macOS it is unreliable or unsupported
+
+Unplug or power off the monitor
+
+Only works if you are there to do it, and not at all on a laptop
+
+Blank the display after the capture point (Servey)
+
+The monitor goes black, the stream keeps the real desktop
+
+Only possible if the tool is built for it
+
+The short answer: on macOS the only approach that reliably holds up is the last one, and almost nothing implements it. Servey - the app we make - is built around it, and if you want a free route today, macOS Screen Sharing's virtual display option gets you most of the way on Apple silicon. It is worth understanding why the popular option is the one that keeps breaking, because the reason is specific to how macOS draws things.
+
+Why do privacy screens keep breaking on macOS?
+
+Because the classic implementation depends on a piece of macOS that Apple has spent years closing off. The traditional way to blank a monitor during a remote session is to install a virtual display driver: the tool adds a fake display, moves your desktop onto it, and leaves the real monitor showing nothing. On Windows that is a well-trodden path. On macOS it needs a kernel extension or, more recently, a DriverKit system extension, and both require the user to approve them in Privacy and Security and reboot. Kernel extensions on Apple silicon additionally need the machine put into reduced security mode.
+
+The result is a feature that either does not appear on macOS, greys out, or works until an OS update. That is Apple's design decision rather than the vendors' incompetence, and it is why the black screen people know from Windows support work is one of the most common things missing when the same tool is pointed at a Mac.
+
+There is a second, subtler failure that matters more than it sounds. A privacy screen that works by drawing a black window over your desktop can be defeated: a full-screen app, a Mission Control gesture or a second monitor can end up outside it, and the cursor usually still moves in plain view. Worse, it is captured. If the black cover is drawn into the same framebuffer that the remote tool records, you end up looking at your own black screen instead of your desktop, which is exactly backwards.
+
+What does Servey do instead?
+
+Servey's Privacy Mode forces the gamma transfer table of every active display to zero. That sounds obscure, so here is the part that matters: gamma is applied by the display pipeline at scan-out, which happens after the framebuffer that screen capture reads. The monitor is fed the adjusted signal and shows pure black. The capture is taken from before that point and shows the real desktop, completely unaffected. It is the same layer that tools like Night Shift work at, which is why their colour tint never turns up in a screenshot.
+
+Doing it there rather than with an overlay window fixes the failure modes above in one go. Because nothing is drawn on screen, there is nothing for a full-screen app or another space to appear on top of. It covers every app, every space and every connected monitor at once. The cursor is blacked out too, so an observer cannot even follow where you are pointing. And no black window exists to be accidentally captured, so what you see on your iPad stays the live desktop.
+
+The obvious worry with any technique that blacks out a display is being left with a Mac you cannot see and cannot fix. Servey restores gamma on every stop and disconnect path, and the window server restores it automatically if the app exits for any reason, including a crash. A dropped connection cannot strand the machine on black. This matters more than the feature itself: a privacy screen you do not fully trust is one you will never switch on.
+
+It is worth being clear about what this is not. Privacy Mode hides the picture; it does not physically disable the Mac's own keyboard and mouse, so someone sitting at the machine can still interfere with it even though they cannot see what they are doing. If your threat model is a person with hands on the keyboard rather than eyes on the monitor, this is the wrong control and you want the Mac locked or in another room.
+
+What can you do today, with the tools you already have?
+
+If you use macOS Screen Sharing on your own network, there is a genuinely useful option most people miss. In the Screen Sharing app, choosing to connect to a virtual display rather than the Mac's own display gives you a separate desktop that the physical monitor never shows. It needs a Mac with Apple silicon on both ends and recent versions of macOS, and it is a different workspace rather than your existing one, but if you meet those conditions it solves the problem completely and costs nothing.
+
+The low-technology answers are also better than their reputation. A Mac mini on a shelf with no monitor attached has no privacy problem at all, which is one of the quiet advantages of running a headless machine. For a desktop Mac you can switch the monitor's input to another source, and for a laptop being used remotely you can simply close the lid - though on a MacBook that normally puts the machine to sleep unless something is deliberately keeping it awake.
+
+Where Servey fits, and where it does not
+
+Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 15.3 and iOS or iPadOS 18.5, it cannot reach a Windows or Linux machine, and it launches soon rather than today. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.
+
+---
+
+# How to use a MacBook with the lid closed and no external display
+
+URL: https://servey.in/blog/macbook-closed-lid-remote-access
+Summary: Closing a MacBook's lid normally sleeps it. Here is how clamshell mode really works, why the dummy HDMI trick exists, and how to skip it entirely.
+
+An old MacBook is the cheapest always-on Mac most people already own. The problem is that closing the lid puts it to sleep, and Apple's official way round that needs an external display you do not want to buy, plug in or find desk space for. Here is what is actually happening, the three ways round it ranked by how much you will regret them, and how Servey removes the problem instead of working around it.
+
+The behaviour is deliberate. macOS treats a closed lid as a signal that you have finished, and it sleeps the machine unless it can see a reason not to. Historically the only reason it accepted was clamshell mode: an external display, plus power, plus a keyboard or mouse. That made sense when a closed MacBook on a desk meant a docked workstation. It makes much less sense when you want the machine on a shelf answering requests, which is what people actually want from a spare laptop today.
+
+Four ways to keep a MacBook running with the lid shut.
+
+],
+        rows: [
+          [
+            
+
+External display, power, and a keyboard or mouse
+
+Reliable, but you are buying and powering a monitor you never look at
+
+A cheap headless display emulator, plus power
+
+Works, costs a few pounds, and fixes the resolution problem too
+
+Admin rights, a Terminal command, and remembering to undo it
+
+Free and effective, but it is system-wide and easy to leave on by mistake
+
+A remote tool that manages it for you
+
+Servey, on macOS 15.3 or later
+
+Opt-in, authorised once, and reverted automatically when you go offline
+
+The short answer: if the machine is staying on a shelf, sudo pmset disablesleep 1 with a cheap dummy HDMI plug is the free route and it works. If you want the lid handled without a permanent system-wide override you will forget about, Servey - the app we make - does it as an opt-in mode and puts the Mac's screen and shell on your iPhone or iPad at the same time. Either way it is worth understanding what that command really does before you paste it into a Terminal.
+
+What does pmset disablesleep actually change?
+
+It turns off the machine's ability to sleep entirely, for every reason, until something turns it back on. Running sudo pmset disablesleep 1 is not a lid setting - it is a global override that also stops idle sleep, and it persists across reboots. That is exactly what you want on a machine living on a shelf, and exactly what you do not want on the laptop you carry, because a MacBook that cannot sleep will run its battery flat in a bag and get warm doing it.
+
+,
+        items: [
+          
+
+sudo pmset disablesleep 0 - put it back to normal behaviour.
+
+sudo pmset -g - check which of these is currently set.
+
+How does Servey handle the lid?
+
+Servey has a closed-lid mode that manages the same system setting for you, and the design of it is mostly about not leaving a mess behind. It is opt-in, so nothing changes unless you ask. It asks for administrator authorisation at the point the Mac goes online rather than silently changing a system-wide power setting behind your back. And it records what your settings were beforehand and restores them when it goes offline or quits, so your laptop goes back to sleeping normally the moment you stop using it as a server.
+
+That last part is the difference between this and the Terminal command, and it is the whole reason the feature exists. The failure mode of pmset disablesleep is not that it does not work - it works fine. It is that six weeks later you take the machine to a cafe, it never sleeps in your bag, and you have long since forgotten you typed it. A setting that undoes itself when it is no longer needed is the same capability without the trap.
+
+No external display and no dummy plug are required for the lid part: the Mac's screen goes straight to your iPhone or iPad, so the machine can sit closed on a shelf while you use it from the sofa. It connects on your local network directly and, from outside, over a private peer-to-peer connection between your own devices, including on carrier-grade NAT, without a VPN or port forwarding. There is also a real terminal one tap away, which on a headless machine is usually what you wanted anyway.
+
+Is a MacBook or a Mac mini the better always-on Mac?
+
+A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so none of this arises. The argument for the laptop is that you already own it, and it has a built-in uninterruptible power supply, so a brief power cut that would drop a mini does not interrupt it. Either way it is the same app on both, and if you are setting up a mini we have written that up separately.
+
+The honest limits on Servey: it is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.
+
+---
+
+# How to check whether someone has connected to your Mac remotely
+
+URL: https://servey.in/blog/who-connected-to-my-mac-remotely
+Summary: Start with `last`, then check screen sharing separately - macOS records them in different places. What each command proves, and the gap none of them cover.
+
+If you have ever wondered whether someone else has been on your Mac, the honest answer is that macOS makes it harder to check than it should be. The records exist, but they are spread across three different systems, two of them expire quickly, and none of them cover the remote access app you probably installed. Here is what you can actually find out, in the order worth trying - and why Servey keeps its own log instead.
+
+First, a distinction that decides which of these commands is useful to you. macOS has two completely separate doors: Remote Login, which is SSH and gives someone a command line, and Screen Sharing, which is VNC and gives them your desktop. They are recorded in different places, so a check that clears one tells you nothing about the other. On top of both sits whatever third-party remote tool you installed, which keeps its own records or, more often, does not.
+
+Where to look, and what each source actually proves.
+
+],
+        rows: [
+          [
+            
+
+Login sessions, including SSH, with source addresses
+
+Says nothing about screen sharing
+
+Screen sharing and authentication events in the unified log
+
+Rolls over fast and is hard to read
+
+Which doors are currently open
+
+,
+          ],
+          [
+            
+
+Depends entirely on the vendor
+
+Most consumer tools keep no user-visible log
+
+Connections, approvals, refusals and sessions, in plain language
+
+Recent history, on the Mac
+
+,
+          ],
+        ],
+      },
+      {
+        type: 
+
+The short answer: last and log show will tell you about SSH and Screen Sharing, and nothing built into macOS will tell you about a third-party remote tool, which is the gap most people are actually worried about. That is a deliberate design choice on our part - Servey, the app we make, keeps its own readable activity log on your Mac and never uploads it - but the built-in commands come first, because they cover the doors that are open on every Mac whether you installed anything or not.
+
+Which commands should I run first?
+
+Start with last, because it is the one with real history behind it and the output is readable without any special knowledge. Typing last in Terminal prints login sessions newest first, and a remote SSH login shows the source address in the third column. A local login at the keyboard shows a console entry instead. If you see an address you do not recognise, that is a genuine finding rather than noise, and it is worth acting on.
+
+,
+        items: [
+          
+
+who - who is logged in right now, this second.
+
+log show --predicate 'process == "screensharingd"' --last 24h - screen sharing activity in the last day.
+
+The last of those is the one people are usually looking for, and it is also the one that disappoints. The unified log is where macOS records screen sharing, but it is a rolling buffer sized for debugging rather than for auditing. On a busy Mac it can roll over in hours. If something happened last month, that record is gone, and no amount of cleverness with predicates will bring it back.
+
+Then check what is currently switched on, in System Settings under General and then Sharing. Turn off anything you are not deliberately using, and treat Remote Management being on as worth investigating on its own - it is the Apple Remote Desktop agent and is not something a home user enables by accident.
+
+Why does none of this cover the app I actually use?
+
+Because a third-party remote tool does not go through Remote Login or Screen Sharing at all. It runs its own agent with its own connection, so it appears in none of the commands above. Whether there is any record of a session depends entirely on whether that vendor decided to keep one and show it to you. Business tiers of the big tools usually do, because auditing is something companies pay for. The consumer tiers most people run frequently do not, or keep it on the vendor's servers rather than yours.
+
+This is a strange gap when you think about it. The software with the deepest access to your machine is the software least likely to tell you when it was used. It is also the reason the sensible advice about unused remote access tools is to remove them rather than leave them installed and switched off - an agent you never check is an agent you would not notice being used.
+
+What Servey records, and where it keeps it
+
+Servey keeps its own activity log on the Mac, written for a person reading it afterwards rather than for debugging. It records the things that actually happened: the Mac coming online, which device connected and over which path, every incorrect master password attempt and any resulting lockout, every device approval and removal, when the screen was being shared, when Privacy Mode was on, and every session opened, resumed, ended or timed out. Heartbeats, polling and retries are deliberately left out, because a log nobody can read at a glance is a wall rather than an audit trail.
+
+Two properties matter more than the list itself. It lives on your Mac and is never uploaded to us, so it is a record you hold rather than one you request from a vendor. And it is the counterpart to the controls above it: The app asks for a master password set on the Mac and makes you approve each new device on the Mac itself, and this is what answers the question those controls raise but cannot answer on their own - who connected, when, and what did they do.
+
+It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 15.3 and iOS or iPadOS 18.5, and launches soon rather than today.
+
+What should I do if I find something I did not expect?
+
+Take the machine off the network first, then turn off Screen Sharing, Remote Login and Remote Management, and change your Apple Account and Mac login passwords from a device you trust. The full sequence is in the FAQ below. One thing worth knowing before you panic: a remote login from an unfamiliar address is a real signal, but an entry mentioning screensharingd often is not, because macOS uses that machinery for its own features and plenty of people have alarmed themselves reading a normal log.
+
+---
+
+# Turning the new Mac mini into a remote server you can reach from anywhere
+
+URL: https://servey.in/blog/new-mac-mini-remote-server
+Summary: Apple's M6 Mac mini ships 22 September and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.
+
+Apple announced a new Mac mini on 25 August 2026 and it arrives on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.
+
+First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both were available to pre-order from announcement day.
+
+,
+        caption:
+          
+
+],
+        rows: [
+          [
+
+Up to 18-core / up to 20-core
+
+],
+          [
+            
+
+Automation, services, builds, small and mid-size local models
+
+Large local models, video work, anything memory-hungry
+
+The memory row is the one that decides this for most people, and it is worth pausing on. Unified memory is what a local language model actually lives in, so the ceiling on your memory is roughly the ceiling on the model you can hold. The M6 tops out at 32GB. That is comfortable for the quantised models most people run day to day and restrictive if you had ambitions beyond that. The M5 Pro's 64GB is the reason to spend the extra, and if local models are the point of the machine it is not really an upgrade so much as the actual requirement.
+
+The short answer, if you are buying one to leave running: take the memory you actually need, put it on Ethernet, set it up headless while a monitor is still attached, and settle how you will reach it before it goes on a shelf. That last step is the one people leave until the display is already unplugged, and it is the one Servey exists to make trivial.
+
+Why Apple is talking about LM Studio in a Mac mini announcement
+
+Because that is the workload the machine is being sold for. Apple's own figures put the M6 at up to 13.5 times faster LLM prompt processing in LM Studio than the M1 mini, and up to 4.8 times faster than the M4. The M5 Pro is quoted at up to 8.5 times faster than the M2 Pro and up to 4 times faster than the M4 Pro. Whatever you make of vendor benchmarks, the choice of benchmark is the message: Apple is pitching a small desktop computer on how quickly it can chew through a prompt.
+
+That reframes what a Mac mini is for. A machine bought to run models, agents, build servers and automation is not a machine you sit in front of. It is infrastructure. It wants to be plugged in somewhere with good airflow and a wired connection, and left alone.
+
+,
+        items: [
+          
+
+A coding agent that runs for an hour on a real checkout with real credentials.
+
+Build and test runners that do not fight you for your laptop's fans.
+
+Media processing, backups and the small personal services that accumulate.
+
+A always-on shell you can hand long jobs to and walk away from.
+
+The problem with infrastructure in your house
+
+You are not always in your house. The moment a Mac mini becomes the machine that does the work, its location stops being a detail and becomes the limit. The agent stops to ask a question and you are on a train. A build fails and you are at a desk somewhere else. You want to check what the model is doing and the machine is forty minutes away.
+
+This is where most people discover that reaching a Mac at home is harder than it should be. Screen Sharing works beautifully on your own network and not at all outside it. A VPN back to your house is a real answer and a real thing to maintain. Port forwarding is not an answer at all if your connection sits behind carrier-grade NAT, which a growing number do, because there is no public address to forward from.
+
+Servey is the answer we built for it: a native app that puts the mini's screen and a real terminal on your iPhone or iPad, with no VPN, no port forwarding and no static IP, and NAT traversal that holds up on carrier networks. Sessions are named tmux sessions on the mini, so a job you start from the sofa is still running when you pick it up from a cafe - and it survives Servey being closed, because the session lives on the machine rather than in the app. And a headless mini has no privacy problem to solve, because there is no monitor in the room for anyone to read.
+
+Setting the new mini up headless, in the right order
+
+Do all of this while a monitor is still plugged in. Two of the steps are close to impossible without one, and the single most common way this goes wrong is unplugging the display before turning remote access on. We have written the full version of this up separately; here is the short form, plus what is specific to the new machine.
+
+,
+        items: [
+          
+
+Stop it sleeping: sudo pmset -a sleep 0 and sudo pmset -a disksleep 0. An idle Mac that sleeps answers nothing.
+
+Make it survive a power cut with sudo pmset -a autorestart 1, and decide deliberately about FileVault - an encrypted disk stops at the unlock screen after an unattended reboot.
+
+Use the Ethernet port rather than Wi-Fi 7 if the mini is going to sit in one place. Wired is one less thing that can be flaky at three in the morning.
+
+Give it a name you will recognise later, because you will be typing it.
+
+One thing that is genuinely different on a machine bought for models: think about thermals and placement before you shove it behind the router. A mini that is chewing through prompts for hours is not idling at a few watts, and a small aluminium box in a cupboard behaves differently from one on an open desk. Give it air.
+
+The resolution trap is worth knowing about too. With no display attached at all, macOS falls back to a default resolution that is often an awkward shape, so your remote desktop arrives small or letterboxed. A dummy HDMI plug costs very little and fixes it. Servey streams the mini's screen to an iPhone or iPad directly, so this matters less than it used to, but it is still the cheapest fix for the general case.
+
+Should you buy one for this?
+
+If you already have a Mac mini, no - the M4 and even the M2 are perfectly good at being always-on machines, and the honest reason to upgrade is local model performance specifically, not remote access. Remote access works the same on all of them.
+
+If you are buying, the interesting case is the one Apple is clearly aiming at: an always-on machine at home that runs models and agents, which you reach from a laptop or an iPad wherever you happen to be. That combination is genuinely new, and it is the case Servey was built around. It was not practical when the mini was a desktop you sat at, and it is not practical on a laptop you carry, because the laptop is with you and asleep in a bag. At $899 it is also considerably less than a year of most cloud GPU habits, and the data never leaves your house.
+
+The honest limits on our part: Servey is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.
+
+---

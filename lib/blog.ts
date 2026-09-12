@@ -178,11 +178,11 @@ export const posts: Post[] = [
   },
   {
     slug: "screens-jump-desktop-alternative-mac",
-    metaTitle: "A Screens and Jump Desktop alternative for Mac",
+    metaTitle: "Screens and Jump Desktop alternatives, compared",
     title:
       "Choosing a Screens or Jump Desktop alternative for Mac remote control",
     description:
-      "What to look for in a modern alternative to Screens, Jump Desktop, TeamViewer, and VNC for controlling a Mac from an iPhone or iPad.",
+      "What actually separates the modern alternatives to Screens, Jump Desktop, TeamViewer and VNC when the job is reaching your own Mac from an iPhone or iPad.",
     date: "2026-07-09",
     keywords: [
       "Screens alternative",
@@ -377,10 +377,10 @@ export const posts: Post[] = [
   },
   {
     slug: "control-a-headless-mac-mini-remotely",
-    metaTitle: "Control a headless Mac Mini from your iPhone",
+    metaTitle: "Run a Mac mini from your iPhone or iPad",
     title: "Control a headless Mac Mini remotely from your iPhone or iPad",
     description:
-      "Run a Mac Mini with no monitor and drive it entirely from your iPhone or iPad - screen, keyboard, and a real terminal - from your network or anywhere.",
+      "The mini has no monitor and you are not at home. How to get its screen, a keyboard and a real terminal on the phone in your pocket, on any network.",
     date: "2026-07-09",
     keywords: [
       "headless Mac Mini remote control",
@@ -1540,11 +1540,11 @@ export const posts: Post[] = [
   },
   {
     slug: "anydesk-vs-teamviewer",
-    metaTitle: "AnyDesk vs TeamViewer: an honest look",
+    metaTitle: "AnyDesk vs TeamViewer: cheaper or broader?",
     title:
       "AnyDesk vs TeamViewer: which remote desktop should you actually use?",
     description:
-      "AnyDesk vs TeamViewer in 2026: a lean, fast, cheaper tool against the broadest feature set in the category. Where each genuinely wins, and the free-tier catch.",
+      "AnyDesk is leaner, faster on poor connections and cheaper. TeamViewer does far more. Where each genuinely wins on a Mac, and the free-tier catch that bites.",
     date: "2026-08-19",
     keywords: [
       "AnyDesk vs TeamViewer",
@@ -2049,10 +2049,10 @@ export const posts: Post[] = [
   },
   {
     slug: "rustdesk-vs-anydesk",
-    metaTitle: "RustDesk vs AnyDesk: which should you use?",
+    metaTitle: "RustDesk vs AnyDesk: open source or polish?",
     title: "RustDesk vs AnyDesk: open source or the better codec?",
     description:
-      "RustDesk is free, open source and self-hostable. AnyDesk is proprietary and hard to beat on a poor connection. Where each genuinely wins on a Mac.",
+      "RustDesk is free and self-hostable; AnyDesk is proprietary and hard to beat on a bad connection. Which trade is the right one for a Mac, and where each loses.",
     date: "2026-08-26",
     keywords: [
       "RustDesk vs AnyDesk",
@@ -2299,10 +2299,10 @@ export const posts: Post[] = [
   },
   {
     slug: "headless-mac-mini-setup",
-    metaTitle: "Headless Mac mini setup guide",
+    metaTitle: "Headless Mac mini setup, in the right order",
     title: "How to set up a headless Mac mini that stays reachable",
     description:
-      "A practical guide to running a Mac mini with no monitor: enable the right services first, stop it sleeping, survive a power cut, and fix the resolution problem.",
+      "Do it while the monitor is still attached - two of the steps are near impossible without one. Services, sleep, power cuts and the resolution trap, in order.",
     date: "2026-08-31",
     keywords: [
       "headless Mac Mini setup",
@@ -2776,10 +2776,10 @@ export const posts: Post[] = [
   },
   {
     slug: "who-connected-to-my-mac-remotely",
-    metaTitle: "Check who connected to your Mac remotely",
+    metaTitle: "Who connected to your Mac? How to check",
     title: "How to check whether someone has connected to your Mac remotely",
     description:
-      "The log commands that show remote logins and screen sharing sessions on macOS, what each one proves, and why most remote tools keep no record at all.",
+      "Start with `last`, then check screen sharing separately - macOS records them in different places. What each command proves, and the gap none of them cover.",
     date: "2026-09-05",
     keywords: [
       "check who connected to my mac",

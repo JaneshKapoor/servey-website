@@ -367,10 +367,10 @@ export const useCases: UseCase[] = [
   {
     slug: "headless-mac-mini",
     navLabel: "Headless Mac mini",
-    metaTitle: "Headless Mac mini setup and remote access",
+    metaTitle: "Reach a headless Mac mini from anywhere",
     description:
-      "Set up a Mac mini with no monitor and still reach its screen and shell from an iPhone or iPad, after a reboot and from outside your network.",
-    h1: "Headless Mac mini setup and remote access",
+      "SSH is fine until the problem is a dialog box. Get the mini's actual screen and a real shell on your iPhone or iPad, through a reboot and from anywhere.",
+    h1: "Reach a headless Mac mini from anywhere",
     lede:
       "A Mac mini with no display is an excellent little server right up to the moment something goes wrong and you need to see the screen.",
     tiles: [

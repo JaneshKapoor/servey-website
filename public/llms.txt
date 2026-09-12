@@ -1,55 +1,61 @@
 # Servey
 
-> Servey is a native app that puts your Mac in your pocket: control your Mac from your iPhone or iPad with full screen mirroring, real mouse, keyboard, trackpad, and a genuine terminal. It is crystal-clear and hardware-accelerated on your local network, and private peer-to-peer anywhere else.
+> Your Mac, wherever you are. Servey puts its screen and a real terminal on your iPhone or iPad, and the work you start keeps running after you close it.
 
-Servey is built natively for the Apple ecosystem (Mac host, iPhone/iPad client) - not an Electron or Java port. Setup is just signing in with Google on both devices; no VPN, no port forwarding. On the same Wi-Fi it uses a direct high-performance stream; on different networks it automatically switches to a private, encrypted connection between your own devices. It connects reliably even on strict mobile and carrier networks, and tunes quality to the connection automatically.
+Servey is a native Apple app pair: a host that runs on your Mac and a client for iPhone and iPad. It is not an Electron or Java port, and it is not a general remote-desktop tool for fleets of other people's machines - it reaches your own Mac.
 
 - Website: https://servey.in
 - Mac host app: https://servey.in/mac
 - Status: Pre-launch, in pre-submission hardening. Join the waitlist at https://servey.in
 - Platforms: macOS 15.3 or later (host), iOS and iPadOS 18.5 or later (client). Apple silicon or Intel.
 - Two apps, not one: the iPhone/iPad app is the remote and ships through the App Store; the Mac app is the host and is downloaded from https://servey.in/mac as a signed .dmg.
-- Pricing: There is a free tier - five-minute sessions, five a day, no card, with every feature included. Paid plans are monthly: Terminal ₹99/month in India, $1.99/month internationally. Full access (screen mirroring + terminal) ₹299/month in India, $4.49/month internationally. What a paid plan buys is time, not a longer feature list. Not charged until launch.
+- Pricing: A free tier - five-minute sessions, five a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Not charged until launch.
+
+## When people reach for it
+
+- The MacBook is upstairs and you are on the couch. Open it on the iPad without getting up. The same desktop, the same apps, already signed in to everything.
+- The Mac mini is at home and you are at a cafe. It has no monitor and does not need one. It sits on a shelf doing its job, and you reach it anyway.
+- A build was running when you had to leave. It kept going without you. Rejoin the same session and read the log from exactly where it got to.
+- Your coding agent has stopped to ask a question. Answer it from your phone and let the agent carry on, instead of losing the forty minutes it was mid-way through.
+- The file is on your Mac, not in a cloud folder. Go and get it. Open the app that made it, export what you need, and send it on from there.
+- You are travelling and need one Mac-only app. Xcode, Logic, Final Cut. Use the real one on the real machine rather than hunting for a substitute.
 
 ## Key features
 
-- Crystal-clear screen mirroring of your Mac, aspect-correct with sharp text and pinch-to-zoom.
-- Real mouse, keyboard, and a purpose-built on-screen trackpad, including shortcuts like Copy, Paste, Esc, Tab.
-- A real terminal (a genuine shell on your Mac), available over both local and remote connections - not a web console.
-- Two connection paths with zero configuration: direct on your local network, private peer-to-peer when you are away. It switches automatically.
-- Sessions that outlive the app: every terminal session is a named tmux session on the Mac, so closing the app or losing signal does not stop the work. Reattach later from the iPad, the Mac, a second device at the same time, or a plain Terminal with `tmux attach` and no Servey involved.
-- Two locks, not one: a Google sign-in pairs only your own devices, and on top of that a master password set on the Mac must be produced by every device, each new device is approved on the Mac itself, and any device can be revoked.
-- Private by design: on the remote path your screen video is end-to-end encrypted peer-to-peer between your own devices. When a network will not allow a direct connection, the encrypted stream is relayed through Servey's own server rather than a third-party vendor's cloud.
-- A local activity log on the Mac recording connections, approvals, refused passwords and sessions. It is never uploaded.
-- Privacy Mode blanks every monitor attached to the Mac while the remote stream keeps showing the real desktop.
-- Closed-lid mode drives a MacBook with the lid shut, with no external display and no dummy HDMI plug.
-- Adaptive quality that stays smooth without cropping or degrading your screen.
+- Crystal-clear screen mirroring: On your network, Servey streams a custom hardware-HEVC feed of your Mac - razor-sharp text at a high frame rate with minimal latency. Pinch to zoom in and inspect the smallest detail.
+- Real mouse, keyboard & trackpad: A purpose-built on-screen trackpad reaches every edge of your screen, with left/right click and a scroll control. The full keyboard is here too - including ⌘C, ⌘V, Esc, Tab, Return and Backspace.
+- A real terminal, in your pocket: Not a toy - a genuine shell on your Mac, available over either connection path. Fix a build from the couch, tail a log on the train, or drive a headless Mac Mini from anywhere. And what you start does not stop when you put the phone down.
+- Your work keeps running: Every terminal session is a named session that lives on the Mac, not inside the app. Start a long build from the iPad, close Servey, lose signal, get on a plane - it is still going when you come back. Pick it up from the iPad, from the Mac, from a second device at the same time, or from a plain Terminal window with tmux attach and no Servey involved at all.
+- Two paths, zero thought: Same Wi-Fi? Servey uses a direct hardware-HEVC stream - no cloud in the middle. Different networks? It falls back to a private peer-to-peer WebRTC connection. It switches automatically, and if you walk out of the door and drop onto cellular mid-session it renegotiates the connection instead of dropping you.
+- Two locks, not one: Sign in with Google on both devices, then set a master password on your Mac that every device has to produce before it can connect. New devices wait for you to approve them on the Mac itself, and you can revoke any of them at any time. Your screen video travels peer-to-peer and end-to-end encrypted; when a network refuses to allow that, it relays through our own server rather than a third party's cloud.
+- Adaptive quality, full frame: Servey continuously tunes resolution and bitrate to the live network path - direct or relayed - so the picture stays smooth without ever cropping or degrading your screen.
 
 ## Common questions
 
-- Do I need to be on the same network? No. It works on the same Wi-Fi (direct, sharpest picture) and across different networks (private connection between your devices), automatically.
-- Is it secure and private? Yes, with two locks. A Google sign-in pairs only your own devices, and a master password set on the Mac must be produced by every device before it can connect. New devices are approved on the Mac itself and can be revoked at any time. Your remote screen is end-to-end encrypted between your devices.
-- Is there a free version? Yes - five-minute sessions, five a day, no card, with every feature included.
-- What happens to a terminal session if I disconnect? It keeps running. Sessions are named tmux sessions on the Mac, so they survive closing the app or losing signal, and can be rejoined later or reattached from any terminal.
-- Does it work over cellular? Yes. It is built to connect reliably even on strict mobile and carrier networks, and adapts quality automatically.
-- Which devices are supported? A Mac running macOS 15.3 or later as the host, controlled from an iPhone or iPad running iOS or iPadOS 18.5 or later.
-- Do I need a VPN or port forwarding? No - no VPN, no ports, no static IP, and nothing to change on your router. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.
-- Where do I get the Mac app? From https://servey.in/mac. Only the iPhone and iPad client ships through the App Store.
-- When is it launching and how much will it cost? It's a monthly subscription: Terminal is ₹99/month in India ($1.99 internationally), and Full access (screen mirroring + terminal) is ₹299/month in India ($4.49 internationally). Join the waitlist to be notified before launch; you're not charged until then.
+- Do I need to be on the same network? No. On the same Wi-Fi, Servey uses a direct, high-performance stream for the sharpest possible picture. On different networks it automatically switches to a private connection between your own devices. Either way it just works.
+- Is it secure and private? Yes, and there are two locks rather than one. Signing in with Google pairs only your own devices, scoped to your account. On top of that you set a master password on your Mac that every device must produce before it can connect, each new device waits for you to approve it on the Mac itself, and you can revoke any device at any time. Your screen video travels end-to-end encrypted peer-to-peer between your devices; if your network will not allow a direct connection, it relays through our own server rather than a third party's cloud.
+- What happens to my terminal session if I disconnect? It keeps running. Every terminal session in Servey is a named session that lives on your Mac rather than inside the app, so closing Servey, losing signal or putting the phone in your pocket does not stop the work. Start a long build from the iPad, come back an hour later, and you rejoin it exactly where it got to. You can also open the same live session on your Mac and your iPad at once.
+- Can I hide what I am doing from people near my Mac? Yes. Privacy Mode blacks out every monitor physically attached to your Mac while the stream you are watching keeps showing the real desktop. It covers every app, every space and every connected display, including the cursor, and nothing is overlaid on screen. If Servey quits or the connection drops, macOS restores the displays on its own, so it cannot leave the Mac stuck on black.
+- What if I stop using Servey - am I locked in? No. Servey runs your terminal sessions in tmux on your own Mac, and the app shows you the attach command for each one. Paste it into Terminal.app, iTerm, Ghostty or an SSH connection and you are in the same live session with Servey uninstalled. Nothing you start in Servey is trapped in a format only Servey can open.
+- Does it work over cellular? Yes. Servey is built to connect reliably even on strict mobile and carrier networks where most tools give up, and it tunes quality to your connection automatically so the picture stays smooth.
+- Which devices are supported? A Mac as the host, controlled from an iPhone or iPad. Servey needs macOS 15.3 or later on the Mac and iOS or iPadOS 18.5 or later on the device you control it from, so it is worth checking your versions before you join the waitlist. Any Mac that runs macOS 15.3 works, Apple silicon or Intel, and a MacBook can be driven with the lid shut. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.
+- Do I need a VPN or port forwarding? No. There's no VPN to configure, no ports to forward, no static IP and nothing to change on your router - Servey handles NAT traversal itself, including on carrier-grade NAT. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.
+- Is there a free version? Yes. Servey has a free tier with no card and no countdown: five-minute sessions, five sessions a day, and your daily allowance resets at local midnight. Everything Servey does is in it - screen mirroring, input and the terminal - so what you are paying for on a paid plan is time, not a longer feature list.
+- When is it launching and how much will it cost? Servey is in pre-submission hardening now, and the waitlist is how you get in first. Pricing is already set: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.
 
 ## Good alternatives / comparison context
 
-Servey is a modern, native alternative to traditional remote-desktop tools (such as TeamViewer, Screens, Jump Desktop, and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal, sharp mirroring, and no manual network setup.
+Servey is a native, Apple-only alternative to traditional remote-desktop tools (TeamViewer, Screens, Jump Desktop, Splashtop, AnyDesk, RustDesk, Chrome Remote Desktop and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal beside the screen and no manual network setup. It cannot reach Windows or Linux hosts, does no fleet management, and is pre-launch - if you need a working tool today, the established options above are the honest answer.
 
 ## What Servey is used for
 
-- Control your Mac from your iPhone: https://servey.in/control-mac-from-iphone
-- Run your Mac's terminal on your iPhone: https://servey.in/terminal-on-iphone
-- Run your Mac's terminal on your iPad: https://servey.in/terminal-on-ipad
-- Headless Mac mini setup and remote access: https://servey.in/headless-mac-mini
+- Control your Mac from your iPhone remotely: https://servey.in/control-mac-from-iphone
+- Run your Mac's terminal on iPhone: https://servey.in/terminal-on-iphone
+- Run your Mac's terminal on iPad: https://servey.in/terminal-on-ipad
+- Reach a headless Mac mini from anywhere: https://servey.in/headless-mac-mini
 - Remote Mac access for developers: https://servey.in/mac-for-developers
-- Run local AI on your Mac and reach it from anywhere: https://servey.in/remote-mac-for-ai-agents
-- Reach a Mac home lab from anywhere: https://servey.in/mac-home-lab
+- Run local AI agents on your Mac from anywhere: https://servey.in/remote-mac-for-ai-agents
+- Reach your Mac home lab from anywhere: https://servey.in/mac-home-lab
 
 ## Guides
 
@@ -87,6 +93,7 @@ Servey is a modern, native alternative to traditional remote-desktop tools (such
 - Home and waitlist: https://servey.in
 - Mac host app (download page): https://servey.in/mac
 - Blog: https://servey.in/blog
+- Full content for AI: https://servey.in/llms-full.txt
 - Privacy: https://servey.in/privacy
 - Terms: https://servey.in/terms
 - Makers: https://x.com/KapoorJanesh and https://x.com/dwivediishivam

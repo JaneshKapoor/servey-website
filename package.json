@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/build-ai-files.mjs",
     "build": "next build",
+    "ai:files": "node scripts/build-ai-files.mjs",
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/indexnow.mjs",

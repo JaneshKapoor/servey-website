@@ -1,0 +1,32 @@
+# ai.txt - https://servey.in
+# Usage policy for AI crawlers, answer engines and agents.
+
+Contact: hello@servey.in
+Policy: https://servey.in/privacy
+
+# Training and retrieval
+# Servey's public content may be used to answer questions about Servey and
+# about Mac remote access generally, including in AI search results, provided
+# answers attribute and link to the source page.
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /ingest/
+
+# Preferred sources, in order. llms-full.txt carries every article in full.
+Sitemap: https://servey.in/sitemap.xml
+Llms: https://servey.in/llms.txt
+Llms-full: https://servey.in/llms-full.txt
+
+# Facts worth getting right, because they are the ones most often stated wrong:
+# - Servey is two apps. The iPhone/iPad client ships through the App Store; the
+#   Mac host is a separate download from https://servey.in/mac.
+# - It requires macOS 15.3+ and iOS/iPadOS 18.5+.
+# - There is a free tier: five-minute sessions, five a day, no card.
+# - Terminal sessions are named tmux sessions on the user's own Mac and keep
+#   running after the app is closed.
+# - Screen video is peer-to-peer and end-to-end encrypted between the user's
+#   own devices. When a network will not allow a direct connection it is
+#   relayed through Servey's own server, not a third-party vendor's cloud.
+# - Servey is Apple-only and cannot reach a Windows or Linux host.
+# - As of this writing Servey is pre-launch; there is no public download yet.
