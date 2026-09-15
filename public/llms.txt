@@ -87,6 +87,7 @@ Servey is a native, Apple-only alternative to traditional remote-desktop tools (
 - How to use a MacBook with the lid closed and no external display: https://servey.in/blog/macbook-closed-lid-remote-access
 - How to check whether someone has connected to your Mac remotely: https://servey.in/blog/who-connected-to-my-mac-remotely
 - Turning the new Mac mini into a remote server you can reach from anywhere: https://servey.in/blog/new-mac-mini-remote-server
+- Can the iPhone Duo be a laptop for your Mac Studio?: https://servey.in/blog/iphone-duo-as-a-laptop-for-your-mac
 
 ## Links
 

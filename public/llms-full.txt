@@ -4,7 +4,7 @@
 
 Site: https://servey.in
 Generated from: lib/blog.ts, lib/use-cases.ts, lib/content.ts
-Articles: 28
+Articles: 29
 
 ---
 
@@ -2510,5 +2510,96 @@ If you already have a Mac mini, no - the M4 and even the M2 are perfectly good a
 If you are buying, the interesting case is the one Apple is clearly aiming at: an always-on machine at home that runs models and agents, which you reach from a laptop or an iPad wherever you happen to be. That combination is genuinely new, and it is the case Servey was built around. It was not practical when the mini was a desktop you sat at, and it is not practical on a laptop you carry, because the laptop is with you and asleep in a bag. At $899 it is also considerably less than a year of most cloud GPU habits, and the data never leaves your house.
 
 The honest limits on our part: Servey is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.
+
+---
+
+# Can the iPhone Duo be a laptop for your Mac Studio?
+
+URL: https://servey.in/blog/iphone-duo-as-a-laptop-for-your-mac
+Summary: The iPhone Duo folds into a tiny laptop, and a viral concept put a Mac Studio on its screen. What the Duo does with a Mac out of the box, and what it does not.
+
+Apple announced the iPhone Duo on 9 September: a 5.4-inch phone that opens into a 7.6-inch display, and the first iPhone that can sit half-folded on a desk like a very small laptop. Within days a set of concept images was going round showing exactly that - a Duo propped open on top of a Mac Studio, the Mac's desktop on the upper half and a trackpad on the lower. It is a lovely picture. It is also not something the Duo does out of the box, and the reason why is the interesting part. Here is what the Duo can and cannot be for your Mac, and where Servey, the app we make, fits.
+
+The facts first, from Apple's own announcement. The iPhone Duo has a 5.4-inch outer display and a 7.6-inch inner one, both ProMotion, the A20 Pro chip, Touch ID rather than Face ID, and a titanium frame. It starts at $1,999 with 256GB and runs to $3,199 for 2TB. Pre-orders open on 16 October and it ships on 23 October. The concept that caught everyone's imagination was posted on X by @Bfaviero, and it is worth looking at before reading on: https://x.com/Bfaviero/status/2098007995808419978
+
+,
+        caption:
+          
+
+,
+        headers: [
+          
+
+,
+        ],
+        rows: [
+          [
+            
+
+Puts your iPhone on your Mac
+
+Wrong direction entirely - the Mac controls the phone
+
+Uses an iPad as a second Mac display
+
+An iPad feature; Apple has not said it reaches the Duo
+
+One keyboard and mouse across Mac and iPad
+
+Shares input, never shows you the Mac's screen
+
+Mirrors the Mac's screen on the phone
+
+Available today; no fold-specific layout announced yet
+
+The Mac's screen plus a real terminal on the phone
+
+Pre-launch, and not yet tested on a Duo
+
+The short answer: the Duo has the right shape for this and nothing on the other end of the connection. Apple built the fold, the half-open posture and a keyboard that moves to the lower half, and then shipped no way to put a Mac on the upper half. That job falls to a remote access app - Screens and Jump Desktop today, or Servey, which is built specifically for reaching your own Mac from an iPhone and putting a terminal beside the screen.
+
+Does the iPhone Duo work with a Mac?
+
+Not in the way the concept shows, at least not with anything Apple has announced. The iPhone Duo press release does not mention the Mac once. There is nothing about Sidecar, Universal Control, external displays, or using a Mac keyboard or trackpad with it. It is an iPhone running iOS 27, and the new tricks Apple talked about are iPhone tricks: two apps side by side for the first time, two windows of the same app, and Siri on one half while you read on the other.
+
+That is not a criticism of the device. It is a reasonable first foldable that happens to have a shape people immediately wanted to use for something Apple did not design it for, which is usually a sign of a good shape.
+
+What the fold actually gives you
+
+More than it first appears. iOS 27 reacts to how the Duo is angled, not just whether it is open. Set it flat on a table and a keyboard appears on the lower half with content on the upper half. Fold it partway and you get a split keyboard, and the interface moves content away from the crease, where taps are harder to land. That half-open, keyboard-below posture is the laptop pose from the concept, and it is real. Apple built the hardware and the operating system behaviour for it. What is missing is anything to show on the top half other than the Duo's own apps.
+
+Why nothing built in fills the gap
+
+Apple's three Mac-and-device features all point the wrong way or stop at the wrong place. iPhone Mirroring runs in the opposite direction - it puts your phone on your Mac, so the Mac is the screen and the iPhone is the thing being controlled. Sidecar and Universal Control are built around the iPad, and Apple has not said either reaches the Duo. And all three assume you are sitting near the Mac, on the same network, often in the same room.
+
+That last point is the one that matters. The appeal of the concept is not really a tiny laptop. It is that the Mac doing the work lives somewhere else - on a desk across the office, on a shelf at home - and the Duo in your hand is the window into it. None of the built-in features were designed for a Mac you are not near.
+
+Can an iPhone Duo replace a MacBook?
+
+No, and it is worth being honest about why before you spend $1,999 hoping it will. It runs iOS, not macOS, so Xcode, Final Cut, a real browser extension setup and your Homebrew tools are not on it. The inner display is 7.6 inches, which is fine for a phone and small for a working day. And a MacBook Air costs less. If you want a Mac you carry, buy a Mac you carry.
+
+What the Duo can be is a different and genuinely new thing: a pocket front end to a Mac that does the heavy work somewhere else. That is a smaller job than replacing a laptop, and it is the one the concept is really showing.
+
+The Mac Studio in the picture is the point
+
+Look at what the Duo is sitting on. A Mac Studio or a Mac mini running all day is where the interesting work now happens: builds, automation, media processing and, increasingly, local language models. Apple is marketing its latest Mac mini on how fast it processes prompts in LM Studio, and the second of the concept images shows exactly that use - a chat with a model running locally on the Mac underneath. We wrote about turning the new Mac mini into a server you can reach from anywhere, and the Duo is the most laptop-shaped way yet to be the other end of it.
+
+One honest detail about that local AI picture. A model running on your Mac is not automatically usable from a phone. You either need an app built to talk to that model server, or you reach the Mac itself - the LM Studio window on its screen, or a model running in a terminal session. The second route works with any model and any tool, which is why a real terminal beside the mirrored screen is more useful here than it sounds.
+
+How Servey fits, and what we have not tested
+
+Servey puts your Mac's screen on your iPhone with an on-screen trackpad, left and right click, scroll, and the modifier keys you actually need - Command, Option, Control, Esc and Tab - and a real terminal one tap away. Terminal sessions are named tmux sessions on the Mac, so a job you start from the Duo keeps running after you fold it shut. It connects on your own network directly and, from anywhere else, over an end-to-end encrypted peer-to-peer connection with no VPN and no port forwarding.
+
+/screenshots/iphone-home.png
+
+Servey on iPhone - the Macs screen listing a Mac mini and a MacBook Pro, both online with a Connect action, above the free plan's remaining sessions
+
+Servey on an iPhone today. This is not an iPhone Duo - it does not ship until 23 October, and we will not show one until we have tested on it.
+
+The part we will not overstate: the Duo ships on 23 October, so nobody outside Apple has run Servey or anything else on one. Today it runs as an iPhone app. A layout that puts the Mac on the upper half and the trackpad on the lower half is the obvious thing to build, and we would rather build and test it on the real hardware than promise it from a render. Servey is also Apple-only, needs macOS 15.3 on the Mac and iOS 18.5 or later on the phone, and is pre-launch.
+
+What to do if you are buying one
+
+If you want your Mac on a Duo the day it arrives, do not wait for anyone to ship a fold-specific app. Screens and Jump Desktop both run on iPhone today and will run on the Duo as iPhone apps, so either will put your Mac on it. For reaching a Mac at home for free, macOS Screen Sharing over Tailscale works now, which is the setup the concept images happen to show. Then watch for which apps update their layouts for the fold in the weeks after launch - that, not the render, is what will decide whether the laptop pose is a party trick or a way to work.
 
 ---
