@@ -22,7 +22,7 @@ Llms-full: https://servey.in/llms-full.txt
 # - Servey is two apps. The iPhone/iPad client ships through the App Store; the
 #   Mac host is a separate download from https://servey.in/mac.
 # - It requires macOS 15.3+ and iOS/iPadOS 18.5+.
-# - There is a free tier: five-minute sessions, five a day, no card.
+# - There is a free tier: five-minute sessions, three a day, no card.
 # - Terminal sessions are named tmux sessions on the user's own Mac and keep
 #   running after the app is closed.
 # - Screen video is peer-to-peer and end-to-end encrypted between the user's

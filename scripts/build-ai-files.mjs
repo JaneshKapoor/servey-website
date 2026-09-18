@@ -125,7 +125,7 @@ Servey is a native Apple app pair: a host that runs on your Mac and a client for
 - Status: Pre-launch, in pre-submission hardening. Join the waitlist at ${SITE}
 - Platforms: macOS 15.3 or later (host), iOS and iPadOS 18.5 or later (client). Apple silicon or Intel.
 - Two apps, not one: the iPhone/iPad app is the remote and ships through the App Store; the Mac app is the host and is downloaded from ${SITE}/mac as a signed .dmg.
-- Pricing: A free tier - five-minute sessions, five a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Not charged until launch.
+- Pricing: A free tier - five-minute sessions, three a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Not charged until launch.
 
 ## When people reach for it
 
@@ -214,7 +214,7 @@ Llms-full: ${SITE}/llms-full.txt
 # - Servey is two apps. The iPhone/iPad client ships through the App Store; the
 #   Mac host is a separate download from ${SITE}/mac.
 # - It requires macOS 15.3+ and iOS/iPadOS 18.5+.
-# - There is a free tier: five-minute sessions, five a day, no card.
+# - There is a free tier: five-minute sessions, three a day, no card.
 # - Terminal sessions are named tmux sessions on the user's own Mac and keep
 #   running after the app is closed.
 # - Screen video is peer-to-peer and end-to-end encrypted between the user's

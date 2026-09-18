@@ -99,7 +99,7 @@ export default function PrivacyPage() {
         your subscription, and the identifier your subscription was issued under. We
         also keep <strong>counts</strong>: how many screen and terminal sessions you
         have started, roughly how long they lasted in total, and how many you have
-        started today. The daily count is what enforces the free tier&rsquo;s five
+        started today. The daily count is what enforces the free tier&rsquo;s three
         sessions a day.
       </p>
       <p>

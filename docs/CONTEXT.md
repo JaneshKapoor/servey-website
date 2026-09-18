@@ -67,13 +67,13 @@ constraint drives most of the growth decisions in §9.
 
 | Plan | India | International | Includes |
 |---|---|---|---|
-| **Free** | ₹0 | $0 | Everything, capped at **5-minute sessions, 5 a day**, reset at local midnight. No card. |
+| **Free** | ₹0 | $0 | Everything, capped at **5-minute sessions, 3 a day**, reset at local midnight. No card. |
 | **Terminal** | ₹99/mo | $1.99/mo | Unlimited terminal time; persistent named sessions; reattach from any device |
 | **Full access** *(featured)* | ₹299/mo | $4.49/mo | Everything above + screen mirroring, mouse/keyboard/trackpad, adaptive quality |
 
 Monthly subscription, cancel anytime, **not charged until launch**. The free
 tier is enforced client-side by `SessionLimitManager` in the iOS app
-(`freeSessionSeconds = 5 * 60`, `freeSessionsPerDay = 5`) - what a paid plan
+(`freeSessionSeconds = 5 * 60`, `freeSessionsPerDay = 3`) - what a paid plan
 buys is **time, not a longer feature list**, which is why the pricing copy
 says so explicitly.
 

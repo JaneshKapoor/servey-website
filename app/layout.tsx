@@ -141,7 +141,7 @@ const jsonLd = {
           price: "0",
           priceCurrency: "USD",
           description:
-            "Five-minute sessions, five a day, no card. Every Servey feature included.",
+            "Five-minute sessions, three a day, no card. Every Servey feature included.",
           availability: "https://schema.org/PreOrder",
         },
         {

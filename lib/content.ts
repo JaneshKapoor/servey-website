@@ -293,7 +293,7 @@ export const comparison = {
       theme: "Cost to try",
       traditional:
         "Countdown trial, or a free tier that polices commercial use",
-      servey: "Free tier, no card: five-minute sessions, five a day",
+      servey: "Free tier, no card: five-minute sessions, three a day",
     },
   ],
 } as const;
@@ -334,7 +334,7 @@ export const faqs = [
   },
   {
     q: "Is there a free version?",
-    a: "Yes. Servey has a free tier with no card and no countdown: five-minute sessions, five sessions a day, and your daily allowance resets at local midnight. Everything Servey does is in it - screen mirroring, input and the terminal - so what you are paying for on a paid plan is time, not a longer feature list.",
+    a: "Yes. Servey has a free tier with no card and no countdown: five-minute sessions, three sessions a day, and your daily allowance resets at local midnight. Everything Servey does is in it - screen mirroring, input and the terminal - so what you are paying for on a paid plan is time, not a longer feature list.",
   },
   {
     q: "When is it launching and how much will it cost?",
@@ -367,7 +367,7 @@ export const pricing = {
       featured: false,
       features: [
         "Everything Servey does, five minutes at a time",
-        "Five sessions a day, reset at local midnight",
+        "Three sessions a day, reset at local midnight",
         "No card and no trial that expires on you",
         "Upgrade the day you want longer sessions",
       ],
