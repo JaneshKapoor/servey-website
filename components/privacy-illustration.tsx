@@ -5,7 +5,7 @@ export function PrivacyIllustration() {
   const points = [
     { icon: KeyRound, label: "A master password, set on your Mac" },
     { icon: ShieldCheck, label: "Every new device approved by you" },
-    { icon: ServerOff, label: "P2P first, our own relay - never a vendor's" },
+    { icon: ServerOff, label: "Direct when it can, our own server if not" },
   ];
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border-strong bg-surface p-7 shadow-xl shadow-black/30">

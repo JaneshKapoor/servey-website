@@ -93,7 +93,7 @@ export function DualPathDiagram() {
         <div className="mb-4 flex items-center gap-2">
           <Wifi className="size-4 text-accent-strong" />
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-accent-strong">
-            Same Wi-Fi - hardware HEVC
+            Same Wi-Fi - direct and sharp
           </span>
         </div>
         <div className="flex items-center justify-between gap-3">
@@ -114,7 +114,7 @@ export function DualPathDiagram() {
         <div className="mb-4 flex items-center gap-2">
           <Globe className="size-4 text-fg" />
           <span className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-            Anywhere - private P2P WebRTC
+            Anywhere - private and encrypted
           </span>
         </div>
         <div className="flex items-center justify-between gap-2">
