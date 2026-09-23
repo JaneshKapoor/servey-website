@@ -2901,7 +2901,7 @@ export const posts: Post[] = [
     title:
       "Turning the new Mac mini into a remote server you can reach from anywhere",
     description:
-      "Apple's M6 Mac mini ships 22 September and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.",
+      "Apple's M6 Mac mini is out now and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.",
     date: "2026-09-06",
     keywords: [
       "new Mac mini M6",
@@ -2914,11 +2914,11 @@ export const posts: Post[] = [
       "connect to Mac behind CGNAT",
     ],
     readingMinutes: 8,
-    lede: "Apple announced a new Mac mini on 25 August 2026 and it arrives on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.",
+    lede: "Apple announced a new Mac mini on 25 August 2026, and it went on sale on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.",
     body: [
       {
         type: "p",
-        text: "First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both were available to pre-order from announcement day.",
+        text: "First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both are on sale now.",
       },
       {
         type: "table",
@@ -3751,7 +3751,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
   "new-mac-mini-remote-server": [
     {
       q: "When does the new Mac mini come out?",
-      a: "Apple announced it on 25 August 2026 and it goes on sale on 22 September 2026, with pre-orders open from announcement day. It comes with either the M6 or the M5 Pro chip, starting at $899 and $1,699 in the US.",
+      a: "Apple announced it on 25 August 2026 and it went on sale on 22 September 2026, after pre-orders opened on announcement day. It comes with either the M6 or the M5 Pro chip, starting at $899 and $1,699 in the US.",
     },
     {
       q: "Is the new Mac mini good for running local AI models?",

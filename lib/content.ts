@@ -2,9 +2,9 @@ import type { ScreenshotKey } from "@/lib/screenshots";
 
 /* Trust strip - quick value props. */
 export const trustItems = [
-  { icon: "Sparkles", label: "Crystal-clear HEVC" },
+  { icon: "Sparkles", label: "Sharp, readable screen" },
   { icon: "TerminalSquare", label: "Real terminal" },
-  { icon: "ShieldCheck", label: "Private P2P" },
+  { icon: "ShieldCheck", label: "Private by design" },
   { icon: "Globe", label: "Works anywhere" },
 ] as const;
 
@@ -141,11 +141,11 @@ export const features: Feature[] = [
     index: "01",
     eyebrow: "Screen mirroring",
     title: "Crystal-clear screen mirroring.",
-    body: "On your network, Servey streams a custom hardware-HEVC feed of your Mac - razor-sharp text at a high frame rate with minimal latency. Pinch to zoom in and inspect the smallest detail.",
+    body: "On your own Wi-Fi, Servey streams your Mac at high quality: text stays sharp, movement stays smooth, and there is no noticeable lag. Pinch to zoom in and read the smallest detail.",
     bullets: [
-      "Full-HD+, aspect-correct",
-      "Hardware HEVC via VideoToolbox",
-      "Pinch-to-zoom inspection",
+      "Text you can actually read",
+      "Pinch to zoom into any detail",
+      "Your whole screen, never cropped",
     ],
     screenshot: "mirroring-ipad",
   },
@@ -155,9 +155,9 @@ export const features: Feature[] = [
     title: "Real mouse, keyboard & trackpad.",
     body: "A purpose-built on-screen trackpad reaches every edge of your screen, with left/right click and a scroll control. The full keyboard is here too - including ⌘C, ⌘V, Esc, Tab, Return and Backspace.",
     bullets: [
-      "Relative-move virtual trackpad",
-      "L/R click, drag & scroll",
-      "Shortcuts: ⌘C · ⌘V · Esc · Tab",
+      "An on-screen trackpad built for fingers",
+      "Left click, right click, drag and scroll",
+      "Copy, paste, Esc and Tab",
     ],
     screenshot: "iphone-controls",
   },
@@ -167,9 +167,9 @@ export const features: Feature[] = [
     title: "A real terminal, in your pocket.",
     body: "Not a toy - a genuine shell on your Mac, available over either connection path. Fix a build from the couch, tail a log on the train, or drive a headless Mac Mini from anywhere. And what you start does not stop when you put the phone down.",
     bullets: [
-      "Full shell access",
-      "Works on LAN and remote",
-      "Native, not a web console",
+      "A real shell, not a web console",
+      "Works at home and away",
+      "Built in, no second app",
     ],
     screenshot: "terminal",
   },
@@ -177,7 +177,7 @@ export const features: Feature[] = [
     index: "04",
     eyebrow: "Sessions",
     title: "Your work keeps running.",
-    body: "Every terminal session is a named session that lives on the Mac, not inside the app. Start a long build from the iPad, close Servey, lose signal, get on a plane - it is still going when you come back. Pick it up from the iPad, from the Mac, from a second device at the same time, or from a plain Terminal window with tmux attach and no Servey involved at all.",
+    body: "Every terminal session is a named session that lives on the Mac, not inside the app. Start a long build from the iPad, close Servey, lose signal, get on a plane - it is still going when you come back. Pick it up from the iPad, from the Mac, or from two devices at once - and if you ever stop using Servey, the same session is still there in the Mac's own Terminal.",
     bullets: [
       "Named sessions that outlive the app",
       "Drop off, come back, still there",
@@ -189,12 +189,12 @@ export const features: Feature[] = [
     index: "05",
     eyebrow: "Networking",
     title: "Two paths, zero thought.",
-    body: "Same Wi-Fi? Servey uses a direct hardware-HEVC stream - no cloud in the middle. Different networks? It falls back to a private peer-to-peer WebRTC connection. It switches automatically, and if you walk out of the door and drop onto cellular mid-session it renegotiates the connection instead of dropping you.",
+    body: "On the same Wi-Fi, Servey connects straight to your Mac with nothing in the middle. Somewhere else, it makes a private connection between your two devices. It picks whichever works on its own, and if you walk out of the door and drop onto mobile data mid-session it reconnects instead of dropping you.",
     bullets: [
-      "LAN: direct hardware HEVC",
-      "Remote: P2P WebRTC (H.264)",
-      "STUN/TURN traversal, even on CGNAT",
-      "Survives a Wi-Fi to cellular handover",
+      "At home: a direct connection",
+      "Away: encrypted, device to device",
+      "Works on strict mobile networks",
+      "Survives switching to mobile data",
     ],
     diagram: true,
   },
@@ -202,11 +202,11 @@ export const features: Feature[] = [
     index: "06",
     eyebrow: "Privacy",
     title: "Two locks, not one.",
-    body: "Sign in with Google on both devices, then set a master password on your Mac that every device has to produce before it can connect. New devices wait for you to approve them on the Mac itself, and you can revoke any of them at any time. Your screen video travels peer-to-peer and end-to-end encrypted; when a network refuses to allow that, it relays through our own server rather than a third party's cloud.",
+    body: "Sign in with Google on both devices, then set a master password on your Mac that every device has to produce before it can connect. New devices wait for you to approve them on the Mac itself, and you can revoke any of them at any time. Your screen goes straight between your two devices, encrypted the whole way. When a network refuses to allow that, it goes through our own server rather than a third party's.",
     bullets: [
       "A master password, set on your Mac",
       "Every new device approved by you",
-      "P2P first, our own relay if your network insists",
+      "Direct when it can, our own server if not",
     ],
     privacy: true,
   },
@@ -214,11 +214,11 @@ export const features: Feature[] = [
     index: "07",
     eyebrow: "Quality",
     title: "Adaptive quality, full frame.",
-    body: "Servey continuously tunes resolution and bitrate to the live network path - direct or relayed - so the picture stays smooth without ever cropping or degrading your screen.",
+    body: "Servey keeps adjusting to whatever connection you are on, so the picture stays smooth on a weak signal without ever cropping your screen or squashing it out of shape.",
     bullets: [
-      "Path-aware bitrate",
-      "No cropping, ever",
-      "Smooth on weak connections",
+      "Adjusts to your connection",
+      "Never crops your screen",
+      "Smooth on a weak signal",
     ],
     screenshot: "quality-closeup",
   },
@@ -245,55 +245,48 @@ export const steps = [
 
 /* Comparison table (§1). */
 export const comparison = {
-  columns: { traditional: "Traditional remote tools", servey: "Servey" },
+  // Plain English on purpose. This section is read by someone deciding whether
+  // Servey is for them, not by someone auditing the protocol stack, and the
+  // owner was right that the old rows (hardware HEVC, P2P, CGNAT, path-aware
+  // bitrate) asked the reader to already know the answer. The technical detail
+  // still exists where people go looking for it: the blog comparisons and the
+  // privacy policy.
+  columns: { traditional: "Most remote desktop apps", servey: "Servey" },
   rows: [
     {
-      theme: "Build",
-      traditional: "Cross-platform Electron/Java ports, generic UI",
-      servey: "Native Swift/SwiftUI, Apple-first, designed for touch",
+      theme: "Reading your screen",
+      traditional: "Soft, blurry text you end up squinting at",
+      servey: "Sharp enough to read, and you can pinch to zoom in",
     },
     {
-      theme: "Local quality",
-      traditional: "Software-encoded, soft text, laggy",
-      servey: "Hardware HEVC on LAN - crystal-clear, native decode",
+      theme: "Getting set up",
+      traditional: "Set up a VPN, forward ports, or make a vendor account",
+      servey: "Sign in with Google on both devices. Nothing to change on your router.",
     },
     {
-      theme: "Networking",
-      traditional: "Manual VPN / port forwarding / vendor accounts",
-      servey: "Auto LAN-or-remote; same-account pairing; zero setup",
+      theme: "Who sees your screen",
+      traditional: "Your video usually travels through the vendor's servers",
+      servey: "Straight between your own devices. If your network blocks that, through our server, not someone else's.",
     },
     {
-      theme: "Privacy",
-      traditional: "Video often relayed through a vendor cloud",
-      servey:
-        "P2P first; when your network won't allow it, our own relay - not a vendor's cloud",
+      theme: "Getting to a command line",
+      traditional: "A separate app, or not possible at all",
+      servey: "A real terminal, one tap from the screen",
     },
     {
-      theme: "Terminal",
-      traditional: "Add-on or absent",
-      servey: "Real terminal built in, over both paths",
+      theme: "Leaving mid-job",
+      traditional: "Close the app and whatever you started stops with it",
+      servey: "Your work keeps running on the Mac. Come back later and pick it up.",
     },
     {
-      theme: "Persistence",
-      traditional: "Close the client and the session dies with it",
-      servey:
-        "Named sessions keep running on the Mac; reattach from any device",
+      theme: "Using it on a phone",
+      traditional: "A desktop mouse pointer squeezed onto a touchscreen",
+      servey: "A trackpad and keyboard designed for fingers",
     },
     {
-      theme: "Touch UX",
-      traditional: "Desktop cursor bolted onto a phone",
-      servey: "Purpose-built virtual trackpad, dock, pinch-zoom",
-    },
-    {
-      theme: "Adaptivity",
-      traditional: "Fixed or clumsy quality",
-      servey: "Path-aware adaptive quality, no cropping",
-    },
-    {
-      theme: "Cost to try",
-      traditional:
-        "Countdown trial, or a free tier that polices commercial use",
-      servey: "Free tier, no card: five-minute sessions, three a day",
+      theme: "Trying it",
+      traditional: "A countdown trial, or a free plan that accuses you of business use",
+      servey: "Free: three five-minute sessions a day, no card",
     },
   ],
 } as const;
@@ -306,7 +299,7 @@ export const faqs = [
   },
   {
     q: "Is it secure and private?",
-    a: "Yes, and there are two locks rather than one. Signing in with Google pairs only your own devices, scoped to your account. On top of that you set a master password on your Mac that every device must produce before it can connect, each new device waits for you to approve it on the Mac itself, and you can revoke any device at any time. Your screen video travels end-to-end encrypted peer-to-peer between your devices; if your network will not allow a direct connection, it relays through our own server rather than a third party's cloud.",
+    a: "Yes, and there are two locks rather than one. Signing in with Google pairs only your own devices, scoped to your account. On top of that you set a master password on your Mac that every device must produce before it can connect, each new device waits for you to approve it on the Mac itself, and you can revoke any device at any time. Your screen goes straight between your devices, encrypted the whole way. If your network will not allow a direct connection, it goes through our own server rather than a third party's.",
   },
   {
     q: "What happens to my terminal session if I disconnect?",
@@ -330,7 +323,7 @@ export const faqs = [
   },
   {
     q: "Do I need a VPN or port forwarding?",
-    a: "No. There's no VPN to configure, no ports to forward, no static IP and nothing to change on your router - Servey handles NAT traversal itself, including on carrier-grade NAT. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.",
+    a: "No. There's no VPN to set up, no ports to forward and nothing to change on your router - Servey works out how to reach your Mac on its own, even on mobile networks that normally block incoming connections. Setup is signing in with Google on both devices, setting a master password on the Mac, and granting the two macOS permissions any screen-sharing tool needs: Screen Recording and Accessibility.",
   },
   {
     q: "Is there a free version?",

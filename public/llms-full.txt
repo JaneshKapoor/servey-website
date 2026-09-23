@@ -2429,11 +2429,11 @@ Take the machine off the network first, then turn off Screen Sharing, Remote Log
 # Turning the new Mac mini into a remote server you can reach from anywhere
 
 URL: https://servey.in/blog/new-mac-mini-remote-server
-Summary: Apple's M6 Mac mini ships 22 September and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.
+Summary: Apple's M6 Mac mini is out now and it is built for local AI. Here is how to run it headless as an always-on server, and reach it from anywhere.
 
-Apple announced a new Mac mini on 25 August 2026 and it arrives on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.
+Apple announced a new Mac mini on 25 August 2026, and it went on sale on 22 September. The interesting part is not the speed bump. It is that Apple spent its own launch copy talking about local language models, which is the clearest signal yet that this machine is meant to sit somewhere and work. A machine that sits somewhere and works has one problem: you are not always in the same room as it. That is the problem Servey exists for, and it is worth setting the mini up with that in mind from day one.
 
-First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both were available to pre-order from announcement day.
+First, the machine itself, from Apple's own announcement rather than a rumour post. The Mac mini now comes with the M6 or the M5 Pro. The M6 has a 12-core CPU, a 12-core GPU and a dual 16-core Neural Engine, 16GB of unified memory as standard and 32GB as an option, and 170GB/s of memory bandwidth. The M5 Pro goes to an 18-core CPU, a 20-core GPU, 64GB of unified memory and 307GB/s. Both get Wi-Fi 7, Bluetooth 6 and 2.5Gb Ethernet, with a 10Gb option. They start at $899 and $1,699, and both are on sale now.
 
 ,
         caption:
