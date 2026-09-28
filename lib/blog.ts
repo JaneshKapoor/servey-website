@@ -376,52 +376,6 @@ export const posts: Post[] = [
     ],
   },
   {
-    slug: "control-a-headless-mac-mini-remotely",
-    metaTitle: "Run a Mac mini from your iPhone or iPad",
-    title: "Control a headless Mac Mini remotely from your iPhone or iPad",
-    description:
-      "The mini has no monitor and you are not at home. How to get its screen, a keyboard and a real terminal on the phone in your pocket, on any network.",
-    date: "2026-07-09",
-    keywords: [
-      "headless Mac Mini remote control",
-      "Mac Mini no monitor",
-      "control Mac Mini from iPad",
-      "remote access Mac Mini server",
-      "Mac Mini home server",
-    ],
-    readingMinutes: 4,
-    lede: "A Mac Mini tucked on a shelf with no monitor makes a fantastic little always-on machine - a build box, a media server, an automation host. The catch is driving it. Here is how to run a headless Mac Mini from your iPhone or iPad.",
-    body: [
-      {
-        type: "p",
-        text: "The Mac Mini is popular as a headless machine: small, quiet, efficient, and powerful enough to be a home server, CI runner, or automation host. But 'headless' means no keyboard, mouse, or monitor attached - so you need a reliable way to reach it, both for the occasional GUI task and for everyday command-line work.",
-      },
-      { type: "h2", text: "You need two things: a screen and a shell" },
-      {
-        type: "p",
-        text: "Most headless work is command-line: check a service, pull code, run a job, read a log. For that you want a real terminal. But now and then you need the actual desktop - to click through a GUI installer, approve a permission dialog, or use an app that has no command-line equivalent. A good remote tool gives you both from the same place.",
-      },
-      {
-        type: "ul",
-        items: [
-          "A genuine shell on the Mac Mini for day-to-day commands and maintenance.",
-          "Full screen mirroring with mouse and keyboard for the occasional GUI task.",
-          "Access from your local network at home and remotely when you are out.",
-          "Setup that does not require plugging in a monitor just to get started.",
-        ],
-      },
-      { type: "h2", text: "Driving a Mac Mini with Servey" },
-      {
-        type: "p",
-        text: "Servey turns your iPhone or iPad into the head for your headless Mac Mini. You get crystal-clear screen mirroring with real mouse and keyboard when you need the desktop, plus a real terminal for everything else - both available on your local network and remotely. Because setup is just signing in with Google on each device, you do not need to attach a display to configure it.",
-      },
-      {
-        type: "p",
-        text: "Whether the Mini is a build box, a home server, or an automation host, you can check on it and control it from your pocket. Servey is launching soon - join the waitlist to be notified before release.",
-      },
-    ],
-  },
-  {
     slug: "real-terminal-on-your-mac-from-iphone",
     title: "Run a real terminal on your Mac from your iPhone",
     description:
@@ -2311,6 +2265,7 @@ export const posts: Post[] = [
       "Mac Mini home server",
       "headless Mac Mini remote control",
       "control Mac Mini from iPad",
+      "remote access Mac Mini server",
       "connect to Mac behind CGNAT",
     ],
     readingMinutes: 7,
@@ -2352,6 +2307,10 @@ export const posts: Post[] = [
             "Use a tool that does NAT traversal for you, such as Servey - never forward a port",
           ],
         ],
+      },
+      {
+        type: "p",
+        text: "The short answer, if you want the whole thing in one line: turn on both doors before you unplug anything, stop the machine sleeping, and decide how you will reach it from outside the house before the monitor comes off. For the last part you can use a VPN back home, or Servey - the app we make - which puts the mini's screen and a real terminal on your iPhone or iPad with nothing to configure on your router.",
       },
       { type: "h2", text: "Step 1: turn on the two services you will need" },
       {
@@ -2402,6 +2361,15 @@ export const posts: Post[] = [
       {
         type: "p",
         text: "With no display connected, macOS has no display to describe, so it falls back to a default that is often small and the wrong shape. You connect from your iPad expecting a desktop and get a cramped little rectangle in the corner. There are two ways out. The cheap and reliable one is a dummy HDMI plug - a two-pound adapter that pretends to be a monitor, so macOS sees a real display and offers real resolutions. The other is to use a remote tool that negotiates the resolution itself rather than inheriting whatever the Mac decided on its own. Apple silicon Macs handle the headless case better than Intel ones did, but the dummy plug is still the answer that always works, and it is worth buying one before you need it.",
+      },
+      { type: "h2", text: "Why you want a screen as well as a shell" },
+      {
+        type: "p",
+        text: "Most headless work is command line: check a service, pull code, run a job, read a log. SSH covers all of it. But every so often the thing in your way is not a command - it is a dialog box asking for permission, an installer that only ships a window, or an app with no command-line equivalent. Without a screen you are stuck until you carry a monitor to the machine.",
+      },
+      {
+        type: "p",
+        text: "That is the argument for having both from the same place, and it is why the sanity check below matters: prove you can reach the desktop, not just the shell, before the display comes off.",
       },
       { type: "h2", text: "Step 5: reaching it from outside your network" },
       {
@@ -3418,6 +3386,14 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
   ],
   "headless-mac-mini-setup": [
     {
+      q: "Can I run a Mac mini with no monitor at all?",
+      a: "Yes, and it is one of the best small always-on machines for it. Turn on Remote Login and Screen Sharing before you disconnect the display, stop the machine sleeping with pmset, and enable automatic restart after a power cut. The one surprise is resolution: with no display attached macOS falls back to an awkward default, which a cheap dummy HDMI plug fixes.",
+    },
+    {
+      q: "How do I use a headless Mac mini without a keyboard or mouse?",
+      a: "You drive it from another device. SSH covers command-line work, macOS Screen Sharing gives you the desktop on your own network, and an app such as Servey puts the screen, an on-screen trackpad and a real terminal on an iPhone or iPad from anywhere. You only need a keyboard physically attached if you have to get into the machine before macOS has booted.",
+    },
+    {
       q: "How do I set up a Mac mini with no monitor?",
       a: "Do everything while the monitor is still attached. Turn on both Screen Sharing and Remote Login in System Settings under General then Sharing, disable sleep with sudo pmset -a sleep 0 disksleep 0, enable automatic restart after a power failure with sudo pmset -a autorestart 1, decide what you are doing about FileVault, and fit a dummy HDMI plug so macOS reports a sensible resolution. Test your connection from another device before you unplug anything.",
     },
@@ -3508,20 +3484,6 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     {
       q: "Does it work on strict carrier networks?",
       a: "Yes. Servey is built to connect reliably even on strict mobile and carrier networks where many remote tools fail.",
-    },
-  ],
-  "control-a-headless-mac-mini-remotely": [
-    {
-      q: "Can I control a headless Mac Mini with no monitor?",
-      a: "Yes. Servey gives you the Mini's screen plus a real terminal from your iPhone or iPad, so it runs fine with no display attached.",
-    },
-    {
-      q: "How do I access a Mac Mini remotely without a keyboard or mouse?",
-      a: "Servey provides an on-screen trackpad, a full keyboard, and a terminal, so you can drive a headless Mini entirely from your phone.",
-    },
-    {
-      q: "Is a terminal included for server-style tasks?",
-      a: "Yes. Servey ships a genuine shell on your Mac, ideal for restarting services, tailing logs, or deploying on a headless Mini.",
     },
   ],
   "real-terminal-on-your-mac-from-iphone": [

@@ -485,7 +485,7 @@ export const useCases: UseCase[] = [
       "mac mini server remote access",
       "control mac mini without monitor",
     ],
-    relatedSlug: "control-a-headless-mac-mini-remotely",
+    relatedSlug: "headless-mac-mini-setup",
   },
 
   /* ---------------------------------------------------------------- */

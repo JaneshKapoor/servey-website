@@ -24,6 +24,21 @@ const nextConfig: NextConfig = {
   // evaluated *before* dynamic routes. That matters here: app/[useCase] is a
   // top-level dynamic segment, so without this ordering /ingest/* would be
   // swallowed by it and 404 under dynamicParams = false.
+  // Merged pages. `control-a-headless-mac-mini-remotely` was 360 words that
+  // overlapped `headless-mac-mini-setup` almost entirely and sat at position
+  // 9.8 with 1.5% CTR while the guide ranked 6.3 for the same intent. Its one
+  // distinct argument now lives in the guide, so a permanent redirect passes
+  // the ranking signal on rather than stranding it.
+  async redirects() {
+    return [
+      {
+        source: "/blog/control-a-headless-mac-mini-remotely",
+        destination: "/blog/headless-mac-mini-setup",
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [
       {

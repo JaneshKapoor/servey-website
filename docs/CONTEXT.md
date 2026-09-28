@@ -212,7 +212,7 @@ page changed on every deploy gets the signal discounted.
 | `screens-jump-desktop-alternative-mac` | Alternative-to |
 | `screens-vs-jump-desktop` | Head-to-head (competitor vs competitor) |
 | `access-your-mac-remotely-over-cellular` | Cellular / strict networks |
-| `control-a-headless-mac-mini-remotely` | Headless Mac mini |
+| ~~`control-a-headless-mac-mini-remotely`~~ | merged into `headless-mac-mini-setup`, 301 redirect |
 | `real-terminal-on-your-mac-from-iphone` | Terminal |
 | `run-ai-agents-on-your-mac-remotely` | AI agents |
 | `who-is-servey-for-developers-home-labs` | Audience |
