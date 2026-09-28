@@ -2,10 +2,10 @@
  * Typed registry of every product image slot.
  *
  * We ship styled placeholders - no faked UI. To drop in a real capture:
- *   1. Save the file to /public/screenshots/<key>.png  (filename == the key)
+ *   1. Save the file to /public/screenshots/<key>.webp (filename == the key)
  *   2. Flip that slot's `ready` from false to true.
  * The `src` paths are already wired below. If you save as .jpg/.webp instead of
- * .png, update that slot's `src` extension to match. Everything else stays.
+ * a different format, update that slot's `src` extension to match.
  */
 export type DeviceFrame = "ipad" | "iphone" | "mac" | "diagram" | "crop";
 
@@ -32,13 +32,13 @@ export interface ScreenshotSlot {
 export const screenshots = {
   "hero-devices": {
     frame: "ipad",
-    // Must match the real file (2560x1440) or object-cover crops the sides.
-    ratio: 2560 / 1440,
-    width: 2560,
-    height: 1440,
+    // Must match the real file (1920x1080) or object-cover crops the sides.
+    ratio: 1920 / 1080,
+    width: 1920,
+    height: 1080,
     hint: "iPad + iPhone",
     alt: "Servey on iPad and iPhone - a Mac desktop mirrored to the iPad with the control dock on the iPhone",
-    src: "/screenshots/hero-devices.png",
+    src: "/screenshots/hero-devices.webp",
     ready: true,
   },
   "device-picker": {
@@ -50,7 +50,7 @@ export const screenshots = {
     height: 2622,
     hint: "iPhone - your Macs",
     alt: "Servey on iPhone - the Macs screen listing Janesh's Mac mini and a MacBook Pro 16, both online and reachable on this network with a Connect action, above the free plan's remaining sessions for the day",
-    src: "/screenshots/iphone-home.png",
+    src: "/screenshots/iphone-home.webp",
     ready: true,
   },
   "mirroring-ipad": {
@@ -60,7 +60,7 @@ export const screenshots = {
     height: 1640,
     hint: "iPad - connect & control",
     alt: "Servey on iPad connected to a Mac - the session screen with Screen Sharing and Terminal, marked Connected - Remote",
-    src: "/screenshots/interfacepage.png",
+    src: "/screenshots/interfacepage.webp",
     ready: true,
   },
   "iphone-controls": {
@@ -74,7 +74,7 @@ export const screenshots = {
     height: 2622,
     hint: "iPhone - your Macs",
     alt: "Servey on iPhone - the Macs screen listing Janesh's Mac mini and a MacBook Pro 16, both online and reachable on this network with a Connect action, above the free plan's remaining sessions for the day",
-    src: "/screenshots/iphone-home.png",
+    src: "/screenshots/iphone-home.webp",
     ready: true,
   },
   terminal: {
@@ -84,14 +84,14 @@ export const screenshots = {
     height: 1640,
     hint: "iPad - terminal",
     alt: "A live macOS terminal session running inside Servey on iPad, listing the home directory after an ls command",
-    src: "/screenshots/terminal.png",
+    src: "/screenshots/terminal.webp",
     ready: true,
   },
   "dual-path": {
     frame: "diagram",
     ratio: 16 / 9,
     hint: "Two streaming paths",
-    alt: "Diagram: Servey streams HEVC on the local network and private peer-to-peer WebRTC across the internet",
+    alt: "Diagram: on the same Wi-Fi Servey connects straight to your Mac; from anywhere else it makes a private, encrypted connection between your own devices",
   },
   "quality-closeup": {
     frame: "crop",
@@ -100,7 +100,7 @@ export const screenshots = {
     height: 692,
     hint: "Razor-sharp text",
     alt: "A Mac screen mirrored through Servey - a live Claude Code terminal session with razor-sharp, fully legible text and no cropping",
-    src: "/screenshots/quality-closeup.png",
+    src: "/screenshots/quality-closeup.webp",
     ready: true,
   },
   "terminal-sessions": {
@@ -115,7 +115,7 @@ export const screenshots = {
     height: 652,
     hint: "Mac - terminal sessions",
     alt: "Servey's Terminal tab on the Mac host listing two named sessions, solar-summit and sunny-raven, each shown as detached and idle but still running with hours left, above a line explaining that sessions run in tmux so they survive a disconnect and can be reopened from any terminal on the Mac",
-    src: "/screenshots/terminal-sessions.png",
+    src: "/screenshots/terminal-sessions.webp",
     ready: true,
   },
   "mac-host-ui": {
@@ -127,7 +127,7 @@ export const screenshots = {
     height: 652,
     hint: "Mac host app",
     alt: "Servey's Mac host app on macOS - the Connect screen showing the Mac offline with a Go Online button, Screen Recording and Accessibility granted, Keep Mac Awake on, and Closed-Lid Mode ready to enable",
-    src: "/screenshots/mac-connect.png",
+    src: "/screenshots/mac-connect.webp",
     ready: true,
   },
 } as const satisfies Record<string, ScreenshotSlot>;

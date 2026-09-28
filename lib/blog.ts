@@ -603,7 +603,7 @@ export const posts: Post[] = [
       },
       {
         type: "img",
-        src: "/screenshots/quality-closeup.png",
+        src: "/screenshots/quality-closeup.webp",
         alt: "An AI coding agent running in a terminal on a Mac, with razor-sharp, fully legible text.",
         width: 1280,
         height: 692,
@@ -670,7 +670,7 @@ export const posts: Post[] = [
       },
       {
         type: "img",
-        src: "/screenshots/terminal.png",
+        src: "/screenshots/terminal.webp",
         alt: "A real Mac terminal open on an iPad, reaching a Mac Mini's shell to supervise what is running.",
         width: 2360,
         height: 1640,
@@ -3141,7 +3141,7 @@ export const posts: Post[] = [
       },
       {
         type: "img",
-        src: "/screenshots/iphone-home.png",
+        src: "/screenshots/iphone-home.webp",
         alt: "Servey on iPhone - the Macs screen listing a Mac mini and a MacBook Pro, both online with a Connect action, above the free plan's remaining sessions",
         width: 1206,
         height: 2622,
