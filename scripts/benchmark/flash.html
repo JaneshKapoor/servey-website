@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Servey latency flasher</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;color:#0f0;font:14px ui-monospace,Menlo,monospace}
+  #box{height:100vh;display:grid;place-items:center;background:#000}
+  #box.on{background:#fff}
+  #hud{position:fixed;left:8px;top:8px;mix-blend-mode:difference;color:#888}
+</style>
+<div id="box"></div>
+<div id="hud">flashing every <span id="iv"></span>ms - keep this full screen on the MAC</div>
+<script>
+  // Black/white flasher. Both the Mac's own display and the client device
+  // showing the mirrored stream are filmed in ONE video; measure-latency.py
+  // finds the transition in each region and reports the delta. No OCR, no
+  // human frame-stepping, and no clock sync between devices required.
+  const INTERVAL = 1500;             // long enough that transitions never alias
+  document.getElementById("iv").textContent = INTERVAL;
+  const box = document.getElementById("box");
+  let on = false;
+  setInterval(() => { on = !on; box.classList.toggle("on", on); }, INTERVAL);
+</script>

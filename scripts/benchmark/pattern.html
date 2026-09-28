@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Servey sharpness pattern</title>
+<style>
+  html,body{margin:0;background:#fff;color:#000;font-family:ui-monospace,Menlo,monospace}
+  .wrap{padding:24px;max-width:1200px}
+  h1{font:600 28px ui-sans-serif,system-ui;margin:0 0 16px}
+  .row{margin:10px 0;white-space:nowrap;overflow:hidden}
+  .l{display:inline-block;width:70px;color:#888;font-size:12px}
+  /* The point of the test: real UI text at the sizes people actually read
+     code and logs at. 9-11px is where soft encoders fall apart. */
+  .s9{font-size:9px}.s10{font-size:10px}.s11{font-size:11px}
+  .s12{font-size:12px}.s14{font-size:14px}.s18{font-size:18px}
+  .bars{margin-top:18px;height:60px;background:repeating-linear-gradient(90deg,#000 0 1px,#fff 1px 2px)}
+  .bars2{height:60px;background:repeating-linear-gradient(90deg,#000 0 2px,#fff 2px 4px)}
+</style>
+<div class="wrap">
+  <h1>Servey sharpness pattern</h1>
+  <div class="row s9"><span class="l">9px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="row s10"><span class="l">10px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="row s11"><span class="l">11px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="row s12"><span class="l">12px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="row s14"><span class="l">14px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="row s18"><span class="l">18px</span>The quick brown fox jumps over the lazy dog 0123456789 il1 O0 rn m</div>
+  <div class="bars"></div>
+  <div class="bars2"></div>
+</div>
