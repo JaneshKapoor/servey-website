@@ -47,7 +47,7 @@ clicks**. GSC anonymises rare queries, so ~31 clicks are unattributable to a
 specific term. Cluster click counts below are therefore floors, not totals.
 
 **Index coverage (verified 31 Aug 2026):**
-- **Google** - sitemap submitted, now **38 URLs**.
+- **Google** - sitemap submitted, now **40 URLs** (28 posts, 7 use cases, `/mac`, `/`, `/blog`, `/privacy`, `/terms`).
 - **Bing - the blocking status is `Discovered but not crawled`, not "not indexed".**
   Two corrections landed here on 1 Sep, in this order:
   1. The original note said "indexed... so that pipe is connected." Never
@@ -262,10 +262,28 @@ queries are overwhelmingly `how to ...` and the page answered nothing. Rebuilt
 - **`sizes` on every responsive image**, matched to its real rendered width.
 - **IndexNow** after every content deploy (`npm run indexnow`) - fastest route
   into Bing, and therefore into ChatGPT Search.
-- **`npm run seo:audit`** before/after deploys. Currently **38/38 pass**
-  (run it against a local build with `--base=http://localhost:PORT` to cover
+- **`npm run seo:audit`** before/after deploys - all sitemap URLs pass at last
+  run (run it against a local build with `--base=http://localhost:PORT` to cover
   pages that are not on the live sitemap yet - the default base is production,
   so new posts are silently skipped on the run that matters most).
+- **`npm run seo:meta`** (`scripts/meta-audit.mjs`) reads the rendered `.next`
+  HTML and fails on duplicate titles, duplicate descriptions, and length
+  violations. It catches what `seo:audit` cannot: collisions only visible when
+  every page is compared against every other. It found `/headless-mac-mini` at
+  171 chars within a day of existing.
+- **CI is wired** (`.github/workflows/checks.yml`, 28 Sep): tsc, lint, build,
+  `seo:meta`, `seo:framing` on every push and PR to `main`. `seo:framing` is
+  `continue-on-error` because of the backlog in §11 - tighten it to a hard gate
+  once that clears, or the signal is worthless.
+- **The AI files are generated, not written.** `scripts/build-ai-files.mjs`
+  runs as `prebuild` and emits `public/llms.txt` (index), `llms-full.txt`
+  (~174KB, every post in full) and `ai.txt` from `lib/blog.ts`,
+  `lib/use-cases.ts` and `lib/content.ts`. This exists because the hand-written
+  `llms.txt` had silently drifted: 12 posts missing and a retired overclaim
+  still in it a month after it was removed everywhere else. **Never edit the
+  files in `public/` - the next build overwrites them.**
+- **Redirects live in `next.config.ts`**, before `rewrites()`. Next emits
+  **308** for `permanent: true`, not 301; Google treats the two identically.
 
 ### Answer engines (AEO / GEO)
 - **Self-contained passages of ~130–170 words** that still make sense quoted in
@@ -425,6 +443,9 @@ be used for, and the shot list for recording it properly.
 | **Google Search Console** | Impressions, position, query clusters | The cluster table in §2 is the useful view, not the top-line number |
 | **Bing / ChatGPT** | Are we retrievable by answer engines? | Phrase search on Bing; test **comparison** queries, not "recommend me a tool" |
 | **PostHog** | What happens after the click | `$pageview`, `waitlist_submitted` → `waitlist_signup` (with `duplicate`), `waitlist_failed`, all carrying `source` |
+| **`npm run seo:meta`** | Are any two pages wearing the same title or description? | Over the rendered `.next` HTML. Needs a build first. Exits non-zero. |
+| **`npm run seo:framing`** | Is Servey buried, or laid on too thick? | Depth ≤15%, substance ≤35%, density 4.0-6.0/1k (<700-word posts to 9.0). Comparison and roundup posts are exempt from depth and substance by design. |
+| **CI** (`.github/workflows/checks.yml`) | Did a push break any of the above? | tsc, lint, build, `seo:meta`, `seo:framing` on push/PR to `main` |
 | **`npm run indexnow`** | Push new URLs to Bing | Run after every content deploy |
 
 ### Reading GSC correctly
@@ -455,13 +476,16 @@ be used for, and the shot list for recording it properly.
    confirms all 12 landed.** Two things still owed: the 1 Sep batch has now had
    4 days, so re-inspect that sample; and GSC Request Indexing for the 8 tier-1
    and tier-2 URLs is **the owner's to do** - Bing is done, Google is not.
-3. **Add CI (new, 10 Sep). There is none - no `.github` directory at all.**
-   Every guard this repo has (`tsc`, `next build`, `npm run seo:audit`,
-   `npm run seo:framing`, the duplicate-title check) is run by hand, which is
-   why several regressions this month were caught by eye rather than by a
-   gate: the overclaim surviving in `public/llms.txt`, the seven-card grid, a
-   post shipping at 2.9 density. A GitHub Action running those four on push
-   costs nothing and would have blocked all three.
+3. ~~**Add CI (new, 10 Sep). There is none - no `.github` directory at all.**~~
+   **Done 28 Sep.** `.github/workflows/checks.yml` runs tsc, lint, build,
+   `seo:meta` and `seo:framing` on every push and PR to `main`. It was worth
+   doing because every guard this repo had was run by hand, which is why
+   several regressions were caught by eye rather than by a gate: the overclaim
+   surviving in `public/llms.txt`, the seven-card grid, a post shipping at 2.9
+   density. **What is still owed:** `seo:framing` runs `continue-on-error`
+   because of the pre-existing failures in item 5 below, so it currently reports
+   rather than blocks. Clear those, then drop the flag - a check that is
+   allowed to fail teaches people to ignore it.
 4. **Add in-app account deletion (new, 6 Sep) - App Store blocker.** Guideline
    5.1.1(v) has required apps that support account creation to offer account
    deletion *inside the app* since 30 June 2022. Servey has none: there is no
@@ -471,18 +495,24 @@ be used for, and the shot list for recording it properly.
    and it is cheaper to build now than during review. The privacy policy
    currently documents deletion by emailing `hello@servey.in`, which is honest
    and legally sufficient but is **not** what Apple checks for.
-5. **Fix the 13 posts `seo:framing` flags (new, 5 Sep, not yet done).** The
-   new script surfaced pre-existing failures; **none were touched**, because
-   rewriting 13 posts was not what was asked. Worth doing in priority order:
+5. **Fix the posts `seo:framing` flags (new, 5 Sep, still open).** The script
+   surfaced pre-existing failures; **none were touched**, because rewriting a
+   dozen posts was not what was asked. **This is now also what keeps CI honest**
+   - `seo:framing` runs `continue-on-error` purely because of this backlog
+   (item 3). As of 28 Sep the run is **17/28 passing**. Worth doing in priority
+   order:
    - **`control-your-mac-from-iphone-ipad` (substance 70%) and
-     `headless-mac-mini-setup` (65%).** Both were explicitly "fixed" on 31 Aug
+     `headless-mac-mini-setup`.** Both were explicitly "fixed" on 31 Aug
      for *depth* - 4% and 3% - and both still bury Servey. Same blind spot,
      same posts, which is the strongest evidence the new metric was needed.
-   - **6 short posts at 69-79% depth**: `real-terminal-on-your-mac-from-iphone`,
-     `access-your-mac-remotely-over-cellular`,
-     `control-a-headless-mac-mini-remotely`, `run-ai-agents-on-your-mac-remotely`,
+     `headless-mac-mini-setup` absorbed the merged post on 28 Sep, so re-measure
+     it before rewriting - the merge moved its substance figure.
+   - **5 short posts at 69-79% depth**: `real-terminal-on-your-mac-from-iphone`,
+     `access-your-mac-remotely-over-cellular`, `run-ai-agents-on-your-mac-remotely`,
      `run-ai-agents-locally-on-your-mac`, `stay-in-control-of-ai-agents-from-anywhere`.
      All 360-575 words, all naming Servey only in a closing section.
+     (`control-a-headless-mac-mini-remotely` was on this list and no longer
+     exists - it was merged away on 28 Sep.)
    - **Density too high**: `who-is-servey-for-developers-home-labs` (16.6) and
      `termius-alternative-mac-terminal` (16.4) are Servey-centric by design, so
      check whether the *post* is right before changing the number.
@@ -510,6 +540,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-09-29 | **Benchmark harness built, and the docs caught up with a month of tooling.** **Harness** (`scripts/benchmark/`): `flash.html` and `pattern.html` as stimuli, `measure-latency.py` (frame-differencing a phone recording of Mac screen and client side by side) and `measure-sharpness.py` (SSIM of the rendered pattern against the source). SSIM self-tested before use - identical images return 1.0000, a 1.2px Gaussian blur returns 0.9616, so the metric discriminates at the scale that matters. The post draft lives at `docs/benchmark-post-draft.md` and is **deliberately absent from `lib/blog.ts`**: every figure is a literal `<<FILL: ...>>`, so it is structurally impossible to publish with invented numbers. Screens and Jump Desktop both have to be measured on the same network in the same sitting or the comparison is worthless. **Docs audit** found four gaps and closed them: both files still said **38 sitemap URLs** against an actual **40** (28 posts, 7 use cases, `/mac`, `/`, `/blog`, `/privacy`, `/terms`) and CONTEXT still said 23 posts; and three pieces of tooling existed in **no** document at all - `npm run seo:meta` (`scripts/meta-audit.mjs`), `.github/workflows/checks.yml`, and `scripts/build-ai-files.mjs` wired to `prebuild` with its generated `llms-full.txt` / `ai.txt`. The last one is the dangerous omission: `public/llms.txt` is now **generated**, and anyone editing it by hand would have their work silently overwritten by the next build - which is the inverse of the drift that caused the generator to be written. **Lesson, same shape as the `public/` sweep miss on 5 Sep:** tooling added under time pressure does not document itself, and a doc that is 80% current is trusted like one that is 100% current. Audit the counts in the docs whenever the page count changes. |
 | 2026-09-28 | **Near-duplicate merged, and an image pass.** GSC 3 months to 25 Sep: **183 clicks, 10.1K impressions, position 9.0** (87 / 4.28K / 12.7 on 1 Sep). **The pattern worth acting on:** comparison and buying-decision pages convert at 3-6% while question-answering pages convert near zero at the *same* positions - `does-mac-screen-sharing-work-over-the-internet` is now the site's highest-impression page (**882**) at **0.8%** from position 8.1, and a title rewrite on 10 Sep moved it barely at all. Most likely those questions are answered in the results page itself, so no metadata work reaches them. Treat pure Q&A as a low-yield format here and keep writing comparisons; the two newest posts (iPhone Duo 4.9%, new Mac mini 6.1%) are the best performers by rate and both came off a real product event. **Merged** `control-a-headless-mac-mini-remotely` (328 impressions, 1.5%, position 9.8, ~360 words) into `headless-mac-mini-setup` (569, 1.6%, 6.3): the guide absorbed its one distinct argument (you need a screen as well as a shell, because the blocker is sometimes a dialog box), two of its FAQs rewritten in the guide's neutral voice, and its one unique keyword. **301 redirect** in `next.config.ts`, and the `headless-mac-mini` use case's `relatedSlug` repointed. 29 posts -> 28. **Images:** every screenshot converted to WebP (6.5MB -> 424KB; the hero alone was a 3.9MB 2560x1440 PNG, now 1920x1080 at 171KB with the registry dimensions updated so object-cover does not crop), two unreferenced files deleted including the one showing an email address, an **image sitemap** added (homepage lists every ready shot, `/mac` the host app, each post only what it embeds), and the connection diagram's alt stopped saying "HEVC ... WebRTC". Delivered bytes barely change - `next/image` was already serving WebP/AVIF - so the wins are image-search eligibility and 6MB off the repo. |
 | 2026-09-10 | **GSC pulled properly for the first time since 1 Sep: two findings that change what to work on.** **(1) The `servey` query is not brand demand - it is people misspelling "survey".** 347 impressions, **position 4.9**, and **2.9% CTR**. A brand term at position 5 converts at 15-30%; 2.9% means 337 people saw us and did not want us. It is **8% of all site impressions**, it is the single largest query, and it is what drags the headline "2% average CTR" down. **Do not optimise for it, do not read the sitewide CTR as a health metric, and do not treat rising impressions as rising interest until this is subtracted.** **(2) The real opportunity is CTR on page-one comparison pages, and it is large.** Per-page, 3 months: `does-mac-screen-sharing-work-over-the-internet` **394 impressions (2nd highest on the site), position 9.7, 1.0% CTR**; `screens-vs-jump-desktop` 365 / 6.2 / 3.8%; `jump-desktop-vs-rustdesk` 284 / 7.2 / 3.9%; `screens-5-alternatives` 241 / 7.0 / 2.9%; `splashtop-vs-jump-desktop` 200 / 6.9 / 2.0%. These already rank page one. Positions 6-10 should return 5-8%; we are getting 1-4%. Lifting the five to a normal band is roughly **+60 clicks a quarter against a current total of 87** - a near-doubling with no new ranking and no new posts. **This is the evidence §4 was waiting for**: the CTR ban was justified by a blended 16.5 average position that mixed two unrelated populations, and per-page data at known positions is the thing that was missing. Acted on it: rewrote `metaTitle` and `description` for all five, keeping the head keyword in every title so rankings are not put at risk, and replacing "which should you pick" style restatements of the query with the actual deciding axis (bought once vs subscription; is free good enough; the four fixes). **(3) The core cluster is still stranded**: `remote control iphone from mac` position **42.5**, `remote access mac from iphone` **38.7**, both **0 clicks** on 57 impressions. Page four earns nothing, and no metadata work reaches it - that needs links, which is unchanged. **(4) Trend is genuinely up**: 4.28K impressions over 3 months, 328 on 7 Sep alone, against a near-flat July. **Method note:** GSC defaults to clicks-only columns; enable Average CTR and Average position or the per-page diagnosis is impossible. Sorting by impressions rather than clicks is what surfaced both findings. |
 | 2026-09-06 | **Privacy Policy and Terms rewritten for real; both had opened by calling themselves placeholders.** Every factual claim in the privacy policy was read out of the **app repo**, not assumed - the same discipline used on the feature claims. Findings worth keeping: the apps carry **no analytics SDK and no crash reporter at all** (Firebase Auth + Firestore, Supabase, Google Sign-In, StoreKit, and nothing else), billing is **Apple-only** so card data never reaches us, and the WebRTC signaling exchange **contains IP addresses** - undisclosed anywhere until now, and now its own subsection, stated as ephemeral because the code deletes the session doc. Supabase holds session **counts and total seconds**, so the policy says counts rather than "usage data", which invites a reader to assume content. The `users` table has a `phone` column nothing writes to, so we do **not** claim to collect phone numbers. Structure follows `macky.dev/privacy` where it fits plus what **DPDP 2023** requires of a notice (purposes, categories, retention, withdrawal, rights procedure, grievance route, 90-day resolution) and GDPR/UK GDPR rights. Ownership and discontinuation are in **both** documents at the owner's request: privacy covers what happens to data if the service ends, terms carry the enforceable version. Terms also gained acceptable use, Apple-handled refunds, limitation of liability and Indian governing law - it had none. **Blocker found, not fixed: the app has no account deletion** (`allow delete: if false` on `users`, and no delete path in either app). App Store Review Guideline 5.1.1(v) has required in-app account deletion since 30 June 2022, so this is a submission rejection waiting to happen; the policy currently documents deletion by email, which is honest but is not what Apple asks for. See §11. |

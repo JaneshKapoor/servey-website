@@ -112,7 +112,19 @@ npm run lint         # eslint
 npm run indexnow     # ping IndexNow with the current sitemap URLs
 npm run context:pdf  # regenerate docs/context.pdf from docs/CONTEXT.md
 npm run seo:audit    # assert the SEO invariants against live (or --base=localhost)
+npm run seo:meta     # duplicate + over-length titles/descriptions in .next HTML
+npm run seo:framing  # Servey depth / substance / density across every post
+npm run ai:files     # regenerate llms.txt, llms-full.txt, ai.txt
 ```
+
+`ai:files` also runs as `prebuild`, so a build can never ship an `llms.txt`
+that has drifted from `lib/blog.ts`. `seo:meta` and `seo:framing` read the
+rendered `.next` output, so run `npm run build` first.
+
+`.github/workflows/checks.yml` runs tsc, lint, build, `seo:meta` and
+`seo:framing` on every push and PR to `main`. `seo:framing` is
+`continue-on-error` - it reports against a backlog of pre-existing failures
+(see SEO-CONTEXT §11) rather than blocking.
 
 ---
 
@@ -127,6 +139,8 @@ app/
   [useCase]/page.tsx      # the 7 use-case landing pages (see §5)
   blog/page.tsx           # blog index - H1 "Mac remote access guides"
   blog/[slug]/page.tsx    # post renderer + Article/FAQPage/BreadcrumbList JSON-LD
+  mac/page.tsx            # the Mac host page - hardcoded in the iOS app's
+                          #   onboarding, so it must never move or 404
   privacy/  terms/        # legal pages
   api/waitlist/route.ts   # POST - honeypot + rate limit + provider
   api/contact/route.ts    # POST - Firestore `contacts`
@@ -155,17 +169,26 @@ lib/
 public/
   brand/                  # app-icon logos
   screenshots/            # real captures
-  llms.txt                # curated map for AI answer engines
+  llms.txt                # GENERATED - map for AI answer engines
+  llms-full.txt           # GENERATED - every post in full, ~174KB
+  ai.txt                  # GENERATED - usage terms for AI crawlers
   f79fa191….txt           # IndexNow key file
 docs/
   CONTEXT.md              # this document (source of truth)
   SEO-CONTEXT.md          # search + answer-engine playbook (do / do not / why)
   context.pdf             # generated - do not edit
   seo-context.pdf         # generated - do not edit
+  benchmark-post-draft.md # unpublished draft; every figure is <<FILL: ...>>
 scripts/
   indexnow.mjs            # IndexNow submission
   build-context-pdf.mjs   # CONTEXT.md -> context.pdf via headless Chrome
   seo-audit.mjs           # asserts the SEO invariants; exits non-zero on failure
+  meta-audit.mjs          # duplicate/over-length titles + descriptions
+  servey-depth.mjs        # Servey framing metrics (depth, substance, density)
+  build-ai-files.mjs      # generates public/llms.txt, llms-full.txt, ai.txt
+  benchmark/              # latency + sharpness harness (see its README)
+.github/workflows/
+  checks.yml              # tsc, lint, build, seo:meta, seo:framing on push/PR
 source-material/          # original brief, WebRTC explainer, one-pager
 ```
 
@@ -271,19 +294,25 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**38 URLs in `sitemap.xml`**, priority-ordered:
+**40 URLs in `sitemap.xml`** (29 Sep 2026), priority-ordered:
 
 | Priority | URLs |
 |---|---|
 | 1.0 | `/` |
-| 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* |
+| 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* and `/mac` |
 | 0.8 | `/blog` |
-| 0.7 | the 23 blog posts |
+| 0.7 | the 28 blog posts |
 | 0.3 | `/privacy`, `/terms` |
 
+The sitemap also carries **image entries**: the homepage lists every ready
+screenshot, `/mac` lists the host-app shot, and each post lists only the images
+it actually embeds.
+
 Not in the sitemap but live: `/robots.txt`, `/sitemap.xml`, `/feed.xml`,
-`/llms.txt`, `/opengraph-image`, `/api/waitlist`, `/api/contact`, `/ingest/*`
-(analytics proxy), and the 404.
+`/llms.txt`, `/llms-full.txt`, `/ai.txt`, `/opengraph-image`, `/api/waitlist`,
+`/api/contact`, `/ingest/*` (analytics proxy), and the 404. The three AI files
+are **generated at build time** by `scripts/build-ai-files.mjs` - edit
+`lib/blog.ts` or `lib/content.ts`, never the files in `public/`.
 
 ---
 
@@ -339,9 +368,17 @@ root. **This matters because ChatGPT Search reads Bing's index**, so an
 IndexNow ping is the fastest path into an answer engine. Last submission was
 accepted (HTTP 200).
 
-### `public/llms.txt`
-A curated map for answer engines, including a "What Servey is used for" section
-pointing at the six use-case URLs. Keep it in sync when routes change.
+### `public/llms.txt`, `llms-full.txt`, `ai.txt`
+All three are **generated** by `scripts/build-ai-files.mjs`, which runs as
+`prebuild`. `llms.txt` is the curated map (including "What Servey is used for",
+pointing at the use-case URLs), `llms-full.txt` carries every post in full
+(~174KB), and `ai.txt` states the usage terms for AI crawlers. **Do not edit
+them - the next build overwrites the file.** Change `lib/blog.ts`,
+`lib/use-cases.ts` or `lib/content.ts` and run `npm run ai:files`.
+
+The generator exists because the hand-written `llms.txt` drifted badly: it was
+missing 12 posts and still carried the "barely touches our servers" overclaim a
+month after that line had been removed from every other file on the site.
 
 ### Current Google Search Console picture (3-month view, to 14 Aug 2026)
 
@@ -606,8 +643,25 @@ the whole fix.
 - Request GSC indexing for the 7 newest URLs; check **Indexing → Pages** for
   "Discovered – currently not indexed"; open the generative-AI features report
 - ~~Delete the 7 bogus Bing "sitemap" rows~~ - **done 1 Sep 2026** by the owner; Bing now shows 1 known sitemap, 0 warnings, 34 URLs discovered, crawled 1 Sep. Re-run the Ahrefs crawl
-- Move the repo off iCloud
+- Move the repo off iCloud (or exclude `.next`) - this is what causes the
+  Turbopack PostCSS worker timeouts, not the config
 - App Store + AlternativeTo submissions at launch
+- **In-app account deletion - App Store submission blocker.** Guideline
+  5.1.1(v) has required it since 30 June 2022. There is no delete path in
+  either app and `firestore.rules` sets `allow delete: if false` on `users`.
+  Emailing `hello@servey.in` is honest and legally sufficient but is not what
+  Apple checks for
+- **Legal entity name, registered address and a named Grievance Officer** for
+  the privacy policy - DPDP wants a person, not an `info@` alias
+- **`AccountView.swift:68` links `mailto:support@servey.in`** while the site
+  publishes `hello@servey.in`. Either create the alias or change the app -
+  right now it is a dead contact route
+- **Run the benchmark harness** (`scripts/benchmark/`) and fill the
+  `<<FILL: ...>>` figures in `docs/benchmark-post-draft.md`. The draft is
+  deliberately not in `lib/blog.ts`, so it cannot ship with invented numbers
+- Capture the two missing screenshots: the **on-screen trackpad/keyboard**
+  (feature 02 currently shows the Macs list - a knowing mismatch, commented in
+  the slot) and the **iPad mirroring view** (`mirroring-ipad` is a placeholder)
 
 **Code, proposed but not approved:**
 - `LazyMotion` swap (~33 KB gzip off homepage First Load JS)
