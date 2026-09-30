@@ -21,8 +21,6 @@ Built to deploy on **Vercel** and available at **[servey.in](https://servey.in)*
 > Print-ready PDFs of both are generated with `npm run context:pdf`, which
 > renders every `docs/*.md`. Edit the Markdown, never the PDF.
 
-## Stack
-
 - **Next.js 16** (App Router) + **TypeScript**
 - **Tailwind CSS v4** (design tokens in `app/globals.css`)
 - **Framer Motion** for scroll reveals and micro-interactions
