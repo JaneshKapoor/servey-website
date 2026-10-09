@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" updated="September 2026">
+    <LegalPage title="Privacy Policy" updated="October 2026">
       <p>
         This policy explains what Servey collects, what it deliberately never sees,
         who we share data with, how long we keep it, and how you get it removed. It
@@ -109,10 +109,37 @@ export default function PrivacyPage() {
 
       <h3>Payments</h3>
       <p>
-        Subscriptions are purchased through Apple. Your card details, billing address
-        and payment method go to <strong>Apple, not to us</strong> - we never see
-        them, and we could not store them if we wanted to. Apple tells us that a
-        subscription exists, what it covers, and when it renews or lapses.
+        <strong>We never see your card details.</strong> We do not collect them, store
+        them, or receive them from anyone. Payments are handled entirely by our payment
+        providers, and which one depends on where you bought your subscription.
+      </p>
+      <p>
+        <strong>On iPhone or iPad</strong>, Apple processes the payment under Apple&rsquo;s
+        own privacy policy. Apple tells us that a subscription exists, what it covers,
+        and when it renews or lapses - and nothing more.
+      </p>
+      <p>
+        <strong>On Mac or through this website</strong>, the payment is processed by{" "}
+        <strong>Dodo Payments</strong>, acting as <strong>Merchant of Record</strong> -
+        meaning Dodo is the seller for that transaction and handles the tax
+        registration for it. We pass them your <strong>email address</strong> and your{" "}
+        <strong>country</strong>, which is what they need to create the subscription
+        and work out the tax. Your card details are entered on their checkout page and
+        never reach our servers.
+      </p>
+      <p>
+        <strong>Records we keep.</strong> When a payment succeeds we store a transaction
+        record: the amount and currency, the date, the plan, the country or storefront
+        it was bought in, and the provider&rsquo;s transaction and subscription
+        identifiers. We also keep the provider&rsquo;s original notification for each
+        payment event, which is how a payment is reconciled and a duplicate is caught.
+        None of it contains a card number.
+      </p>
+      <p>
+        We keep these records for accounting, tax and dispute purposes, and{" "}
+        <strong>we keep them after an account is deleted</strong>, because we have to
+        be able to account for money we have been paid. They are never used for
+        marketing or profiling.
       </p>
 
       <h3>The website</h3>
@@ -231,7 +258,13 @@ export default function PrivacyPage() {
           usage records.
         </li>
         <li>
-          <strong>Apple</strong> - purchases, subscription status and renewals.
+          <strong>Apple</strong> - purchases, subscription status and renewals for
+          subscriptions bought on iPhone or iPad.
+        </li>
+        <li>
+          <strong>Dodo Payments</strong> - Merchant of Record for subscriptions bought
+          on Mac or on this website. Receives your email address and country, and
+          handles the checkout, the billing portal and the tax.
         </li>
         <li>
           <strong>Resend</strong> - delivers waitlist and account email on our behalf,
@@ -263,6 +296,11 @@ export default function PrivacyPage() {
           accounting and legal obligations.
         </li>
         <li>
+          <strong>Payment records</strong> - the transaction records described above.
+          Kept <strong>after your account is deleted</strong>, for as long as tax and
+          accounting law requires us to be able to account for the payment.
+        </li>
+        <li>
           <strong>Waitlist email</strong> - kept until you unsubscribe or ask us to
           remove it.
         </li>
@@ -292,9 +330,16 @@ export default function PrivacyPage() {
         up with. We will confirm the request, delete your account record, device
         records, usage counts and waitlist entry, and tell you when it is done. We aim
         to complete requests within <strong>30 days</strong>, and to resolve any
-        complaint within <strong>90 days</strong>. Deleting your Servey account does
-        not cancel a subscription bought through Apple - manage that in your Apple
-        account settings.
+        complaint within <strong>90 days</strong>.
+      </p>
+      <p>
+        Two things survive that deletion, and we would rather say so plainly than let
+        you find out later. <strong>Payment records stay</strong>, for the accounting
+        and tax reasons above. And <strong>deleting your Servey account does not cancel
+        a subscription</strong>: if you bought on iPhone or iPad, cancel it in your
+        Apple account settings; if you bought on Mac or this website, cancel it in the
+        billing portal, which you reach from <strong>Manage subscription</strong> on
+        the Account screen of the Mac app.
       </p>
 
       <h2>Security</h2>

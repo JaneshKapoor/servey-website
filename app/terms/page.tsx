@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Service" updated="September 2026">
+    <LegalPage title="Terms of Service" updated="October 2026">
       <p>
         These terms cover your use of the <strong>Servey</strong> apps for macOS, iOS
         and iPadOS and the <strong>servey.in</strong> website. By joining the waitlist,
@@ -54,18 +54,33 @@ export default function TermsPage() {
         limits, and we will say so on the pricing page when we do.
       </p>
 
-      <h2>Subscriptions, billing and refunds</h2>
+      <h2>Subscriptions and billing</h2>
       <p>
-        Subscriptions are sold and billed through <strong>Apple</strong>, not by us.
-        They renew automatically until cancelled, and you cancel or change them in
-        your Apple account settings rather than here. Because Apple takes the payment,{" "}
-        <strong>refunds are handled by Apple</strong> under their policy - we cannot
-        issue one directly, though we will help you where we can.
+        Servey subscriptions renew monthly until cancelled. Who you are buying from
+        depends on where you buy, and it changes who can cancel or refund it.
       </p>
       <p>
-        Prices shown before launch are introductory and may change. You are not
-        charged until launch, and joining the waitlist creates no obligation to buy
-        and no guarantee of access, pricing, or availability.
+        <strong>Bought on iPhone or iPad:</strong> Apple is the seller,
+        Apple&rsquo;s terms apply, and you manage or cancel the subscription in your
+        Apple account settings. We cannot cancel or refund an Apple subscription on
+        your behalf - <strong>refunds are handled by Apple</strong> under their policy,
+        though we will help you where we can.
+      </p>
+      <p>
+        <strong>Bought on Mac or on this website:</strong> <strong>Dodo Payments</strong>{" "}
+        is the <strong>Merchant of Record</strong> and the seller for that transaction,
+        and their terms apply to it alongside these. You manage your payment method,
+        view invoices and cancel through the billing portal, which you reach from{" "}
+        <strong>Manage subscription</strong> on the Account screen of the Mac app.
+        Cancelling stops future renewals; your access continues until the end of the
+        period you have already paid for.
+      </p>
+      <p>
+        Prices are shown inclusive of applicable tax. Where we have not set a price in
+        your local currency, the amount is converted at the processor&rsquo;s rate.
+        Introductory prices may change, and we will say so on the pricing page before
+        they do. Joining the waitlist creates no obligation to buy and no guarantee of
+        access, pricing, or availability.
       </p>
 
       <h2>Ownership</h2>
@@ -126,7 +141,8 @@ export default function TermsPage() {
         Where a discontinuation is planned rather than forced on us, we will give
         reasonable notice, stop billing, and give you the chance to export or delete
         your data before access ends. Where you have paid in advance for a period we
-        cut short, you may claim a pro-rata refund through Apple.
+        cut short, you may claim a pro-rata refund - through Apple if you bought on
+        iPhone or iPad, or from us if you bought through Dodo Payments.
       </p>
       <p>
         Servey depends on your network and on services we do not control, so we do not
@@ -135,8 +151,9 @@ export default function TermsPage() {
 
       <h2>Suspending or ending your account</h2>
       <p>
-        You can stop using Servey at any time, cancel your subscription through Apple,
-        and ask us to delete your data as described in our{" "}
+        You can stop using Servey at any time, cancel your subscription - in your
+        Apple account settings, or in the billing portal if you bought on Mac or this
+        website - and ask us to delete your data as described in our{" "}
         <Link href="/privacy">Privacy Policy</Link>.
       </p>
       <p>

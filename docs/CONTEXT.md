@@ -552,6 +552,36 @@ returns a fake success to bots, and a **per-IP rate limit of 5/min**.
 ### Contact - `POST /api/contact`
 Same protections; writes to the Firestore `contacts` collection.
 
+### Payments - two rails, neither of them on this site
+
+No money moves through this repo, but the legal pages describe both rails and
+have to stay true to them. The source of truth is the app repo
+(`functions/src/dodo.ts`, `functions/src/db.ts`, `servey/UI/AccountView.swift`).
+
+| Where you buy | Processor | Who is the seller |
+|---|---|---|
+| iPhone / iPad | **Apple In-App Purchase** | Apple |
+| Mac / web checkout | **Dodo Payments** | **Dodo, as Merchant of Record** |
+
+Dodo exists because the Mac app is a direct download and so cannot sell
+anything through StoreKit; it also handles Indian cards, UPI and GST. We pass
+Dodo an **email address and a country** and nothing else; card details are
+entered on their page. A transaction record (amount, currency, date, plan,
+storefront/country, provider transaction and subscription ids) plus the raw
+provider notification land in our own ledger, and **those survive account
+deletion** for tax and accounting - which is why the privacy policy says so
+rather than promising a clean sweep.
+
+Dodo returns the browser to **`/thanks`** after checkout (see §6). A Dodo
+customer manages and cancels from **Manage subscription -> Billing portal** on
+the Mac app's Account screen; an Apple customer does it in Apple account
+settings.
+
+> ⚠️ Until 9 Oct 2026 both legal pages said payments went to **Apple only**,
+> while Dodo was live and charging. If a rail, a processor or what we send it
+> ever changes, `app/privacy/page.tsx` and `app/terms/page.tsx` change in the
+> same commit.
+
 ### Transactional email - `lib/email.ts`
 
 Sends the waitlist confirmation through **Resend's REST API over plain fetch**
