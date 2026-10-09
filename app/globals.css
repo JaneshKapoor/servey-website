@@ -227,6 +227,27 @@ body {
   margin: 0.35rem 0;
 }
 
+/* Checkout return states (/thanks).
+
+   All three variants ship in the HTML and CSS picks between them off
+   `data-pay` on <html>, which an inline script sets during parse - before
+   first paint, so there is no flash of the wrong copy, and without React, so
+   there is no hydration mismatch. With JavaScript off the attribute is never
+   set and the neutral block is what renders. The success copy is therefore
+   unreachable unless a status parameter actually said the payment succeeded. */
+.pay-ok,
+.pay-no {
+  display: none;
+}
+html[data-pay="ok"] .pay-ok,
+html[data-pay="no"] .pay-no {
+  display: block;
+}
+html[data-pay="ok"] .pay-neutral,
+html[data-pay="no"] .pay-neutral {
+  display: none;
+}
+
 /* Dialog + overlay transitions. */
 @keyframes fade-in {
   from {

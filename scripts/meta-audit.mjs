@@ -21,6 +21,13 @@ const DESC_MIN = 110;
 const DESC_MAX = 160;
 // Error and 404 routes carry no marketing metadata and are not in the sitemap.
 const EXEMPT = /_not-found|_global-error/;
+// Every limit here is about what a search result looks like, so a page that
+// can never be one is not in scope. /thanks is the case that forced this: its
+// description is deliberately one short factual line, and padding it to 110
+// characters to satisfy a SERP rule it is exempt from would be writing for a
+// robot that has been told not to look.
+const isNoindex = (html) =>
+  /<meta name="robots" content="[^"]*noindex/i.test(html);
 
 if (!existsSync(ROOT)) {
   console.error("No build found. Run `npm run build` first.");
@@ -40,9 +47,15 @@ const titles = new Map();
 const descs = new Map();
 const long = [];
 
+const skipped = [];
+
 for (const f of files) {
   if (EXEMPT.test(f)) continue;
   const html = readFileSync(f, "utf8");
+  if (isNoindex(html)) {
+    skipped.push(f.slice(ROOT.length).replace(/\.html$/, "") || "/");
+    continue;
+  }
   const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || "(none)";
   const desc =
     (html.match(/<meta name="description" content="([\s\S]*?)"/) || [])[1] || "(none)";
@@ -62,7 +75,10 @@ for (const f of files) {
 const dupTitles = [...titles].filter(([k, v]) => v.length > 1 && k !== "(none)");
 const dupDescs = [...descs].filter(([k, v]) => v.length > 1 && k !== "(none)");
 
-console.log(`pages checked: ${files.filter((f) => !EXEMPT.test(f)).length}`);
+console.log(
+  `pages checked: ${files.filter((f) => !EXEMPT.test(f)).length - skipped.length}` +
+    (skipped.length ? `  (skipped ${skipped.length} noindex: ${skipped.join(", ")})` : ""),
+);
 console.log(`duplicate titles: ${dupTitles.length}`);
 for (const [k, v] of dupTitles) console.log(`   "${k}"\n     ${v.join("\n     ")}`);
 console.log(`duplicate descriptions: ${dupDescs.length}`);

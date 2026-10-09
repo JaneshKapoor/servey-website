@@ -5,6 +5,18 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { capturePageview } from "@/lib/analytics";
 
 /**
+ * Paths whose query string must never reach PostHog.
+ *
+ * `/thanks` is where Dodo Payments returns the browser after checkout, and it
+ * arrives carrying the customer's email address and subscription id. The page
+ * itself strips them from the address bar before first paint, but that is not
+ * enough here: `history.replaceState` does not update the App Router's own copy
+ * of the search params, so `useSearchParams()` below would still hand us the
+ * email and we would post it to analytics ourselves.
+ */
+const NO_QUERY_PATHS = new Set(["/thanks"]);
+
+/**
  * useSearchParams() opts the whole route out of static rendering unless it sits
  * inside a Suspense boundary. Every page on this site is statically generated,
  * so this boundary is load-bearing rather than decorative - without it, mounting
@@ -19,7 +31,7 @@ function PageviewTracker() {
 
   React.useEffect(() => {
     if (!pathname) return;
-    const query = searchParams.toString();
+    const query = NO_QUERY_PATHS.has(pathname) ? "" : searchParams.toString();
     const send = () =>
       capturePageview(
         `${window.location.origin}${pathname}${query ? `?${query}` : ""}`,

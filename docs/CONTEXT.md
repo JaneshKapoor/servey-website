@@ -141,6 +141,8 @@ app/
   blog/[slug]/page.tsx    # post renderer + Article/FAQPage/BreadcrumbList JSON-LD
   mac/page.tsx            # the Mac host page - hardcoded in the iOS app's
                           #   onboarding, so it must never move or 404
+  thanks/page.tsx         # Dodo Payments checkout return - noindex, grants
+                          #   nothing, strips the email from the URL
   privacy/  terms/        # legal pages
   api/waitlist/route.ts   # POST - honeypot + rate limit + provider
   api/contact/route.ts    # POST - Firestore `contacts`
@@ -310,7 +312,19 @@ it actually embeds.
 
 Not in the sitemap but live: `/robots.txt`, `/sitemap.xml`, `/feed.xml`,
 `/llms.txt`, `/llms-full.txt`, `/ai.txt`, `/opengraph-image`, `/api/waitlist`,
-`/api/contact`, `/ingest/*` (analytics proxy), and the 404. The three AI files
+`/api/contact`, `/ingest/*` (analytics proxy), `/thanks`, and the 404.
+
+**`/thanks` is deliberately out of the sitemap and `noindex`.** It is where
+Dodo Payments returns the browser after checkout, and Dodo puts the customer's
+**email address in the query string**. Three rules hold there and none of them
+are optional: the page **grants nothing** (the signed webhook to the backend is
+what unlocks a plan - the query string is typed by whoever is at the keyboard);
+the query is **stripped before first paint** and `/thanks` is listed in
+`NO_QUERY_PATHS` in `components/analytics.tsx`, because `history.replaceState`
+does not update the App Router's copy of the search params and the tracker
+would otherwise post the email to PostHog itself; and the **success copy is
+unreachable without JavaScript**, since all three variants ship in the HTML and
+CSS picks between them off `data-pay` on `<html>`. The three AI files
 are **generated at build time** by `scripts/build-ai-files.mjs` - edit
 `lib/blog.ts` or `lib/content.ts`, never the files in `public/`.
 
