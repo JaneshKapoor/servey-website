@@ -123,6 +123,7 @@ npm run seo:audit    # assert the SEO invariants against live (or --base=localho
 npm run seo:meta     # duplicate + over-length titles/descriptions in .next HTML
 npm run seo:framing  # Servey depth / substance / density across every post
 npm run ai:files     # regenerate llms.txt, llms-full.txt, ai.txt
+npm run downloads    # read the download counter (needs FIREBASE_* in .env.local)
 ```
 
 `ai:files` also runs as `prebuild`, so a build can never ship an `llms.txt`
@@ -311,7 +312,7 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**42 URLs in `sitemap.xml`** (11 Oct 2026), priority-ordered:
+**42 URLs in `sitemap.xml`** (10 Oct 2026), priority-ordered:
 
 | Priority | URLs |
 |---|---|
@@ -627,6 +628,35 @@ settings.
 > while Dodo was live and charging. If a rail, a processor or what we send it
 > ever changes, `app/privacy/page.tsx` and `app/terms/page.tsx` change in the
 > same commit.
+
+### Download counter - `GET /api/download`
+
+The human-facing download link. Counts, then 302s to the file:
+
+```
+Website buttons  ->  /api/download  ->  record  ->  302 -> /download/Servey.dmg
+App updater      ->  /download/Servey.dmg                  (direct, unchanged)
+```
+
+**The split is load-bearing.** `latest.json` and the shipped Mac app have the
+raw URL hardcoded, so it must keep serving the file directly - and keeping
+update checks out of the counter is also what makes the number mean "people".
+
+- **The download outranks the counter.** Every failure path still ends in the
+  redirect. Missing credentials, a Firestore outage, a bad header - none of
+  them may stop somebody getting the app.
+- **The write is awaited**, not fire-and-forget: a serverless function can be
+  frozen the moment it responds, which silently drops an un-awaited write.
+- **Nothing recorded is personal data**, and that is deliberate. One integer a
+  day in `downloads/{YYYY-MM-DD}`, plus the referring *hostname* (never the
+  URL, so no paths and no query strings) and a coarse OS family. No IP is
+  read, stored or hashed; no cookie; no fingerprinting. **This is why
+  `app/privacy/page.tsx` is unchanged** - add anything identifying here and
+  that stops being true, so the policy changes in the same commit.
+- **Reading it: `npm run downloads`** (`scripts/download-stats.mjs`), which
+  uses the same `FIREBASE_*` vars as the site. There is deliberately no HTTP
+  endpoint - it would either leak the numbers or need another secret to guard
+  them.
 
 ### Transactional email - `lib/email.ts`
 
