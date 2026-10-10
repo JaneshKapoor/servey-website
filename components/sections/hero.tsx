@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Aurora } from "@/components/aurora";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,7 +32,7 @@ export function Hero() {
           >
             <Badge className="border-accent/30 bg-accent-deep/60">
               <span className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(34,220,110,0.9)]" />
-              Native Apple app · Waitlist open
+              Mac app out now · iPhone and iPad next
             </Badge>
           </motion.div>
 
@@ -64,20 +63,27 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.18 }}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
+            {/* Primary action is the thing you can actually have today. The
+                download goes through /api/download so it is counted - the raw
+                file URL is reserved for the app's own update check. */}
             <Magnetic className="w-full sm:w-auto">
-              <WaitlistDialog source="hero">
-                <Button size="lg" className="w-full">
-                  Join the waitlist
-                  <ArrowRight className="size-4" />
-                </Button>
-              </WaitlistDialog>
+              <Button asChild size="lg" className="w-full">
+                {/* A real <a>, not next/link: this is a route handler that
+                    302s to a 37 MB file. Client-side routing has nothing to
+                    render and would just swallow the click. */}
+                {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                <a href="/api/download">
+                  <Download className="size-4" />
+                  Download for Mac
+                </a>
+              </Button>
             </Magnetic>
-            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-              <Link href="#how-it-works">
-                <PlayCircle className="size-4" />
-                See how it works
-              </Link>
-            </Button>
+            <WaitlistDialog source="hero">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto">
+                Get the iPhone app
+                <ArrowRight className="size-4" />
+              </Button>
+            </WaitlistDialog>
           </motion.div>
         </div>
 

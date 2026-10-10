@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, MonitorSmartphone, ShieldCheck, TerminalSquare } from "lucide-react";
+import { Check, Download, MonitorSmartphone, ShieldCheck, TerminalSquare } from "lucide-react";
 import { Screenshot } from "@/components/device-frame";
+import { Button } from "@/components/ui/button";
 import { site, ogImage } from "@/lib/site";
 
 /**
@@ -97,6 +98,23 @@ export default function HowItWorksPage() {
             device and you can see its screen and use its terminal as though you were
             sitting at it.
           </p>
+
+          {/* The one action on this page. It points at /api/download, which
+              302s straight to the disk image - not at /mac, and not at any
+              page that sells. */}
+          <div className="mt-8">
+            <Button asChild size="lg">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+              <a href="/api/download">
+                <Download className="size-4" />
+                Download Servey for Mac
+              </a>
+            </Button>
+            <p className="mt-3 text-sm text-muted">
+              Signed and notarised by Apple, so it opens like any other Mac app.
+              The iPhone and iPad half is on its way to the App Store.
+            </p>
+          </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
             {[

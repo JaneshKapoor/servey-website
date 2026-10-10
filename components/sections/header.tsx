@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -64,8 +64,23 @@ export function Header({ hidePricing = false }: { hidePricing?: boolean }) {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <WaitlistDialog source="nav">
-            <Button size="sm">Join the waitlist</Button>
+            <button
+              type="button"
+              className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-fg"
+            >
+              iPhone app
+            </button>
           </WaitlistDialog>
+          {/* The Mac app exists today, so it gets the button. The waitlist
+              keeps a quieter slot beside it for the iPhone and iPad app,
+              which does not. */}
+          <Button asChild size="sm">
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/api/download">
+              <Download className="size-4" />
+              Download
+            </a>
+          </Button>
         </div>
 
         {/* Mobile.
@@ -119,12 +134,19 @@ export function Header({ hidePricing = false }: { hidePricing?: boolean }) {
                     Blog
                   </Link>
                 </nav>
-                <div className="mt-4">
+                <div className="mt-4 flex flex-col gap-2">
+                  <Button asChild className="w-full">
+                    {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                    <a href="/api/download" onClick={() => setOpen(false)}>
+                      <Download className="size-4" />
+                      Download for Mac
+                    </a>
+                  </Button>
                   {/* Closing the sheet first means only one Radix dialog owns
                       the scroll lock at a time. */}
                   <WaitlistDialog source="nav-mobile">
-                    <Button className="w-full" onClick={() => setOpen(false)}>
-                      Join the waitlist
+                    <Button variant="secondary" className="w-full" onClick={() => setOpen(false)}>
+                      Get the iPhone app
                     </Button>
                   </WaitlistDialog>
                 </div>
