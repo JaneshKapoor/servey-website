@@ -54,9 +54,8 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Leave the Mac where it lives. Its screen and a real terminal come with you
-            on your iPhone or iPad - and the work you start on it keeps running after
-            you close the app.
+            Leave your Mac at home. Use it from your iPhone or iPad, anywhere in
+            the world.
           </motion.p>
 
           <motion.div
