@@ -29,6 +29,47 @@ const nextConfig: NextConfig = {
   // 9.8 with 1.5% CTR while the guide ranked 6.3 for the same intent. Its one
   // distinct argument now lives in the guide, so a permanent redirect passes
   // the ranking signal on rather than stranding it.
+  /**
+   * The two URLs the shipped Mac app has hardcoded.
+   *
+   * `Servey.dmg` is signed and notarised, so the bytes we serve must be the
+   * bytes Apple stamped - any optimiser, re-compression or rewrite in the
+   * pipeline invalidates the signature and macOS refuses to open the app with
+   * "Servey is damaged". It lives in `public/` and is served as a static file
+   * for exactly that reason: nothing in the build touches it. The explicit
+   * Content-Type stops any host from guessing, and Content-Disposition keeps
+   * the filename `Servey.dmg` rather than whatever a redirect might invent.
+   *
+   * `latest.json` is the update feed: the app reads it at launch and once a
+   * day. Its cache is deliberately short - a long one would make a release
+   * invisible for as long as the TTL. CORS is open for GET because the app
+   * fetches it cross-origin.
+   */
+  async headers() {
+    return [
+      {
+        source: "/download/Servey.dmg",
+        headers: [
+          { key: "Content-Type", value: "application/x-apple-diskimage" },
+          { key: "Content-Disposition", value: 'attachment; filename="Servey.dmg"' },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          // Long enough to be cheap, short enough that replacing the file
+          // reaches people the same day.
+          { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
+        source: "/mac/latest.json",
+        headers: [
+          { key: "Content-Type", value: "application/json; charset=utf-8" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Cache-Control", value: "public, max-age=60, must-revalidate" },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       {
