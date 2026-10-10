@@ -36,8 +36,8 @@ export default function TermsPage() {
       <h2>Who can use Servey</h2>
       <p>
         You must be at least <strong>13 years old</strong>, and old enough to enter a
-        contract where you live. You need a Mac running macOS 15.3 or later and an
-        iPhone or iPad running iOS or iPadOS 18.5 or later. You are responsible for
+        contract where you live. You need a Mac running macOS 14 or later and an
+        iPhone or iPad running iOS or iPadOS 17 or later. You are responsible for
         the security of the Google account you sign in with and for the master
         password you set on your Mac.
       </p>

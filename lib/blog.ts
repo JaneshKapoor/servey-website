@@ -316,7 +316,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest trade-off: Servey is Apple-only and it is still pre-launch, so it has none of the track record that Screens and Jump Desktop have earned over years. If you need something battle-tested today, buy one of those. If the zero-setup plus real-terminal combination is what you have been missing, Servey is worth a look.",
+        text: "The honest trade-off: Servey is Apple-only and new, so it has none of the track record that Screens and Jump Desktop have earned over years. If you need something battle-tested today, buy one of those. If the zero-setup plus real-terminal combination is what you have been missing, Servey is worth a look.",
       },
       { type: "h2", text: "Bottom line" },
       {
@@ -674,7 +674,7 @@ export const posts: Post[] = [
           "Best free and open source: RustDesk.",
           "Easiest free setup that works from anywhere: Chrome Remote Desktop.",
           "Free and already installed, if you only need it on your own Wi-Fi: macOS Screen Sharing.",
-          "If you want zero network setup plus a genuine terminal on iPhone or iPad: Servey (pre-launch).",
+          "If you want zero network setup plus a genuine terminal on iPhone or iPad: Servey (new).",
         ],
       },
       {
@@ -747,7 +747,7 @@ export const posts: Post[] = [
       { type: "h2", text: "Servey" },
       {
         type: "p",
-        text: "Servey is what we build, so treat this section with the appropriate scepticism - but here is the case. Every other tool on this list is a screen tool that treats the command line as somebody else's problem. Servey gives you both on your iPhone and iPad: crystal-clear screen mirroring of your Mac and a genuine shell on it, in one app, one tap apart. On your own Wi-Fi it streams a direct hardware-encoded HEVC feed, so your Mac's text stays razor-sharp rather than soft, and pinch-to-zoom lets you read the smallest detail on screen. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it and keeps working on strict carrier networks. Nothing is configured at any point - no VPN, no port forwarding, no static IP, no companion app to leave running. You sign in with Google on both devices and your Mac is simply there. The limits are real and deliberate: Servey is Apple-only, it reaches a Mac running its host app rather than any machine anywhere, and it is pre-launch, so there is nothing to download today. It arrives soon at ₹99 or $1.99 a month for the terminal, and ₹299 or $4.49 for full access.",
+        text: "Servey is what we build, so treat this section with the appropriate scepticism - but here is the case. Every other tool on this list is a screen tool that treats the command line as somebody else's problem. Servey gives you both on your iPhone and iPad: crystal-clear screen mirroring of your Mac and a genuine shell on it, in one app, one tap apart. On your own Wi-Fi it streams a direct hardware-encoded HEVC feed, so your Mac's text stays razor-sharp rather than soft, and pinch-to-zoom lets you read the smallest detail on screen. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it and keeps working on strict carrier networks. Nothing is configured at any point - no VPN, no port forwarding, no static IP, no companion app to leave running. You sign in with Google on both devices and your Mac is simply there. The limits are real and deliberate: Servey is Apple-only, it reaches a Mac running its host app rather than any machine anywhere, and it is new - the Mac app downloads today, while the iPhone and iPad app is still on its way to the App Store. It is ₹99 or $1.99 a month for the terminal, and ₹299 or $4.49 for full access.",
       },
       {
         type: "ul",
@@ -760,7 +760,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest caveats: it is Apple-only, and it is pre-launch, so it has none of the track record the established names have earned. If you need something proven today, buy one of those instead.",
+        text: "The honest caveats: it is Apple-only, and it is new, so it has none of the track record the established names have earned. If you need something proven today, buy one of those instead.",
       },
       { type: "h2", text: "How to choose in one minute" },
       {
@@ -899,7 +899,7 @@ export const posts: Post[] = [
       { type: "h2", text: "What Servey does not have" },
       {
         type: "p",
-        text: "Worth stating plainly, because a comparison that only lists strengths is not a comparison. Servey has no SFTP, no multi-host support, no snippets or workspaces, no team or compliance features, and no Windows, Linux or Android client. Its terminal is a version one and does not have the refinements Termius has accumulated. And Servey is pre-launch: no users, no App Store reviews, nothing independent to check.",
+        text: "Worth stating plainly, because a comparison that only lists strengths is not a comparison. Servey has no SFTP, no multi-host support, no snippets or workspaces, no team or compliance features, and no Windows, Linux or Android client. Its terminal is a version one and does not have the refinements Termius has accumulated. And Servey is new: barely any users, no App Store reviews, nothing independent to check.",
       },
       {
         type: "p",
@@ -986,7 +986,7 @@ export const posts: Post[] = [
             "No",
           ],
           [
-            "Servey (pre-launch)",
+            "Servey (new)",
             "One Mac, from an iPhone or iPad",
             "macOS host; iPhone and iPad client",
             "Automatic after signing in on both devices",
@@ -1052,7 +1052,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is pre-launch and waitlist-only: there is nothing to download today, no users, and no independent reviews to check. If you need a working alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.",
+        text: "The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is new: the Mac app downloads today but the iPhone and iPad app is still on its way to the App Store, and there are no independent reviews to check yet. If you need a proven alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.",
       },
       { type: "h2", text: "How to choose in one minute" },
       {
@@ -1154,7 +1154,7 @@ export const posts: Post[] = [
             "Most-cited weakness",
             "No Linux client of its own",
             "Commercial-use detection can flag personal users",
-            "Apple-only, and still pre-launch",
+            "Apple-only, and new",
           ],
           ["Real terminal", "No", "No", "Yes - a genuine shell, built in"],
         ],
@@ -2074,7 +2074,7 @@ export const posts: Post[] = [
             "Support when it breaks",
             "Community issue tracker",
             "A vendor with a support contract",
-            "A small team, pre-launch",
+            "A small team, new product",
           ],
           ["Real terminal", "No", "No", "Yes"],
         ],
@@ -2529,7 +2529,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a working setup this afternoon, do not wait for us.",
+        text: "The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need a working setup this afternoon, do not wait for us.",
       },
       { type: "h2", text: "What to use if you need this working today" },
       {
@@ -2643,7 +2643,7 @@ export const posts: Post[] = [
       { type: "h2", text: "Where Servey fits, and where it does not" },
       {
         type: "p",
-        text: "Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 15.3 and iOS or iPadOS 18.5, it cannot reach a Windows or Linux machine, and it launches soon rather than today. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.",
+        text: "Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 14 and iOS or iPadOS 17, it cannot reach a Windows or Linux machine, and it launches soon rather than today. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.",
       },
     ],
   },
@@ -2693,7 +2693,7 @@ export const posts: Post[] = [
           ],
           [
             "A remote tool that manages it for you",
-            "Servey, on macOS 15.3 or later",
+            "Servey, on macOS 14 or later",
             "Opt-in, authorised once, and reverted automatically when you go offline",
           ],
         ],
@@ -2738,7 +2738,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest limits on Servey: it is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.",
+        text: "The honest limits on Servey: it is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.",
       },
     ],
   },
@@ -2851,7 +2851,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 15.3 and iOS or iPadOS 18.5, and launches soon rather than today.",
+        text: "It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 14 and iOS or iPadOS 17, and launches soon rather than today.",
       },
       {
         type: "h2",
@@ -2986,7 +2986,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The honest limits on our part: Servey is Apple-only, it needs macOS 15.3 on the Mac and iOS or iPadOS 18.5 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.",
+        text: "The honest limits on our part: Servey is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.",
       },
     ],
   },
@@ -3118,7 +3118,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "The part we will not overstate: the Duo ships on 23 October, so nobody outside Apple has run Servey or anything else on one. Today it runs as an iPhone app. A layout that puts the Mac on the upper half and the trackpad on the lower half is the obvious thing to build, and we would rather build and test it on the real hardware than promise it from a render. Servey is also Apple-only, needs macOS 15.3 on the Mac and iOS 18.5 or later on the phone, and is pre-launch.",
+        text: "The part we will not overstate: the Duo ships on 23 October, so nobody outside Apple has run Servey or anything else on one. Today it runs as an iPhone app. A layout that puts the Mac on the upper half and the trackpad on the lower half is the obvious thing to build, and we would rather build and test it on the real hardware than promise it from a render. Servey is also Apple-only, and needs macOS 14 on the Mac and iOS 17 or later on the phone.",
       },
       { type: "h2", text: "What to do if you are buying one" },
       {
@@ -3146,7 +3146,7 @@ export const author = {
  * "updated" signal is a freshness cue AI engines (Perplexity especially) reward.
  * Bump this whenever you meaningfully revise the posts.
  */
-export const contentUpdated = "2026-09-15";
+export const contentUpdated = "2026-10-10";
 
 /**
  * Per-post FAQs. Rendered on the page and emitted as FAQPage JSON-LD so answer
@@ -3231,7 +3231,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Does any Screens alternative include a real terminal?",
-      a: "None of the established screen-first apps do - Screens, Jump Desktop, RustDesk, Splashtop and Chrome Remote Desktop are all mirroring tools, so you drive a GUI to reach a shell. For command-line work you generally add SSH or a mobile SSH client. Servey is being built to include a genuine shell alongside mirroring, but it is pre-launch and waitlist-only.",
+      a: "None of the established screen-first apps do - Screens, Jump Desktop, RustDesk, Splashtop and Chrome Remote Desktop are all mirroring tools, so you drive a GUI to reach a shell. For command-line work you generally add SSH or a mobile SSH client. Servey includes a genuine shell alongside mirroring, but it is new and its iPhone and iPad app is still on its way to the App Store.",
     },
     {
       q: "Should I just stay with Screens 5?",
@@ -3265,7 +3265,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Does either one give me a terminal on my Mac?",
-      a: "No. Both are screen-mirroring tools, so reaching a shell means driving the Mac's GUI with a remote pointer, or setting up SSH separately. Servey is being built to put a genuine shell alongside the mirrored screen, but it is Apple-only and pre-launch, so it is something to watch rather than a current option.",
+      a: "No. Both are screen-mirroring tools, so reaching a shell means driving the Mac's GUI with a remote pointer, or setting up SSH separately. Servey puts a genuine shell alongside the mirrored screen, but it is Apple-only and new, so it is something to weigh rather than a proven option.",
     },
     {
       q: "Which is cheaper?",
@@ -3299,7 +3299,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Does either include a terminal?",
-      a: "No, both are screen-mirroring tools, so command-line work means driving a GUI remotely or setting up SSH alongside. Servey is being built with a genuine shell next to the mirrored screen, but it is Apple-only, cannot be self-hosted, and is pre-launch and waitlist-only, so it is not an option you can use today.",
+      a: "No, both are screen-mirroring tools, so command-line work means driving a GUI remotely or setting up SSH alongside. Servey has a genuine shell next to the mirrored screen, but it is Apple-only, cannot be self-hosted, and its iPhone and iPad app is still on its way to the App Store.",
     },
     {
       q: "Is there an option with nothing to host and nothing to configure?",
@@ -3324,8 +3324,8 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
       a: "The Terminal plan is Rs 99 per month in India or $1.99 internationally, against Termius Pro at roughly $10 per month billed annually. But Servey does far less - one Mac, no SFTP, no fleet management, no team features. It is a lower price for a much narrower job, not a discount on the same thing.",
     },
     {
-      q: "Why trust a pre-launch app with access to my Mac?",
-      a: "You should not take that on faith. Servey has not launched, has no users and no independent reviews. We document how pairing and encryption work, but if you need a proven track record today, Termius has one and Servey does not.",
+      q: "Why trust a brand-new app with access to my Mac?",
+      a: "You should not take that on faith. Servey is new, has very few users and no independent reviews yet. We document how pairing and encryption work, but if you need a proven track record today, Termius has one and Servey does not.",
     },
   ],
   "control-your-mac-from-iphone-ipad": [
@@ -3619,7 +3619,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Is there an option that gives you a terminal as well as the screen?",
-      a: "Yes, and neither of these does. Chrome Remote Desktop and Jump Desktop both mirror the desktop, so reaching a command line means aiming a cursor at the Terminal window inside the mirrored picture. Servey treats the shell as a first-class thing: a real terminal on your Mac sits one tap from the mirrored screen, so you type commands when typing is right and drive the GUI when clicking is right. It is Apple-only and pre-launch, so if you need a working tool today or need to reach a non-Mac host, Jump Desktop is the better answer.",
+      a: "Yes, and neither of these does. Chrome Remote Desktop and Jump Desktop both mirror the desktop, so reaching a command line means aiming a cursor at the Terminal window inside the mirrored picture. Servey treats the shell as a first-class thing: a real terminal on your Mac sits one tap from the mirrored screen, so you type commands when typing is right and drive the GUI when clicking is right. It is Apple-only and new, so if you need a proven tool today or need to reach a non-Mac host, Jump Desktop is the better answer.",
     },
   ],
   "keep-terminal-session-running-after-disconnect": [
@@ -3751,7 +3751,7 @@ export const faqsBySlug: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Does Servey work on the iPhone Duo?",
-      a: "Servey is an iPhone app, so it is designed to run on it, but the Duo does not ship until 23 October and we have not yet been able to test on one. A layout that uses the fold - the Mac's screen on the upper half and the trackpad on the lower - is the obvious thing to build, and we will only claim it once it exists and works on the real hardware. Servey is also pre-launch.",
+      a: "Servey is an iPhone app, so it is designed to run on it, but the Duo does not ship until 23 October and we have not yet been able to test on one. A layout that uses the fold - the Mac's screen on the upper half and the trackpad on the lower - is the obvious thing to build, and we will only claim it once it exists and works on the real hardware.",
     },
   ],
 };

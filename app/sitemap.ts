@@ -47,6 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: productImages,
     },
     ...useCaseEntries,
+    // Linked from inside the iPad app, so it must stay reachable - and it is a
+    // genuine explainer, so it is worth indexing on its own.
+    {
+      url: `${site.url}/how-it-works`,
+      lastModified: updated,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [
+        `${site.url}${screenshots["mac-host-ui"].src}`,
+        `${site.url}${screenshots["mirroring-ipad"].src}`,
+      ],
+    },
     // /mac is hardcoded in the iOS app's onboarding as the only route to the
     // host app, so it is a real destination rather than a marketing page.
     {

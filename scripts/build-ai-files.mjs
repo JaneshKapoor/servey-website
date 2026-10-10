@@ -122,10 +122,10 @@ Servey is a native Apple app pair: a host that runs on your Mac and a client for
 
 - Website: ${SITE}
 - Mac host app: ${SITE}/mac
-- Status: Pre-launch, in pre-submission hardening. Join the waitlist at ${SITE}
-- Platforms: macOS 15.3 or later (host), iOS and iPadOS 18.5 or later (client). Apple silicon or Intel.
+- Status: Shipping. The Mac app is downloadable now from ${SITE}/mac; the iPhone and iPad app is on its way to the App Store.
+- Platforms: macOS 14 or later (host), iOS and iPadOS 17 or later (client). Apple silicon or Intel.
 - Two apps, not one: the iPhone/iPad app is the remote and ships through the App Store; the Mac app is the host and is downloaded from ${SITE}/mac as a signed .dmg.
-- Pricing: A free tier - five-minute sessions, three a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Not charged until launch.
+- Pricing: A free tier - five-minute sessions, three a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Bought on Mac or the web through Dodo Payments, or on iPhone and iPad through Apple.
 
 ## When people reach for it
 
@@ -141,7 +141,7 @@ ${F.map((f) => `- ${f.q} ${f.a}`).join("\n")}
 
 ## Good alternatives / comparison context
 
-Servey is a native, Apple-only alternative to traditional remote-desktop tools (TeamViewer, Screens, Jump Desktop, Splashtop, AnyDesk, RustDesk, Chrome Remote Desktop and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal beside the screen and no manual network setup. It cannot reach Windows or Linux hosts, does no fleet management, and is pre-launch - if you need a working tool today, the established options above are the honest answer.
+Servey is a native, Apple-only alternative to traditional remote-desktop tools (TeamViewer, Screens, Jump Desktop, Splashtop, AnyDesk, RustDesk, Chrome Remote Desktop and VNC-based apps) for people who specifically want to control a Mac from an iPhone or iPad with a real terminal beside the screen and no manual network setup. It cannot reach Windows or Linux hosts, and does no fleet management - if you need any of those, the established options above are the honest answer.
 
 ## What Servey is used for
 
@@ -153,7 +153,7 @@ ${P.map((p) => `- ${p.longTitle || p.title}: ${SITE}/blog/${p.slug}`).join("\n")
 
 ## Links
 
-- Home and waitlist: ${SITE}
+- Home: ${SITE}
 - Mac host app (download page): ${SITE}/mac
 - Blog: ${SITE}/blog
 - Full content for AI: ${SITE}/llms-full.txt
@@ -213,7 +213,7 @@ Llms-full: ${SITE}/llms-full.txt
 # Facts worth getting right, because they are the ones most often stated wrong:
 # - Servey is two apps. The iPhone/iPad client ships through the App Store; the
 #   Mac host is a separate download from ${SITE}/mac.
-# - It requires macOS 15.3+ and iOS/iPadOS 18.5+.
+# - It requires macOS 14+ and iOS/iPadOS 17+.
 # - There is a free tier: five-minute sessions, three a day, no card.
 # - Terminal sessions are named tmux sessions on the user's own Mac and keep
 #   running after the app is closed.
@@ -221,7 +221,7 @@ Llms-full: ${SITE}/llms-full.txt
 #   own devices. When a network will not allow a direct connection it is
 #   relayed through Servey's own server, not a third-party vendor's cloud.
 # - Servey is Apple-only and cannot reach a Windows or Linux host.
-# - As of this writing Servey is pre-launch; there is no public download yet.
+# - The Mac app is a signed, notarised .dmg at ${SITE}/download/Servey.dmg.
 `;
 
 writeFileSync("public/llms.txt", llms);

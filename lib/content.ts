@@ -319,7 +319,7 @@ export const faqs = [
   },
   {
     q: "Which devices are supported?",
-    a: "A Mac as the host, controlled from an iPhone or iPad. Servey needs macOS 15.3 or later on the Mac and iOS or iPadOS 18.5 or later on the device you control it from, so it is worth checking your versions before you join the waitlist. Any Mac that runs macOS 15.3 works, Apple silicon or Intel, and a MacBook can be driven with the lid shut. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.",
+    a: "A Mac as the host, controlled from an iPhone or iPad. Servey needs macOS 14 or later on the Mac and iOS or iPadOS 17 or later on the device you control it from, so it is worth checking your versions first. Any Mac that runs macOS 14 works, Apple silicon or Intel, and a MacBook can be driven with the lid shut. Servey is built natively for the Apple ecosystem - not an Electron or Java port - so it feels fast and right at home on your devices.",
   },
   {
     q: "Do I need a VPN or port forwarding?",
@@ -330,8 +330,8 @@ export const faqs = [
     a: "Yes. Servey has a free tier with no card and no countdown: five-minute sessions, three sessions a day, and your daily allowance resets at local midnight. Everything Servey does is in it - screen mirroring, input and the terminal - so what you are paying for on a paid plan is time, not a longer feature list.",
   },
   {
-    q: "When is it launching and how much will it cost?",
-    a: "Servey is in pre-submission hardening now, and the waitlist is how you get in first. Pricing is already set: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. Join the waitlist and we'll email you the moment it's ready. You're never charged until launch.",
+    q: "Is it out yet, and how much does it cost?",
+    a: "The Mac app is out now and downloads straight from this site - it is signed and notarised by Apple, so it opens like any other Mac app. The iPhone and iPad app is on its way to the App Store. Pricing: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. You can buy and manage a subscription from the Account screen in the Mac app.",
   },
 ] as const;
 
@@ -346,7 +346,7 @@ export const faqs = [
  * Pre-launch: cards drive to the waitlist, not checkout.
  */
 export const pricing = {
-  note: "Start free, no card required. Paid plans are simple monthly pricing, cancel anytime, and you won't be charged until Servey launches.",
+  note: "Start free, no card required. Paid plans are simple monthly pricing, and you can cancel anytime from the Account screen in the app.",
   regions: [
     { id: "intl", label: "International", symbol: "$", key: "usd" },
     { id: "in", label: "India", symbol: "₹", key: "inr" },

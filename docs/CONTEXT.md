@@ -27,12 +27,12 @@ data, or create legal exposure.
 | # | Rule | Why it exists |
 |---|---|---|
 | 1 | **Never fabricate a product screenshot.** | Every image is either a real capture or a styled placeholder in a device frame. `components/device-frame.tsx` carries the note "Placeholder fill - styled, never a fake product screenshot." |
-| 2 | **No invented ratings, testimonials, download counts, user numbers, or `AggregateRating` schema.** | Servey is pre-launch with zero public users. Any such claim is fabricated, and `AggregateRating` without real reviews is a Google structured-data violation. |
+| 2 | **No invented ratings, testimonials, download counts, user numbers, or `AggregateRating` schema.** | Servey shipped on 9 Oct 2026 and has almost no public users yet. Any such claim is fabricated, and `AggregateRating` without real reviews is a Google structured-data violation. |
 | 3 | **Never overclaim in a comparison.** Every competitor comparison must state where the competitor is genuinely better. | It is the site's main credibility asset and the reason the comparison posts are citable. |
 | 4 | **Never imply Termius shipped malware.** | Termius was the *victim* of the ZuRu impersonation campaign. Asserting otherwise would be false and defamatory. |
 | 5 | **Do not reveal the app's internal tech stack in external-facing copy.** | Product positioning decision. (Describing the *website's* stack, as this document does, is fine.) |
 | 6 | **Do not solicit upvotes** on Product Hunt, AlternativeTo, or anywhere else. | Against their rules; triggers rank penalties. |
-| 7 | **Pricing is pre-launch.** Offers use `availability: PreOrder`. Cards drive to the waitlist, never to checkout. | Nobody can be charged yet. |
+| 7 | **Money is real now.** Offers use `availability: InStock`, and they live on the homepage only - never in the root layout's graph, because /how-it-works is linked from inside the iPad app and App Store Review Guidelines 3.1.3 and 4.8 forbid a price there. | People are being charged today, through Apple on iOS and Dodo Payments on Mac and web. |
 | 8 | **If you add anything that collects data, update `app/privacy/page.tsx` in the same change.** | The policy makes specific promises. Shipping a tracker without updating it makes the published policy false. |
 
 ### Known open issue - carried deliberately
@@ -60,8 +60,12 @@ A native Apple app that puts your Mac in your pocket.
   **same account**.
 - Native Swift/SwiftUI - deliberately not an Electron or Java port.
 
-**Status: pre-launch, waitlist only.** There is no downloadable build. This
-constraint drives most of the growth decisions in §9.
+**Status: shipping since 9 Oct 2026.** The **Mac app** is a signed, notarised
+`.dmg` served from this site at `/download/Servey.dmg` - the App Store cannot
+carry an app that captures the screen and runs a shell, so the website is the
+only delivery mechanism and that URL is **hardcoded in the shipped app**. The
+**iPhone and iPad app** is on its way to App Review. Several growth decisions
+in §9 were written for the waitlist era and now need rereading.
 
 ### Pricing (`lib/content.ts` → `pricing`)
 
@@ -71,16 +75,20 @@ constraint drives most of the growth decisions in §9.
 | **Terminal** | ₹99/mo | $1.99/mo | Unlimited terminal time; persistent named sessions; reattach from any device |
 | **Full access** *(featured)* | ₹299/mo | $4.49/mo | Everything above + screen mirroring, mouse/keyboard/trackpad, adaptive quality |
 
-Monthly subscription, cancel anytime, **not charged until launch**. The free
+Monthly subscription, cancel anytime, **and being charged today**. The free
 tier is enforced client-side by `SessionLimitManager` in the iOS app
 (`freeSessionSeconds = 5 * 60`, `freeSessionsPerDay = 3`) - what a paid plan
 buys is **time, not a longer feature list**, which is why the pricing copy
 says so explicitly.
 
-**System requirements: macOS 15.3+ on the host, iOS/iPadOS 18.5+ on the
-client.** A genuinely narrow window that excludes some visitors - stated on
-the page deliberately, because finding out after joining a waitlist is worse
-than finding out before.
+**System requirements: macOS 14+ on the host, iOS/iPadOS 17+ on the client.**
+Read them off `MACOSX_DEPLOYMENT_TARGET` and `IPHONEOS_DEPLOYMENT_TARGET` in
+the app project, never off a changelog. The site said **macOS 15.3 / iOS 18.5
+until 10 Oct 2026**, which turned away every Mac on Sonoma and every device
+between 17.0 and 18.4 - machines that run Servey perfectly well. The wrong
+numbers were in 14 places across the marketing copy, the blog, the terms, the
+JSON-LD and the AI-file generator, which is the argument for reading them from
+one source.
 
 ### Brand
 
@@ -143,6 +151,8 @@ app/
                           #   onboarding, so it must never move or 404
   thanks/page.tsx         # Dodo Payments checkout return - noindex, grants
                           #   nothing, strips the email from the URL
+  how-it-works/page.tsx   # linked from INSIDE the iPad app - no prices, no
+                          #   pricing links, own header/footer. See below.
   privacy/  terms/        # legal pages
   api/waitlist/route.ts   # POST - honeypot + rate limit + provider
   api/contact/route.ts    # POST - Firestore `contacts`
@@ -171,6 +181,8 @@ lib/
 public/
   brand/                  # app-icon logos
   screenshots/            # real captures
+  download/Servey.dmg     # the signed, notarised Mac app - NEVER re-encode
+  mac/latest.json         # update feed the Mac app polls; exact bytes matter
   llms.txt                # GENERATED - map for AI answer engines
   llms-full.txt           # GENERATED - every post in full, ~174KB
   ai.txt                  # GENERATED - usage terms for AI crawlers
@@ -296,13 +308,13 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**40 URLs in `sitemap.xml`** (29 Sep 2026), priority-ordered:
+**41 URLs in `sitemap.xml`** (10 Oct 2026), priority-ordered:
 
 | Priority | URLs |
 |---|---|
 | 1.0 | `/` |
 | 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* and `/mac` |
-| 0.8 | `/blog` |
+| 0.8 | `/blog`, `/how-it-works` |
 | 0.7 | the 28 blog posts |
 | 0.3 | `/privacy`, `/terms` |
 
@@ -313,6 +325,23 @@ it actually embeds.
 Not in the sitemap but live: `/robots.txt`, `/sitemap.xml`, `/feed.xml`,
 `/llms.txt`, `/llms-full.txt`, `/ai.txt`, `/opengraph-image`, `/api/waitlist`,
 `/api/contact`, `/ingest/*` (analytics proxy), `/thanks`, and the 404.
+
+**`/how-it-works` is linked from inside the iPad app, and that governs it.**
+An iOS app may not point users at a non-Apple payment route (App Store Review
+Guidelines **3.1.3 and 4.8**), so the page must not mention prices, tiers,
+billing or purchasing, and must not link to any page that does. That is why it
+does **not** use the shared `Header` (nav to `#pricing`, waitlist button), the
+shared `Footer` (pricing link), or `Wordmark` (links to the homepage, which
+sells) - it ships its own link-light versions. It is also why the Offers and
+FAQPage JSON-LD moved out of the root layout and onto the homepage: anything in
+that graph lands in the HTML of every page. Verified by grepping the rendered
+HTML: zero occurrences of price, plan, month, subscribe, `$` or `₹`.
+
+> One residue, known and accepted: Next serialises the root `not-found`
+> boundary into every page's RSC payload, and that boundary renders the site
+> footer, so the string `/#pricing` appears inside a `<script>` tag. It is not
+> rendered, not visible and not clickable. A route-scoped `not-found.tsx` does
+> **not** displace it - that was tried and removed.
 
 **`/thanks` is deliberately out of the sitemap and `noindex`.** It is where
 Dodo Payments returns the browser after checkout, and Dodo puts the customer's

@@ -3,7 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@/components/analytics";
 import { site, ogImage } from "@/lib/site";
-import { faqs, features } from "@/lib/content";
+import { features } from "@/lib/content";
 import { screenshots, type ScreenshotSlot } from "@/lib/screenshots";
 import "./globals.css";
 
@@ -92,8 +92,17 @@ const productScreenshots = uniqueBySrc
     caption: s.alt,
   }));
 
-// A single @graph so search + AI engines get the organization, the site, the
-// product (with its real feature list), and the FAQ as machine-readable Q&A.
+// A single @graph so search + AI engines get the organization, the site and the
+// product with its real feature list.
+//
+// **Offers and the FAQ deliberately live on the homepage instead** (see
+// app/page.tsx). This graph is emitted by the root layout, so anything in it
+// appears in the HTML of *every* page - and /how-it-works is linked from inside
+// the iPad app, where App Store Review Guidelines 3.1.3 and 4.8 forbid pointing
+// users at a non-Apple payment route. Prices in that page's markup are exactly
+// what those rules are about. The nodes that carry money moved to the one page
+// that is about money; `#app` is still defined here, so the `about` reference on
+// every use-case page still resolves.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -128,49 +137,12 @@ const jsonLd = {
       "@id": `${site.url}/#app`,
       name: site.name,
       applicationCategory: "UtilitiesApplication",
-      operatingSystem: "macOS 15.3 or later, iOS 18.5 or later, iPadOS 18.5 or later",
+      operatingSystem: "macOS 14 or later, iOS 17 or later, iPadOS 17 or later",
       description: site.description,
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       featureList: features.map((f) => f.title.replace(/\.$/, "")),
       screenshot: productScreenshots.map((s) => ({ "@id": s["@id"] })),
-      offers: [
-        {
-          "@type": "Offer",
-          name: "Free",
-          price: "0",
-          priceCurrency: "USD",
-          description:
-            "Five-minute sessions, three a day, no card. Every Servey feature included.",
-          availability: "https://schema.org/PreOrder",
-        },
-        {
-          "@type": "Offer",
-          name: "Terminal",
-          price: "1.99",
-          priceCurrency: "USD",
-          availability: "https://schema.org/PreOrder",
-        },
-        {
-          "@type": "Offer",
-          name: "Full access",
-          price: "4.49",
-          priceCurrency: "USD",
-          availability: "https://schema.org/PreOrder",
-        },
-      ],
-    },
-    // Google retired FAQ *rich results* on 7 May 2026, so expect no stars or
-    // accordions in the SERP from this. It stays because the markup is still
-    // valid and answer engines read it for machine-readable Q&A.
-    {
-      "@type": "FAQPage",
-      "@id": `${site.url}/#faq`,
-      mainEntity: faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
     },
     ...productScreenshots,
   ],

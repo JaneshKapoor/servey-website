@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Clock, Monitor, ShieldCheck, TerminalSquare } from "lucide-react";
+import { ArrowRight, Check, Clock, Download, Monitor, ShieldCheck, TerminalSquare } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Screenshot } from "@/components/device-frame";
@@ -18,17 +18,22 @@ import { site, ogImage } from "@/lib/site";
  * page is the ONLY route to the host - the half of the product that does the
  * work. It must never 404.
  *
- * Pre-launch it explains what the Mac app is and takes an email. When the DMG
- * exists, set `DOWNLOAD` below to its URL and the page becomes a download page:
- * the hero swaps its button, and the "what happens next" copy is already written
- * for both states.
+ * Shipping since 9 Oct 2026. `DOWNLOAD` is the URL the Mac app itself has
+ * hardcoded for its update check, so the page and the app agree by
+ * construction - do not point this at a mirror or a redirect.
  */
-const DOWNLOAD: string | null = null;
+const DOWNLOAD: string | null = "https://servey.in/download/Servey.dmg";
 
+/**
+ * Read off MACOSX_DEPLOYMENT_TARGET and IPHONEOS_DEPLOYMENT_TARGET in the app
+ * project, not off a changelog. This page said macOS 15.3 and iOS 18.5 until
+ * 10 Oct 2026, which turned away every Mac on 14 and every device between 17.0
+ * and 18.4 - machines that run Servey perfectly well.
+ */
 const REQUIREMENTS = [
-  "macOS 15.3 or later",
+  "macOS 14 (Sonoma) or later",
   "Apple silicon or Intel",
-  "An iPhone or iPad on iOS or iPadOS 18.5 or later",
+  "An iPhone or iPad on iOS or iPadOS 17 or later",
   "A Google account, used on both devices",
 ];
 
@@ -37,14 +42,14 @@ export const metadata: Metadata = {
   // as "Servey for Mac - the host app - Servey".
   title: { absolute: "Servey for Mac - the host app" },
   description:
-    "The Mac app is the half of Servey that does the work: it shares your screen and shell with your iPhone or iPad. Here is what it needs and when you can get it.",
+    "Download the Mac app - the half of Servey that does the work, sharing your screen and shell with your iPhone or iPad. Signed and notarised by Apple.",
   alternates: { canonical: `${site.url}/mac` },
   openGraph: {
     type: "website",
     url: `${site.url}/mac`,
     title: `Servey for Mac - ${site.name}`,
     description:
-      "The Mac app is what your iPhone or iPad talks to. Requirements, what it does, and how to get it.",
+      "The Mac app is what your iPhone or iPad talks to. Download it here - signed, notarised, and free to install.",
     images: [ogImage],
   },
 };
@@ -58,6 +63,7 @@ export default function MacPage() {
           <Badge className="border-accent/30 bg-accent-deep/60 text-accent-strong">
             <Clock className="size-3.5" />
             {DOWNLOAD ? "Available now" : "Coming soon"}
+
           </Badge>
 
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -71,17 +77,27 @@ export default function MacPage() {
           </p>
 
           {DOWNLOAD ? (
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button asChild size="lg">
-                <a href={DOWNLOAD}>
-                  Download for Mac
-                  <ArrowRight className="size-4" />
-                </a>
-              </Button>
-              <span className="text-sm text-muted">
-                Apple silicon and Intel - macOS 15.3 or later
-              </span>
-            </div>
+            <>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button asChild size="lg">
+                  <a href={DOWNLOAD}>
+                    <Download className="size-4" />
+                    Download for Mac
+                  </a>
+                </Button>
+                <span className="text-sm text-muted">
+                  Apple silicon and Intel - macOS 14 or later
+                </span>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                A 35 MB disk image, downloaded from this site rather than the Mac App
+                Store - the App Store cannot carry an app that captures your screen and
+                runs your shell. It is{" "}
+                <strong className="text-fg">signed and notarised by Apple</strong>, so
+                macOS will open it normally: double-click, drag it to Applications, done.
+                No right-click-to-open, no Gatekeeper warning to talk yourself past.
+              </p>
+            </>
           ) : (
             <div className="mt-8">
               <WaitlistDialog source="mac-page">
@@ -154,9 +170,8 @@ export default function MacPage() {
             ))}
           </ul>
           <p className="mt-4 text-sm leading-relaxed text-muted">
-            The macOS 15.3 requirement is a genuinely narrow window and it will exclude
-            some Macs. Worth checking now rather than after you have waited for us -
-            the version is in the Apple menu, under About This Mac.
+            macOS 14 came out in September 2023, so most Macs still in use qualify. If
+            you are not sure, the version is in the Apple menu under About This Mac.
           </p>
 
           <h2 className="mt-12 text-2xl font-semibold tracking-tight text-fg">
@@ -181,14 +196,14 @@ export default function MacPage() {
 
           <div className="mt-14 rounded-2xl border border-border bg-surface/40 p-6">
             <h2 className="text-lg font-semibold tracking-tight text-fg">
-              While you wait
+              Before you start
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              If you want to know what you are getting into, the{" "}
-              <Link href="/#how-it-works" className="text-accent-strong underline underline-offset-2">
+              If you want to know what you are getting into,{" "}
+              <Link href="/how-it-works" className="text-accent-strong underline underline-offset-2">
                 how it works
               </Link>{" "}
-              section walks the whole setup, and{" "}
+              walks the whole setup, and{" "}
               <Link
                 href="/blog/headless-mac-mini-setup"
                 className="text-accent-strong underline underline-offset-2"
