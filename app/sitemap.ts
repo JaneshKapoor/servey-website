@@ -68,9 +68,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       images: [`${site.url}${screenshots["mac-host-ui"].src}`],
     },
-    { url: `${site.url}/blog`, lastModified: updated, changeFrequency: "weekly", priority: 0.8 },
+    {
+      url: `${site.url}/blog`,
+      lastModified: updated,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...postEntries,
-    { url: `${site.url}/privacy`, lastModified: updated, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${site.url}/terms`, lastModified: updated, changeFrequency: "yearly", priority: 0.3 },
+    // Required by App Store Connect as the listing's Support URL, so it has to
+    // stay reachable; it is also a genuinely useful page for people searching
+    // for a fix rather than a feature.
+    {
+      url: `${site.url}/support`,
+      lastModified: updated,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${site.url}/privacy`,
+      lastModified: updated,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${site.url}/terms`,
+      lastModified: updated,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 }

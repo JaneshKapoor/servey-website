@@ -5,7 +5,26 @@ import type { NextConfig } from "next";
 const POSTHOG_INGEST_HOST =
   process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
 const POSTHOG_ASSET_HOST =
-  process.env.NEXT_PUBLIC_POSTHOG_ASSET_HOST ?? "https://us-assets.i.posthog.com";
+  process.env.NEXT_PUBLIC_POSTHOG_ASSET_HOST ??
+  "https://us-assets.i.posthog.com";
+
+/**
+ * Where /download/Servey.dmg is actually served from.
+ *
+ * Unset (the default) means `public/download/Servey.dmg` - the file lives in
+ * git. That is fine for one or two releases and bad for ten: git keeps every
+ * version forever, so each ~37 MB build is ~37 MB added to every clone, for
+ * good.
+ *
+ * To move it out, upload the dmg to a bucket (Vercel Blob, R2, S3) and set
+ * `DMG_ORIGIN` to the base URL it is served from. The rewrite below then
+ * proxies `/download/Servey.dmg` to `${DMG_ORIGIN}/Servey.dmg`, so the URL the
+ * shipped Mac app has hardcoded keeps returning a 200 with the right filename
+ * and nothing has to be re-released. Delete the file from `public/` in the
+ * same change, and remember the bytes must still arrive untouched - the dmg is
+ * notarised, so any transform breaks Gatekeeper.
+ */
+const DMG_ORIGIN = process.env.DMG_ORIGIN?.replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -51,11 +70,17 @@ const nextConfig: NextConfig = {
         source: "/download/Servey.dmg",
         headers: [
           { key: "Content-Type", value: "application/x-apple-diskimage" },
-          { key: "Content-Disposition", value: 'attachment; filename="Servey.dmg"' },
+          {
+            key: "Content-Disposition",
+            value: 'attachment; filename="Servey.dmg"',
+          },
           { key: "Access-Control-Allow-Origin", value: "*" },
           // Long enough to be cheap, short enough that replacing the file
           // reaches people the same day.
-          { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate",
+          },
           { key: "X-Content-Type-Options", value: "nosniff" },
         ],
       },
@@ -64,7 +89,10 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "Content-Type", value: "application/json; charset=utf-8" },
           { key: "Access-Control-Allow-Origin", value: "*" },
-          { key: "Cache-Control", value: "public, max-age=60, must-revalidate" },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=60, must-revalidate",
+          },
         ],
       },
     ];
@@ -81,16 +109,30 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
-    return [
-      {
-        source: "/ingest/static/:path*",
-        destination: `${POSTHOG_ASSET_HOST}/static/:path*`,
-      },
-      {
-        source: "/ingest/:path*",
-        destination: `${POSTHOG_INGEST_HOST}/:path*`,
-      },
-    ];
+    return {
+      // `beforeFiles` so this wins over the static file while both exist -
+      // that way flipping DMG_ORIGIN takes effect immediately and deleting
+      // public/download/Servey.dmg is a separate, safe step.
+      beforeFiles: DMG_ORIGIN
+        ? [
+            {
+              source: "/download/Servey.dmg",
+              destination: `${DMG_ORIGIN}/Servey.dmg`,
+            },
+          ]
+        : [],
+      afterFiles: [
+        {
+          source: "/ingest/static/:path*",
+          destination: `${POSTHOG_ASSET_HOST}/static/:path*`,
+        },
+        {
+          source: "/ingest/:path*",
+          destination: `${POSTHOG_INGEST_HOST}/:path*`,
+        },
+      ],
+      fallback: [],
+    };
   },
 
   // PostHog's ingest endpoints end in a slash (e.g. /ingest/e/). Next's default

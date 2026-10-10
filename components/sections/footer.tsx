@@ -5,7 +5,12 @@ import { ContactDialog } from "@/components/contact-dialog";
 import { nav, site } from "@/lib/site";
 import { useCases } from "@/lib/use-cases";
 
-export function Footer() {
+/**
+ * `hidePricing` drops the Pricing link from the Product column - same reason as
+ * the header's: pages the iOS app links to must not route to a purchase.
+ */
+export function Footer({ hidePricing = false }: { hidePricing?: boolean }) {
+  const items = hidePricing ? nav.filter((i) => i.href !== "/#pricing") : nav;
   const year = new Date().getFullYear();
   return (
     <footer className="mt-8 border-t border-border bg-surface/30">
@@ -14,8 +19,8 @@ export function Footer() {
           <div className="max-w-xs">
             <Wordmark />
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Your Mac. In your pocket. Native remote access - crystal-clear on your
-              network, private peer-to-peer anywhere else.
+              Your Mac. In your pocket. Native remote access - crystal-clear on
+              your network, private peer-to-peer anywhere else.
             </p>
 
             {/* Social proof + reciprocal link. Deliberately in the footer, not the
@@ -60,7 +65,7 @@ export function Footer() {
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 Product
               </span>
-              {nav.map((item) => (
+              {items.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -69,7 +74,10 @@ export function Footer() {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/blog" className="text-sm text-muted transition-colors hover:text-fg">
+              <Link
+                href="/blog"
+                className="text-sm text-muted transition-colors hover:text-fg"
+              >
                 Blog
               </Link>
             </nav>
@@ -78,10 +86,16 @@ export function Footer() {
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 Legal
               </span>
-              <Link href="/privacy" className="text-sm text-muted transition-colors hover:text-fg">
+              <Link
+                href="/privacy"
+                className="text-sm text-muted transition-colors hover:text-fg"
+              >
                 Privacy
               </Link>
-              <Link href="/terms" className="text-sm text-muted transition-colors hover:text-fg">
+              <Link
+                href="/terms"
+                className="text-sm text-muted transition-colors hover:text-fg"
+              >
                 Terms
               </Link>
             </nav>
@@ -116,7 +130,10 @@ export function Footer() {
 
           <span className="inline-flex items-center gap-1.5">
             Made with
-            <Heart className="size-3.5 fill-accent text-accent" aria-label="love" />
+            <Heart
+              className="size-3.5 fill-accent text-accent"
+              aria-label="love"
+            />
             by{" "}
             <a
               href="https://x.com/KapoorJanesh"

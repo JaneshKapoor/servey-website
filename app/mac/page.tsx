@@ -18,6 +18,12 @@ import { site, ogImage } from "@/lib/site";
  * page is the ONLY route to the host - the half of the product that does the
  * work. It must never 404.
  *
+ * The iPad app's onboarding hardcodes this URL, so the page is in scope for
+ * App Store Review Guidelines 3.1.3 and 4.8 the same way /how-it-works is:
+ * it must not route anyone to a non-Apple payment. Hence `hidePricing` on the
+ * header and the footer. It keeps the rest of its navigation because it is
+ * also a public download page that people reach from search.
+ *
  * Shipping since 9 Oct 2026. `DOWNLOAD` is the URL the Mac app itself has
  * hardcoded for its update check, so the page and the app agree by
  * construction - do not point this at a mirror or a redirect.
@@ -57,7 +63,7 @@ export const metadata: Metadata = {
 export default function MacPage() {
   return (
     <>
-      <Header />
+      <Header hidePricing />
       <main id="main" className="container-page pb-24 pt-32">
         <div className="mx-auto max-w-3xl">
           <Badge className="border-accent/30 bg-accent-deep/60 text-accent-strong">
@@ -220,7 +226,7 @@ export default function MacPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer hidePricing />
     </>
   );
 }

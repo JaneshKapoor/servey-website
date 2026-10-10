@@ -11,7 +11,16 @@ import { WaitlistDialog } from "@/components/waitlist-dialog";
 import { nav } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export function Header() {
+/**
+ * `hidePricing` drops the Pricing link from both navs.
+ *
+ * Set it on any page the iPhone or iPad app links to. App Store Review
+ * Guidelines 3.1.3 and 4.8 forbid an iOS app pointing users at a non-Apple
+ * payment route, and a nav link straight to the pricing section is exactly
+ * that. /mac is the live case: the app's onboarding hardcodes it.
+ */
+export function Header({ hidePricing = false }: { hidePricing?: boolean }) {
+  const items = hidePricing ? nav.filter((i) => i.href !== "/#pricing") : nav;
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -35,7 +44,7 @@ export function Header() {
         <Wordmark />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-          {nav.map((item) => (
+          {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -92,7 +101,7 @@ export function Header() {
                   </DialogPrimitive.Close>
                 </div>
                 <nav className="flex flex-col" aria-label="Mobile">
-                  {nav.map((item) => (
+                  {items.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}

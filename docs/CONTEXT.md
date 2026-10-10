@@ -153,6 +153,8 @@ app/
                           #   nothing, strips the email from the URL
   how-it-works/page.tsx   # linked from INSIDE the iPad app - no prices, no
                           #   pricing links, own header/footer. See below.
+  support/page.tsx        # the App Store listing's Support URL - required by
+                          #   App Store Connect, so it must never 404
   privacy/  terms/        # legal pages
   api/waitlist/route.ts   # POST - honeypot + rate limit + provider
   api/contact/route.ts    # POST - Firestore `contacts`
@@ -181,7 +183,8 @@ lib/
 public/
   brand/                  # app-icon logos
   screenshots/            # real captures
-  download/Servey.dmg     # the signed, notarised Mac app - NEVER re-encode
+  download/Servey.dmg     # the signed, notarised Mac app - NEVER re-encode.
+                          #   Set DMG_ORIGIN to serve it from a bucket instead
   mac/latest.json         # update feed the Mac app polls; exact bytes matter
   llms.txt                # GENERATED - map for AI answer engines
   llms-full.txt           # GENERATED - every post in full, ~174KB
@@ -308,7 +311,7 @@ and `navLabel` for the cross-link mesh.
 
 ## 6. URL inventory
 
-**41 URLs in `sitemap.xml`** (10 Oct 2026), priority-ordered:
+**42 URLs in `sitemap.xml`** (11 Oct 2026), priority-ordered:
 
 | Priority | URLs |
 |---|---|
@@ -316,6 +319,7 @@ and `navLabel` for the cross-link mesh.
 | 0.9 | the 7 use-case pages *(above blog - these are the commercial pages)* and `/mac` |
 | 0.8 | `/blog`, `/how-it-works` |
 | 0.7 | the 28 blog posts |
+| 0.5 | `/support` |
 | 0.3 | `/privacy`, `/terms` |
 
 The sitemap also carries **image entries**: the homepage lists every ready
@@ -342,6 +346,19 @@ HTML: zero occurrences of price, plan, month, subscribe, `$` or `₹`.
 > footer, so the string `/#pricing` appears inside a `<script>` tag. It is not
 > rendered, not visible and not clickable. A route-scoped `not-found.tsx` does
 > **not** displace it - that was tried and removed.
+
+**Pages the apps link to must not route to a purchase.** `Header` and `Footer`
+both take a **`hidePricing`** prop that drops the Pricing link; `/mac` sets it
+(the iPad onboarding hardcodes that URL) and so does `/support` (Apple reaches
+it from the listing). `/how-it-works` goes further and ships its own header and
+footer, because it is linked from inside the app itself. Before adding a link
+to any of these three, check where it leads.
+
+**The URLs the shipped apps have hardcoded** - all of them must stay 200:
+`/mac`, `/how-it-works`, `/privacy`, `/terms`, `/mac/latest.json`,
+`/download/Servey.dmg`, plus `/support` from App Store Connect. (`/account`
+appears in `AccountState.swift` too, but only in a branch the Mac app cannot
+reach; it is dead code rather than a missing page.)
 
 **`/thanks` is deliberately out of the sitemap and `noindex`.** It is where
 Dodo Payments returns the browser after checkout, and Dodo puts the customer's
