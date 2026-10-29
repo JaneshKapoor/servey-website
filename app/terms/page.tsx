@@ -23,14 +23,16 @@ export default function TermsPage() {
     <LegalPage title="Terms of Service" updated="October 2026">
       <p>
         These terms cover your use of the <strong>Servey</strong> apps for macOS, iOS
-        and iPadOS and the <strong>servey.in</strong> website. By joining the waitlist,
-        installing an app, or using the service, you agree to them. If you do not
-        agree, please do not use Servey.
+        and iPadOS and the <strong>servey.in</strong> website. By installing an app
+        or using the service, you agree to them. If you do not agree, please do not
+        use Servey.
       </p>
       <p>
-        Servey is currently <strong>pre-launch</strong>. Until the apps are generally
-        available, the sections on the waitlist and the website are the ones that
-        apply to you.
+        Both apps are generally available - the Mac app from this site, the iPhone
+        and iPad app from the App Store - so every section below applies. Which
+        billing paragraph applies to you depends on where you bought: Apple handles
+        purchases made in the iPhone and iPad app, and Dodo Payments handles
+        purchases made on the Mac or the web.
       </p>
 
       <h2>Who can use Servey</h2>
@@ -169,7 +171,7 @@ export default function TermsPage() {
         <strong>&ldquo;as available&rdquo;</strong> basis, without warranties of any
         kind, express or implied, including fitness for a particular purpose. Product
         features described on this site reflect the app as built, and details may
-        change before launch. You are responsible for keeping your own backups.
+        change between releases. You are responsible for keeping your own backups.
       </p>
 
       <h2>Limitation of liability</h2>

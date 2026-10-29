@@ -76,7 +76,7 @@ export default function OgImage() {
               padding: "10px 24px",
             }}
           >
-            Join the waitlist
+            Out now on Mac, iPhone and iPad
           </div>
         </div>
       </div>

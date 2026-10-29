@@ -60,12 +60,28 @@ A native Apple app that puts your Mac in your pocket.
   **same account**.
 - Native Swift/SwiftUI - deliberately not an Electron or Java port.
 
-**Status: shipping since 9 Oct 2026.** The **Mac app** is a signed, notarised
-`.dmg` served from this site at `/download/Servey.dmg` - the App Store cannot
-carry an app that captures the screen and runs a shell, so the website is the
-only delivery mechanism and that URL is **hardcoded in the shipped app**. The
-**iPhone and iPad app** is on its way to App Review. Several growth decisions
-in §9 were written for the waitlist era and now need rereading.
+**Status: both halves shipping.** The **Mac app** has been out since 9 Oct
+2026: a signed, notarised `.dmg` served from this site at
+`/download/Servey.dmg` - the App Store cannot carry an app that captures the
+screen and runs a shell, so the website is the only delivery mechanism and that
+URL is **hardcoded in the shipped app**. The **iPhone and iPad app**, *Servey -
+Remote Desktop*, went live on the App Store on **29 Oct 2026** at
+<https://apps.apple.com/app/id6792620916> (app id `6792620916`, free with two
+in-app purchases, iOS/iPadOS 17+, 50.3 MB).
+
+**Always use the short `/app/id…` form.** Apple redirects it to the visitor's
+own storefront, so an Indian visitor gets the rupee page and an American the
+dollar page with no detection on our side. Never hardcode `/in/` or `/us/`, and
+never append `?uo=4` or any affiliate parameter. The URL lives in one place:
+`appStore` in `lib/site.ts`.
+
+**The waitlist is retired.** Every UI entry point was removed on 29 Oct 2026 -
+header, hero, pricing cards, use-case pages, blog CTAs. `POST /api/waitlist`,
+`lib/waitlist-providers.ts`, `components/waitlist-form.tsx` and
+`components/waitlist-dialog.tsx` are all still in the tree and still work, and
+the Firestore `waitlist` collection is untouched, because the addresses in it
+belong to people who asked to be told when this happened. Nothing has been sent
+to them; the owner wants to write that mail personally.
 
 ### Pricing (`lib/content.ts` → `pricing`)
 
@@ -268,8 +284,8 @@ page changed on every deploy gets the signal discounted.
 The last three were added on 16 Aug 2026 in direct response to the query data in
 §7: competitor-vs-competitor is the only non-brand format earning clicks. In all
 three, **Servey is deliberately not the hero** - it appears once, late, labelled
-as our own pre-launch project, and each mention tells the reader to buy an
-established product if they need something today. That restraint is the reason
+as our own new and unproven project, and each mention tells the reader to buy
+an established product if they need something proven today. That restraint is the reason
 these pages get read and cited; do not "improve" it into a sales pitch.
 
 > **Internal linking works by keyword overlap, not anchors.** `p` blocks render
@@ -533,8 +549,12 @@ whole site dynamic.
 | `waitlist_failed` | `source`, `status` | Server or network failure |
 | `contact_message_sent` | - | No message body or address captured |
 
-`source` is already threaded through every waitlist CTA (`nav`, `nav-mobile`,
-`hero`, …), so **"which placement converts" is answerable with no extra
+`source` was threaded through every waitlist CTA (`nav`, `nav-mobile`,
+`hero`, …). Those CTAs were removed on 29 Oct 2026 when the iPhone and iPad app
+shipped, so these three events have stopped firing - the historic data is still
+in PostHog and still worth reading, but nothing new is being written. If a
+funnel is ever wanted for the download or the App Store, `source` is the
+pattern to copy, so **"which placement converts" stays answerable with no extra
 instrumentation**. That was the main reason to instrument this funnel first.
 
 ### Open decision: consent banner
@@ -548,20 +568,22 @@ oversight.**
 
 ---
 
-## 9. Growth - what is actually available pre-launch
+## 9. Growth - channels, now that both apps ship
 
-Most launch directories reject announced-only products. Verified rules:
+The table below was written while the product was announced-only. **Both apps
+now ship, so the two blocked rows are unblocked** - AlternativeTo and Show HN
+both reject announced-only products and neither objection applies any more.
 
 | Channel | Status | Rule |
 |---|---|---|
-| **AlternativeTo** | ❌ Blocked | *"If the app is Coming Soon (announced only), in closed/private beta, invite-only, or in Early Access phase, we do not accept it."* |
-| **Show HN** | ❌ Blocked | *"If your work isn't ready for users to try out, please don't do a Show HN."* and *"Don't post landing pages or fundraisers."* |
-| **App Store listing** | ⏳ At launch | The **#1 most-cited source** in this category (77 citations) |
+| **AlternativeTo** | ✅ Unblocked | Was blocked only by *"If the app is Coming Soon (announced only)… we do not accept it."* The app is now downloadable, so it qualifies. Account is past the 7-day age rule |
+| **Show HN** | ✅ Unblocked | Was blocked only by *"If your work isn't ready for users to try out, please don't do a Show HN."* It is ready now |
+| **App Store listing** | ✅ Live 29 Oct 2026 | The **#1 most-cited source** in this category (77 citations). Linked from the header, hero, use-case pages, blog CTAs, `/mac` and `/how-it-works` |
 | **YouTube demo** | ✅ Available | **#2 most-cited** (74 citations) - the highest-leverage move available now |
 | **Reddit** (r/macapps, r/homelab) | ✅ Available | **#3 most-cited** (65 citations). Genuine participation, not a launch post |
-| **BetaList / Peerlist / Uneed** | ✅ Available | Built specifically for unlaunched products |
+| **BetaList / Peerlist / Uneed** | ⚠️ Less apt | Built for unlaunched products; a shipped app is a weaker fit than AlternativeTo or Show HN now |
 | **HN as a normal submission** | ✅ Available | Show HN is barred, but submitting a blog post as a regular link is fine |
-| **Email the waitlist** | ✅ Available | Never used yet |
+| **Email the waitlist** | ✋ Owner only | Never used. The owner has ruled out any agent-initiated bulk send and wants to write this one personally |
 | **Product Hunt** | Done | Badge is in the footer. **Never solicit upvotes.** |
 
 **AlternativeTo timing note:** an account must be **at least 7 days old** before
@@ -573,8 +595,8 @@ submission can go in on launch day. Prepare logo, screenshots and a demo video.
 Screens, Jump Desktop, Termius, plus the generic remote-desktop tools.
 **Termius is only a partial competitor** - the honest overlap is narrow: *"run
 a terminal on your own Mac without SSH setup."* Chasing "termius alternative"
-broadly would attract multi-host-SSH searchers who bounce, which pollutes
-waitlist quality while pre-launch. The comparison post is deliberately titled
+broadly would attract multi-host-SSH searchers who bounce, which wastes the
+traffic. The comparison post is deliberately titled
 *"Termius alternative? Only for one job."*
 
 ---
@@ -757,7 +779,7 @@ the whole fix.
 **Owner:**
 - Add `NEXT_PUBLIC_POSTHOG_KEY` in Vercel (Production + Preview), then redeploy
 - Decide the consent-banner question (§8)
-- Record the YouTube demo - highest-leverage channel available pre-launch
+- Record the YouTube demo - still the highest-leverage channel we have not used
 - Reddit participation in r/macapps and r/homelab
 - ~~Email the waitlist~~ - **ruled out by the owner**; no bulk sends to waitlist members
 - Request GSC indexing for the 7 newest URLs; check **Indexing → Pages** for
@@ -765,7 +787,8 @@ the whole fix.
 - ~~Delete the 7 bogus Bing "sitemap" rows~~ - **done 1 Sep 2026** by the owner; Bing now shows 1 known sitemap, 0 warnings, 34 URLs discovered, crawled 1 Sep. Re-run the Ahrefs crawl
 - Move the repo off iCloud (or exclude `.next`) - this is what causes the
   Turbopack PostCSS worker timeouts, not the config
-- App Store + AlternativeTo submissions at launch
+- ~~App Store submission~~ - **live 29 Oct 2026**. AlternativeTo and Show HN are
+  now unblocked and are the next two moves (§9)
 - **In-app account deletion - App Store submission blocker.** Guideline
   5.1.1(v) has required it since 30 June 2022. There is no delete path in
   either app and `firestore.rules` sets `allow delete: if false` on `users`.

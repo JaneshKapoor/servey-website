@@ -7,8 +7,7 @@ import { Download, Menu, X } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
-import { nav } from "@/lib/site";
+import { appStore, nav } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
@@ -63,17 +62,15 @@ export function Header({ hidePricing = false }: { hidePricing?: boolean }) {
 
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
-          <WaitlistDialog source="nav">
-            <button
-              type="button"
-              className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-fg"
-            >
-              iPhone app
-            </button>
-          </WaitlistDialog>
-          {/* The Mac app exists today, so it gets the button. The waitlist
-              keeps a quieter slot beside it for the iPhone and iPad app,
-              which does not. */}
+          {/* Both halves ship now, so both get a link that goes where its
+              label says. The short App Store URL carries no storefront
+              segment - Apple sends each visitor to their own. */}
+          <a
+            href={appStore.url}
+            className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-fg"
+          >
+            iPhone and iPad app
+          </a>
           <Button asChild size="sm">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/api/download">
@@ -142,13 +139,11 @@ export function Header({ hidePricing = false }: { hidePricing?: boolean }) {
                       Download for Mac
                     </a>
                   </Button>
-                  {/* Closing the sheet first means only one Radix dialog owns
-                      the scroll lock at a time. */}
-                  <WaitlistDialog source="nav-mobile">
-                    <Button variant="secondary" className="w-full" onClick={() => setOpen(false)}>
-                      Get the iPhone app
-                    </Button>
-                  </WaitlistDialog>
+                  <Button asChild variant="secondary" className="w-full">
+                    <a href={appStore.url} onClick={() => setOpen(false)}>
+                      iPhone and iPad app
+                    </a>
+                  </Button>
                 </div>
               </DialogPrimitive.Content>
             </DialogPrimitive.Portal>

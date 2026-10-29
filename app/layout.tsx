@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@/components/analytics";
-import { site, ogImage } from "@/lib/site";
+import { appStore, site, ogImage } from "@/lib/site";
 import { features } from "@/lib/content";
 import { screenshots, type ScreenshotSlot } from "@/lib/screenshots";
 import "./globals.css";
@@ -140,6 +140,12 @@ const jsonLd = {
       operatingSystem: "macOS 14 or later, iOS 17 or later, iPadOS 17 or later",
       description: site.description,
       url: site.url,
+      // Both distribution points, so a crawler can tie the site to the App
+      // Store listing. No price here on purpose - the Offers live on the
+      // homepage only, because this node is rendered into every page and
+      // /how-it-works may not carry pricing.
+      sameAs: [appStore.url],
+      downloadUrl: [`${site.url}/mac`, appStore.url],
       publisher: { "@id": `${site.url}/#organization` },
       featureList: features.map((f) => f.title.replace(/\.$/, "")),
       screenshot: productScreenshots.map((s) => ({ "@id": s["@id"] })),

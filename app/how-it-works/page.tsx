@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Check, Download, MonitorSmartphone, ShieldCheck, TerminalSquare } from "lucide-react";
 import { Screenshot } from "@/components/device-frame";
 import { Button } from "@/components/ui/button";
-import { site, ogImage } from "@/lib/site";
+import { appStore, site, ogImage } from "@/lib/site";
 
 /**
  * servey.in/how-it-works - linked from the iPad app's Account screen.
@@ -15,10 +15,14 @@ import { site, ogImage } from "@/lib/site";
  * app, so this page must not mention prices, tiers, billing or purchasing, and
  * must not link to any page that does. That rules out the header, the footer
  * and the wordmark as well: the shared header carries nav to #pricing and a
- * waitlist button, the shared footer links to pricing, and the wordmark links
+ * App Store link, the shared footer links to pricing, and the wordmark links
  * to the homepage, which sells. All three are replaced here with local,
  * link-light versions. The homepage, /mac and /blog are all deliberately
  * unlinked.
+ *
+ * Apple's own storefront is the one outbound commercial link that is allowed,
+ * because it is Apple's payment route rather than a way around it. The App
+ * Store listing may be linked; the prices on it must not be repeated here.
  *
  * Before changing anything on this page, re-read that paragraph. A 404 or a
  * stray price link here is a rejected submission, not a copy bug.
@@ -112,7 +116,11 @@ export default function HowItWorksPage() {
             </Button>
             <p className="mt-3 text-sm text-muted">
               Signed and notarised by Apple, so it opens like any other Mac app.
-              The iPhone and iPad half is on its way to the App Store.
+              The iPhone and iPad half is{" "}
+              <a href={appStore.url} className="text-fg underline underline-offset-4">
+                on the App Store
+              </a>
+              .
             </p>
           </div>
 

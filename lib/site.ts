@@ -12,6 +12,31 @@ export const site = {
 } as const;
 
 /**
+ * The iPhone and iPad app on the App Store.
+ *
+ * Deliberately the short /app/id form with no storefront segment and no
+ * campaign parameter: Apple redirects it to the visitor's own storefront, so
+ * an Indian visitor lands on the rupee page and an American on the dollar one
+ * without us detecting anything. Hardcoding /in/ or /us/ would show half our
+ * readers a price they cannot pay.
+ */
+export const appStore = {
+  url: "https://apps.apple.com/app/id6792620916",
+  id: "6792620916",
+  name: "Servey - Remote Desktop",
+  // Apple's supplied badge artwork, downloaded from Apple's marketing tools
+  // service. Black on light backgrounds, white on dark - those are the two
+  // variants Apple ships, and recolouring or redrawing either is not allowed.
+  badge: {
+    black: "/app-store-badge-black.svg",
+    white: "/app-store-badge-white.svg",
+    // Intrinsic size of Apple's artwork; keep the ratio when scaling.
+    width: 120,
+    height: 40,
+  },
+} as const;
+
+/**
  * The shared Open Graph / Twitter card image.
  *
  * Pass this object rather than the bare string "/opengraph-image": the string

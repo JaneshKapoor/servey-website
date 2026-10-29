@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Download } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
+import { AppStoreBadge } from "@/components/app-store-badge";
 import { getPost } from "@/lib/blog";
 import { getUseCase, useCases } from "@/lib/use-cases";
 import { site, ogImage } from "@/lib/site";
@@ -134,16 +134,19 @@ export default async function UseCasePage({
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-fg/90">{page.lede}</p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <WaitlistDialog source={`use-case:${page.slug}`}>
-              <Button size="lg">
-                Join the waitlist
-                <ArrowRight className="size-4" />
-              </Button>
-            </WaitlistDialog>
-            <Button asChild variant="secondary" size="lg">
-              <Link href="/#how-it-works">See how it works</Link>
+          {/* Both halves of the product ship, so both get an action. The
+              Mac download is the primary one because the Mac app is the half
+              that has to be installed first - nothing works until the host
+              is running. */}
+          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+            <Button asChild size="lg">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+              <a href="/api/download">
+                <Download className="size-4" />
+                Download for Mac
+              </a>
             </Button>
+            <AppStoreBadge height={44} />
           </div>
 
           {/* The task-specific module. */}
@@ -197,13 +200,14 @@ export default async function UseCasePage({
 
           {/* Where a competitor page would put social proof, this puts the truth. */}
           <aside className="mt-14 rounded-2xl border border-border bg-surface p-5">
-            <p className="text-sm font-medium text-fg">Servey has not launched yet</p>
+            <p className="text-sm font-medium text-fg">Servey is new</p>
             <p className="mt-2 text-[15px] leading-relaxed text-muted">
-              There are no users, no App Store reviews and no track record behind
-              this page. Everything above describes what the app does, written by
-              the people building it - not by anyone who has lived with it. If you
-              need something proven today, the established apps in this space have
-              earned that and Servey has not.
+              Both apps shipped in October 2026, so there are no App Store reviews
+              and no track record behind this page yet. Everything above describes
+              what the app does, written by the people building it - not by anyone
+              who has lived with it for a year. If you need something proven today,
+              the established apps in this space have earned that and Servey has
+              not.
             </p>
           </aside>
 
@@ -260,11 +264,15 @@ export default async function UseCasePage({
 
           <div className="mt-14 flex flex-col items-start gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted">
-              Servey puts your Mac in your pocket. Launching soon.
+              Servey puts your Mac in your pocket. Out now on Mac, iPhone and iPad.
             </p>
-            <WaitlistDialog source={`use-case-footer:${page.slug}`}>
-              <Button size="md">Join the waitlist</Button>
-            </WaitlistDialog>
+            <div className="flex items-center gap-2">
+              <Button asChild size="md">
+                {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                <a href="/api/download">Download for Mac</a>
+              </Button>
+              <AppStoreBadge height={40} />
+            </div>
           </div>
         </div>
       </main>

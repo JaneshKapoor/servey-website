@@ -7,9 +7,11 @@
  * `tiles`, which argue that task's specific ergonomics. That mix is what keeps
  * a templated page family from reading as thin.
  *
- * Honesty rule for everything in this file: Servey is pre-launch. No ratings, no
- * testimonials, no download counts, no claims we cannot back. Every page renders
- * a plain pre-launch disclosure.
+ * Honesty rule for everything in this file: Servey shipped on 29 October 2026
+ * and has no track record yet. No ratings, no testimonials, no download counts,
+ * no claims we cannot back. Every page renders a plain disclosure that the app
+ * is new and unproven - which stays true for a while after launch, and is a
+ * different claim from "not out yet".
  */
 
 export interface UseCaseTile {
@@ -124,7 +126,7 @@ export const useCases: UseCase[] = [
         body: [
           "If you never leave your own network, use macOS Screen Sharing. It is free, already installed, and on a good local link it is genuinely excellent. Paying for anything to do the same job on the same Wi-Fi would be a waste.",
           "At the desk, Apple's proximity features win outright. Universal Control lets one keyboard and mouse cross between a Mac and an iPad, and Sidecar turns an iPad into a second display. Neither is remote access - both want the devices near each other - but when they apply, nothing beats them. Worth clearing up a common mix-up too: iPhone Mirroring in recent macOS runs the opposite direction, putting your iPhone on your Mac's screen, not your Mac on your phone.",
-          "And Screens and Jump Desktop have years of refinement, broader protocol support and, unlike Servey, they ship today. Servey is pre-launch. If you need something proven this afternoon, they have earned that and we have not.",
+          "And Screens and Jump Desktop have years of refinement, broader protocol support and, unlike Servey, a long record of people depending on them. Servey shipped in October 2026. If you need something proven this afternoon, they have earned that and we have not.",
         ],
       },
     ],
@@ -151,7 +153,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Is Servey available now?",
-        a: "No. Servey is pre-launch, so this page describes how the app is built rather than anyone's experience of using it. There are no users and no reviews behind it, and the waitlist is open.",
+        a: "Yes. The Mac app downloads from servey.in and the iPhone and iPad app is on the App Store. It is new, though - this page describes how the app is built rather than anyone's long experience of using it, and there are no independent reviews yet.",
       },
     ],
     keywords: [
@@ -255,7 +257,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Is Servey available now?",
-        a: "Not yet. Servey is pre-launch and you can join the waitlist. Nothing on this page is a review or a track record; it is a description of what the app does, from the people building it.",
+        a: "Yes - the Mac app from servey.in, the iPhone and iPad app from the App Store. Nothing on this page is a review or a track record, though; it is a description of what the app does, from the people building it.",
       },
     ],
     keywords: [
@@ -327,7 +329,7 @@ export const useCases: UseCase[] = [
         h2: "Being straight about the limits",
         body: [
           "Servey reaches one Mac. It is not a fleet tool and it does not replace an SSH client if you have servers to manage. There is no SFTP, no Mosh, no serial, no jump hosts. It is Apple-only: a Mac host, an iPhone or iPad client, and nothing on Windows, Linux, or Android.",
-          "It is also pre-launch, which means no track record. Established apps in this space have years of refinement behind them and Servey does not.",
+          "It is also new, which means no track record. Established apps in this space have years of refinement behind them and Servey does not.",
         ],
       },
     ],
@@ -350,7 +352,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "When can I use it?",
-        a: "Servey has not launched. You can join the waitlist to be told when it does, and you are not charged before then.",
+        a: "Today. Download the Mac app from servey.in, get the iPhone and iPad app from the App Store, and sign in on both. There is a free tier, so you can see whether it works for you before paying anything.",
       },
     ],
     keywords: [
@@ -442,7 +444,7 @@ export const useCases: UseCase[] = [
         h2: "What to know before relying on it",
         body: [
           "Servey needs its host app running on the mini, so it is not a rescue tool for a machine that will not boot. It is not a replacement for hardware-level remote management, and it does not do wake-on-LAN.",
-          "It is also pre-launch and unproven. If a headless mini is doing something you genuinely cannot afford to lose access to, keep whatever fallback you already trust.",
+          "It is also new and unproven. If a headless mini is doing something you genuinely cannot afford to lose access to, keep whatever fallback you already trust.",
         ],
       },
     ],
@@ -548,7 +550,7 @@ export const useCases: UseCase[] = [
         body: [
           "Not a fleet tool. Servey reaches your Mac, not your servers, your staging boxes, or your containers. If you need to manage infrastructure, an SSH client is the right tool and Servey does not replace it.",
           "Not a coding environment either. You can edit a file in vim if you want to, but the honest use case is checking on work and unblocking it, rather than doing the work itself from a phone.",
-          "And it is pre-launch, with no track record and no independent reviews.",
+          "And it is new, with no track record and no independent reviews.",
         ],
       },
     ],
@@ -571,7 +573,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Can I try it today?",
-        a: "Not yet. Servey is pre-launch, so this page describes what the app does rather than reporting anyone's experience of using it. The waitlist is open.",
+        a: "Yes. The Mac app downloads from servey.in and the iPhone and iPad app is on the App Store, and the free tier needs no card. This page still describes what the app does rather than reporting anyone's long experience of using it.",
       },
     ],
     keywords: [
@@ -657,7 +659,7 @@ export const useCases: UseCase[] = [
         h2: "Being honest about scope",
         body: [
           "Servey does not run, schedule, or manage agents. It has no opinion about which ones you use and no integration with any of them. It gives you a terminal and a screen on your Mac; whatever you run there is entirely your business.",
-          "It is also pre-launch. Nothing here is a report of how it performs in practice, because nobody outside the team has used it yet.",
+          "It is also new. Nothing here is a report of how it performs over months, because the app has only just shipped.",
         ],
       },
     ],
@@ -688,7 +690,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Is it available yet?",
-        a: "No. Servey is pre-launch with no users and no independent reviews, and the waitlist is the way to hear when that changes.",
+        a: "Yes - the Mac app from servey.in and the iPhone and iPad app from the App Store. It is new, so there are still no independent reviews to weigh it against.",
       },
     ],
     keywords: [
@@ -762,7 +764,7 @@ export const useCases: UseCase[] = [
         h2: "What it does not cover",
         body: [
           "Servey reaches Macs running its host app. It will not give you a console on your Linux boxes, your NAS, your switch, or anything else in the rack. It is one tool for one machine, not a replacement for however you manage the rest of the lab.",
-          "It is pre-launch, so treat it as something to try alongside your existing setup rather than something to depend on yet.",
+          "It is new, so treat it as something to try alongside your existing setup rather than something to depend on yet.",
         ],
       },
     ],
@@ -785,7 +787,7 @@ export const useCases: UseCase[] = [
       },
       {
         q: "Can I use it now?",
-        a: "Not yet. Servey is pre-launch. This page describes the app's design rather than anyone's experience running it, and the waitlist is open.",
+        a: "Yes. The Mac app downloads from servey.in and the iPhone and iPad app is on the App Store. This page still describes the app's design rather than anyone's long experience running it.",
       },
     ],
     keywords: [

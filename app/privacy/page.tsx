@@ -29,10 +29,11 @@ export default function PrivacyPage() {
         <strong>servey.in</strong> website.
       </p>
       <p>
-        Servey is currently <strong>pre-launch</strong>. Until the apps are generally
-        available, the only data most people give us is a waitlist email address. The
-        app sections below describe the software as built, and take effect for you
-        when you install it.
+        Both apps are generally available: the Mac app from this site, and the
+        iPhone and iPad app from the App Store. The app sections below describe the
+        software as built, and take effect for you when you install it. The waitlist
+        section still applies to anyone who gave us an address before launch - we
+        have not deleted those, and the same rights apply to them.
       </p>
 
       <h2>The short version</h2>

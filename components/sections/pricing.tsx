@@ -6,7 +6,6 @@ import { SectionHeading } from "@/components/section";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
 import { pricing } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -106,14 +105,18 @@ export function Pricing() {
                     </ul>
 
                     <div className="mt-8 pt-2">
-                      <WaitlistDialog source={`pricing:${plan.id}`}>
-                        <Button
-                          className="w-full"
-                          variant={plan.featured ? "primary" : "secondary"}
-                        >
-                          Join the waitlist
-                        </Button>
-                      </WaitlistDialog>
+                      {/* These are the prices you pay in the Mac app, so the
+                          card leads there. The same plans exist as in-app
+                          purchases on iPhone and iPad - the note under the
+                          grid says so rather than every card repeating it. */}
+                      <Button
+                        asChild
+                        className="w-full"
+                        variant={plan.featured ? "primary" : "secondary"}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                        <a href="/api/download">Download for Mac</a>
+                      </Button>
                     </div>
                   </div>
                 </div>

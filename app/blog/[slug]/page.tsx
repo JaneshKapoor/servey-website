@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
+import { AppStoreBadge } from "@/components/app-store-badge";
 import {
   author,
   contentUpdated,
@@ -357,11 +357,15 @@ export default async function BlogPostPage({
           {/* CTA */}
           <div className="mt-12 flex flex-col items-start gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted">
-              Servey puts your Mac in your pocket. Launching soon.
+              Servey puts your Mac in your pocket. Out now on Mac, iPhone and iPad.
             </p>
-            <WaitlistDialog source={`blog:${post.slug}`}>
-              <Button size="md">Join the waitlist</Button>
-            </WaitlistDialog>
+            <div className="flex items-center gap-2">
+              <Button asChild size="md">
+                {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                <a href="/api/download">Download for Mac</a>
+              </Button>
+              <AppStoreBadge height={40} />
+            </div>
           </div>
 
           {/* The commercial counterpart to this guide. Rendered above "Keep

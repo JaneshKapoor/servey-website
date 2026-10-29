@@ -331,7 +331,7 @@ export const faqs = [
   },
   {
     q: "Is it out yet, and how much does it cost?",
-    a: "The Mac app is out now and downloads straight from this site - it is signed and notarised by Apple, so it opens like any other Mac app. The iPhone and iPad app is on its way to the App Store. Pricing: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. You can buy and manage a subscription from the Account screen in the Mac app.",
+    a: "Yes, both halves. The Mac app downloads straight from this site - it is signed and notarised by Apple, so it opens like any other Mac app. The iPhone and iPad app, Servey - Remote Desktop, is on the App Store. Pricing: free to start, the Terminal plan at $1.99/month or ₹99/month in India, and Full access - screen mirroring plus terminal - at $4.49/month or ₹299/month in India. You can buy and manage a subscription from the Account screen in the Mac app.",
   },
 ] as const;
 
@@ -343,10 +343,14 @@ export const faqs = [
  * SoftwareApplication Offers in `app/layout.tsx`, so this keeps the visible
  * price consistent with the structured data a crawler reads.
  *
- * Pre-launch: cards drive to the waitlist, not checkout.
+ * Cards drive to the Mac download, because these are the prices charged in
+ * the Mac app. The same two plans are in-app purchases on iPhone and iPad at
+ * the same numbers in the same currencies - if those ever diverge, this note
+ * and `pricing.note` are both making a claim about Apple's storefront that
+ * Apple controls, and both have to change.
  */
 export const pricing = {
-  note: "Start free, no card required. Paid plans are simple monthly pricing, and you can cancel anytime from the Account screen in the app.",
+  note: "Start free, no card required. Paid plans are simple monthly pricing, and you can cancel anytime from the Account screen in the app. Buy on the Mac, or as an in-app purchase on iPhone and iPad - the plan follows your account either way.",
   regions: [
     { id: "intl", label: "International", symbol: "$", key: "usd" },
     { id: "in", label: "India", symbol: "₹", key: "inr" },

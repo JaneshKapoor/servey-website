@@ -66,9 +66,9 @@ export default function ThanksPage() {
     <>
       <script dangerouslySetInnerHTML={{ __html: PICK_VARIANT }} />
 
-      {/* Not the site header. That one carries nav to #pricing and a "Join the
-          waitlist" button, which is an odd thing to show somebody who has just
-          paid. Same shell, same type, no selling. */}
+      {/* Not the site header. That one carries nav to #pricing and a download
+          button, which is an odd thing to show somebody who has just paid.
+          Same shell, same type, no selling. */}
       <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-bg/70 backdrop-blur-xl">
         <div className="container-page flex h-16 items-center justify-between">
           <Wordmark />

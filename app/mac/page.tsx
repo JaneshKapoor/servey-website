@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Clock, Download, Monitor, ShieldCheck, TerminalSquare } from "lucide-react";
+import { Check, Clock, Download, Monitor, ShieldCheck, TerminalSquare } from "lucide-react";
 import { Header } from "@/components/sections/header";
 import { Footer } from "@/components/sections/footer";
 import { Screenshot } from "@/components/device-frame";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
-import { site, ogImage } from "@/lib/site";
+import { AppStoreBadge } from "@/components/app-store-badge";
+import { appStore, site, ogImage } from "@/lib/site";
 
 /**
  * servey.in/mac - the Mac app's landing page.
@@ -68,8 +68,7 @@ export default function MacPage() {
         <div className="mx-auto max-w-3xl">
           <Badge className="border-accent/30 bg-accent-deep/60 text-accent-strong">
             <Clock className="size-3.5" />
-            {DOWNLOAD ? "Available now" : "Coming soon"}
-
+            {DOWNLOAD ? "Available now" : "Download paused"}
           </Badge>
 
           <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -105,13 +104,15 @@ export default function MacPage() {
               </p>
             </>
           ) : (
+            // DOWNLOAD is the kill switch: set it to null and the Mac download
+            // disappears without the page going with it. The iPhone and iPad
+            // app is a separate release on a separate store, so it stays.
             <div className="mt-8">
-              <WaitlistDialog source="mac-page">
-                <Button size="lg">
-                  Tell me when the Mac app is ready
-                  <ArrowRight className="size-4" />
-                </Button>
-              </WaitlistDialog>
+              <p className="text-sm leading-relaxed text-muted">
+                The Mac download is unavailable right now. The iPhone and iPad app
+                is unaffected:
+              </p>
+              <AppStoreBadge className="-ml-3 mt-1" height={44} />
             </div>
           )}
 
@@ -132,7 +133,11 @@ export default function MacPage() {
             permission, to capture the display, inject real mouse and keyboard events,
             and open a terminal session. That is this app. It is why Servey is a pair
             rather than a single download, and it is why the App Store only carries
-            half of it.
+            half of it. That half is{" "}
+            <a href={appStore.url} className="text-fg underline underline-offset-4">
+              Servey - Remote Desktop
+            </a>
+            , the iPhone and iPad app you reach your Mac from.
           </p>
 
           <h2 className="mt-12 text-2xl font-semibold tracking-tight text-fg">

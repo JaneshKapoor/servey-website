@@ -209,7 +209,8 @@ queries are overwhelmingly `how to ...` and the page answered nothing. Rebuilt
 - **State where every competitor is genuinely better.** This is the single
   reason these pages get read and cited. It is a strategy, not politeness.
 - **Keep Servey out of the hero slot** in competitor-vs-competitor posts: one
-  late mention, labelled pre-launch, ending by telling the reader to buy an
+  late mention, labelled as new and unproven, ending by telling the reader to
+  buy an
   established product if they need one today.
 - **One commercial pillar per intent**, with informational blog posts as spokes
   pointing at it (`/control-mac-from-iphone` ← `control-your-mac-from-iphone-ipad`).
@@ -304,7 +305,7 @@ decision with a reason.
 ### Never - integrity
 | We don't | Why |
 |---|---|
-| Invent ratings, testimonials, review counts, user numbers, or `AggregateRating` | Servey is pre-launch with zero public users. `AggregateRating` without real reviews is a Google structured-data violation, and the rest is simply false. |
+| Invent ratings, testimonials, review counts, user numbers, or `AggregateRating` | Servey shipped on 29 Oct 2026 and has no public reviews yet. `AggregateRating` without real reviews is a Google structured-data violation, and the rest is simply false. |
 | Fabricate product screenshots | Every image is a real capture or an honestly-styled placeholder. |
 | Publish a comparison that hides where a competitor wins | It is the entire credibility asset. A post that reads like an advert has failed at its job. |
 | Imply Termius shipped malware | They were the **victim** of the ZuRu impersonation campaign. Saying otherwise is false and defamatory. |
@@ -318,8 +319,8 @@ decision with a reason.
 ### Not now - strategy
 | We don't | Why |
 |---|---|
-| **Chase "recommend me a tool" AI queries** | Verified 16 Aug: ChatGPT answered "tool to screen share to my Mac from my phone" with Chrome Remote Desktop, AnyDesk, TeamViewer. **Correctly** - Servey has nothing to download, so recommending it would be a worse answer. Structurally unwinnable until launch. Do not treat it as an SEO failure. |
-| **Chase "termius alternative" broadly** | It would pull multi-host-SSH searchers who bounce, polluting waitlist quality pre-launch. The honest overlap is narrow: "run a terminal on your own Mac without SSH setup". |
+| **Chase "recommend me a tool" AI queries** | Verified 16 Aug: ChatGPT answered "tool to screen share to my Mac from my phone" with Chrome Remote Desktop, AnyDesk, TeamViewer. **Correctly at the time** - Servey had nothing to download, so recommending it would have been a worse answer. **That reason expired on 29 Oct 2026**; both apps now install, so this query is worth re-testing rather than written off. |
+| **Chase "termius alternative" broadly** | It would pull multi-host-SSH searchers who bounce. The honest overlap is narrow: "run a terminal on your own Mac without SSH setup". |
 | **Compete on Termius's page axis** (SSH client × platform) | They hold #1 there. We copied their *template technique* onto a different axis - **task × device** - where they do not rank at all. |
 | **Add more pages targeting "control Mac from iPhone"** | That recreates the exact fragmentation `/control-mac-from-iphone` was built to fix. One pillar, many spokes. |
 | **Rewrite metadata sitewide to chase CTR** | Still ruled out as a *bulk* exercise. But the original reasoning ("above par for position 16.4") **used the misleading site average** and is void - see §1. Targeted work on the specific page-one comparison URLs is now allowed, and only those. |
@@ -397,13 +398,18 @@ automatically from the `useCases` array order, so adding a page wires it in.
 
 ## 8. Constraints that shape everything
 
-1. **Pre-launch, waitlist-only, nothing downloadable.** This is the dominant
-   constraint. It makes purchase-intent and "recommend a tool" queries
-   unwinnable, and it blocks the highest-authority directories (§9).
+1. ~~**Pre-launch, waitlist-only, nothing downloadable.**~~ **Lifted 29 Oct
+   2026.** This was the dominant constraint: it made purchase-intent and
+   "recommend a tool" queries unwinnable and blocked the highest-authority
+   directories. Both apps now ship - the Mac app from the site since 9 Oct, the
+   iPhone and iPad app on the App Store since 29 Oct. Everything in §9 that was
+   gated on launching is now open, and every "unwinnable until launch" judgement
+   recorded elsewhere in this file needs rereading before it is trusted.
 2. **Effectively no backlinks.** The real reason for position 15.8.
 3. **Almost no entity presence.** AI engines weight presence on YouTube, Reddit,
    LinkedIn and Wikipedia. We have essentially none - and **three of those four
-   are free and available pre-launch.**
+   are free.** The App Store listing is now a fifth, and it is the single
+   most-cited source type in this category.
 4. **The brand name carries a search tax.** Bing responds to "servey" with *"Do
    you mean **survey**?"*. Google brand search works (131 impressions), so it is
    not fatal, but every search box and answer engine will fight the name. Worth
@@ -414,23 +420,24 @@ automatically from the `useCases` array order, so adding a page wires it in.
 
 ---
 
-## 9. Channels - available vs blocked pre-launch
+## 9. Channels - what is open now
 
-Verified against each platform's own rules.
+Verified against each platform's own rules. **Both blocked rows were blocked
+only by the product being announced-only, so both opened on 29 Oct 2026.**
 
 | Channel | Status | Note |
 |---|---|---|
-| **AlternativeTo** | ❌ Blocked | *"If the app is Coming Soon (announced only), in closed/private beta, invite-only, or in Early Access phase, we do not accept it."* Account is created and past the 7-day age requirement, so submission can go in on launch day. |
-| **Show HN** | ❌ Blocked | *"If your work isn't ready for users to try out, please don't do a Show HN."* |
-| **App Store listing** | ⏳ At launch | **#1 most-cited source** in this category (77 citations) |
+| **AlternativeTo** | ✅ Open 29 Oct | The rule that blocked us - *"If the app is Coming Soon (announced only)… we do not accept it"* - no longer applies. Account is past the 7-day age requirement, so a submission can go in now. |
+| **Show HN** | ✅ Open 29 Oct | *"If your work isn't ready for users to try out, please don't do a Show HN."* It is ready. |
+| **App Store listing** | ✅ Live 29 Oct | **#1 most-cited source** in this category (77 citations). `apps.apple.com/app/id6792620916` |
 | **YouTube demo** | ✅ Available | **#2 most-cited** (74 citations). **The highest-leverage action available today, and still not done.** |
 
 See [`docs/DEMO-VIDEO.md`](DEMO-VIDEO.md) for what the existing footage can and cannot
 be used for, and the shot list for recording it properly.
 | **Reddit** (r/macapps, r/homelab) | ✅ Available | **#3 most-cited** (65 citations). Genuine participation, never a launch post |
-| **BetaList / Peerlist / Uneed** | ✅ Available | Built specifically for unlaunched products |
+| **BetaList / Peerlist / Uneed** | ⚠️ Weaker fit | Built for unlaunched products; AlternativeTo and Show HN are the better spend now |
 | **HN as a normal submission** | ✅ Available | Show HN is barred; submitting a post as a regular link is fine |
-| **Email the waitlist** | ✅ Available | Still never used |
+| **Email the waitlist** | ✋ Owner only | Still never used. No agent-initiated bulk send; the owner writes this one |
 | **Product Hunt** | Done | Badge in footer. Never solicit upvotes |
 
 ---
@@ -459,10 +466,12 @@ be used for, and the shot list for recording it properly.
 
 ## 11. What to do next, in priority order
 
-1. **Record the YouTube demo.** Highest-leverage action available pre-launch,
-   feeds YouTube + Reddit + the launch-day AlternativeTo submission, and is the
-   only top-3 cited source reachable before shipping.
-2. **Close the Bing crawl gap (new, 1 Sep).** The comparison posts sit in
+1. **AlternativeTo and Show HN, now that both are unblocked (new, 29 Oct).**
+   Both were gated purely on the product being announced-only. AlternativeTo is
+   the higher-authority of the two and the account is already past its age rule.
+2. **Record the YouTube demo.** Still the #2 most-cited source and still not
+   done; it also strengthens the AlternativeTo submission.
+3. **Close the Bing crawl gap (new, 1 Sep).** The comparison posts sit in
    `Discovered but not crawled`, so ChatGPT Search - which reads Bing's index -
    cannot see the only cluster we rank page one for. Fix via **URL Inspection ->
    Request indexing**, one URL at a time. **Not** via Site Explorer, which only
@@ -528,7 +537,8 @@ be used for, and the shot list for recording it properly.
 9. **BetaList / Peerlist / Uneed** submissions.
 10. **Add `VideoObject` schema** once the demo exists.
 11. Re-test AI citation on **comparison** queries in ~2 weeks.
-12. At launch: App Store listing, AlternativeTo submission, Show HN.
+12. ~~At launch: App Store listing, AlternativeTo submission, Show HN.~~ The
+    listing is live; the other two moved to the top of this list.
 
 **Explicitly not on this list:** more landing pages, more metadata rewrites,
 more schema. On-site SEO has reached sharply diminishing returns. What is missing
@@ -540,6 +550,7 @@ is that **nobody has ever seen Servey move.**
 
 | Date | Change |
 |---|---|
+| 2026-10-29 | **The iPhone and iPad app shipped, and the site finally says so.** *Servey - Remote Desktop* went live on the App Store at 07:17 UTC (`id6792620916`, free with two IAPs). The site had never been told: every page described that half as forthcoming and there was **not one link to the App Store anywhere on servey.in**. **The stale sentence did not live in one place - it lived in roughly 60.** The brief named five pages, found by fetching the sitemap and grepping one phrase; sweeping the source instead turned up four more families the rendered-page grep could not see: `lib/blog.ts` carried **38** separate "launches soon" / "the waitlist is open now" / "once it launches" claims across 20 posts, `lib/use-cases.ts` carried **13** `pre-launch` claims including five FAQ answers that flatly answered "Is Servey available now?" with "No", `app/[useCase]/page.tsx` rendered a **"Servey has not launched yet"** disclosure on all seven use-case pages, and the blog and use-case footers both read "Launching soon" under a waitlist button. The OG card shown on every share said "Join the waitlist". **The lesson for next time: grep the data files, not the rendered HTML** - a templated claim renders on 30 pages from one string, and a claim inside a `p` block of a 9,000-word post is invisible to a page-level phrase search. **What replaced them matters as much as what was removed.** The honest-limits passages were not deleted, because the honesty is why those posts get cited: "it launches soon rather than today" became "it is weeks old rather than years proven", and "no users, no App Store reviews, no track record" survives intact, because it is still true. Only the availability claim changed. **The badge is Apple's own artwork**, fetched from Apple's marketing tools service in both variants, rendered at its native ratio with a quarter-height of clear space and swapped light/dark in CSS rather than JS - a theme hook would paint the wrong variant until hydration. **The App Store URL is the short `/app/id…` form in exactly one place** (`appStore` in `lib/site.ts`): Apple redirects it per storefront, so hardcoding `/in/` or `/us/` would have shown half the readers a price they cannot pay. **The hero now orders its two actions by viewport** - App Store first on a phone, where a 37 MB Mac disk image is useless - and hides neither, because people research on one device and install on another. **`/how-it-works` keeps its 3.1.3/4.8 treatment**: the App Store listing is linkable from it because Apple's storefront is Apple's payment route, not a way around it, but the prices on that listing still may not be repeated on the page. **The waitlist is retired, not deleted**: every UI entry point is gone, the route, provider and Firestore collection are untouched, and nothing has been sent to the people in it - the owner is writing that one personally. **Two blocked growth channels opened**: AlternativeTo and Show HN were each blocked by a single rule about announced-only products, and both rules stopped applying today. |
 | 2026-10-10 | **The front page now offers the product, and the download is counted.** The homepage shipped a Mac app and then never mentioned you could have it - the only links in that direction were two use-case pages. **Hero**: "Download for Mac" is primary, the waitlist demoted to "Get the iPhone app" (the half that genuinely is not out), and the badge stopped saying "Waitlist open". Header matches, desktop and mobile. `/how-it-works` gets a download button and nothing else, pointed at the route rather than at `/mac`, so the bare treatment holds - rechecked after the change: still 0 hits for price, plan, month, subscribe or a currency symbol, and its only links are `/api/download`, `/privacy`, `/terms` and a mailto. **Counting without a form**, because the Mac app requires sign-in on first launch, so we already learn who installs; what was invisible is who downloads and never signs in. `/api/download` records then 302s, while the raw `/download/Servey.dmg` stays untouched for `latest.json` and the shipped updater - that split is also what stops update checks inflating the number. **Two properties to preserve:** the download outranks the counter (every failure path still redirects; a broken Firestore must never cost somebody the app), and the write is awaited rather than fire-and-forget because a serverless function can be frozen the instant it responds. **Nothing recorded is personal data** - one integer a day, the referring *hostname* rather than the URL, and a coarse OS family; no IP read or hashed, no cookie, no fingerprint - which is the reason `/privacy` needed no change, and the line to re-check if anything is ever added to that route. Read with `npm run downloads`; deliberately not an HTTP endpoint, which would either leak the numbers or need another secret. **Job 3 (dmg to Blob) is not done** - `vercel whoami` has no credentials here, so the upload needs an interactive login. The mechanism from 10 Oct is ready and the CLI can do the rest in three commands. |
 | 2026-10-10 | **The last two submission blockers, and a plan for the dmg.** **`/support` created** - App Store Connect requires a Support URL and checks that it resolves, and ours 404'd. It is not filler: every fix on it is a real failure mode read out of the apps' own code - the two permissions macOS can withhold and silently break things with (Screen Recording gives black frames, Accessibility leaves the cursor dead, and granting one does not grant the other), the "Mac has not started sending" state, and the master-password rule that **nobody including us can reset remotely**, which is a deliberate design property worth stating plainly on a support page. Account and payment questions route to email rather than to a billing page. **Pricing links removed from `/mac`**, which the iPad onboarding hardcodes: `Header` and `Footer` now take a `hidePricing` prop, used by `/mac` and `/support`. `/mac` keeps the rest of its navigation because it is also a public download page people reach from search - only `/how-it-works`, linked from inside the app itself, gets the fully bare treatment. **The dmg** stays in git for now but no longer has to: `DMG_ORIGIN` env var + a `beforeFiles` rewrite means uploading the file to a bucket and setting one variable moves it without touching the URL the shipped app has hardcoded, and the file can then be deleted from `public/` as a separate safe step. Not done unilaterally because it needs a bucket and credentials, and because clearing the ~37 MB already in history is a force-push. **Checked while in there:** every `servey.in` URL hardcoded in the Swift source - `/mac`, `/how-it-works`, `/privacy`, `/terms`, `/mac/latest.json`, `/download/Servey.dmg` all return 200. `/account` also appears in `AccountState.swift` but only in a branch the Mac app cannot reach, so it is dead code, not a seventh blocker. |
 | 2026-10-10 | **Launch day: the Mac app is served from the site, and a page that blocked App Review now exists.** **The dmg** ships from `public/download/Servey.dmg` as a static file, deliberately: it is signed and notarised, so any optimiser or re-compression in the pipeline invalidates the signature and macOS refuses to open it with "Servey is damaged". Shipped in its **own deploy, before** the `latest.json` feed that points at it - publishing the feed first would aim every install at a 404. Verified against production rather than locally: `content-length: 37174143`, sha256 `bfbb2a5f...b641` identical after download, and `spctl` on the downloaded copy returns **accepted, source=Notarized Developer ID**. (Two dmgs were on the Desktop, one named `-DO-NOT-SHIP`; the hash is what settled which.) **`/how-it-works`** existed only as a 404 that the **iPad app links to from its Account screen**, which is a rejected submission rather than a broken link. Built under Guidelines **3.1.3 and 4.8**: an iOS app cannot point users at a non-Apple payment route, so the page carries no price, tier, billing or purchase reference and links to nothing that does - which meant **not** using the shared Header, Footer or Wordmark, all three of which lead to pricing or to the homepage that sells. It also forced a structural fix worth keeping: **Offers and FAQPage JSON-LD moved out of the root layout onto the homepage**, because a graph emitted by the layout lands in the HTML of every page; `#app` stays defined site-wide so the `about` reference on the use-case pages still resolves. **The stale-version bug was the biggest one by reach:** the site advertised **macOS 15.3 / iOS 18.5** while the real deployment targets are **14.0 / 17.0**, turning away every Sonoma Mac and everything from 17.0 to 18.4. It was wrong in **14 places** - the Mac page, the homepage FAQ, four blog posts, the terms, the SoftwareApplication JSON-LD and the AI-file generator - which is the argument for one source of truth. Also removed the "never charged until launch" promise (two places in `lib/content.ts`, one in the generator) and **16 `pre-launch` / `waitlist-only` claims across the blog**, several of which said "there is nothing to download today" on pages that now sit beside a download button. Framing held at 17/28, meta audit clean. |

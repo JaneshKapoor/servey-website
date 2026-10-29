@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { Aurora } from "@/components/aurora";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { WaitlistDialog } from "@/components/waitlist-dialog";
+import { AppStoreBadge } from "@/components/app-store-badge";
 import { Magnetic } from "@/components/motion/magnetic";
 import { Tilt } from "@/components/motion/tilt";
 import { IpadFrame, IphoneFrame } from "@/components/device-frame";
@@ -32,7 +32,7 @@ export function Hero() {
           >
             <Badge className="border-accent/30 bg-accent-deep/60">
               <span className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(34,220,110,0.9)]" />
-              Mac app out now · iPhone and iPad next
+              Out now on the Mac, iPhone and iPad
             </Badge>
           </motion.div>
 
@@ -63,10 +63,14 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.18 }}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            {/* Primary action is the thing you can actually have today. The
-                download goes through /api/download so it is counted - the raw
-                file URL is reserved for the app's own update check. */}
-            <Magnetic className="w-full sm:w-auto">
+            {/* Two apps, two actions. The Mac download leads on a desktop
+                because that is the machine it installs on; the App Store
+                leads on a phone, where a 37 MB disk image is useless. Neither
+                is hidden - people research on one device and install on
+                another. The download goes through /api/download so it is
+                counted; the raw file URL is reserved for the app's own
+                update check. */}
+            <Magnetic className="order-2 w-full sm:order-1 sm:w-auto">
               <Button asChild size="lg" className="w-full">
                 {/* A real <a>, not next/link: this is a route handler that
                     302s to a 37 MB file. Client-side routing has nothing to
@@ -78,12 +82,7 @@ export function Hero() {
                 </a>
               </Button>
             </Magnetic>
-            <WaitlistDialog source="hero">
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                Get the iPhone app
-                <ArrowRight className="size-4" />
-              </Button>
-            </WaitlistDialog>
+            <AppStoreBadge className="order-1 sm:order-2" height={48} />
           </motion.div>
         </div>
 

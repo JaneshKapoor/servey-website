@@ -122,7 +122,7 @@ You want your own Mac from your own iPhone with nothing to configure, and a term
       {
         type: 
 
-Turn on Screen Sharing in System Settings and grab a VNC client, and you can control your Mac from your iPhone on your own Wi-Fi today for free. The part that is genuinely hard is everywhere else, and it is hard because of NAT and changing IP addresses rather than because of anything on your Mac. Either adopt a VPN and maintain it, or use an app that handles the networking for you. Servey is built to be the second of those for Apple devices specifically, with a real terminal alongside the screen. It launches soon; the waitlist is open now.
+Turn on Screen Sharing in System Settings and grab a VNC client, and you can control your Mac from your iPhone on your own Wi-Fi today for free. The part that is genuinely hard is everywhere else, and it is hard because of NAT and changing IP addresses rather than because of anything on your Mac. Either adopt a VPN and maintain it, or use an app that handles the networking for you. Servey is built to be the second of those for Apple devices specifically, with a real terminal alongside the screen. It is out now: the Mac app from servey.in, the iPhone and iPad app on the App Store.
 
 ---
 
@@ -177,7 +177,7 @@ Built natively for the Apple ecosystem - not an Electron or Java port.
       {
         type: 
 
-Screens and Jump Desktop are excellent and well established. If you specifically want a native, zero-configuration tool with sharp mirroring and a real terminal - and you are happy to be an early adopter - Servey is worth watching. It is launching soon; join the waitlist to try it.
+Screens and Jump Desktop are excellent and well established. If you specifically want a native, zero-configuration tool with sharp mirroring and a real terminal - and you are happy to be an early adopter - Servey is worth watching. It is out now - the Mac app downloads from servey.in and the iPhone and iPad app is on the App Store.
 
 ---
 
@@ -254,7 +254,7 @@ The honest trade-off: Servey is Apple-only and new, so it has none of the track 
       {
         type: 
 
-Screens wins on Apple-native polish. Jump Desktop wins on breadth and protocol support. Both are solid, established products and you will not regret either. The thing neither is built around is zero-configuration networking paired with a genuine terminal - which is exactly what Servey is being built for. It launches soon; join the waitlist to be notified.
+Screens wins on Apple-native polish. Jump Desktop wins on breadth and protocol support. Both are solid, established products and you will not regret either. The thing neither is built around is zero-configuration networking paired with a genuine terminal - which is exactly what Servey is being built for. It is out now, on servey.in and the App Store.
 
 ---
 
@@ -289,7 +289,7 @@ How Servey connects over cellular
 
 Servey is designed for exactly this situation. When you are away, it establishes a private, end-to-end encrypted connection between your own devices, using NAT traversal so it connects even on strict mobile and CGNAT networks. If a direct path is not available, it securely relays instead of failing. You never configure any of it - you sign in with Google on both devices and connect.
 
-It also adapts quality to your connection automatically, so the picture stays smooth on a weaker mobile signal instead of freezing. Servey is launching soon - join the waitlist to try it.
+It also adapts quality to your connection automatically, so the picture stays smooth on a weaker mobile signal instead of freezing. Servey is out now - the Mac app from servey.in, the iPhone and iPad app on the App Store.
 
 ---
 
@@ -326,7 +326,7 @@ No VPN or port forwarding to reach your machine.
 
 Servey includes a real terminal as a first-class feature, right next to screen mirroring. It is a genuine shell on your Mac, available over both the direct local connection and the private remote path, so you can fix a build from the couch or check a process on a headless Mac from a train. Setup is just signing in with Google on both devices - no VPN, no ports.
 
-If a real terminal in your pocket sounds useful, Servey is launching soon. Join the waitlist and we will let you know the moment it is ready.
+If a real terminal in your pocket sounds useful, Servey is out now - the Mac app from servey.in, the iPhone and iPad app on the App Store.
 
 ---
 
@@ -365,7 +365,7 @@ Start the agent in a terminal on your Mac before you head out. Once you are away
 
 Servey gives you a genuine shell on your Mac plus crystal-clear screen mirroring, both on your local network and remotely. Kick off a coding agent or a long build at your desk, walk away, and check in from your iPhone or iPad - read the log, approve the next step, nudge it in a new direction, or stop it. Because Servey also mirrors the full desktop with real mouse and keyboard, you are covered for the moments an agent needs a browser tab or a GUI click, not just the command line.
 
-Setup is just signing in with Google on both devices - no VPN, no port forwarding. On the remote path your session is private and end-to-end encrypted between your own devices, and quality adapts automatically so it stays smooth even on cellular. Servey is launching soon; join the waitlist to be first to run your agents from anywhere.
+Setup is just signing in with Google on both devices - no VPN, no port forwarding. On the remote path your session is private and end-to-end encrypted between your own devices, and quality adapts automatically so it stays smooth even on cellular. Servey is out now, so you can run your agents on the Mac at home and steer them from anywhere today.
 
 ---
 
@@ -400,7 +400,7 @@ You do not need a job title to want your Mac in your hand. A file sitting on you
       {
         type: 
 
-Every one of these people wants their real Mac - not a stripped-down mobile stand-in - without paying a networking tax to reach it. That is what Servey is built for: native to the Apple ecosystem, zero-config setup, sharp mirroring, a genuine terminal, and private by design. It is launching soon; join the waitlist to try it.
+Every one of these people wants their real Mac - not a stripped-down mobile stand-in - without paying a networking tax to reach it. That is what Servey is built for: native to the Apple ecosystem, zero-config setup, sharp mirroring, a genuine terminal, and private by design. It is out now - the Mac app downloads from servey.in and the iPhone and iPad app is on the App Store.
 
 ---
 
@@ -445,7 +445,7 @@ The fix is not to move the agent to the cloud; it is to carry a remote control f
 
 Servey keeps a local-first agent practical. Run the agent on your Mac for all the reasons above, then use Servey to reach that Mac from your pocket: a genuine terminal plus crystal-clear screen mirroring, on your local network and remotely. Sign in with Google on both devices - no VPN, no port forwarding - and your remote session stays private and end-to-end encrypted between your own devices.
 
-If running agents on your own machine appeals to you, Servey is launching soon. Join the waitlist to be first to run them locally and steer them from anywhere.
+If running agents on your own machine appeals to you, Servey is out now - run them locally and steer them from anywhere.
 
 ---
 
@@ -490,7 +490,7 @@ You do not need to sit at your desk to stay in control. With a real terminal and
 
 Servey is built for exactly this kind of oversight. It puts a genuine shell and crystal-clear screen mirroring of your Mac in your pocket, on your network and remotely, so an agent running on your machine is never more than a glance away. Setup is signing in with Google on both devices - no VPN or ports - and the remote path is private and end-to-end encrypted between your own devices.
 
-If you want to hand more work to agents without handing over control, Servey is launching soon. Join the waitlist to keep a human in the loop from anywhere.
+If you want to hand more work to agents without handing over control, Servey is out now, and keeps a human in the loop from anywhere.
 
 ---
 
@@ -581,7 +581,7 @@ It is basic by design, though. Input on a touchscreen is not built around iPad t
       {
         type: 
 
-Servey is what we build, so treat this section with the appropriate scepticism - but here is the case. Every other tool on this list is a screen tool that treats the command line as somebody else's problem. Servey gives you both on your iPhone and iPad: crystal-clear screen mirroring of your Mac and a genuine shell on it, in one app, one tap apart. On your own Wi-Fi it streams a direct hardware-encoded HEVC feed, so your Mac's text stays razor-sharp rather than soft, and pinch-to-zoom lets you read the smallest detail on screen. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it and keeps working on strict carrier networks. Nothing is configured at any point - no VPN, no port forwarding, no static IP, no companion app to leave running. You sign in with Google on both devices and your Mac is simply there. The limits are real and deliberate: Servey is Apple-only, it reaches a Mac running its host app rather than any machine anywhere, and it is new - the Mac app downloads today, while the iPhone and iPad app is still on its way to the App Store. It is ₹99 or $1.99 a month for the terminal, and ₹299 or $4.49 for full access.
+Servey is what we build, so treat this section with the appropriate scepticism - but here is the case. Every other tool on this list is a screen tool that treats the command line as somebody else's problem. Servey gives you both on your iPhone and iPad: crystal-clear screen mirroring of your Mac and a genuine shell on it, in one app, one tap apart. On your own Wi-Fi it streams a direct hardware-encoded HEVC feed, so your Mac's text stays razor-sharp rather than soft, and pinch-to-zoom lets you read the smallest detail on screen. Away from home it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it and keeps working on strict carrier networks. Nothing is configured at any point - no VPN, no port forwarding, no static IP, no companion app to leave running. You sign in with Google on both devices and your Mac is simply there. The limits are real and deliberate: Servey is Apple-only, it reaches a Mac running its host app rather than any machine anywhere, and it is new - both apps shipped in October 2026, the Mac app from servey.in and the iPhone and iPad app on the App Store. It is ₹99 or $1.99 a month for the terminal, and ₹299 or $4.49 for full access.
 
 ,
         items: [
@@ -611,13 +611,13 @@ Want the fastest possible setup for free? Chrome Remote Desktop.
 
 Want your iPad as an extra monitor rather than remote control? Sidecar, Duet, or Astropad - different category.
 
-Want zero configuration plus a real terminal from your phone? Servey, once it launches.
+Want zero configuration plus a real terminal from your phone? Servey, out now.
 
  },
       {
         type: 
 
-Most people asking for the best remote desktop for Mac will be well served by Jump Desktop or Screens, and by built-in Screen Sharing if they never leave their own network. The gap we kept running into - and the reason we are building Servey - is that almost none of these treat the command line as a first-class thing, and most still make you think about networking. If that is your gap too, join the waitlist.
+Most people asking for the best remote desktop for Mac will be well served by Jump Desktop or Screens, and by built-in Screen Sharing if they never leave their own network. The gap we kept running into - and the reason we are building Servey - is that almost none of these treat the command line as a first-class thing, and most still make you think about networking. If that is your gap too, both apps are out now.
 
 ---
 
@@ -689,11 +689,7 @@ macOS host; iPhone and iPad client
 
 Shipping since 2019, millions of users
 
-,
-          ],
-        ],
-      },
-      { type: 
+New, with no track record
 
 The real difference: a client versus an agent
 
@@ -749,7 +745,7 @@ If a proven track record is what you are buying, that is Termius today, and that
       {
         type: 
 
-These two products share a keyboard and not much else. Termius is for infrastructure you run. Servey is for the one Mac you own, when getting to it should not require a VPN. If that second description is the one that fits, join the waitlist.
+These two products share a keyboard and not much else. Termius is for infrastructure you run. Servey is for the one Mac you own, when getting to it should not require a VPN. If that second description is the one that fits, Servey is out now.
 
 ---
 
@@ -888,9 +884,9 @@ You need something proven today, from a vendor with years of shipping behind it.
 
 Where Servey fits, and why it is the only Yes in that last column
 
-Servey is what we are building, so weigh this section accordingly - but look again at the last column of that table. Every other tool on this list answers No. Servey is aimed squarely at one job: your Mac, on your iPhone and iPad, with a genuine shell sitting beside the mirrored screen rather than behind it. Setup is signing in with Google on both devices - no VPN, no port forwarding, no companion service to keep running - and it chooses its own path. On the same Wi-Fi it streams a direct hardware-encoded HEVC feed, which is why the text stays razor-sharp enough to read and pinch-zoom into instead of going soft. Away from home it switches by itself to a private, end-to-end encrypted peer-to-peer connection between your own two devices, and that connection holds on strict carrier networks where a lot of tools simply give up. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately. It launches soon, from $1.99 a month, or ₹99 in India.
+Servey is what we are building, so weigh this section accordingly - but look again at the last column of that table. Every other tool on this list answers No. Servey is aimed squarely at one job: your Mac, on your iPhone and iPad, with a genuine shell sitting beside the mirrored screen rather than behind it. Setup is signing in with Google on both devices - no VPN, no port forwarding, no companion service to keep running - and it chooses its own path. On the same Wi-Fi it streams a direct hardware-encoded HEVC feed, which is why the text stays razor-sharp enough to read and pinch-zoom into instead of going soft. Away from home it switches by itself to a private, end-to-end encrypted peer-to-peer connection between your own two devices, and that connection holds on strict carrier networks where a lot of tools simply give up. Servey is Apple-only and it reaches your own Mac rather than any machine anywhere, which is a trade we made deliberately. It is out now, from $1.99 a month, or ₹99 in India.
 
-The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is new: the Mac app downloads today but the iPhone and iPad app is still on its way to the App Store, and there are no independent reviews to check yet. If you need a proven alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.
+The honest caveats matter more than the pitch. Servey is Apple-only, so it is not the answer if Windows was your reason for leaving Screens. It reaches only a Mac running its own host app, not arbitrary VNC or RDP targets. And it is new: both apps shipped in October 2026 - the Mac app from servey.in, the iPhone and iPad app on the App Store - and there are no independent reviews to check yet. If you need a proven alternative this afternoon, buy one of the established apps above. If the zero-setup plus real-terminal combination is the gap you keep hitting, it is one to watch.
 
 How to choose in one minute
 
@@ -908,7 +904,7 @@ Want your iPad as a second monitor rather than a remote control? Sidecar, Duet o
 
 Mostly typing commands? A terminal or SSH client, not a remote desktop.
 
-Want zero configuration plus a genuine terminal on one Mac? Servey, once it launches.
+Want zero configuration plus a genuine terminal on one Mac? Servey, out now.
 
  },
       {
@@ -1047,13 +1043,13 @@ Compare the models rather than the numbers, because the numbers change and both 
 
 What Servey does that neither of these does
 
-There is one row in that table where both of these tools say no, and it is the row we built Servey around. Servey puts your Mac on your iPhone and iPad with crystal-clear screen mirroring and a genuine shell on the Mac - not a bolted-on web console - and you move between the two with a single tap. On your own network it streams hardware-encoded HEVC, so your Mac's text stays razor-sharp instead of turning into the soft grey smear software encoders produce, and you can pinch to zoom right into the detail. Step outside and it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it - and it keeps working on strict carrier networks where plenty of tools give up. There is no VPN, no port forwarding and no IP address to remember: you sign in with Google on both devices and your Mac is simply there. That focus costs us breadth, and we took the trade on purpose - Servey is Apple-only and it reaches your Mac, not a fleet of other people's machines. It launches soon from $1.99 a month, and the waitlist is open now.
+There is one row in that table where both of these tools say no, and it is the row we built Servey around. Servey puts your Mac on your iPhone and iPad with crystal-clear screen mirroring and a genuine shell on the Mac - not a bolted-on web console - and you move between the two with a single tap. On your own network it streams hardware-encoded HEVC, so your Mac's text stays razor-sharp instead of turning into the soft grey smear software encoders produce, and you can pinch to zoom right into the detail. Step outside and it switches by itself to a private peer-to-peer connection, end-to-end encrypted between your own two devices, that goes direct whenever your network allows it - and it keeps working on strict carrier networks where plenty of tools give up. There is no VPN, no port forwarding and no IP address to remember: you sign in with Google on both devices and your Mac is simply there. That focus costs us breadth, and we took the trade on purpose - Servey is Apple-only and it reaches your Mac, not a fleet of other people's machines. It is out now from $1.99 a month.
 
  },
       {
         type: 
 
-Jump Desktop is the better personal remote-control app, particularly from an iPad, and the better value for one person with their own machines. TeamViewer is the better support and fleet-management platform, covers far more platforms, and is the only one of the two that solves the problem of helping someone else with their computer. Neither is a compromise choice - they are different products that share a screenshot. Name the job first and the answer follows. And if the job is your own Mac, reached from your own iPhone or iPad, with a real terminal sitting in the same app as the screen - that is the one Servey is built for, and it launches soon.
+Jump Desktop is the better personal remote-control app, particularly from an iPad, and the better value for one person with their own machines. TeamViewer is the better support and fleet-management platform, covers far more platforms, and is the only one of the two that solves the problem of helping someone else with their computer. Neither is a compromise choice - they are different products that share a screenshot. Name the job first and the answer follows. And if the job is your own Mac, reached from your own iPhone or iPad, with a real terminal sitting in the same app as the screen - that is the one Servey is built for, and it is out now.
 
 ---
 
@@ -1161,13 +1157,13 @@ You need to reach plain RDP or VNC hosts with no agent: Jump Desktop.
 
 Where Servey wins for one specific job
 
-Both of these are built to reach anything from anything. Servey is built to do one thing extremely well: put your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart. On your own Wi-Fi it streams hardware-encoded HEVC for razor-sharp text you can pinch to zoom into; away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on mobile networks that defeat most tools. Setup is signing in with Google on both devices: no relay server to choose, no ports to forward, no infrastructure to maintain. If running your own infrastructure is the point, that is exactly what RustDesk is for and it does it well. Servey is Apple-only and cannot be self-hosted, both deliberately, because the whole design goal was that you never think about the network at all. It launches soon from $1.99 a month; the waitlist is open now.
+Both of these are built to reach anything from anything. Servey is built to do one thing extremely well: put your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart. On your own Wi-Fi it streams hardware-encoded HEVC for razor-sharp text you can pinch to zoom into; away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on mobile networks that defeat most tools. Setup is signing in with Google on both devices: no relay server to choose, no ports to forward, no infrastructure to maintain. If running your own infrastructure is the point, that is exactly what RustDesk is for and it does it well. Servey is Apple-only and cannot be self-hosted, both deliberately, because the whole design goal was that you never think about the network at all. It is out now from $1.99 a month.
 
  },
       {
         type: 
 
-RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most from it. Jump Desktop is the better answer if you want a finished product, the best touch input in the category, and the ability to connect to machines that were never set up for it. Both are legitimate choices, and the deciding question is not which is better software but whether you would rather spend money or time. If your honest answer is that you would rather spend neither, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your own Mac from your own iPhone or iPad. It launches soon.
+RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most from it. Jump Desktop is the better answer if you want a finished product, the best touch input in the category, and the ability to connect to machines that were never set up for it. Both are legitimate choices, and the deciding question is not which is better software but whether you would rather spend money or time. If your honest answer is that you would rather spend neither, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your own Mac from your own iPhone or iPad. It is out now.
 
 ---
 
@@ -1280,7 +1276,7 @@ You need Linux hosts or browser-only clients: Splashtop.
 
 What Servey offers that neither of these does
 
-Look at the last row of that table. Neither of these ships a real terminal, and for anyone who works on a Mac that is the gap that bites. Servey closes it: crystal-clear screen mirroring and a genuine shell on your Mac in the same app, a tap apart, so when the fix turns out to be a permission dialog rather than a command, you are already looking at the screen that can dismiss it. On your network Servey uses hardware HEVC, which is why remote text stays sharp enough to read comfortably and pinch-to-zoom is actually worth using. Away from it, Servey switches on its own to a private peer-to-peer connection, end-to-end encrypted between your two devices, that goes direct whenever your network allows it - and when it will not, through our own relay rather than a vendor's cloud, with nothing about your session recorded. Setup is a Google sign-in on both devices, a master password on the Mac, and the two macOS permissions any screen-sharing tool needs. Servey is Apple-only, with no fleet management and no Linux, because it is built for your own Mac rather than someone else's estate. Launching soon from $1.99 a month, and the waitlist is open.
+Look at the last row of that table. Neither of these ships a real terminal, and for anyone who works on a Mac that is the gap that bites. Servey closes it: crystal-clear screen mirroring and a genuine shell on your Mac in the same app, a tap apart, so when the fix turns out to be a permission dialog rather than a command, you are already looking at the screen that can dismiss it. On your network Servey uses hardware HEVC, which is why remote text stays sharp enough to read comfortably and pinch-to-zoom is actually worth using. Away from it, Servey switches on its own to a private peer-to-peer connection, end-to-end encrypted between your two devices, that goes direct whenever your network allows it - and when it will not, through our own relay rather than a vendor's cloud, with nothing about your session recorded. Setup is a Google sign-in on both devices, a master password on the Mac, and the two macOS permissions any screen-sharing tool needs. Servey is Apple-only, with no fleet management and no Linux, because it is built for your own Mac rather than someone else's estate. Out now from $1.99 a month.
 
  },
       {
@@ -1395,13 +1391,13 @@ Reaching your own Mac from an iPad: neither, look at Mac-focused tools.
 
 Where Servey is the better answer for a Mac
 
-Both of these are cross-platform tools built largely so you can fix someone else's computer, and it shows the moment you try to use one on your own Mac from an iPad. Servey is built for exactly that job instead. It puts your Mac on your iPhone and iPad with sharp screen mirroring and a genuine shell - a real terminal, not a web console - and a purpose-built on-screen trackpad rather than a mouse pointer bolted onto a touchscreen. It is written natively in Swift, so it launches instantly and stays quiet, and on your own network its hardware-HEVC stream keeps your Mac's text properly legible instead of soft. Away from home the connection is private peer-to-peer and end-to-end encrypted between your own two devices, so your screen is not relayed through a vendor's datacentre - and there is no commercial-use detection waiting to lock you out, because there is no free tier to police. Servey does none of the fleet, compliance or IoT work these two are known for, and it is Apple-only. It launches soon from $1.99 a month, well under either of them, and the waitlist is open now.
+Both of these are cross-platform tools built largely so you can fix someone else's computer, and it shows the moment you try to use one on your own Mac from an iPad. Servey is built for exactly that job instead. It puts your Mac on your iPhone and iPad with sharp screen mirroring and a genuine shell - a real terminal, not a web console - and a purpose-built on-screen trackpad rather than a mouse pointer bolted onto a touchscreen. It is written natively in Swift, so it launches instantly and stays quiet, and on your own network its hardware-HEVC stream keeps your Mac's text properly legible instead of soft. Away from home the connection is private peer-to-peer and end-to-end encrypted between your own two devices, so your screen is not relayed through a vendor's datacentre - and there is no commercial-use detection waiting to lock you out, because there is no free tier to police. Servey does none of the fleet, compliance or IoT work these two are known for, and it is Apple-only. It is out now from $1.99 a month, well under either of them.
 
  },
       {
         type: 
 
-AnyDesk is the better answer for individuals and small teams who want speed, a low bill and to be left alone by licensing enforcement. TeamViewer is the better answer for organisations that need breadth, integrations and an auditable trail, and that would rather have one tool covering everything than the fastest one covering most things. Both are mature and both are safe when you are the one initiating the session. The deciding question is whether you are supporting a business or supporting yourself. If the answer is yourself, and the machine is a Mac, neither of these was designed for you. Servey was, it adds the real terminal both of them lack, and it launches soon at a fraction of either price.
+AnyDesk is the better answer for individuals and small teams who want speed, a low bill and to be left alone by licensing enforcement. TeamViewer is the better answer for organisations that need breadth, integrations and an auditable trail, and that would rather have one tool covering everything than the fastest one covering most things. Both are mature and both are safe when you are the one initiating the session. The deciding question is whether you are supporting a business or supporting yourself. If the answer is yourself, and the machine is a Mac, neither of these was designed for you. Servey was, it adds the real terminal both of them lack, and it is out now at a fraction of either price.
 
 ---
 
@@ -1501,13 +1497,13 @@ Neither gives you a real terminal. That sounds like a narrow complaint until you
 
 Where Servey fits between free and full-featured
 
-Chrome Remote Desktop wins on price, Jump Desktop wins on polish, and the row they both lose is the last one. Servey gives you a genuine shell on your Mac alongside crystal-clear screen mirroring, in one app, a tap apart - which matters, because a lot of what you actually need to do remotely is a command, and a lot of the rest is a dialog box only the GUI can dismiss. Getting started is as easy as Chrome Remote Desktop: sign in with Google on both devices and your Mac appears. No ports, no VPN, no IP address. The difference is what happens next - on your own network Servey streams hardware-encoded HEVC, so text stays sharp rather than mushy, and away from home it switches automatically to a private, end-to-end encrypted peer-to-peer connection that keeps working over cellular. Servey is Apple-only, there is no browser client, and file transfer and multi-monitor are not there yet. It launches soon from $1.99 a month, or ₹99 in India - the waitlist is open.
+Chrome Remote Desktop wins on price, Jump Desktop wins on polish, and the row they both lose is the last one. Servey gives you a genuine shell on your Mac alongside crystal-clear screen mirroring, in one app, a tap apart - which matters, because a lot of what you actually need to do remotely is a command, and a lot of the rest is a dialog box only the GUI can dismiss. Getting started is as easy as Chrome Remote Desktop: sign in with Google on both devices and your Mac appears. No ports, no VPN, no IP address. The difference is what happens next - on your own network Servey streams hardware-encoded HEVC, so text stays sharp rather than mushy, and away from home it switches automatically to a private, end-to-end encrypted peer-to-peer connection that keeps working over cellular. Servey is Apple-only, there is no browser client, and file transfer and multi-monitor are not there yet. It is out now from $1.99 a month, or ₹99 in India.
 
  },
       {
         type: 
 
-Chrome Remote Desktop is the right starting point for almost everyone, because it is free, it is fast to set up, and it answers the question of whether you need anything better. Jump Desktop is what you buy once that question has been answered - when you know your sessions are long, your client is an iPad, and the friction has stopped being tolerable. Start free, upgrade on evidence rather than on a review, and do not let anyone tell you the paid option is mandatory when your sessions last four minutes. And if what keeps sending you back to your desk is a command rather than a click, neither of these will fix it - that is exactly the gap Servey closes, with a genuine shell beside the mirrored screen. Launching soon.
+Chrome Remote Desktop is the right starting point for almost everyone, because it is free, it is fast to set up, and it answers the question of whether you need anything better. Jump Desktop is what you buy once that question has been answered - when you know your sessions are long, your client is an iPad, and the friction has stopped being tolerable. Start free, upgrade on evidence rather than on a review, and do not let anyone tell you the paid option is mandatory when your sessions last four minutes. And if what keeps sending you back to your desk is a command rather than a click, neither of these will fix it - that is exactly the gap Servey closes, with a genuine shell beside the mirrored screen. Out now.
 
 ---
 
@@ -1601,7 +1597,7 @@ The other thing Screen Sharing cannot do is give you a shell. Servey puts a genu
       {
         type: 
 
-macOS Screen Sharing is excellent software with one hard boundary: your local network. Apple has not shipped a built-in way across that boundary since 2018, so every solution is either infrastructure you run yourself or an app that handles it for you. If you are happy maintaining a VPN, Screen Sharing over Tailscale is a perfectly good answer. If you would rather sign in once and have your Mac appear on your phone - with a real terminal beside the screen - that is what Servey is for, and it launches soon from $1.99 a month, or ₹99 in India.
+macOS Screen Sharing is excellent software with one hard boundary: your local network. Apple has not shipped a built-in way across that boundary since 2018, so every solution is either infrastructure you run yourself or an app that handles it for you. If you are happy maintaining a VPN, Screen Sharing over Tailscale is a perfectly good answer. If you would rather sign in once and have your Mac appear on your phone - with a real terminal beside the screen - that is what Servey is for, and it is out now from $1.99 a month, or ₹99 in India.
 
 ---
 
@@ -1715,7 +1711,7 @@ It also adds the thing Back to My Mac never had: a genuine terminal on your Mac,
       {
         type: 
 
-Back to My Mac was quietly one of the best things about owning two Macs, and Apple has not replaced it in the seven years since it was switched off. The advice Apple gave on the way out does not survive contact with the actual problem, because Screen Sharing and File Sharing both stop at your router. The two honest answers today are a mesh VPN if you enjoy running your own infrastructure, or an app that handles the network for you if you do not. If what you want back is the specific feeling of your Mac just being there on the device in your hand, with a real shell alongside it, that is what Servey is for. It launches soon from $1.99 a month, or ₹99 in India.
+Back to My Mac was quietly one of the best things about owning two Macs, and Apple has not replaced it in the seven years since it was switched off. The advice Apple gave on the way out does not survive contact with the actual problem, because Screen Sharing and File Sharing both stop at your router. The two honest answers today are a mesh VPN if you enjoy running your own infrastructure, or an app that handles the network for you if you do not. If what you want back is the specific feeling of your Mac just being there on the device in your hand, with a real shell alongside it, that is what Servey is for. It is out now from $1.99 a month, or ₹99 in India.
 
 ---
 
@@ -1840,13 +1836,13 @@ You mainly want your own Mac on your own iPhone or iPad: neither was designed fo
 
 Both of these are general-purpose tools built to reach anything from anything, and it shows the moment you try to drive your own Mac from an iPad. Servey does one thing instead: it puts your Mac in your pocket. You get crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - in a single app, one tap apart, with an on-screen trackpad designed for fingers rather than a pointer borrowed from a desktop. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp when you pinch to zoom. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, holding up on the mobile networks and CGNAT that defeat most tools.
 
-Setup is signing in with Google on both devices: no relay to choose, no ports to forward, no infrastructure to maintain. The trades are deliberate and worth stating plainly. Servey is Apple-only, it cannot be self-hosted, and it reaches your own Mac rather than any machine anywhere. If running your own infrastructure is the entire point for you, that is what RustDesk is for and it does it well. If you need to fix a relative's Windows laptop over a terrible connection, that is AnyDesk. Servey launches soon from $1.99 a month, or ₹99 in India, and the waitlist is open now.
+Setup is signing in with Google on both devices: no relay to choose, no ports to forward, no infrastructure to maintain. The trades are deliberate and worth stating plainly. Servey is Apple-only, it cannot be self-hosted, and it reaches your own Mac rather than any machine anywhere. If running your own infrastructure is the entire point for you, that is what RustDesk is for and it does it well. If you need to fix a relative's Windows laptop over a terrible connection, that is AnyDesk. Servey is out now from $1.99 a month, or ₹99 in India.
 
  },
       {
         type: 
 
-RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most out of it. AnyDesk is the better answer if you want a finished product that connects fast, survives a bad network, and comes with somebody to call. Both are legitimate, and the deciding question is not which is better software but whether infrastructure is something you enjoy owning. If your honest answer is that you would rather own none of it, and the machine you actually want to reach is your own Mac, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your iPhone or iPad. It launches soon.
+RustDesk is the better answer if you want control, transparency and a bill of zero, and you are comfortable running a server to get the most out of it. AnyDesk is the better answer if you want a finished product that connects fast, survives a bad network, and comes with somebody to call. Both are legitimate, and the deciding question is not which is better software but whether infrastructure is something you enjoy owning. If your honest answer is that you would rather own none of it, and the machine you actually want to reach is your own Mac, Servey is the third path: nothing to host, nothing to configure, a genuine shell and a razor-sharp screen on your iPhone or iPad. It is out now.
 
 ---
 
@@ -1943,13 +1939,13 @@ It is worth checking which problem you are actually trying to solve, because a l
 
 That is the job Servey is built for. It puts your Mac on your iPhone or iPad: crystal-clear screen mirroring and a real terminal - a genuine shell on your Mac, not a web console - one tap apart in a single native app. On your own Wi-Fi it streams hardware-encoded HEVC, so text stays sharp enough to read and you can pinch to zoom into it. Away from home it moves automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds that connection on the strict mobile networks that defeat most tools. There is no VPN to configure, no ports to forward and no relay server to choose: you sign in with Google on both devices and your Mac shows up.
 
-To be clear about what Servey does not do, since this page is about the opposite direction: it does not control your iPhone, and no third-party app can. Servey is Mac-as-host and iPhone or iPad-as-client, deliberately, because that is the direction where the remote problem is real and worth solving. It launches soon from $1.99 a month, and the waitlist is open now.
+To be clear about what Servey does not do, since this page is about the opposite direction: it does not control your iPhone, and no third-party app can. Servey is Mac-as-host and iPhone or iPad-as-client, deliberately, because that is the direction where the remote problem is real and worth solving. It is out now from $1.99 a month.
 
  },
       {
         type: 
 
-If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. But if the device you were really trying to reach is your Mac, you are in luck, because that is the direction that actually works from anywhere. Servey gives you your Mac on your iPhone or iPad - a sharp screen and a real terminal in one app, with no VPN and nothing to configure. It launches soon from $1.99 a month and the waitlist is open now.
+If your iPhone is on the desk in front of you and you want it in a window next to your other apps, iPhone Mirroring is the answer, it is free, and it is already on your Mac if you are running Sequoia. If your iPhone is somewhere else, there is no consumer answer and there is not going to be one, because iOS does not allow it. But if the device you were really trying to reach is your Mac, you are in luck, because that is the direction that actually works from anywhere. Servey gives you your Mac on your iPhone or iPad - a sharp screen and a real terminal in one app, with no VPN and nothing to configure. It is out now from $1.99 a month.
 
 ---
 
@@ -2059,7 +2055,7 @@ Driving it from an iPhone or iPad
 
 The other approach is a tool that does the network part for you, and if the device in your hand is an iPhone or iPad this is where Servey fits. You install it on the Mac mini and on your phone or tablet, sign in with Google on both, and the mini appears - no VPN to maintain, no ports open, no dynamic DNS. On your own Wi-Fi it streams hardware-encoded HEVC, so the terminal text on a headless build box is sharp enough to read and you can pinch to zoom into it. Away from home it switches automatically to a private, end-to-end encrypted peer-to-peer link between your own two devices, and it holds up on mobile networks that defeat most tools.
 
-The part that matters most for a headless machine is that Servey ships a real terminal next to the screen, one tap away. Most of what you do to a Mac mini on a shelf is command-line work - restart a service, tail a log, check why a job stalled, kick off a rebuild - and for that you do not want to wait for a desktop to render and then drive a mouse pointer with your thumb. Where it is honestly not the right fit: Servey is Apple-only, so if half your machines run Linux you want something else, and it cannot be self-hosted, which is the whole point of the mesh VPN approach for some people. It launches soon from $1.99 a month.
+The part that matters most for a headless machine is that Servey ships a real terminal next to the screen, one tap away. Most of what you do to a Mac mini on a shelf is command-line work - restart a service, tail a log, check why a job stalled, kick off a rebuild - and for that you do not want to wait for a desktop to render and then drive a mouse pointer with your thumb. Where it is honestly not the right fit: Servey is Apple-only, so if half your machines run Linux you want something else, and it cannot be self-hosted, which is the whole point of the mesh VPN approach for some people. It is out now from $1.99 a month.
 
 A sanity check before you unplug the monitor
 
@@ -2081,7 +2077,7 @@ A dummy HDMI plug is either fitted or on order.
       {
         type: 
 
-Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one. For the last step, Servey is the shortest path if your other device is an iPhone or iPad: the mini's screen and a real shell in one app, sharp enough to read, with nothing exposed on your router and nothing to maintain. It launches soon from $1.99 a month.
+Setting up a headless Mac mini is less about any single clever trick and more about doing five ordinary things in the right order, while you still have a screen to do them on. Turn on both doors, stop it sleeping, make it come back after a power cut, give it a real resolution, and pick a way in from outside that does not involve opening a port. Do that and the machine will sit on its shelf and simply work, which is the entire reason to own one. For the last step, Servey is the shortest path if your other device is an iPhone or iPad: the mini's screen and a real shell in one app, sharp enough to read, with nothing exposed on your router and nothing to maintain. It is out now from $1.99 a month.
 
 ---
 
@@ -2175,7 +2171,7 @@ The part worth knowing about, because it is unusual for a paid app to volunteer 
 
 Reachability is handled in the same app: Servey connects on your local network directly, and from outside it establishes a private peer-to-peer connection between your own devices, including on carrier-grade NAT, with no VPN and no port forwarding. And because a terminal sits one tap from the mirrored screen, the case that defeats a pure SSH setup - a dialog box only the GUI can dismiss - does not strand you.
 
-The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need a working setup this afternoon, do not wait for us.
+The honest limits: Servey is Apple-only and cannot reach a Windows or Linux host, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it is weeks old rather than years proven. If you need a working setup this afternoon, do not wait for us.
 
 What to use if you need this working today
 
@@ -2251,7 +2247,7 @@ The low-technology answers are also better than their reputation. A Mac mini on 
 
 Where Servey fits, and where it does not
 
-Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 14 and iOS or iPadOS 17, it cannot reach a Windows or Linux machine, and it launches soon rather than today. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.
+Servey is a native Apple app for reaching your own Mac from your own iPhone or iPad, with screen mirroring, a real terminal and Privacy Mode built in rather than sold as an add-on. It needs macOS 14 and iOS or iPadOS 17, it cannot reach a Windows or Linux machine, and it is weeks old rather than years proven. If you support other people's computers, or you need a privacy screen working this week, TeamViewer and AnyDesk do far more than we do and you should use one of them - just verify the macOS behaviour before you buy on the strength of that feature.
 
 ---
 
@@ -2315,7 +2311,7 @@ Is a MacBook or a Mac mini the better always-on Mac?
 
 A Mac mini is the better machine and a spare MacBook is the better deal. The mini has no lid, no battery to age and no vent to block, so none of this arises. The argument for the laptop is that you already own it, and it has a built-in uninterruptible power supply, so a brief power cut that would drop a mini does not interrupt it. Either way it is the same app on both, and if you are setting up a mini we have written that up separately.
 
-The honest limits on Servey: it is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.
+The honest limits on Servey: it is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it is weeks old rather than years proven. If you need a headless MacBook working this weekend, use pmset with a dummy plug and reach it with Screen Sharing over Tailscale. That combination is free, it works now, and it is what we would suggest to a friend who did not want to wait.
 
 ---
 
@@ -2395,7 +2391,7 @@ Servey keeps its own activity log on the Mac, written for a person reading it af
 
 Two properties matter more than the list itself. It lives on your Mac and is never uploaded to us, so it is a record you hold rather than one you request from a vendor. And it is the counterpart to the controls above it: The app asks for a master password set on the Mac and makes you approve each new device on the Mac itself, and this is what answers the question those controls raise but cannot answer on their own - who connected, when, and what did they do.
 
-It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 14 and iOS or iPadOS 17, and launches soon rather than today.
+It is a record of the app, not of your Mac in general. It will not tell you about an SSH login or a Screen Sharing session, so the commands earlier in this article are still the right tools for those. Servey is Apple-only, needs macOS 14 and iOS or iPadOS 17, and is weeks old rather than years proven.
 
 What should I do if I find something I did not expect?
 
@@ -2486,7 +2482,7 @@ If you already have a Mac mini, no - the M4 and even the M2 are perfectly good a
 
 If you are buying, the interesting case is the one Apple is clearly aiming at: an always-on machine at home that runs models and agents, which you reach from a laptop or an iPad wherever you happen to be. That combination is genuinely new, and it is the case Servey was built around. It was not practical when the mini was a desktop you sat at, and it is not practical on a laptop you carry, because the laptop is with you and asleep in a bag. At $899 it is also considerably less than a year of most cloud GPU habits, and the data never leaves your house.
 
-The honest limits on our part: Servey is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it launches soon rather than today. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.
+The honest limits on our part: Servey is Apple-only, it needs macOS 14 on the Mac and iOS or iPadOS 17 on the device you control it from, and it is weeks old rather than years proven. If you need your new mini reachable the week it arrives, use Screen Sharing over Tailscale - that combination is free, works now, and is what we would tell a friend to do while they wait for us.
 
 ---
 
@@ -2531,7 +2527,7 @@ Available today; no fold-specific layout announced yet
 
 The Mac's screen plus a real terminal on the phone
 
-Pre-launch, and not yet tested on a Duo
+New, and not yet tested on a Duo
 
 The short answer: the Duo has the right shape for this and nothing on the other end of the connection. Apple built the fold, the half-open posture and a keyboard that moves to the lower half, and then shipped no way to put a Mac on the upper half. That job falls to a remote access app - Screens and Jump Desktop today, or Servey, which is built specifically for reaching your own Mac from an iPhone and putting a terminal beside the screen.
 

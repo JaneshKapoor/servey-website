@@ -122,7 +122,7 @@ Servey is a native Apple app pair: a host that runs on your Mac and a client for
 
 - Website: ${SITE}
 - Mac host app: ${SITE}/mac
-- Status: Shipping. The Mac app is downloadable now from ${SITE}/mac; the iPhone and iPad app is on its way to the App Store.
+- Status: Shipping. The Mac app is downloadable now from ${SITE}/mac; the iPhone and iPad app, "Servey - Remote Desktop", has been on the App Store since 29 October 2026 at https://apps.apple.com/app/id6792620916.
 - Platforms: macOS 14 or later (host), iOS and iPadOS 17 or later (client). Apple silicon or Intel.
 - Two apps, not one: the iPhone/iPad app is the remote and ships through the App Store; the Mac app is the host and is downloaded from ${SITE}/mac as a signed .dmg.
 - Pricing: A free tier - five-minute sessions, three a day, no card, every feature included. Paid plans monthly: Terminal $1.99 (₹99 in India), Full access $4.49 (₹299). A paid plan buys time, not a longer feature list. Bought on Mac or the web through Dodo Payments, or on iPhone and iPad through Apple.
