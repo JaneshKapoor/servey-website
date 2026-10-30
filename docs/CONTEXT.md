@@ -709,6 +709,29 @@ Vercel, auto-deploy on push to `main`. Env vars go in **Settings → Environment
 Variables** for Production *and* Preview. `NEXT_PUBLIC_*` values are inlined at
 build time, so changing one requires a **redeploy**, not just a restart.
 
+**Function region: `bom1` (Mumbai), set in `vercel.json`.** Firebase for this
+project is in `asia-south1`, and Vercel's default compute region is `iad1`
+(Washington DC) - so until 30 Oct 2026 every API call ran in Virginia and
+reached to Mumbai to write one Firestore document. `/api/download` is the one
+that matters, because its Firestore write is **awaited**: the user waits for
+that round trip before the 302 fires.
+
+`vercel.json` is the mechanism, **not** the Next.js route-segment export
+`preferredRegion`. That export was tried first and did nothing - production
+still answered `x-vercel-id: bom1::iad1::…` after a clean deploy. Vercel's
+region docs do not mention `preferredRegion` at all; `regions` in
+`vercel.json` (or Settings → Functions → Function Regions) is the documented
+route for a Node.js function.
+
+**Hobby allows exactly one region** - the limit is "single region", not "locked
+to `iad1`". Listing more regions than the plan allows fails the deployment
+*before* the build, so this is a loud failure rather than a silent one. Pro
+raises it to 5.
+
+**How to tell where a function actually ran:** `x-vercel-id` is
+`<edge>::<compute>::<id>`. `bom1::iad1::…` is a Mumbai edge handing off to
+Virginia compute; `bom1::bom1::…` is both in Mumbai.
+
 ---
 
 ## 11. Design system
