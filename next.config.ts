@@ -11,18 +11,33 @@ const POSTHOG_ASSET_HOST =
 /**
  * Where /download/Servey.dmg is actually served from.
  *
- * Unset (the default) means `public/download/Servey.dmg` - the file lives in
- * git. That is fine for one or two releases and bad for ten: git keeps every
- * version forever, so each ~37 MB build is ~37 MB added to every clone, for
- * good.
+ * **Set in Production since 30 Oct 2026**, to the Vercel Blob store
+ * `servey-downloads`. The rewrite below proxies `/download/Servey.dmg` to
+ * `${DMG_ORIGIN}/Servey.dmg`, so the URL the shipped Mac app has hardcoded
+ * keeps returning a 200 with the right filename and nothing had to be
+ * re-released. `public/download/Servey.dmg` was deleted in the same change.
  *
- * To move it out, upload the dmg to a bucket (Vercel Blob, R2, S3) and set
- * `DMG_ORIGIN` to the base URL it is served from. The rewrite below then
- * proxies `/download/Servey.dmg` to `${DMG_ORIGIN}/Servey.dmg`, so the URL the
- * shipped Mac app has hardcoded keeps returning a 200 with the right filename
- * and nothing has to be re-released. Delete the file from `public/` in the
- * same change, and remember the bytes must still arrive untouched - the dmg is
- * notarised, so any transform breaks Gatekeeper.
+ * Unset falls back to `public/download/Servey.dmg`, which no longer exists -
+ * so **if DMG_ORIGIN is ever cleared, the download 404s.** That is the
+ * trade: git keeps every version of a binary forever, so each ~37 MB build
+ * was ~37 MB on every clone, for good.
+ *
+ * Releasing a new build means uploading over the same pathname:
+ *
+ *   vercel blob put <file> --pathname Servey.dmg --access public  *     --content-type application/x-apple-diskimage --rw-token "$BLOB_RW_TOKEN"
+ *
+ * Do not pass `--add-random-suffix false`; it is a boolean flag, so passing
+ * it at all turns the suffix ON and you get `Servey-<random>.dmg`, which the
+ * rewrite will not find. Omit it.
+ *
+ * **The bytes must arrive untouched.** The dmg is notarised, so any
+ * transform breaks Gatekeeper and macOS refuses to open it with "Servey is
+ * damaged". After every upload, check the hash of what production actually
+ * serves, not of what you uploaded:
+ *
+ *   curl -s https://servey.in/download/Servey.dmg | shasum -a 256
+ *
+ * Build 1 is bfbb2a5f15d7dd49bd06a7ddd0493306c6d17de7e985a840900ec7363b93b641.
  */
 const DMG_ORIGIN = process.env.DMG_ORIGIN?.replace(/\/$/, "");
 

@@ -3,6 +3,21 @@ import { rateLimit } from "@/lib/rate-limit";
 import { getFirestoreDb } from "@/lib/firebase-admin";
 
 export const runtime = "nodejs";
+/**
+ * Run this function in Mumbai, next to its database.
+ *
+ * Firebase for this project lives in `asia-south1`. Vercel's default compute
+ * region is `iad1` (Washington DC), so until 30 Oct 2026 every call here ran
+ * in Virginia and reached across the Atlantic and most of Asia to write one
+ * Firestore document - measured at `x-vercel-id: bom1::iad1::…`, a Mumbai edge
+ * handing off to Virginia compute.
+ *
+ * Hobby allows exactly one region, so this is a single value rather than a
+ * list, and it is a per-route export rather than `vercel.json` so the reason
+ * sits next to the code it explains.
+ */
+export const preferredRegion = "bom1";
+
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
