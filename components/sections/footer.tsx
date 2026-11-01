@@ -104,6 +104,18 @@ export function Footer({ hidePricing = false }: { hidePricing?: boolean }) {
               <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                 Contact
               </span>
+              {/* /support was an orphan: it shipped in the sitemap with no
+                  internal link anywhere on the site, and Search Console showed
+                  it "Discovered - currently not indexed" with Last crawled
+                  N/A - Google had never fetched it once in three weeks. A
+                  sitemap entry on its own is too weak a signal to earn a
+                  crawl. This link is the fix. */}
+              <Link
+                href="/support"
+                className="text-sm text-muted transition-colors hover:text-fg"
+              >
+                Support
+              </Link>
               <ContactDialog>
                 <button
                   type="button"

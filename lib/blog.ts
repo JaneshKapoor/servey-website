@@ -1494,11 +1494,11 @@ export const posts: Post[] = [
   },
   {
     slug: "anydesk-vs-teamviewer",
-    metaTitle: "AnyDesk vs TeamViewer: cheaper or broader?",
+    metaTitle: "AnyDesk vs TeamViewer: which wins, and the catch",
     title:
       "AnyDesk vs TeamViewer: which remote desktop should you actually use?",
     description:
-      "AnyDesk is leaner, faster on poor connections and cheaper. TeamViewer does far more. Where each genuinely wins on a Mac, and the free-tier catch that bites.",
+      "AnyDesk is leaner and cheaper; TeamViewer does more. Which to pick on a Mac, and why TeamViewer can flag your free personal use as commercial.",
     date: "2026-08-19",
     keywords: [
       "AnyDesk vs TeamViewer",
@@ -1750,10 +1750,10 @@ export const posts: Post[] = [
   },
   {
     slug: "does-mac-screen-sharing-work-over-the-internet",
-    metaTitle: "Mac Screen Sharing over the internet: 4 fixes",
+    metaTitle: "Does Mac Screen Sharing work over the internet? No",
     title: "Does macOS Screen Sharing work over the internet?",
     description:
-      "No - it stops at your router, and port forwarding cannot save you on CGNAT. The four routes that actually reach your Mac from outside, and when each is worth it",
+      "No - it stops at your router, and port forwarding will not save you on CGNAT. The four routes that do reach your Mac from outside, and what each one costs.",
     date: "2026-08-23",
     keywords: [
       "does Mac Screen Sharing work over the internet",

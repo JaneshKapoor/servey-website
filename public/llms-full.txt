@@ -1289,7 +1289,7 @@ Splashtop is the better answer when remote access is a job you do for other peop
 # AnyDesk vs TeamViewer: which remote desktop should you actually use?
 
 URL: https://servey.in/blog/anydesk-vs-teamviewer
-Summary: AnyDesk is leaner, faster on poor connections and cheaper. TeamViewer does far more. Where each genuinely wins on a Mac, and the free-tier catch that bites.
+Summary: AnyDesk is leaner and cheaper; TeamViewer does more. Which to pick on a Mac, and why TeamViewer can flag your free personal use as commercial.
 
 This is the most-searched pairing in remote desktop, and the honest summary is that AnyDesk is lighter, faster on bad connections and cheaper, while TeamViewer does far more and is far more widely deployed. The thing that decides it for most people is not a feature at all - it is how each company treats the free tier.
 
@@ -1510,7 +1510,7 @@ Chrome Remote Desktop is the right starting point for almost everyone, because i
 # Does macOS Screen Sharing work over the internet?
 
 URL: https://servey.in/blog/does-mac-screen-sharing-work-over-the-internet
-Summary: No - it stops at your router, and port forwarding cannot save you on CGNAT. The four routes that actually reach your Mac from outside, and when each is worth it
+Summary: No - it stops at your router, and port forwarding will not save you on CGNAT. The four routes that do reach your Mac from outside, and what each one costs.
 
 Screen Sharing is already on your Mac, it is free, and it works beautifully - right up to the edge of your home network. Here is exactly where it stops, why Apple removed the feature that used to fix this, and what actually works instead.
 
