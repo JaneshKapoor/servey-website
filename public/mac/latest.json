@@ -1,7 +1,7 @@
 {
-  "version": "1.0",
-  "build": 1,
+  "version": "1.0.1",
+  "build": 2,
   "url": "https://servey.in/download/Servey.dmg",
-  "notes": "Buy a subscription directly on your Mac, manage it from the Account screen, and sign in with Apple.",
+  "notes": "A session that never showed you anything no longer costs you one of your three free sessions a day. Sessions are counted when they actually start working, not when they are asked for.",
   "minimumVersion": "1.0"
 }
