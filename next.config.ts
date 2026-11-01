@@ -38,6 +38,16 @@ const POSTHOG_ASSET_HOST =
  *   curl -s https://servey.in/download/Servey.dmg | shasum -a 256
  *
  * Build 1 is bfbb2a5f15d7dd49bd06a7ddd0493306c6d17de7e985a840900ec7363b93b641.
+ * Build 2 is bfb3048841a6091f594eb2e18d1aada1a400a8af7d09807f1bf325e7b430a1cb.
+ *
+ * **Overwriting is not instant.** `vercel blob put --force` replaces the
+ * object immediately - `vercel blob list` shows the new size straight away -
+ * but the Blob store's own CDN kept serving the previous bytes for about two
+ * minutes afterwards, as `x-vercel-cache: HIT` with the old ETag, and a
+ * cache-busting query string did not defeat it. So an upload that looks done
+ * can still be invisible. Wait, then check the ETag and content-length once;
+ * do not poll in a loop, which trips Vercel's DDoS mitigation and takes the
+ * whole site down with a 403 checkpoint.
  */
 const DMG_ORIGIN = process.env.DMG_ORIGIN?.replace(/\/$/, "");
 
