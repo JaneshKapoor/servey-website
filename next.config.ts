@@ -107,20 +107,11 @@ const nextConfig: NextConfig = {
             value: "public, max-age=3600, must-revalidate",
           },
           { key: "X-Content-Type-Options", value: "nosniff" },
-          // 2 Nov 2026: every download was a 1 MiB fragment and macOS said
-          // "The disk image is corrupted". The dmg was fine - the bytes on
-          // the Blob store hashed correctly and the notarisation validated.
-          // The edge was the problem. This path is a rewrite, so Vercel
-          // caches the proxied response keyed on URL alone. One range
-          // request - a resumed browser download, a download manager, a
-          // reconnecting phone tether - makes the origin answer 206 with a
-          // partial body, and the edge then served THAT to everyone asking
-          // for the whole file, for the full hour of the TTL. One person on
-          // a bad connection broke the download for every visitor behind
-          // them. Vary puts Range into the cache key so a partial response
-          // can never again be replayed to someone who did not ask for one.
-          // Do not remove this without moving the binary off the edge.
-          { key: "Vary", value: "Range" },
+          // 2 Nov 2026: these headers are INERT while the redirect below is
+          // in place - a 307 short-circuits before they matter, and the Blob
+          // store serves the bytes with its own headers. They are kept so
+          // that flipping back to a rewrite does not silently lose the
+          // content type. See the redirect for why proxying was abandoned.
         ],
       },
       {
@@ -139,6 +130,38 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      /**
+       * The dmg is a REDIRECT, not a rewrite, and that distinction is the
+       * whole point.
+       *
+       * It was a rewrite until 2 Nov 2026, which meant Vercel's edge proxied
+       * the Blob store and cached the result keyed on the URL alone. A single
+       * range request - a resumed browser download, a download manager, a
+       * phone tether that reconnects - made the origin answer 206 with a
+       * partial body, and the edge then served that 1 MiB fragment to every
+       * plain GET until the TTL expired. macOS mounts the header, finds no
+       * filesystem, and reports "The disk image is corrupted". One person on
+       * a bad connection broke the download for everyone behind them, which
+       * is why it looked intermittent and unreproducible.
+       *
+       * `Vary: Range` was tried first and the edge ignored it - the poisoning
+       * reproduced one second later. Do not try that again. Redirecting keeps
+       * the binary out of the edge cache entirely, so there is no cache entry
+       * left to poison; the Blob store's own CDN handles ranges correctly.
+       *
+       * It must stay a 307 (`permanent: false`). A 308 is cached by browsers
+       * forever and would weld this URL to today's Blob host, leaving no way
+       * to move the file without stranding every Mac already shipped.
+       */
+      ...(DMG_ORIGIN
+        ? [
+            {
+              source: "/download/Servey.dmg",
+              destination: `${DMG_ORIGIN}/Servey.dmg`,
+              permanent: false,
+            },
+          ]
+        : []),
       {
         source: "/blog/control-a-headless-mac-mini-remotely",
         destination: "/blog/headless-mac-mini-setup",
@@ -149,17 +172,9 @@ const nextConfig: NextConfig = {
 
   async rewrites() {
     return {
-      // `beforeFiles` so this wins over the static file while both exist -
-      // that way flipping DMG_ORIGIN takes effect immediately and deleting
-      // public/download/Servey.dmg is a separate, safe step.
-      beforeFiles: DMG_ORIGIN
-        ? [
-            {
-              source: "/download/Servey.dmg",
-              destination: `${DMG_ORIGIN}/Servey.dmg`,
-            },
-          ]
-        : [],
+      // The dmg used to be proxied here. It is a redirect now - see
+      // redirects() for the incident that forced the change.
+      beforeFiles: [],
       afterFiles: [
         {
           source: "/ingest/static/:path*",
