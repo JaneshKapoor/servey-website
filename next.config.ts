@@ -107,6 +107,20 @@ const nextConfig: NextConfig = {
             value: "public, max-age=3600, must-revalidate",
           },
           { key: "X-Content-Type-Options", value: "nosniff" },
+          // 2 Nov 2026: every download was a 1 MiB fragment and macOS said
+          // "The disk image is corrupted". The dmg was fine - the bytes on
+          // the Blob store hashed correctly and the notarisation validated.
+          // The edge was the problem. This path is a rewrite, so Vercel
+          // caches the proxied response keyed on URL alone. One range
+          // request - a resumed browser download, a download manager, a
+          // reconnecting phone tether - makes the origin answer 206 with a
+          // partial body, and the edge then served THAT to everyone asking
+          // for the whole file, for the full hour of the TTL. One person on
+          // a bad connection broke the download for every visitor behind
+          // them. Vary puts Range into the cache key so a partial response
+          // can never again be replayed to someone who did not ask for one.
+          // Do not remove this without moving the binary off the edge.
+          { key: "Vary", value: "Range" },
         ],
       },
       {
