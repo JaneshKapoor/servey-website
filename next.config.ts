@@ -12,10 +12,13 @@ const POSTHOG_ASSET_HOST =
  * Where /download/Servey.dmg is actually served from.
  *
  * **Set in Production since 30 Oct 2026**, to the Vercel Blob store
- * `servey-downloads`. The rewrite below proxies `/download/Servey.dmg` to
+ * `servey-downloads`. `redirects()` below 307s `/download/Servey.dmg` to
  * `${DMG_ORIGIN}/Servey.dmg`, so the URL the shipped Mac app has hardcoded
- * keeps returning a 200 with the right filename and nothing had to be
- * re-released. `public/download/Servey.dmg` was deleted in the same change.
+ * keeps working and nothing had to be re-released.
+ * `public/download/Servey.dmg` was deleted in the same change.
+ *
+ * This was a proxying rewrite until 2 Nov 2026, when it caused an outage -
+ * see the note in `redirects()`. It must not go back to being one.
  *
  * Unset falls back to `public/download/Servey.dmg`, which no longer exists -
  * so **if DMG_ORIGIN is ever cleared, the download 404s.** That is the
@@ -28,14 +31,18 @@ const POSTHOG_ASSET_HOST =
  *
  * Do not pass `--add-random-suffix false`; it is a boolean flag, so passing
  * it at all turns the suffix ON and you get `Servey-<random>.dmg`, which the
- * rewrite will not find. Omit it.
+ * redirect will not find. Omit it.
  *
  * **The bytes must arrive untouched.** The dmg is notarised, so any
  * transform breaks Gatekeeper and macOS refuses to open it with "Servey is
  * damaged". After every upload, check the hash of what production actually
  * serves, not of what you uploaded:
  *
- *   curl -s https://servey.in/download/Servey.dmg | shasum -a 256
+ *   curl -sL https://servey.in/download/Servey.dmg | shasum -a 256
+ *
+ * The `-L` is not optional. The URL is a 307 now, so plain `curl -s` follows
+ * nothing, returns the empty redirect body, and hashes zero bytes - a release
+ * check without it reports a broken download on a perfectly good build.
  *
  * Build 1 is bfbb2a5f15d7dd49bd06a7ddd0493306c6d17de7e985a840900ec7363b93b641.
  * Build 2 is bfb3048841a6091f594eb2e18d1aada1a400a8af7d09807f1bf325e7b430a1cb.
