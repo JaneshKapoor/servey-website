@@ -1,7 +1,7 @@
 {
-  "version": "1.0.1",
-  "build": 2,
+  "version": "1.0.2",
+  "build": 3,
   "url": "https://servey.in/download/Servey.dmg",
-  "notes": "A session that never showed you anything no longer costs you one of your three free sessions a day. Sessions are counted when they actually start working, not when they are asked for.",
+  "notes": "Signing into a different account on your Mac no longer leaves it visible to your iPad but impossible to connect to. Servey also now records what went wrong, so a failure can be diagnosed instead of guessed at.",
   "minimumVersion": "1.0"
 }
