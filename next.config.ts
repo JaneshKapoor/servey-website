@@ -46,6 +46,8 @@ const POSTHOG_ASSET_HOST =
  *
  * Build 1 is bfbb2a5f15d7dd49bd06a7ddd0493306c6d17de7e985a840900ec7363b93b641.
  * Build 2 is bfb3048841a6091f594eb2e18d1aada1a400a8af7d09807f1bf325e7b430a1cb.
+ * Build 3 is 498b5cf3e53a6025c3c709def2c02c163f1af2415295919b91399a3010d9db2e
+ * (37179370 bytes).
  *
  * **Overwriting is not instant.** `vercel blob put --force` replaces the
  * object immediately - `vercel blob list` shows the new size straight away -
